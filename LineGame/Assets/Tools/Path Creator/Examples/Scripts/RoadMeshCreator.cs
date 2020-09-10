@@ -6,7 +6,7 @@ namespace PathCreation.Examples
     {
         [Header ("Road settings")]
         public float roadWidth = .4f;
-        [Range (0, .5f)]
+        [Range (0, 1f)]
         public float thickness = .15f;
         public bool flattenSurface;
 
@@ -125,12 +125,11 @@ namespace PathCreation.Examples
         }
 
         // Add MeshRenderer and MeshFilter components to this gameobject if not already attached
-        void AssignMeshComponents () 
+        void AssignMeshComponents() 
         {
-
             if (meshHolder == null) 
             {
-                meshHolder = new GameObject ("Road Mesh Holder");
+                meshHolder = new GameObject("Road Mesh Holder");
             }
 
             meshHolder.transform.rotation = Quaternion.identity;

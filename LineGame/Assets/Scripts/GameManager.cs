@@ -1,15 +1,72 @@
-﻿using System.Collections;
+﻿using PathCreation.Examples;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private enum Scenes
+    {
+        Movement,
+        UI,
+    }
+
+    public static GameManager instance;
+
+    Scenes currentScene = Scenes.Movement;
+
+    public TextBounce textBounce;
+
+    public Button reset;
+
+    public PathFollower pathfollower;
+
+    public bool gameplayEnabled = true;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
-        MenuManager.instance.MoveMenu(Menu.Test, Curves.CenterToRight);
+        //Application.targetFrameRate = 60;
+
+        reset.onClick.AddListener(delegate { pathfollower.ResetPath(); });
+
+        //MenuManager.instance.MoveMenu(Menu.Test, Curves.CenterToRight);
 
         //Fader.instance.Fade(Menu.Test, 1);
 
         //Blurer.instance.Blur(Menu.Test, 10, 2);
+    }
+
+    private void Update()
+    {
+        if (currentScene == Scenes.UI)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                textBounce.ToggleBounce(true, 1);
+            }
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                textBounce.ToggleBounce(false);
+            }
+        }
+        else if (currentScene == Scenes.Movement)
+        {
+            if (!gameplayEnabled)
+                return;
+
+            CamFollow.instance.OnUpdate();
+
+            FPSDIspay.instance.OnUpdate();
+
+            pathfollower.OnUpdate();
+        }
     }
 }

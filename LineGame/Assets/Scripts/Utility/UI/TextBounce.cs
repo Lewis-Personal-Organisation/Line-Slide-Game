@@ -1,47 +1,77 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
 [ExecuteInEditMode]
 public class TextBounce : MonoBehaviour
 {
     public RectTransform textTransform;
+    private Vector3 defaultScale = Vector3.zero;
 
-    public float speed;
+    public const float speed = 2;
     public float scaleMin;
     public float scaleMax;
 
-    public bool doBounce = false;
-    public bool isEnlarging = false;
-    
-    
+    private bool isBouncing = false;
+    private bool isEnlarging = false;
 
-    void Update()
+
+    private void Awake()
     {
-        if (!doBounce)
-            return;
+        defaultScale = textTransform.localScale;
+    }
 
-        if (isEnlarging)
+    public void ToggleBounce(bool _choice, float _speed = 2)
+    {
+        if (_choice == false)
         {
-            if (textTransform.localScale.x < scaleMax)
-            {
-                textTransform.localScale += new Vector3(Time.deltaTime * speed, Time.deltaTime * speed, 0);
-            }
-            else
-            {
-                textTransform.localScale = new Vector3(scaleMax, scaleMax, 0);
-                isEnlarging = false;
-            }
+            StopAllCoroutines();
+            isBouncing = false;
+            textTransform.localScale = defaultScale;
+            return;
         }
-        else
+
+        if (_choice == true)
         {
-            if (textTransform.localScale.x >= scaleMin)
+            if (isBouncing)
+                return;
+
+            textTransform.localScale = defaultScale;
+            isBouncing = true;
+            StartCoroutine(Bounce(_choice, _speed));
+        }
+    }
+
+    public IEnumerator Bounce(bool _choice, float _speed)
+    {
+        while (isBouncing)
+        {
+            if (isEnlarging)
             {
-                textTransform.localScale -= new Vector3(Time.deltaTime * speed, Time.deltaTime * speed, 0);
+                if (textTransform.localScale.x < scaleMax)
+                {
+                    textTransform.localScale += new Vector3(Time.deltaTime * _speed, Time.deltaTime * _speed, 0);
+                }
+                else
+                {
+                    textTransform.localScale = new Vector3(scaleMax, scaleMax, 0);
+                    isEnlarging = false;
+                }
             }
             else
             {
-                isEnlarging = true;
-                textTransform.localScale = new Vector3(scaleMin, scaleMin, 0);
+                if (textTransform.localScale.x >= scaleMin)
+                {
+                    textTransform.localScale -= new Vector3(Time.deltaTime * _speed, Time.deltaTime * _speed, 0);
+                }
+                else
+                {
+                    isEnlarging = true;
+                    textTransform.localScale = new Vector3(scaleMin, scaleMin, 0);
+                }
             }
+
+            yield return new WaitForEndOfFrame();
         }
     }
 }

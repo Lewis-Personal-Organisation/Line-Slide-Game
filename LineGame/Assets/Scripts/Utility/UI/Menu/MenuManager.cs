@@ -193,14 +193,7 @@ public class MenuManager : Singleton<MenuManager>
     // Sets up this class
     private void Awake()
     {
-        int s1 = 1;
-        int s2 = s1;
-
-        s1 += 2;
-
-        Debug.Log(s2);
-
-        Debug.Log($"{this.GetType().Name} is Awakening!");
+        //Debug.Log($"{this.GetType().Name} is Awakening!");
 
         MoverSetup();
         FaderSetup();

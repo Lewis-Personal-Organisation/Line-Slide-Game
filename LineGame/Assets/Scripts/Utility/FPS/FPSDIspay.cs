@@ -2,30 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class FPSDIspay : MonoBehaviour
 {
+    public static FPSDIspay instance;
+
     [SerializeField] private TextMeshProUGUI display;
 
+
     public static readonly int fixedStep = 1;
-    public float interval = 1;
-    public static  int frameCount = 0;
+    private const float interval = 1;
+    public static int frameCount = 0;
 
     public static float timer = 0;
+    public int frameCap = -1;
+
+    public bool update = true;
 
 
-    private void Update()
+    private void Awake()
     {
+        instance = this;
+    }
+
+    public void OnUpdate()
+    {
+        if (!update)
+            return;
+
         timer += Time.deltaTime;
         frameCount++;
 
         if (timer >= interval)
             ResetCount();
     }
-
-    private void ResetCount()
+    public void ResetCount()
     {
-        display.text = $"FPS: {frameCount}";
+        display.text = $"{frameCount}\n{(float)(1000f / frameCount)}ms";
+        timer = 0;
+        frameCount = 0;
+    }
+
+    public void StopAndHideCounter()
+    {
+        display.text = $"";
         timer = 0;
         frameCount = 0;
     }
