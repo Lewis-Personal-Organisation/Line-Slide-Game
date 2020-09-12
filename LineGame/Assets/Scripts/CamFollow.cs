@@ -13,6 +13,7 @@ public class CamFollow : MonoBehaviour
     {
         instance = this;
         distance = this.transform.position - player.transform.position;
+        transform.LookAt(player.position);
     }
 
     // Update is called once per frame

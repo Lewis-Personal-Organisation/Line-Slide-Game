@@ -133,7 +133,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222571057}
-  - component: {fileID: 222571058}
   - component: {fileID: 222571059}
   m_Layer: 0
   m_Name: Game Manager**
@@ -156,19 +155,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &222571058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222571056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 507f1ed0aab480743af86a3caabac040, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBounce: {fileID: 1651230870}
 --- !u!114 &222571059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,6 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneButton: {fileID: 1284957114}
+  sceneNames: []
 --- !u!4 &865967161
 Transform:
   m_ObjectHideFlags: 0

@@ -76,7 +76,7 @@
 
 				o.worldPos = mul(UNITY_MATRIX_M, v.vertex);
 				o.vertex = mul(UNITY_MATRIX_VP, o.worldPos);
-				
+
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.camHeightOverWater = _WorldSpaceCameraPos.y - _WaterHeight;
 

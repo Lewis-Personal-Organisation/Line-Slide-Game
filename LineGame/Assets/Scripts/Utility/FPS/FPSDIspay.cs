@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
-using UnityEngine.EventSystems;
 
-public class FPSDIspay : MonoBehaviour
+public class FPSDispay : MonoBehaviour
 {
-    public static FPSDIspay instance;
+    public static FPSDispay instance;
 
     [SerializeField] private TextMeshProUGUI display;
 

@@ -48,6 +48,10 @@ ExportedObj/
 *.pdb.meta
 *.mdb.meta
 
+# Unity3D arm64vs/v8 files
+*.dbg.so
+*sym.so
+
 # Unity3D generated file on crash reports
 sysinfo.txt
 

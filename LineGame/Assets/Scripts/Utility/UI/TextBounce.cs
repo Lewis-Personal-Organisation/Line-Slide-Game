@@ -21,6 +21,18 @@ public class TextBounce : MonoBehaviour
         defaultScale = textTransform.localScale;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ToggleBounce(true, 1);
+        }
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            ToggleBounce(false);
+        }
+    }
+
     public void ToggleBounce(bool _choice, float _speed = 2)
     {
         if (_choice == false)

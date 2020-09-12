@@ -46,27 +46,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentScene == Scenes.UI)
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                textBounce.ToggleBounce(true, 1);
-            }
-            if (Input.GetKeyDown(KeyCode.Backspace))
-            {
-                textBounce.ToggleBounce(false);
-            }
-        }
-        else if (currentScene == Scenes.Movement)
-        {
-            if (!gameplayEnabled)
-                return;
+        if (!gameplayEnabled)
+            return;
 
-            CamFollow.instance.OnUpdate();
+        CamFollow.instance.OnUpdate();
 
-            FPSDIspay.instance.OnUpdate();
+        FPSDispay.instance.OnUpdate();
 
-            pathfollower.OnUpdate();
-        }
+        pathfollower.OnUpdate();
     }
 }
