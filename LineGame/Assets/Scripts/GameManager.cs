@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
 
     public TextBounce textBounce;
 
-    public Button reset;
-
     public PathFollower pathfollower;
 
     public bool gameplayEnabled = true;
@@ -33,14 +31,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //Application.targetFrameRate = 60;
-
-        reset.onClick.AddListener(delegate { pathfollower.ResetPath(); });
-
         //MenuManager.instance.MoveMenu(Menu.Test, Curves.CenterToRight);
-
         //Fader.instance.Fade(Menu.Test, 1);
-
         //Blurer.instance.Blur(Menu.Test, 10, 2);
     }
 
@@ -50,8 +42,6 @@ public class GameManager : MonoBehaviour
             return;
 
         CamFollow.instance.OnUpdate();
-
-        FPSDispay.instance.OnUpdate();
 
         pathfollower.OnUpdate();
     }

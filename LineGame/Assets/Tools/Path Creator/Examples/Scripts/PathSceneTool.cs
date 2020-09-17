@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace PathCreation.Examples
 {
@@ -19,7 +20,7 @@ namespace PathCreation.Examples
 
         public void TriggerUpdate() 
         {
-            PathUpdated();
+            StartCoroutine(PathUpdated());
         }
 
 
@@ -31,6 +32,6 @@ namespace PathCreation.Examples
             }
         }
 
-        protected abstract void PathUpdated();
+        protected abstract IEnumerator PathUpdated();
     }
 }

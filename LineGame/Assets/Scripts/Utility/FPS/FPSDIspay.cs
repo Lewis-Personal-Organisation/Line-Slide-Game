@@ -7,13 +7,9 @@ public class FPSDispay : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI display;
 
+    public Timer frameTimer;
 
-    public static readonly int fixedStep = 1;
-    private const float interval = 1;
     public static int frameCount = 0;
-
-    public static float timer = 0;
-    public int frameCap = -1;
 
     public bool update = true;
 
@@ -21,30 +17,40 @@ public class FPSDispay : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        frameTimer.SetName("FPSDisplay");
     }
 
-    public void OnUpdate()
+    private void UpdateFrameCount()
     {
-        if (!update)
-            return;
-
-        timer += Time.deltaTime;
         frameCount++;
-
-        if (timer >= interval)
-            ResetCount();
     }
-    public void ResetCount()
+
+    public void UpdateUI()
     {
         display.text = $"{frameCount}\n{(float)(1000f / frameCount)}ms";
-        timer = 0;
         frameCount = 0;
     }
 
     public void StopAndHideCounter()
     {
         display.text = $"";
-        timer = 0;
         frameCount = 0;
+    }
+
+    public void ToggleVisibility(bool _choice)
+    {
+        display.gameObject.SetActive(_choice);
+
+        if (_choice)
+        {
+            frameTimer.Begin(0,
+            float.MaxValue, 1,
+            UpdateFrameCount,
+            UpdateUI);
+        }
+        else
+        {
+            frameTimer.Reset();
+        }
     }
 }

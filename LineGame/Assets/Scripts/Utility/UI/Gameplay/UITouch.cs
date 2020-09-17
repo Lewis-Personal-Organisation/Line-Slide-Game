@@ -17,6 +17,7 @@ public class UITouch : MonoBehaviour
         PathFollowerToggle,
         PathFollowerMaxSpeed,
         PathFollowerAccel,
+        DebugToggle,
     }
 
     private Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>();
@@ -24,6 +25,8 @@ public class UITouch : MonoBehaviour
     [SerializeField] TextMeshProUGUI vSyncText;
     public TextMeshProUGUI maxMoveSpeed;
     public TextMeshProUGUI moveAcceleration;
+
+    public Button reset;
 
     public Transform settingsButton;
 
@@ -45,13 +48,22 @@ public class UITouch : MonoBehaviour
     // Used to filter out touch spamming by holding down a touch
     public bool touchingOverFrames = false;
 
+    [SerializeField] private Timer touchTimer;
+
 
     private void Awake()
     {
         instance = this;
+
+        reset.onClick.AddListener(delegate { GameManager.instance.pathfollower.ResetPath(); });
+
         vSyncText.text = $"vSync: {QualitySettings.vSyncCount}";
         maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";
         moveAcceleration.text = $"Acceleration: {GameManager.instance.pathfollower.accelerationMultiplier}";
+        touchTimer.SetName("UI Touch Debug Activator");
+
+        FPSDispay.instance.ToggleVisibility(DebugActivator.instance.isActive);
+        vSyncText.gameObject.SetActive(DebugActivator.instance.isActive);
 
         InstanceIDtoFilter.Add(vSyncText.transform.GetInstanceID(), TouchFilters.VSync);
         InstanceIDtoFilter.Add(settingsButton.GetInstanceID(), TouchFilters.Settings);
@@ -59,6 +71,7 @@ public class UITouch : MonoBehaviour
         InstanceIDtoFilter.Add(PathFollowerToggleObj.transform.GetChild(1).transform.GetInstanceID(), TouchFilters.PathFollowerToggle);
         InstanceIDtoFilter.Add(maxMoveSpeed.transform.GetInstanceID(), TouchFilters.PathFollowerMaxSpeed);
         InstanceIDtoFilter.Add(moveAcceleration.transform.GetInstanceID(), TouchFilters.PathFollowerAccel);
+        InstanceIDtoFilter.Add(DebugActivator.instance.hiddenDebugControl.GetInstanceID(), TouchFilters.DebugToggle);
     }
 
 
@@ -95,7 +108,7 @@ public class UITouch : MonoBehaviour
 
                 if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out _val))
                 {
-                    if (TouchFilter(InstanceIDtoFilter[hitResults[i].gameObject.transform.GetInstanceID()]))
+                    if (TouchFilter(_val))
                         break;
                 }
             }
@@ -135,8 +148,27 @@ public class UITouch : MonoBehaviour
                 GameManager.instance.pathfollower.DoFollow = PathFollowerToggleObj.isOn;
                 GameManager.instance.pathfollower.ResetPath();
                 return true;
-        }
 
+            case TouchFilters.DebugToggle:
+                touchTimer.Begin(0,
+                    float.MaxValue,
+                    3,
+                    new UnityEngine.Events.UnityAction(delegate
+                    {
+                        if (!touchingOverFrames)
+                        {
+                            touchTimer.Restart();
+                        }
+                    }),
+                    new UnityEngine.Events.UnityAction(delegate
+                    {
+                        DebugActivator.instance.isActive = !DebugActivator.instance.isActive;
+                        FPSDispay.instance.update = DebugActivator.instance.isActive;
+                        vSyncText.gameObject.SetActive(DebugActivator.instance.isActive);
+                        FPSDispay.instance.ToggleVisibility(DebugActivator.instance.isActive);
+                    }));
+                return true;
+        }
         return false;
     }
 

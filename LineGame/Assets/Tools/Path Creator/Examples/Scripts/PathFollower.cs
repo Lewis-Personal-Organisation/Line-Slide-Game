@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 namespace PathCreation.Examples
 {
@@ -13,6 +15,9 @@ namespace PathCreation.Examples
         public float accelerationMultiplier = 5;
         float distanceTravelled;
         public bool DoFollow = true;
+
+        public GameObject prefab;
+
 
         void Start() 
         {

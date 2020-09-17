@@ -1,4 +1,5 @@
 ﻿using PathCreation;
+using System.Collections;
 using UnityEngine;
 
 namespace PathCreation.Examples {
@@ -39,12 +40,14 @@ namespace PathCreation.Examples {
             }
         }
 
-        protected override void PathUpdated () 
+        protected override IEnumerator PathUpdated () 
         {
             if (pathCreator != null) 
             {
                 Generate ();
             }
+
+            yield return null;
         }
     }
 }

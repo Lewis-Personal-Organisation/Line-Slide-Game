@@ -91,7 +91,6 @@ namespace PathCreation {
                 if (bezierCreated != null) {
                     bezierCreated ();
                 }
-
             }
         }
 
@@ -131,6 +130,5 @@ namespace PathCreation {
                 bezierOrVertexPathModified ();
             }
         }
-
     }
 }

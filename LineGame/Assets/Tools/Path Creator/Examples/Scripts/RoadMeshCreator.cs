@@ -1,32 +1,54 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace PathCreation.Examples
 {
     public class RoadMeshCreator : PathSceneTool 
     {
+        public enum vertDirections
+        {
+            Up,
+            Down
+        }
+
         [Header ("Road settings")]
         public float roadWidth = .4f;
         [Range (0, 1f)]
         public float thickness = .15f;
         public bool flattenSurface;
+        [Space(5)]
+        public bool enableExtendedVertices = false;
+        public vertDirections extendedVerticesDirection;
+        public Vector3 ExtendedVerticesHeight = new Vector3(0, 0.032f, 0);
 
         [Header ("Material settings")]
         public Material roadMaterial;
         public Material undersideMaterial;
         public float textureTiling = 1;
 
-        [SerializeField, HideInInspector]
-        GameObject meshHolder;
+        [SerializeField]
+        GameObject[] meshHolders;
 
-        MeshFilter meshFilter;
-        MeshRenderer meshRenderer;
-        Mesh mesh;
+        /*public*/ MeshFilter[] meshFilters;
+        /*public*/ MeshRenderer[] meshRenderers;
+        /*public*/ Mesh[] meshes;
 
-        protected override void PathUpdated () 
+        bool meshAssignmentDone = false;
+
+
+        protected override IEnumerator PathUpdated() 
         {
             if (pathCreator != null) 
             {
-                AssignMeshComponents();
+                StartCoroutine(AssignMeshComponents());
+
+                while(!meshAssignmentDone)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+
                 AssignMaterials();
                 CreateRoadMesh();
             }
@@ -67,6 +89,14 @@ namespace PathCreation.Examples
                 // Add top of road vertices
                 verts[vertIndex + 0] = vertSideA;
                 verts[vertIndex + 1] = vertSideB;
+
+                // EXPERIMENTAL, Force render side vertices higher or lower than others
+                if (enableExtendedVertices)
+                {
+                    verts[vertIndex + 0] -= (extendedVerticesDirection == vertDirections.Up) ? -ExtendedVerticesHeight : ExtendedVerticesHeight;
+                    verts[vertIndex + 1] -= (extendedVerticesDirection == vertDirections.Up) ? -ExtendedVerticesHeight : ExtendedVerticesHeight;
+                }
+
                 // Add bottom of road vertices
                 verts[vertIndex + 2] = vertSideA - localUp * thickness;
                 verts[vertIndex + 3] = vertSideB - localUp * thickness;
@@ -113,55 +143,87 @@ namespace PathCreation.Examples
                 triIndex += 6;
             }
 
-            mesh.Clear ();
-            mesh.vertices = verts;
-            mesh.uv = uvs;
-            mesh.normals = normals;
-            mesh.subMeshCount = 3;
-            mesh.SetTriangles (roadTriangles, 0);
-            mesh.SetTriangles (underRoadTriangles, 1);
-            mesh.SetTriangles (sideOfRoadTriangles, 2);
-            mesh.RecalculateBounds ();
+
+            foreach (Mesh _mesh in meshes)
+            {
+                if (_mesh != null)
+                {
+                    _mesh.Clear();
+                    _mesh.vertices = verts;
+                    _mesh.uv = uvs;
+                    _mesh.normals = normals;
+                    _mesh.subMeshCount = 3;
+                    _mesh.SetTriangles(roadTriangles, 0);
+                    _mesh.SetTriangles(underRoadTriangles, 1);
+                    _mesh.SetTriangles(sideOfRoadTriangles, 2);
+                    _mesh.RecalculateBounds();
+                }
+            }
         }
 
         // Add MeshRenderer and MeshFilter components to this gameobject if not already attached
-        void AssignMeshComponents() 
+        public IEnumerator AssignMeshComponents() 
         {
-            if (meshHolder == null) 
+            
+
+            meshRenderers = new MeshRenderer[meshHolders.Length];
+            meshFilters = new MeshFilter[meshHolders.Length];
+            meshes = new Mesh[meshHolders.Length];
+
+            for (int x = 0; x < meshHolders.Length; x++)
             {
-                meshHolder = new GameObject("Road Mesh Holder");
+                if (meshHolders == null)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+                else
+                {
+                    if (meshHolders[x] == null)
+                    {
+                        yield break;
+                    }
+
+                    meshHolders[x].transform.rotation = Quaternion.identity;
+                    meshHolders[x].transform.position = Vector3.zero;
+                    meshHolders[x].transform.localScale = Vector3.one;
+
+                    if (!meshHolders[x].gameObject.GetComponent<MeshFilter>())
+                    {
+                        meshHolders[x].gameObject.AddComponent<MeshFilter>();
+                    }
+
+                    if (!meshHolders[x].gameObject.GetComponent<MeshRenderer>())
+                    {
+                        meshHolders[x].gameObject.AddComponent<MeshRenderer>();
+                    }
+
+                    meshRenderers[x] = meshHolders[x].GetComponent<MeshRenderer>();
+                    meshFilters[x] = meshHolders[x].GetComponent<MeshFilter>();
+
+                    if (meshes[x] == null)
+                    {
+                        meshes[x] = new Mesh();
+                    }
+
+                    meshFilters[x].sharedMesh = meshes[x];
+                }
             }
 
-            meshHolder.transform.rotation = Quaternion.identity;
-            meshHolder.transform.position = Vector3.zero;
-            meshHolder.transform.localScale = Vector3.one;
-
-            // Ensure mesh renderer and filter components are assigned
-            if (!meshHolder.gameObject.GetComponent<MeshFilter> ()) 
-            {
-                meshHolder.gameObject.AddComponent<MeshFilter> ();
-            }
-
-            if (!meshHolder.GetComponent<MeshRenderer> ()) 
-            {
-                meshHolder.gameObject.AddComponent<MeshRenderer> ();
-            }
-
-            meshRenderer = meshHolder.GetComponent<MeshRenderer> ();
-            meshFilter = meshHolder.GetComponent<MeshFilter> ();
-            if (mesh == null) 
-            {
-                mesh = new Mesh();
-            }
-            meshFilter.sharedMesh = mesh;
+            meshAssignmentDone = true;
         }
 
         void AssignMaterials () 
         {
-            if (roadMaterial != null && undersideMaterial != null) 
+            if (roadMaterial != null && undersideMaterial != null && meshRenderers[0] != null) 
             {
-                meshRenderer.sharedMaterials = new Material[] { roadMaterial, undersideMaterial, undersideMaterial };
-                meshRenderer.sharedMaterials[0].mainTextureScale = new Vector3 (1, textureTiling);
+                foreach (MeshRenderer _renderer in meshRenderers)
+                {
+                    if (_renderer == null)
+                        break;
+
+                    _renderer.sharedMaterials = new Material[] { roadMaterial, undersideMaterial, undersideMaterial };
+                    _renderer.sharedMaterials[0].mainTextureScale = new Vector3(1, textureTiling);
+                }
             }
         }
 

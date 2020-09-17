@@ -40,6 +40,5 @@ namespace PathCreationEditor
 
             return worldMouse;
         }
-
     }
 }
