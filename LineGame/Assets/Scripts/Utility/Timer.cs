@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     /// <summary>
     /// The name of our timer class, wince we could use many timers
     /// </summary>
-    public string name;
+    public string timerName;
 
     /// <summary>
     /// The current time of the timer
@@ -144,6 +144,6 @@ public class Timer : MonoBehaviour
     /// <param name="_name"></param>
     public void SetName(string _name)
     {
-        name = _name;
+        timerName = _name;
     }
 }

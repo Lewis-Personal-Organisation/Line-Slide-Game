@@ -5,7 +5,7 @@ public class FPSDispay : MonoBehaviour
 {
     public static FPSDispay instance;
 
-    [SerializeField] private TextMeshProUGUI display;
+    [SerializeField] private TextMeshProUGUI display = null;
 
     public Timer frameTimer;
 

@@ -7,15 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private enum Scenes
-    {
-        Movement,
-        UI,
-    }
-
     public static GameManager instance;
-
-    Scenes currentScene = Scenes.Movement;
 
     public TextBounce textBounce;
 

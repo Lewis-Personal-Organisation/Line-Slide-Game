@@ -22,7 +22,7 @@ public class UITouch : MonoBehaviour
 
     private Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>();
 
-    [SerializeField] TextMeshProUGUI vSyncText;
+    [SerializeField] TextMeshProUGUI vSyncText = null;
     public TextMeshProUGUI maxMoveSpeed;
     public TextMeshProUGUI moveAcceleration;
 
@@ -40,15 +40,15 @@ public class UITouch : MonoBehaviour
 
 
     // Graphics raycasting
-    [SerializeField] private GraphicRaycaster uiRaycaster;
-    [SerializeField] private PointerEventData uiPointerEventData;
-    [SerializeField] private EventSystem uiEventSystem;
+    [SerializeField] private GraphicRaycaster uiRaycaster = null;
+    [SerializeField] private PointerEventData uiPointerEventData = null;
+    [SerializeField] private EventSystem uiEventSystem = null;
     public List<RaycastResult> hitResults = new List<RaycastResult>();
 
     // Used to filter out touch spamming by holding down a touch
     public bool touchingOverFrames = false;
 
-    [SerializeField] private Timer touchTimer;
+    [SerializeField] private Timer touchTimer = null;
 
 
     private void Awake()
@@ -145,7 +145,7 @@ public class UITouch : MonoBehaviour
 
             case TouchFilters.PathFollowerToggle:
                 PathFollowerToggleObj.isOn = !PathFollowerToggleObj.isOn;
-                GameManager.instance.pathfollower.DoFollow = PathFollowerToggleObj.isOn;
+                GameManager.instance.pathfollower.doFollow = PathFollowerToggleObj.isOn;
                 GameManager.instance.pathfollower.ResetPath();
                 return true;
 

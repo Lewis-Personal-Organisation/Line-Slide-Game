@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 namespace PathCreation.Examples
 {
@@ -29,13 +28,15 @@ namespace PathCreation.Examples
         public float textureTiling = 1;
 
         [SerializeField]
-        GameObject[] meshHolders;
+        GameObject[] meshHolders = null;
 
         /*public*/ MeshFilter[] meshFilters;
         /*public*/ MeshRenderer[] meshRenderers;
         /*public*/ Mesh[] meshes;
 
         bool meshAssignmentDone = false;
+
+        public UnityAction playerScaleTrigger;
 
 
         protected override IEnumerator PathUpdated() 
@@ -51,6 +52,12 @@ namespace PathCreation.Examples
 
                 AssignMaterials();
                 CreateRoadMesh();
+
+                // When our mesh changes in editor, trigger our invoke
+                if (playerScaleTrigger != null)
+                {
+                    playerScaleTrigger.Invoke();
+                }
             }
         }
 
@@ -164,8 +171,6 @@ namespace PathCreation.Examples
         // Add MeshRenderer and MeshFilter components to this gameobject if not already attached
         public IEnumerator AssignMeshComponents() 
         {
-            
-
             meshRenderers = new MeshRenderer[meshHolders.Length];
             meshFilters = new MeshFilter[meshHolders.Length];
             meshes = new Mesh[meshHolders.Length];
@@ -226,6 +231,7 @@ namespace PathCreation.Examples
                 }
             }
         }
+
 
     }
 }

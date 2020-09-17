@@ -79,7 +79,7 @@ public class MenuManager : Singleton<MenuManager>
 
     #region Fader
     // Our Canvas Groups in the scene
-    [SerializeField] private CanvasGroup[] canvasGroups;
+    [SerializeField] private CanvasGroup[] canvasGroups = null;
 
     // Our lookup dictionary
     private Dictionary<Menu, CanvasGroup> cgLookup = new Dictionary<Menu, CanvasGroup>();
@@ -107,7 +107,7 @@ public class MenuManager : Singleton<MenuManager>
     #endregion
 
     #region Blurer
-    [SerializeField] private Material[] blurMaterials;
+    [SerializeField] private Material[] blurMaterials = null;
 
     public Camera blurCamera;
     public Material blurMaterial;
@@ -191,7 +191,7 @@ public class MenuManager : Singleton<MenuManager>
 
 
     // Sets up this class
-    private void Awake()
+    new private void Awake()
     {
         //Debug.Log($"{this.GetType().Name} is Awakening!");
 
