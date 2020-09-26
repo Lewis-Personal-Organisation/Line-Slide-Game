@@ -179,7 +179,7 @@ public class MenuManager : Singleton<MenuManager>
 
     #region Path Progress
     public TextMeshProUGUI levelProgress;
-    private static float percent;
+    public static float percent;
 
     public void UpdateLevelProgress(float _distanceTravelled, float pathLength)
     {

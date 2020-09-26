@@ -9,14 +9,21 @@ namespace PathCreation.Examples
         public PathCreator pathCreator;
         public RoadMeshCreator roadCreator;
         public EndOfPathInstruction endOfPathInstruction;
+
         public float speed = 5;
         public float maxSpeed = 10;
         public float accelerationMultiplier = 5;
-        float distanceTravelled;
+        public float distanceTravelled = 0;
+
         public bool doFollow = true;
         public bool scaleToPathWidth;
 
-        //public GameObject prefab;
+        public Vector3 cachedPosition = Vector3.zero;
+
+        public int travelCounter = 1;
+        public int travelIncrement = 2;
+        public bool addPoint = false;
+
 
         // When our inspector changes, we want to make sure the Player is scaled according to our Road Mesh
         private void OnValidate()
@@ -52,6 +59,11 @@ namespace PathCreation.Examples
 
                 roadCreator.playerScaleTrigger.Invoke();
             }
+
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
+            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+
+            LineRendererManager.instance.SetLineRendererToPlayer();
         }
 
         public void OnUpdate()
@@ -63,11 +75,44 @@ namespace PathCreation.Examples
 
             if (pathCreator != null)
             {
-                distanceTravelled += speed * Time.deltaTime;
-                transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x/2, 0f);
-                transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+                if (speed * Time.deltaTime != 0)
+                {
+                    distanceTravelled += speed * Time.deltaTime;
+                    transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
+                    transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
 
-                MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
+                    //QueryPlayerLocation();
+
+                    cachedPosition = transform.position;
+
+                    MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
+
+                    if (distanceTravelled > travelCounter)
+                    {
+                        travelCounter += travelIncrement;
+                        addPoint = true;
+                    }
+
+                    LineRendererManager.instance.SetLineRendererToPlayer();
+                }
+            }
+        }
+
+        private void LateUpdate()
+        {
+            if (addPoint)
+            {
+                LineRendererManager.instance.InsertPoint();
+                addPoint = false;
+            }
+        }
+
+        private void QueryPlayerLocation()
+        {
+            //MeshPathColourManager.instance.isRunning = cachedPosition != transform.position;
+            if (cachedPosition != transform.position && LineRendererManager.instance.isRunning == false)
+            {
+                //MeshPathColourManager.instance.StartCoroutine(MeshPathColourManager.instance.ISetColour());
             }
         }
 
@@ -104,6 +149,13 @@ namespace PathCreation.Examples
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
             transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
+
+            travelCounter = 2;
+            travelIncrement = 2;
+            addPoint = false;
+            LineRendererManager.instance.lineRenderer.positionCount = 2;
+            LineRendererManager.instance.lineRenderer.SetPosition(0, pathCreator.path.GetPointAtDistance(0, PathCreation.EndOfPathInstruction.Stop));
+            LineRendererManager.instance.lineRenderer.SetPosition(1, pathCreator.path.GetPointAtDistance(0, PathCreation.EndOfPathInstruction.Stop));
         }
 
         public void AssignPlayerScale()

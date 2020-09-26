@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,13 +31,15 @@ namespace PathCreation.Examples
         [SerializeField]
         GameObject[] meshHolders = null;
 
-        /*public*/ MeshFilter[] meshFilters;
-        /*public*/ MeshRenderer[] meshRenderers;
-        /*public*/ Mesh[] meshes;
+        MeshFilter[] meshFilters;
+        MeshRenderer[] meshRenderers;
+        public Mesh[] meshes;
 
         bool meshAssignmentDone = false;
 
         public UnityAction playerScaleTrigger;
+
+        public PathPointManagerExtension pathPointManagerExtension;
 
 
         protected override IEnumerator PathUpdated() 
@@ -52,6 +55,7 @@ namespace PathCreation.Examples
 
                 AssignMaterials();
                 CreateRoadMesh();
+                pathPointManagerExtension.UpdatePointList();
 
                 // When our mesh changes in editor, trigger our invoke
                 if (playerScaleTrigger != null)
@@ -164,7 +168,28 @@ namespace PathCreation.Examples
                     _mesh.SetTriangles(underRoadTriangles, 1);
                     _mesh.SetTriangles(sideOfRoadTriangles, 2);
                     _mesh.RecalculateBounds();
+
+                    StartCoroutine(BuildMeshes());
                 }
+            }
+        }
+
+        public IEnumerator BuildMeshes()
+        {
+            foreach (Mesh _mesh in meshes)
+            {
+                for (int i = 0; i < _mesh.vertices.Length; i++)
+                {
+                    if (!float.IsNaN(_mesh.vertices[i].x))
+                        yield break;
+
+                    yield return new WaitForEndOfFrame();
+                }
+
+                //if (pathPointManagerExtension != null)
+                //    pathPointManagerExtension.pathMeshCollider.sharedMesh = _mesh;
+                //else
+                //    Debug.LogWarning($"{typeof(PathPointManagerExtension)} script is not assigned @ {this.gameObject.name} > {typeof(RoadMeshCreator)}. Mesh not updated!", this.gameObject);
             }
         }
 
@@ -231,7 +256,5 @@ namespace PathCreation.Examples
                 }
             }
         }
-
-
     }
 }

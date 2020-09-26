@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using PathCreation;
 
 public class UITouch : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class UITouch : MonoBehaviour
     public TextMeshProUGUI moveAcceleration;
 
     public Button reset;
+    public Button randomizePath;
 
     public Transform settingsButton;
 
@@ -50,12 +52,43 @@ public class UITouch : MonoBehaviour
 
     [SerializeField] private Timer touchTimer = null;
 
+    public Vector3[] randomPositions = new Vector3[0];
+
+    public LineRendererManager colourtester;
+
 
     private void Awake()
     {
         instance = this;
 
-        reset.onClick.AddListener(delegate { GameManager.instance.pathfollower.ResetPath(); });
+        reset.onClick.AddListener(delegate { 
+            GameManager.instance.pathfollower.ResetPath();
+        });
+       // randomizePath.onClick.AddListener(delegate
+       // {
+       //     int smallest = int.MaxValue;
+       //     foreach (PathPointManagerExtension item in GameManager.instance.pathPointExtensions)
+       //     {
+       //         if (item.snapPoints.Length < smallest)
+       //             smallest = item.snapPoints.Length;
+       //     }
+
+       //     randomPositions = new Vector3[smallest];
+
+       //     for (int i = 0; i < randomPositions.Length; i++)
+       //     {
+       //         randomPositions[i] = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), Random.Range(-3, 3));
+       //     }
+
+       //     // Doesn't work
+       //    foreach (PathPointManagerExtension _ppme in GameManager.instance.pathPointExtensions)
+       //    {
+       //        _ppme.RandomizePoints(randomPositions);
+       //        _ppme.UpdatePoints();
+       //    }
+
+       //    Debug.Log("PPME Updated");
+       //});
 
         vSyncText.text = $"vSync: {QualitySettings.vSyncCount}";
         maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";
@@ -134,6 +167,7 @@ public class UITouch : MonoBehaviour
             case TouchFilters.Settings:
                 panelWindow.SetActive(!panelWindow.activeSelf);
                 GameManager.instance.gameplayEnabled = !panelWindow.activeSelf;
+
                 return true;
 
             case TouchFilters.FPSCounterToggle:

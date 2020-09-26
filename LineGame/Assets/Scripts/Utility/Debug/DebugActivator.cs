@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DebugActivator : MonoBehaviour
 {
     public static DebugActivator instance;
+
+    public Transform hiddenDebugControl;
 
     public bool isActive;
 
@@ -13,6 +13,4 @@ public class DebugActivator : MonoBehaviour
     {
         instance = this;
     }
-
-    public Transform hiddenDebugControl;
 }
