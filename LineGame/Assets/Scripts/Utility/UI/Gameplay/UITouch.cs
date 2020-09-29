@@ -54,8 +54,6 @@ public class UITouch : MonoBehaviour
 
     public Vector3[] randomPositions = new Vector3[0];
 
-    public LineRendererManager colourtester;
-
 
     private void Awake()
     {
@@ -64,31 +62,6 @@ public class UITouch : MonoBehaviour
         reset.onClick.AddListener(delegate { 
             GameManager.instance.pathfollower.ResetPath();
         });
-       // randomizePath.onClick.AddListener(delegate
-       // {
-       //     int smallest = int.MaxValue;
-       //     foreach (PathPointManagerExtension item in GameManager.instance.pathPointExtensions)
-       //     {
-       //         if (item.snapPoints.Length < smallest)
-       //             smallest = item.snapPoints.Length;
-       //     }
-
-       //     randomPositions = new Vector3[smallest];
-
-       //     for (int i = 0; i < randomPositions.Length; i++)
-       //     {
-       //         randomPositions[i] = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), Random.Range(-3, 3));
-       //     }
-
-       //     // Doesn't work
-       //    foreach (PathPointManagerExtension _ppme in GameManager.instance.pathPointExtensions)
-       //    {
-       //        _ppme.RandomizePoints(randomPositions);
-       //        _ppme.UpdatePoints();
-       //    }
-
-       //    Debug.Log("PPME Updated");
-       //});
 
         vSyncText.text = $"vSync: {QualitySettings.vSyncCount}";
         maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";

@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
-    public enum Menu
+public enum Menu
     {
         Test
     }
@@ -178,13 +179,15 @@ public class MenuManager : Singleton<MenuManager>
 
 
     #region Path Progress
+    public SlicedFilledImage levelProgressImage;
     public TextMeshProUGUI levelProgress;
     public static float percent;
 
     public void UpdateLevelProgress(float _distanceTravelled, float pathLength)
     {
-        percent = (_distanceTravelled / pathLength) * 100;
-        levelProgress.text = $"{(int)Mathf.Clamp(percent, 0, 100)}%";
+        levelProgressImage.fillAmount = _distanceTravelled / pathLength;
+        //percent = (_distanceTravelled / pathLength) * 100;
+        //levelProgress.text = $"{(int)Mathf.Clamp(percent, 0, 100)}%";
     }
     #endregion
 

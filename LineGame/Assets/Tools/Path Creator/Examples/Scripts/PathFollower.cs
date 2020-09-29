@@ -10,20 +10,31 @@ namespace PathCreation.Examples
         public RoadMeshCreator roadCreator;
         public EndOfPathInstruction endOfPathInstruction;
 
+        [Header("Path Options")]
         public float speed = 5;
         public float maxSpeed = 10;
         public float accelerationMultiplier = 5;
         public float distanceTravelled = 0;
-
         public bool doFollow = true;
         public bool scaleToPathWidth;
+        public bool correctFlatPathRotation = false;
 
-        public Vector3 cachedPosition = Vector3.zero;
+        [Header("Trail Renderer")]
+        public TrailRenderer trail;
 
-        public int travelCounter = 1;
-        public int travelIncrement = 2;
-        public bool addPoint = false;
+        [Header("Particle System")]
+        public ParticleSystem pigParticles;
+        ParticleSystem.MainModule pigParticlesModule;
+        public float maxLifetime = 0.8F;
+        public float minLifetime = 0.3F;
 
+        private void OnTriggerEnter(Collider trap)
+        {
+            if (trap.CompareTag("Trap"))
+            {
+                ResetPath();
+            }
+        }
 
         // When our inspector changes, we want to make sure the Player is scaled according to our Road Mesh
         private void OnValidate()
@@ -40,8 +51,11 @@ namespace PathCreation.Examples
             roadCreator.playerScaleTrigger.Invoke();
         }
 
-        void Start() 
+        void Start()
         {
+            pigParticlesModule = pigParticles.main;
+            pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
+
             if (pathCreator != null)
             {
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
@@ -60,10 +74,7 @@ namespace PathCreation.Examples
                 roadCreator.playerScaleTrigger.Invoke();
             }
 
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
-            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-
-            LineRendererManager.instance.SetLineRendererToPlayer();
+            ResetPath();
         }
 
         public void OnUpdate()
@@ -73,46 +84,24 @@ namespace PathCreation.Examples
 
             ScaleSpeed();
 
-            if (pathCreator != null)
+            if (speed * Time.deltaTime == 0)
             {
-                if (speed * Time.deltaTime != 0)
-                {
-                    distanceTravelled += speed * Time.deltaTime;
-                    transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
-                    transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-
-                    //QueryPlayerLocation();
-
-                    cachedPosition = transform.position;
-
-                    MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
-
-                    if (distanceTravelled > travelCounter)
-                    {
-                        travelCounter += travelIncrement;
-                        addPoint = true;
-                    }
-
-                    LineRendererManager.instance.SetLineRendererToPlayer();
-                }
+                if (pigParticles.isPlaying)
+                    pigParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+                return;
             }
-        }
 
-        private void LateUpdate()
-        {
-            if (addPoint)
-            {
-                LineRendererManager.instance.InsertPoint();
-                addPoint = false;
-            }
-        }
+            distanceTravelled += speed * Time.deltaTime;
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
+            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * ((correctFlatPathRotation == true) ? Quaternion.AngleAxis(90F, Vector3.forward) : Quaternion.identity);
 
-        private void QueryPlayerLocation()
-        {
-            //MeshPathColourManager.instance.isRunning = cachedPosition != transform.position;
-            if (cachedPosition != transform.position && LineRendererManager.instance.isRunning == false)
+            MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
+
+            pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
+
+            if (!pigParticles.isPlaying)
             {
-                //MeshPathColourManager.instance.StartCoroutine(MeshPathColourManager.instance.ISetColour());
+                pigParticles.Play(false);
             }
         }
 
@@ -140,22 +129,17 @@ namespace PathCreation.Examples
         // is as close as possible to its position on the old path
         void OnPathChanged() 
         {
+            Debug.Log($"Path changed");
             distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
         }
 
         public void ResetPath()
         {
             distanceTravelled = 0;
-            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
-            transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+            transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * ((correctFlatPathRotation == true) ? Quaternion.AngleAxis(90F, Vector3.forward) : Quaternion.identity);
             MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
 
-            travelCounter = 2;
-            travelIncrement = 2;
-            addPoint = false;
-            LineRendererManager.instance.lineRenderer.positionCount = 2;
-            LineRendererManager.instance.lineRenderer.SetPosition(0, pathCreator.path.GetPointAtDistance(0, PathCreation.EndOfPathInstruction.Stop));
-            LineRendererManager.instance.lineRenderer.SetPosition(1, pathCreator.path.GetPointAtDistance(0, PathCreation.EndOfPathInstruction.Stop));
+            trail.Clear();
         }
 
         public void AssignPlayerScale()

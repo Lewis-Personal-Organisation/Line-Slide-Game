@@ -55,7 +55,6 @@ namespace PathCreation.Examples
 
                 AssignMaterials();
                 CreateRoadMesh();
-                pathPointManagerExtension.UpdatePointList();
 
                 // When our mesh changes in editor, trigger our invoke
                 if (playerScaleTrigger != null)

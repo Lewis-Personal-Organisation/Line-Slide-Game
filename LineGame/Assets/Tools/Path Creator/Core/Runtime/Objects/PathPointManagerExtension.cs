@@ -20,15 +20,10 @@ namespace PathCreation
 
         public MeshCollider pathMeshCollider; 
 
+        [Header("Points")]
         public Transform[] snapPoints;
-
-        //public List<Vector3> cachedPoints = new List<Vector3>();
-        //public List<Vector3> controlPoints = new List<Vector3>();
-        //public List<Vector3> secondaryPoints = new List<Vector3>();
-
-        [Space(20)]
-        public AbsolutePoints _ansolutePoint = AbsolutePoints.FirstPoint;
-        public bool _alternateFactor = true;
+        public AbsolutePoints sortingMethod = AbsolutePoints.FirstPoint;
+        private bool _alternateFactor = true;
         public float _anchorPointDistance = 0.5f;
 
         [Space(20)]
@@ -50,19 +45,8 @@ namespace PathCreation
             }
         }
 
-        //public void RandomizePoints(Vector3[] points)
-        //{
-        //    for (int i = 0; i < snapPoints.Length; i++)
-        //    {
-        //        snapPoints[i].position += points[i];
-        //    }
-
-        //    Debug.Log("Points Randomized");
-        //}
-
-
-        // Could be improved so that the anchor points are placed between the Control points to smooth out the path
-        // and avoid points being placed on the incorrect side of the Control points
+        // Sorts our points using a number of different methods
+        // The behaviour effects the secondary anchor points and how they are positioned from primary points
         public void UpdatePoints()
         {
             if (snapPoints.Length == 0)
@@ -95,7 +79,7 @@ namespace PathCreation
                     // Else, this is a control point in the middle, adjust both secondary points 
                     else
                     {
-                        switch (_ansolutePoint)
+                        switch (sortingMethod)
                         {
                             case AbsolutePoints.FirstPoint:
                                 pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter + 1].position, _anchorPointDistance));
@@ -134,10 +118,8 @@ namespace PathCreation
                                 }
                                 break;
                         }
-
                         _alternateFactor = !_alternateFactor;
                     }
-
                     _snapPointCounter++;
                 }
             }
@@ -160,28 +142,9 @@ namespace PathCreation
             PathTextureObject.TryGetComponent(out pathMeshCollider);
         }
 
-
-        // Return the midway point between A and B;
-        public Vector3 PlaceBetween(Vector3 _positionA, Vector3 _positionB, float _atDistance)
-        {
-            return _atDistance * (_positionA + _positionB);
-        }
-
         public Vector3 PlaceAtPoint(Vector3 _positionA, Vector3 _positionB, float _atDistance)
         {
             return Vector3.Lerp(_positionA, _positionB, _atDistance);
-        }
-
-                // Update our points when we adjust our mesh/path
-        public void UpdatePointList()
-        {
-            //cachedPoints = pathCreator.bezierPath.points;
-
-            //StopAllCoroutines();
-
-            //AdjustPoints();
-
-            //StartCoroutine(AdjustPoints());
         }
     }
 }

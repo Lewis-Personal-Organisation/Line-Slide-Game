@@ -7,7 +7,11 @@ public class CamFollow : MonoBehaviour
     public static CamFollow instance;
 
     public Transform player;
+
     public Vector3 distance;
+
+    public bool isFollowing = true;
+
 
     private void Awake()
     {
@@ -19,6 +23,9 @@ public class CamFollow : MonoBehaviour
     // Update is called once per frame
     public void OnUpdate()
     {
+        if (!isFollowing)
+            return;
+
         transform.position = player.transform.position + distance;
     }
 }

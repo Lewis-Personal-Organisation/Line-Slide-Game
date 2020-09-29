@@ -89,7 +89,6 @@
 				fixed4 waterVertex = mul(UNITY_MATRIX_VP, fixed4(positionForFog, 1));
 				UNITY_TRANSFER_FOG(o, waterVertex);
 #endif
-
 				return o;
 			}
 			
