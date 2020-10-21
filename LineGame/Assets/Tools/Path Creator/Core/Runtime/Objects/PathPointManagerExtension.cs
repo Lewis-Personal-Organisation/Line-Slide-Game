@@ -126,9 +126,9 @@ namespace PathCreation
         }
 
         // Called when this Extension Manager is linked to another path
-        public void LinkPoints(Vector3[] _points)
+        public void LinkPoints(List<Vector3> _points)
         {
-            for (int i = 0; i < _points.Length; i++)
+            for (int i = 0; i < _points.Count; i++)
             {
                 pathCreator.bezierPath.MovePoint(i, _points[i]);
             }

@@ -305,7 +305,7 @@ namespace PathCreation {
 
             // Insert angle for new anchor (value should be set inbetween neighbour anchor angles)
             int newAnchorAngleIndex = (segmentIndex + 1) % perAnchorNormalsAngle.Count;
-            int numAngles = perAnchorNormalsAngle.Count;
+            //int numAngles = perAnchorNormalsAngle.Count;
             float anglePrev = perAnchorNormalsAngle[segmentIndex];
             float angleNext = perAnchorNormalsAngle[newAnchorAngleIndex];
             float splitAngle = Mathf.LerpAngle (anglePrev, angleNext, splitTime);
@@ -654,9 +654,7 @@ namespace PathCreation {
                 AutoSetStartAndEndControls ();
             }
 
-            if (OnModified != null) {
-                OnModified ();
-            }
+            OnModified?.Invoke();
         }
 
         /// Loop index around to start/end of points array if out of bounds (useful when working with closed paths)
@@ -667,9 +665,7 @@ namespace PathCreation {
         // Called when the path is modified
         public void NotifyPathModified () {
             boundsUpToDate = false;
-            if (OnModified != null) {
-                OnModified ();
-            }
+            OnModified?.Invoke();
         }
 
         #endregion

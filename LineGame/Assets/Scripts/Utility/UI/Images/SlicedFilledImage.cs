@@ -275,7 +275,8 @@ public class SlicedFilledImage : MaskableGraphic, ISerializationCallbackReceiver
 		Vector4 inner = Sprites.DataUtility.GetInnerUV(activeSprite);
 		Vector4 border = GetAdjustedBorders(activeSprite.border / pixelsPerUnit, rect);
 
-		padding = padding / pixelsPerUnit;
+		// The same as padding = padding / pixelsPerUnit;
+		padding /= pixelsPerUnit;
 
 		s_SlicedVertices[0] = new Vector2(padding.x, padding.y);
 		s_SlicedVertices[3] = new Vector2(rect.width - padding.z, rect.height - padding.w);
@@ -493,8 +494,7 @@ public class SlicedFilledImage : MaskableGraphic, ISerializationCallbackReceiver
 		if (activeSprite == null)
 			return true;
 
-		Vector2 local;
-		if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPoint, eventCamera, out local))
+		if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPoint, eventCamera, out Vector2 local))
 			return false;
 
 		Rect rect = GetPixelAdjustedRect();

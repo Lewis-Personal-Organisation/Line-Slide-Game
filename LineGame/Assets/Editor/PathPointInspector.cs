@@ -6,15 +6,29 @@ namespace PathCreation
     [CustomEditor(typeof(PathCreation.PathPointManagerExtension))]
     public class PathPointInspector : Editor
     {
-
+        PathCreation.PathPointManagerExtension instance;
         public override void OnInspectorGUI()
         {
-            PathCreation.PathPointManagerExtension instance = (PathCreation.PathPointManagerExtension)target;
+            instance = (PathCreation.PathPointManagerExtension)target;
 
             if (GUILayout.Button("Regenerate Positions"))
             {
                 instance.UpdatePoints();
                 instance.RecreateMeshCollider();
+
+                foreach (PathPointManagerExtension _subscriber in instance.subscribers)
+                {
+                    _subscriber.LinkPoints(instance.pathCreator.bezierPath.points); 
+                    
+                    if (instance.destroySubmeshes)
+                    {
+                        DestroyImmediate(_subscriber.pathMeshCollider);
+                    }
+                    else
+                    {
+                        _subscriber.RecreateMeshCollider();
+                    }
+                }                
             }
 
             // If we have subscribing paths, and we link more than one path, enable the Update Subscribers button
@@ -26,7 +40,7 @@ namespace PathCreation
                 {
                     foreach (PathPointManagerExtension _subscriber in instance.subscribers)
                     {
-                        _subscriber.LinkPoints(instance.pathCreator.bezierPath.points.ToArray());
+                        _subscriber.LinkPoints(instance.pathCreator.bezierPath.points);
 
                         if (instance.destroySubmeshes)
                         {

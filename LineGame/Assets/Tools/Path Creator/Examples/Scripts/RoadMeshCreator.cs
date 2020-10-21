@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Diagnostics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -41,6 +42,11 @@ namespace PathCreation.Examples
 
         public PathPointManagerExtension pathPointManagerExtension;
 
+        public Transform dbg;
+
+        public bool showVertsInScene = false;
+        private Vector3[] verticesGizmo = new Vector3[0];
+
 
         protected override IEnumerator PathUpdated() 
         {
@@ -64,6 +70,22 @@ namespace PathCreation.Examples
             }
         }
 
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (!showVertsInScene)
+                return;
+
+            Gizmos.color = Color.red;
+
+            for (int i = 0; i < verticesGizmo.Length; i += 1)
+            {
+                Gizmos.DrawSphere(verticesGizmo[i], 0.02F);
+                Handles.Label(verticesGizmo[i], new GUIContent($"Vertex {i}"), new GUIStyle());
+            }
+        }
+#endif
+
         void CreateRoadMesh () 
         {
             Vector3[] verts = new Vector3[path.NumPoints * 8];
@@ -86,7 +108,6 @@ namespace PathCreation.Examples
             int[] sidesTriangleMap = { 4, 6, 14, 12, 4, 14, 5, 15, 7, 13, 15, 5 };
 
             bool usePathNormals = !(path.space == PathSpace.xyz && flattenSurface);
-
             for (int i = 0; i < path.NumPoints; i++) 
             {
                 Vector3 localUp = (usePathNormals) ? Vector3.Cross (path.GetTangent (i), path.GetNormal (i)) : path.up;
@@ -153,6 +174,7 @@ namespace PathCreation.Examples
                 triIndex += 6;
             }
 
+            verticesGizmo = verts;
 
             foreach (Mesh _mesh in meshes)
             {
@@ -184,11 +206,6 @@ namespace PathCreation.Examples
 
                     yield return new WaitForEndOfFrame();
                 }
-
-                //if (pathPointManagerExtension != null)
-                //    pathPointManagerExtension.pathMeshCollider.sharedMesh = _mesh;
-                //else
-                //    Debug.LogWarning($"{typeof(PathPointManagerExtension)} script is not assigned @ {this.gameObject.name} > {typeof(RoadMeshCreator)}. Mesh not updated!", this.gameObject);
             }
         }
 

@@ -77,10 +77,7 @@ namespace PathCreation {
 
         public void TriggerPathUpdate()
         {
-            if (pathUpdated != null)
-            {
-                pathUpdated();
-            }
+            pathUpdated?.Invoke();
         }
 
 #if UNITY_EDITOR

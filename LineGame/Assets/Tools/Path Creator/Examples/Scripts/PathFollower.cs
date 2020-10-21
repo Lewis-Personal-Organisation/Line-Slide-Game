@@ -79,6 +79,8 @@ namespace PathCreation.Examples
 
         public void OnUpdate()
         {
+            //Debug.Log($"PathFollower : OnUpdate() called");
+
             if (!doFollow)
                 return;
 
@@ -123,6 +125,7 @@ namespace PathCreation.Examples
             }
 
             speed = Mathf.Clamp(speed, 0, maxSpeed);
+            //Debug.Log($"PathFollower : Speed Set: {speed}");
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path

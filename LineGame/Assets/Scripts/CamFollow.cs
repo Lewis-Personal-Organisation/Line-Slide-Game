@@ -12,6 +12,7 @@ public class CamFollow : MonoBehaviour
 
     public bool isFollowing = true;
 
+    public float jumpForce;
 
     private void Awake()
     {

@@ -27,7 +27,6 @@ public class Timer : MonoBehaviour
     /// </summary>
     private float increment;
 
-
     /// <summary>
     /// Has our timer already started?
     /// </summary>
@@ -46,12 +45,12 @@ public class Timer : MonoBehaviour
     /// <summary>
     /// The action to do every tick
     /// </summary>
-    public UnityAction onTick;
+    public UnityEngine.Events.UnityAction onTick;
 
     /// <summary>
     /// The action to do every laps of the timer
     /// </summary>
-    public UnityAction onComplete;
+    public UnityEngine.Events.UnityAction onComplete;
 
 
     private IEnumerator Tick()

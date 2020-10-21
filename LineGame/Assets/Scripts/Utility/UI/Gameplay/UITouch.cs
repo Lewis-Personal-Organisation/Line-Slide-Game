@@ -21,14 +21,13 @@ public class UITouch : MonoBehaviour
         DebugToggle,
     }
 
-    private Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>();
+    public Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>();
 
     [SerializeField] TextMeshProUGUI vSyncText = null;
     public TextMeshProUGUI maxMoveSpeed;
     public TextMeshProUGUI moveAcceleration;
 
     public Button reset;
-    public Button randomizePath;
 
     public Transform settingsButton;
 
@@ -52,14 +51,13 @@ public class UITouch : MonoBehaviour
 
     [SerializeField] private Timer touchTimer = null;
 
-    public Vector3[] randomPositions = new Vector3[0];
-
 
     private void Awake()
     {
         instance = this;
 
-        reset.onClick.AddListener(delegate { 
+        reset.onClick.AddListener(delegate 
+        {
             GameManager.instance.pathfollower.ResetPath();
         });
 
@@ -110,9 +108,7 @@ public class UITouch : MonoBehaviour
             // By default, the list is sorted from first to last from 0. E.g, Items found beneath are at the end of the array
             for (int i = 0; i < hitResults.Count; i++)
             {
-                TouchFilters _val;
-
-                if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out _val))
+                if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out TouchFilters _val))
                 {
                     if (TouchFilter(_val))
                         break;
@@ -138,9 +134,9 @@ public class UITouch : MonoBehaviour
                 return true;
 
             case TouchFilters.Settings:
+                Debug.Log("Found settings!");
                 panelWindow.SetActive(!panelWindow.activeSelf);
                 GameManager.instance.gameplayEnabled = !panelWindow.activeSelf;
-
                 return true;
 
             case TouchFilters.FPSCounterToggle:
@@ -157,7 +153,9 @@ public class UITouch : MonoBehaviour
                 return true;
 
             case TouchFilters.DebugToggle:
-                touchTimer.Begin(0,
+                Debug.Log($"Hit DebugToggle");
+                touchTimer.Begin(
+                    0,
                     float.MaxValue,
                     3,
                     new UnityEngine.Events.UnityAction(delegate

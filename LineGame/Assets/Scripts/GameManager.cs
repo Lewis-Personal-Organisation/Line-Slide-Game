@@ -18,12 +18,12 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
-    {
+    //private void Start()
+    //{
         //MenuManager.instance.MoveMenu(Menu.Test, Curves.CenterToRight);
         //Fader.instance.Fade(Menu.Test, 1);
         //Blurer.instance.Blur(Menu.Test, 10, 2);
-    }
+    //}
 
     private void Update()
     {

@@ -7,7 +7,7 @@ public class FPSDispay : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI display = null;
 
-    public Timer frameTimer;
+    public Timer frameTimer = null;
 
     public static int frameCount = 0;
 
