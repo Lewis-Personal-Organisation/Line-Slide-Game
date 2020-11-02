@@ -1,8 +1,8 @@
 ﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.WSA.Input;
 
 public enum Menu
     {
@@ -57,13 +57,16 @@ public class MenuManager : Singleton<MenuManager>
         {
             if (_curve == Curves.ToDefaultPosition)
             {
-                instance.StartCoroutine(MoveMenuExpermintal(_menu, Curves.ToDefaultPositionX, _time));
-                instance.StartCoroutine(MoveMenuExpermintal(_menu, Curves.ToDefaultPositionY, _time));
+                instance.menuStack.Enqueue(MoveMenuExpermintal(_menu, Curves.ToDefaultPositionX, _time, true));
+                instance.menuStack.Enqueue(MoveMenuExpermintal(_menu, Curves.ToDefaultPositionY, _time, true));
+                //instance.StartCoroutine(MoveMenuExpermintal(_menu, Curves.ToDefaultPositionX, _time));
+                //instance.StartCoroutine(MoveMenuExpermintal(_menu, Curves.ToDefaultPositionY, _time));
 
             }
             else
             {
-                instance.StartCoroutine(MoveMenuExpermintal(_menu, _curve, _time));
+                instance.menuStack.Enqueue(MoveMenuExpermintal(_menu, _curve, _time));
+                //instance.StartCoroutine(MoveMenuExpermintal(_menu, _curve, _time));
             }
         }
 
@@ -87,8 +90,10 @@ public class MenuManager : Singleton<MenuManager>
         /// <param name="_direction"></param>
         /// <param name="_time"></param>
         /// <returns></returns>
-        public IEnumerator MoveMenuExpermintal(Menu _menu, Curves _direction, float _time)
+        public IEnumerator MoveMenuExpermintal(Menu _menu, Curves _direction, float _time, bool _simultaniousExec = false)
         {
+            instance.simultaniousExec = _simultaniousExec;
+
             AnimationCurve _curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0, 0));
             Vector3 perfectValue = new Vector3();
 
@@ -98,12 +103,13 @@ public class MenuManager : Singleton<MenuManager>
             {
                 case Curves.ToDefaultPositionX:
                     _curve = new AnimationCurve(new Keyframe(0, menus[_menu].item.localPosition.x), new Keyframe(_time, menus[_menu].defaultPosition.x));
-                    perfectValue = new Vector3(_curve.Evaluate(_time), menus[_menu].item.localPosition.y, menus[_menu].item.localPosition.z);
+                    perfectValue = new Vector3(menus[_menu].defaultPosition.x, menus[_menu].item.localPosition.y, menus[_menu].item.localPosition.z);
+                    Debug.Log($"Default Pos : {menus[_menu].defaultPosition.x}, {menus[_menu].defaultPosition.y}");
                     break;
 
                 case Curves.ToDefaultPositionY:
                     _curve = new AnimationCurve(new Keyframe(0, menus[_menu].item.localPosition.y), new Keyframe(_time, menus[_menu].defaultPosition.y));
-                    perfectValue = new Vector3(menus[_menu].item.localPosition.x, _curve.Evaluate(_time), menus[_menu].item.localPosition.z);
+                    perfectValue = new Vector3(menus[_menu].defaultPosition.y, _curve.Evaluate(_time), menus[_menu].item.localPosition.z);
                     break;
 
                 case Curves.LeftToCenter:
@@ -112,7 +118,7 @@ public class MenuManager : Singleton<MenuManager>
                     break;
 
                 case Curves.CenterToRight:
-                    _curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(_time, ScreenXMidPoint + (menus[_menu].item.sizeDelta.x) / 2));
+                    _curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(_time, ScreenXMidPoint + (menus[_menu].item.rect.size.x) / 2));
                     perfectValue = new Vector3(_curve.Evaluate(_time), menus[_menu].item.localPosition.y, menus[_menu].item.localPosition.z);
                     break;
             }
@@ -126,7 +132,6 @@ public class MenuManager : Singleton<MenuManager>
                 else
                 {
                     menus[_menu].item.localPosition = new Vector3(_curve.Evaluate(_countingTimer), menus[_menu].item.localPosition.y, menus[_menu].item.localPosition.z);
-                    Debug.Log(_curve.Evaluate(_countingTimer));
                 }
 
                 if (!menus[_menu].item.gameObject.activeSelf)
@@ -137,34 +142,43 @@ public class MenuManager : Singleton<MenuManager>
             }
 
             menus[_menu].item.localPosition = perfectValue;
+
+            if (!_simultaniousExec)
+                instance.routineRunning = false;
+
+            if (instance.simultaniousExec)
+                instance.simExecCount++;
         }
 
-        public IEnumerator MenuScaleExperimental(Menu _menu, ScalePoint _point, float _scalePercent, float _time)
+        // Finish in white direction on the axis this should move
+        public IEnumerator MenuScaleExperimental(Menu menu, ScalePoint point, float scalePercent, float time)
         {
+            // Which axis are we resizing?
+            RectTransform.Axis chosenAxis = point == ScalePoint.Left || point == ScalePoint.Right ? RectTransform.Axis.Horizontal : RectTransform.Axis.Vertical;
 
-            Vector2 _tempScale = menus[_menu].item.rect.size;
-            Vector3 _increment = new Vector3(_point == ScalePoint.Left || _point == ScalePoint.Right ? _tempScale.x / 100 * _scalePercent : 0F,
-                                                                        _point == ScalePoint.Top || _point == ScalePoint.Bottom ? _tempScale.y / 100 * _scalePercent : 0F,
-                                                                        0F);
+            // The base value before we manipulate the transform. We use this to append the other values
+            float baseValue = chosenAxis == RectTransform.Axis.Horizontal ? menus[menu].item.rect.size.x : menus[menu].item.rect.size.y;
 
-            Debug.Log($"\nLocal Scale: {menus[_menu].item.localScale}\nSize Delta: {menus[_menu].item.sizeDelta}\nRect Size: {menus[_menu].item.rect.size} \nIncrement:{_increment}");
+            // The ultimate size value we want to append on completion, either X or Y axis
+            float appendingSizeValue = (chosenAxis == RectTransform.Axis.Horizontal ? menus[menu].item.rect.size.x : menus[menu].item.rect.size.y) / 100 * scalePercent;
 
-            float elapsedTime = 0F;
+            // The ultimate pos value we want to append on completion, either X or Y axis
+            Vector2 appendingPosValue = (chosenAxis == RectTransform.Axis.Horizontal ? Vector2.right : Vector2.up) * (appendingSizeValue / 2) * (point == ScalePoint.Left || point == ScalePoint.Bottom ? -1 : 1);
 
-            while (elapsedTime < _time)
+
+            float _elapsedTime = 0F;
+
+            while (_elapsedTime < time)
             {
-                _tempScale += (Vector2)_increment /_time* Time.deltaTime;
+                menus[menu].item.SetSizeWithCurrentAnchors(chosenAxis, baseValue + (appendingSizeValue * (_elapsedTime / time)));
+                menus[menu].item.anchoredPosition = (appendingPosValue * (_elapsedTime / time));
 
-                menus[_menu].item.rect.Set(menus[_menu].item.rect.x, menus[_menu].item.rect.y,_tempScale.x, _tempScale.y);
-
-                //menus[_menu].item.localPosition += (_point == ScalePoint.Left || _point == ScalePoint.Bottom ? -1 : 1) * (_increment * 50 / _time * Time.deltaTime);
-
-                elapsedTime += Time.deltaTime;
+                _elapsedTime += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
         }
 
-        // Resets our menu position to center screen
+        // Resets our menu position to default position
         private void ResetMenuTransition(Menu _menu)
         {
             menus[_menu].item.localPosition = menus[_menu].defaultPosition;
@@ -237,6 +251,13 @@ public class MenuManager : Singleton<MenuManager>
     public MenuFader menuFader = new MenuFader();
     public MenuBlurer menuBlurer = new MenuBlurer();
 
+    Queue<IEnumerator> menuStack = new Queue<IEnumerator>();
+    public bool simultaniousExec = false;
+    public byte simExecCount = 0;
+    public bool queueIsPaused = false;
+    public bool routineRunning = false;
+
+
     public SlicedFilledImage levelProgressImage;
     public static float percent;
 
@@ -255,14 +276,46 @@ public class MenuManager : Singleton<MenuManager>
         //menuMover.MoveMenu(Menu.Test, Curves.LeftToCenter, 2F);
 
         //menuMover.ScaleMenu(Menu.Test, ScalePoint.Bottom, 10F, 1F);
-        menuMover.ScaleMenu(Menu.Test, menuMover.scalepoint, 10F, 2F);
+        //menuMover.ScaleMenu(Menu.Test, menuMover.scalepoint, 10F, 1F);
         //menuMover.ScaleMenu(Menu.Test, ScalePoint.Left, 10F, 1F);
+
+        menuMover.MoveMenu(Menu.Test, Curves.LeftToCenter, 1);
+        menuMover.MoveMenu(Menu.Test, Curves.CenterToRight, 1);
+        menuMover.MoveMenu(Menu.Test, Curves.ToDefaultPosition, 1);
+    }
+
+    public IEnumerator RealtimeMenuExecution()
+    {
+        while(true)
+        {
+            if (menuStack.Count > 0)
+            {
+                if (!routineRunning)
+                {
+                    routineRunning = true;
+                    StartCoroutine(menuStack.Dequeue());
+
+                    if (simultaniousExec)
+                        StartCoroutine(menuStack.Dequeue());
+                }
+            }
+
+            if (simExecCount == 2)
+            {
+                simExecCount = 0;
+                routineRunning = false;
+                simultaniousExec = false;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     public void Setup()
     {
         menuMover.menus.Add(Menu.Test, menuMover.menuList[0]);
         menuFader.cgLookup.Add(Menu.Test, menuFader.canvasGroups[0]);
+        StartCoroutine(RealtimeMenuExecution());
     }
 
     // Sets the Level Progress Image to the correct percentage of the path in terms of fill amount

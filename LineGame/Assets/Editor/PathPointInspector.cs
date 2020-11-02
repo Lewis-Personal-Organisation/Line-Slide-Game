@@ -7,6 +7,8 @@ namespace PathCreation
     public class PathPointInspector : Editor
     {
         PathCreation.PathPointManagerExtension instance;
+
+
         public override void OnInspectorGUI()
         {
             instance = (PathCreation.PathPointManagerExtension)target;

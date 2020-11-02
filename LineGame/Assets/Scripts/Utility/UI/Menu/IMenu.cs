@@ -7,7 +7,7 @@ public class IMenu : MonoBehaviour
 {
     public RectTransform item;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Vector2 defaultPosition = new Vector2(0F, 0F);
     [HideInInspector]
     public Vector2 activePosition = new Vector2(0F, 0F);
