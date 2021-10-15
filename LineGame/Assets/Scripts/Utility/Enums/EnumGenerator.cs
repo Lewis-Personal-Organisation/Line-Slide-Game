@@ -14,27 +14,27 @@ public class EnumGenerator
     // The Name of our Enum
     public static string enumName = "Scenes";
 
-    // The FileName of our Enum. This doesn't matter as the enum will be publicly assessable using EnumName
-    public static string enumFileName = "ScenesEnum";
-
     // The Directory Path where the file will be created
     public static string directoryPath = "Assets/Scripts/Utility/Enums/EnumHolder/";
-    public static string fileName = $"{enumFileName}.cs";
+    public static string fileName = "ScenesEnum.cs";
+
+    private static bool workingDirectoryExists => Directory.Exists(directoryPath);
+    private static bool workingFileExists => File.Exists(directoryPath + fileName);
+
+    private static StreamWriter streamWriterAtPath = new StreamWriter(directoryPath + fileName);
 
 
     // Generates our File at path
     public static void Generate()
     {
-        // If our Directory Path does not exist, Create the Path and the File. If the Path existed but no file, create the file
-        // If both exist, we don't need to create anything, but we do need to overwrite its contents
         try
         {
-            if (!Directory.Exists(directoryPath))
+            if (!workingDirectoryExists)
             {
                 Directory.CreateDirectory(directoryPath);
             }
 
-            if (!File.Exists(directoryPath + fileName))
+            if (!workingFileExists)
             {
                 File.Create(directoryPath + fileName).Dispose();
             }
@@ -45,19 +45,18 @@ public class EnumGenerator
         }
 
         //The File and Folder must exist for this to function:
-        using (StreamWriter _sw = new StreamWriter(directoryPath + fileName))
+        using (streamWriterAtPath)
         {
-            _sw.WriteLine("public enum " + enumName);
-            _sw.WriteLine("{");
+            streamWriterAtPath.WriteLine("public enum " + enumName);
+            streamWriterAtPath.WriteLine("{");
 
             for (int i = 0; i < EditorBuildSettings.scenes.Length; i++)
             {
-                _sw.WriteLine("\t" + Path.GetFileNameWithoutExtension(EditorBuildSettings.scenes[i].path) + ",");
+                streamWriterAtPath.WriteLine("\t" + Path.GetFileNameWithoutExtension(EditorBuildSettings.scenes[i].path) + ",");
             }
 
-            _sw.WriteLine("}");
+            streamWriterAtPath.WriteLine("}");
         }
-
         AssetDatabase.Refresh();
     }
 }

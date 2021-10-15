@@ -56,7 +56,8 @@ namespace PathCreation {
             this (bezierPath, VertexPathUtility.SplitBezierPathEvenly (bezierPath, Mathf.Max (vertexSpacing, minVertexSpacing), VertexPath.accuracy), transform) { }
 
         /// Internal contructor
-        VertexPath (BezierPath bezierPath, VertexPathUtility.PathSplitData pathSplitData, Transform transform) {
+        VertexPath (BezierPath bezierPath, VertexPathUtility.PathSplitData pathSplitData, Transform transform) 
+        {
             this.transform = transform;
             space = bezierPath.Space;
             isClosedLoop = bezierPath.IsClosed;

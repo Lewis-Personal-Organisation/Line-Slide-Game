@@ -18,6 +18,11 @@ public class Timer : MonoBehaviour
     public float time;
 
     /// <summary>
+    /// Shorthand check for if our timer has elapsed
+    /// </summary>
+    private bool timeIsUp => time >= maxTime;
+
+    /// <summary>
     /// The maximum allowable time before the time lapses and calls the onComplete action
     /// </summary>
     public float maxTime;
@@ -59,7 +64,7 @@ public class Timer : MonoBehaviour
         {
             onTick.Invoke();
 
-            if (time >= maxTime)
+            if (timeIsUp)
             {
                 onComplete.Invoke();
                 time = 0;
@@ -76,7 +81,7 @@ public class Timer : MonoBehaviour
                 }
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
 

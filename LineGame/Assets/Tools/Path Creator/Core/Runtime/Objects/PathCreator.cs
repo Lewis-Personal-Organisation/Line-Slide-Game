@@ -85,7 +85,6 @@ namespace PathCreation {
         // Draw the path when path objected is not selected (if enabled in settings)
         void OnDrawGizmos()
         {
-
             // Only draw path gizmo if the path object is not selected
             // (editor script is resposible for drawing when selected)
             GameObject selectedObj = UnityEditor.Selection.activeGameObject;

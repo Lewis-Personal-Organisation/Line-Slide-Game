@@ -6,34 +6,36 @@ public class CustomSceneManager : MonoBehaviour
 {
     public Scenes sceneToLoad;
 
-    public CanvasGroup splashCanvasGroup;
-    public string splashCanvasTag = "SplashCanvas";
+    public CanvasGroup transparencyCanvasGroup;
 
-    public float waitTimeBetweenFades = 0.4F;
-    public float splashScreenFadeSpeed = 1;
+    private AsyncOperation sceneLoadingOperation;
 
-    public bool splashIsComplete;
+    // The time it will take to fade in and out
+    public float fadeTime = 1;
+    // The length of time between fading (How long our canvas group is visible)
+    public float visibleTime = 0.4F;
+
+    private bool fadingIsComplete;
 
 
     private void Start()
     {
         PreCheck();
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
-
         StartCoroutine(LoadSceneAsync());
     }
 
     public void PreCheck()
     {
-        if (splashScreenFadeSpeed == 0)
+        if (fadeTime == 0)
         {
-            Debug.LogError("Fade Speed is set to 0, Loading will never complete!!");
+            Debug.LogError("Fade Speed is set to 0, Loading would have never completed!! Changed to 1.");
+            fadeTime = 1;
         }
 
-        if (splashCanvasGroup == null)
+        if (transparencyCanvasGroup == null)
         {
-            Debug.LogError("Splash Canvas Group is null, assign it in the inspector to fix!");
+            Debug.LogError("Splash Canvas Group is null, assign it in the inspector!");
         }
 
         DontDestroyOnLoad(this.gameObject);
@@ -41,56 +43,37 @@ public class CustomSceneManager : MonoBehaviour
 
     public IEnumerator LoadSceneAsync()
     {
-        // Load our next scene asyncronously in the background
-        // But don't allow the scene to activate
-        AsyncOperation _sceneLoading = SceneManager.LoadSceneAsync((int)sceneToLoad);
-        _sceneLoading.allowSceneActivation = false;
+        fadingIsComplete = false;
+        sceneLoadingOperation = SceneManager.LoadSceneAsync((int)sceneToLoad);
+        sceneLoadingOperation.allowSceneActivation = false;
 
-        // While our screen is loading, process our splash screen
-        StartCoroutine(DoSplashScreen(waitTimeBetweenFades));
+        StartCoroutine(FadeStartupScreen(visibleTime));
         
-        // Wait until our splashScreen has finished
-        yield return new WaitUntil(() => splashIsComplete);
+        yield return new WaitUntil(() => fadingIsComplete);
 
-        // Then allow scene activation
-        _sceneLoading.allowSceneActivation = true;
+        sceneLoadingOperation.allowSceneActivation = true;
     }
 
-    public IEnumerator DoSplashScreen(float _waitTimeBetweenFades)
+    public IEnumerator FadeStartupScreen(float _waitTimeBetweenFades)
     {
-        while (splashCanvasGroup.alpha < 1)
+        while (transparencyCanvasGroup.alpha < 1)
         {
-            splashCanvasGroup.alpha += (Time.deltaTime * splashScreenFadeSpeed);
+            transparencyCanvasGroup.alpha += ((1 / fadeTime) * Time.deltaTime);// Time.deltaTime * fadeSpeed);
             yield return new WaitForEndOfFrame();
         }
 
         yield return new WaitForSeconds(_waitTimeBetweenFades);
 
-        while (splashCanvasGroup.alpha > 0)
+        while (transparencyCanvasGroup.alpha > 0)
         {
-            splashCanvasGroup.alpha -= (Time.deltaTime * splashScreenFadeSpeed);
+            transparencyCanvasGroup.alpha -= (Time.deltaTime * fadeTime);
             yield return new WaitForEndOfFrame();
         }
 
-        splashIsComplete = true;
-    }
-
-    private void OnSceneLoaded(Scene _scene, LoadSceneMode _sceneMode)
-    {
-        Debug.Log($"Loading Complete: {_scene.name}, {_sceneMode}");
-
-        Scenes _sceneName = (Scenes)System.Enum.Parse(typeof(Scenes), _scene.name);
-
-        switch (_sceneName)
-        {
-            case Scenes.Loading:
-                break;
-            case Scenes.MovementExperiment:
-                splashCanvasGroup = GameObject.FindGameObjectWithTag(splashCanvasTag).GetComponent<CanvasGroup>();
-                StartCoroutine(DoSplashScreen(0.2F));
-                break;
-            case Scenes.UIExperiment:
-                break;
-        }
+        fadingIsComplete = true;
     }
 }
+
+
+// This occurs when the scene has finished loading. Unused but could be usefull
+//SceneManager.sceneLoaded += OnSceneLoaded;

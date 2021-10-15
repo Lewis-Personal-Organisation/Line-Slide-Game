@@ -38,6 +38,7 @@ public class UITouch : MonoBehaviour
 
     // Our android keyboard
     private TouchScreenKeyboard keyboard;
+    public bool keyboardOpenRequested;
 
 
     // Graphics raycasting
@@ -66,7 +67,7 @@ public class UITouch : MonoBehaviour
         moveAcceleration.text = $"Acceleration: {GameManager.instance.pathfollower.accelerationMultiplier}";
         touchTimer.SetName("UI Touch Debug Activator");
 
-        FPSDispay.instance.ToggleVisibility(DebugActivator.instance.isActive);
+        FPSDispay.inst.ToggleVisibility(DebugActivator.instance.isActive);
         vSyncText.gameObject.SetActive(DebugActivator.instance.isActive);
 
         InstanceIDtoFilter.Add(vSyncText.transform.GetInstanceID(), TouchFilters.VSync);
@@ -89,7 +90,7 @@ public class UITouch : MonoBehaviour
             if (touchingOverFrames)
                 return;
 
-            // If we didn't touch screen in last update, with this touch, we are now touching over previous frames
+            // If we didn't touch screen in last update, We are now touching over previous frames with this frame
             touchingOverFrames = true;
 
             //Set up the new Pointer Event
@@ -105,9 +106,10 @@ public class UITouch : MonoBehaviour
             uiRaycaster.Raycast(uiPointerEventData, hitResults);
 
             // Do the appropriate action for the hit object. We only want to hit the top-most item, so we break if we find a dictionary match.
-            // By default, the list is sorted from first to last from 0. E.g, Items found beneath are at the end of the array
+            // By default, the list is sorted from first to last from index 0. E.g, Items found beneath are at the end of the array
             for (int i = 0; i < hitResults.Count; i++)
             {
+                Debug.Log($"{hitResults[i].gameObject.name}");
                 if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out TouchFilters _val))
                 {
                     if (TouchFilter(_val))
@@ -117,7 +119,6 @@ public class UITouch : MonoBehaviour
         }
         else
         {
-            // If we don't take input, we can't be touching over frames
             touchingOverFrames = false;
         }
     }
@@ -130,20 +131,20 @@ public class UITouch : MonoBehaviour
             case TouchFilters.VSync:
             case TouchFilters.PathFollowerMaxSpeed:
             case TouchFilters.PathFollowerAccel:
-                StartCoroutine(WaitForKeyboard(_filter));
+                if (!keyboardOpenRequested && keyboard.status != TouchScreenKeyboard.Status.Visible)
+                    StartCoroutine(WaitForKeyboard(_filter));
                 return true;
 
             case TouchFilters.Settings:
-                Debug.Log("Found settings!");
                 panelWindow.SetActive(!panelWindow.activeSelf);
                 GameManager.instance.gameplayEnabled = !panelWindow.activeSelf;
                 return true;
 
             case TouchFilters.FPSCounterToggle:
                 FPSCounterToggleObj.isOn = !FPSCounterToggleObj.isOn;
-                FPSDispay.instance.update = FPSCounterToggleObj.isOn;
+                FPSDispay.inst.update = FPSCounterToggleObj.isOn;
                 if (!FPSCounterToggleObj.isOn)
-                    FPSDispay.instance.StopAndHideCounter();
+                    FPSDispay.inst.StopAndHideCounter();
                 return true;
 
             case TouchFilters.PathFollowerToggle:
@@ -168,9 +169,9 @@ public class UITouch : MonoBehaviour
                     new UnityEngine.Events.UnityAction(delegate
                     {
                         DebugActivator.instance.isActive = !DebugActivator.instance.isActive;
-                        FPSDispay.instance.update = DebugActivator.instance.isActive;
+                        FPSDispay.inst.update = DebugActivator.instance.isActive;
                         vSyncText.gameObject.SetActive(DebugActivator.instance.isActive);
-                        FPSDispay.instance.ToggleVisibility(DebugActivator.instance.isActive);
+                        FPSDispay.inst.ToggleVisibility(DebugActivator.instance.isActive);
                     }));
                 return true;
         }
@@ -180,8 +181,12 @@ public class UITouch : MonoBehaviour
     // The method used to Open the Android Keyboard to edit settings
     public IEnumerator WaitForKeyboard(TouchFilters _filter)
     {
+        // Stops other requests to open keyboard until we are done with this one
+        keyboardOpenRequested = true;
+
         // If not mobile, return
 #if UNITY_EDITOR
+        keyboardOpenRequested = false;
        yield return null;
 #endif
 
@@ -209,6 +214,7 @@ public class UITouch : MonoBehaviour
 
         if (keyboard.status == TouchScreenKeyboard.Status.Canceled)
         {
+            keyboardOpenRequested = false;
             yield return null;
         }
 
@@ -247,6 +253,7 @@ public class UITouch : MonoBehaviour
                 }
                 break;
         }
+
         GameManager.instance.gameplayEnabled = true;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FPSDispay : MonoBehaviour
 {
-    public static FPSDispay instance;
+    public static FPSDispay inst;
 
     [SerializeField] private TextMeshProUGUI display = null;
 
@@ -16,7 +16,7 @@ public class FPSDispay : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        inst = this;
         frameTimer.SetName("FPSDisplay");
     }
 
@@ -37,11 +37,11 @@ public class FPSDispay : MonoBehaviour
         frameCount = 0;
     }
 
-    public void ToggleVisibility(bool _choice)
+    public void ToggleVisibility(bool _makeVisible)
     {
-        display.gameObject.SetActive(_choice);
+        display.gameObject.SetActive(_makeVisible);
 
-        if (_choice)
+        if (_makeVisible)
         {
             frameTimer.Begin(0,
             float.MaxValue, 1,

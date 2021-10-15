@@ -20,7 +20,7 @@ namespace PathCreation.Examples
         public bool correctFlatPathRotation = false;
 
         [Header("Trail Renderer")]
-        public TrailRenderer trail;
+        public TrailRenderer playerTrail;
 
         [Header("Particle System")]
         public ParticleSystem pigParticles;
@@ -79,8 +79,6 @@ namespace PathCreation.Examples
 
         public void OnUpdate()
         {
-            //Debug.Log($"PathFollower : OnUpdate() called");
-
             if (!doFollow)
                 return;
 
@@ -94,8 +92,12 @@ namespace PathCreation.Examples
             }
 
             distanceTravelled += speed * Time.deltaTime;
+
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
             transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * ((correctFlatPathRotation == true) ? Quaternion.AngleAxis(90F, Vector3.forward) : Quaternion.identity);
+
+            // Tells use where between 0 and 1 we are on the path
+            //Debug.Log(pathCreator.path.GetClosestTimeOnPath(transform.position));
 
             MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
 
@@ -107,16 +109,11 @@ namespace PathCreation.Examples
             }
         }
 
+        //Increase our speed if we are touching the screen (and no UI elements) over multiple frames. Decrease if we aren't. Final value is clamped.
         private void ScaleSpeed()
         {
-            //Breaks VS like a G
-            //speed = Mathf.Clamp(UITouch.instance.touchingOverFrames ? (speed += (Time.deltaTime * 5)) : (speed -= (Time.deltaTime * 5)), 0, 5));
-
-            if (UITouch.instance.touchingOverFrames)
+            if (UITouch.instance.touchingOverFrames && UITouch.instance.hitResults.Count == 0)
             {
-                if (UITouch.instance.hitResults.Count != 0)
-                    return;
-
                 speed += (Time.deltaTime * accelerationMultiplier);
             }
             else
@@ -125,7 +122,6 @@ namespace PathCreation.Examples
             }
 
             speed = Mathf.Clamp(speed, 0, maxSpeed);
-            //Debug.Log($"PathFollower : Speed Set: {speed}");
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path
@@ -142,7 +138,7 @@ namespace PathCreation.Examples
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * ((correctFlatPathRotation == true) ? Quaternion.AngleAxis(90F, Vector3.forward) : Quaternion.identity);
             MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
 
-            trail.Clear();
+            playerTrail.Clear();
         }
 
         public void AssignPlayerScale()

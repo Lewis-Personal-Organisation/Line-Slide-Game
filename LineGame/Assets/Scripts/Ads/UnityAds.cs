@@ -7,10 +7,10 @@ using System.Runtime.CompilerServices;
 
 public class UnityAds : MonoBehaviour
 {
-    public static UnityAds inst;
+    public static UnityAds Static;
 
     private static bool awaitingInterstitial;
-    public static bool AwaitingInterstitial
+    public static bool WaitingForInterstitial
     {
         get
         {
@@ -23,23 +23,23 @@ public class UnityAds : MonoBehaviour
     }
 
 
-
     private void Awake()
     {
-        inst = this;
-        Advertisement.Initialize(GetPlatformAdsID(RuntimePlatform.Android));
+        Static = this;
     }
 
     private void Start()
     {
+        Advertisement.Initialize(GetPlatformAdsID(RuntimePlatform.Android));
         ShowInterstitialAd();
     }
 
 
     /// <summary>
-    /// Attempt to show an Interstitial Ad now. If one is not available, abort.
+    /// Attempt to show an Interstitial Ad. If one is not available, abort.
+    /// If waiting for an Ad is important, use ShowInterstitialAd() instead.
     /// </summary>
-    public void ShowInterstitialAdNow()
+    public void TryShowInterstitialAd()
     {
         if (Advertisement.IsReady())
         {
@@ -47,7 +47,7 @@ public class UnityAds : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"{this.name} :: {MethodName()} -- Advertisement is not ready");
+            Debug.LogWarning($"{this.name}::{MethodName()}:: Advertisement is not ready");
         }
     }
 
@@ -61,7 +61,7 @@ public class UnityAds : MonoBehaviour
 
     private IEnumerator ShowInterstitialAdProc()
     {
-        AwaitingInterstitial = true;
+        WaitingForInterstitial = true;
 
         yield return new WaitUntil(() => Advertisement.IsReady());
 
