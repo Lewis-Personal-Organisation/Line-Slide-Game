@@ -20,32 +20,29 @@ public class UITouch : MonoBehaviour
         PathFollowerAccel,
         DebugToggle,
     }
-
     public Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>();
 
+    // Graphics raycasting
+    [Header("Critical UI Systems")]
+    [SerializeField] private GraphicRaycaster uiRaycaster = null;
+    [SerializeField] private PointerEventData uiPointerEventData = null;
+    [SerializeField] private EventSystem uiEventSystem = null;
+    public List<RaycastResult> hitResults = new List<RaycastResult>();
+
+    [Header("UI Elements")]
     [SerializeField] TextMeshProUGUI vSyncText = null;
     public TextMeshProUGUI maxMoveSpeed;
     public TextMeshProUGUI moveAcceleration;
-
-    public Button reset;
-
     public Transform settingsButton;
-
     public GameObject panelWindow;
-
     public Toggle FPSCounterToggleObj;
     public Toggle PathFollowerToggleObj;
+    public TextBounce tapToPlay;
 
     // Our android keyboard
     private TouchScreenKeyboard keyboard;
     public bool keyboardOpenRequested;
 
-
-    // Graphics raycasting
-    [SerializeField] private GraphicRaycaster uiRaycaster = null;
-    [SerializeField] private PointerEventData uiPointerEventData = null;
-    [SerializeField] private EventSystem uiEventSystem = null;
-    public List<RaycastResult> hitResults = new List<RaycastResult>();
 
     // Used to filter out touch spamming by holding down a touch
     public bool touchingOverFrames = false;
@@ -57,14 +54,12 @@ public class UITouch : MonoBehaviour
     {
         instance = this;
 
-        reset.onClick.AddListener(delegate 
-        {
-            GameManager.instance.pathfollower.ResetPath();
-        });
-
         vSyncText.text = $"vSync: {QualitySettings.vSyncCount}";
         maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";
         moveAcceleration.text = $"Acceleration: {GameManager.instance.pathfollower.accelerationMultiplier}";
+
+        touchTimer = new Timer();
+        touchTimer.parent = this;
         touchTimer.SetName("UI Touch Debug Activator");
 
         FPSDispay.inst.ToggleVisibility(DebugActivator.instance.isActive);
@@ -155,10 +150,7 @@ public class UITouch : MonoBehaviour
 
             case TouchFilters.DebugToggle:
                 Debug.Log($"Hit DebugToggle");
-                touchTimer.Begin(
-                    0,
-                    float.MaxValue,
-                    3,
+                touchTimer.Begin(0, float.MaxValue,3,
                     new UnityEngine.Events.UnityAction(delegate
                     {
                         if (!touchingOverFrames)

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public bool gameplayEnabled = true;
 
+    public static int levelCount => 1;
+
 
     private void Awake()
     {
@@ -21,8 +23,8 @@ public class GameManager : MonoBehaviour
         if (!gameplayEnabled)
             return;
 
-		CamFollow.instance.OnUpdate();
+        pathfollower.OnUpdate();
 
-		pathfollower.OnUpdate();
+        CamFollow.instance.OnUpdate();
 	}
 }

@@ -17,6 +17,8 @@ public class FPSDispay : MonoBehaviour
     private void Awake()
     {
         inst = this;
+        frameTimer = new Timer();
+        frameTimer.parent = this;
         frameTimer.SetName("FPSDisplay");
     }
 

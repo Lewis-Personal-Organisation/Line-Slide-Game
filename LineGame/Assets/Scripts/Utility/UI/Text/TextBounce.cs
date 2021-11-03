@@ -5,65 +5,59 @@ using UnityEngine;
 public class TextBounce : MonoBehaviour
 {
     public RectTransform textTransform;
-    private Vector3 defaultScale = Vector3.zero;
 
-    public float speed = 2;
+    public float duration = 2;
     public float scaleMin;
     public float scaleMax;
 
-    private bool isGrowing = false;
+    public bool isGrowing = true;
 
     private bool isEnabled;
 
+    [SerializeField]
+    private float timer;
 
-    private void Awake()
+
+    private void OnEnable()
     {
-        defaultScale = textTransform.localScale;
+        ResetValues();
+        Bounce();
     }
 
-	private void OnEnable()
-	{
-        Bounce();
-	}
-
+    // Each frame, If we are enabled:
+            // In/Decrement our timer based on grow or shrink
+            // Using our timer, find the scale between our min and max scale
+    // If our timer reaches an end point, reset it and invert our grow/shrink instruction
     private void Update()
     {
         if (!isEnabled)
             return;
 
-        if (isGrowing)
-        {
-            if (textTransform.localScale.x < scaleMax)
-            {
-                textTransform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, 0) * speed;
-            }
-            else
-            {
-                textTransform.localScale = new Vector3(scaleMax, scaleMax, 0);
-                isGrowing = false;
-            }
-        }
-        else
-        {
-            if (textTransform.localScale.x >= scaleMin)
-            {
-                textTransform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, 0) * speed;
-            }
-            else
-            {
-                isGrowing = true;
-                textTransform.localScale = new Vector3(scaleMin, scaleMin, 0);
-            }
-        }
+        timer += ((isGrowing ? Time.deltaTime : -Time.deltaTime) / duration);
+        textTransform.localScale = new Vector3(Mathf.Lerp(scaleMin, scaleMax, timer), Mathf.Lerp(scaleMin, scaleMax, timer), 0);
+
+        if (timer >= 1F || timer <= 0F)
+		{
+			isGrowing = !isGrowing;
+			timer = isGrowing ? 0 : 1;
+		}
     }
 
-	public void Stop()
-	{
+    public void Stop()
+    {
         isEnabled = false;
-	}
+    }
 
     public void Bounce()
-	{
+    {
         isEnabled = true;
-	}
+    }
+
+    public void ResetValues()
+    {
+        timer = 0;
+        this.transform.localScale = Vector3.one;
+        isGrowing = true;
+    }
 }
+

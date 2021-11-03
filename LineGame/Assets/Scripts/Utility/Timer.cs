@@ -5,7 +5,7 @@ using UnityEngine.Events;
 /// <summary>
 /// A simple lightweight Timer class with some advanced features such as Unity Actions.
 /// </summary>
-public class Timer : MonoBehaviour
+public class Timer
 {
     /// <summary>
     /// The name of our timer class, wince we could use many timers
@@ -56,6 +56,8 @@ public class Timer : MonoBehaviour
     /// The action to do every laps of the timer
     /// </summary>
     public UnityEngine.Events.UnityAction onComplete;
+
+    public MonoBehaviour parent;
 
 
     private IEnumerator Tick()
@@ -114,7 +116,7 @@ public class Timer : MonoBehaviour
         isStarted = true;
         isPaused = false;
 
-        StartCoroutine(Tick());
+        parent.StartCoroutine(Tick());
     }
 
     /// <summary>
@@ -122,7 +124,7 @@ public class Timer : MonoBehaviour
     /// </summary>
     public void Reset()
     {
-        StopAllCoroutines();
+        parent.StopCoroutine(Tick());
         time = 0;
         increment = 0;
         isStarted = false;
@@ -136,7 +138,7 @@ public class Timer : MonoBehaviour
     /// </summary>
     public void Restart()
     {
-        StopAllCoroutines();
+        parent.StopCoroutine(Tick());
         isStarted = false;
         isPaused = false;
         time = 0;

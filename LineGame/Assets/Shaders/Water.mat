@@ -81,13 +81,13 @@ Material:
     - _SrcBlend: 1
     - _TextureVisibility: 0.32
     - _UVSec: 0
-    - _WaterHeight: -0.07663753
+    - _WaterHeight: -0.01659485
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DistTiling: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MoveDirection: {r: -0.038318764, g: 0, b: 0, a: 0}
+    - _MoveDirection: {r: -0.008297425, g: 0, b: 0, a: 0}
     - _Tiling: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _WaterColor: {r: 0, g: 0.5550184, b: 1, a: 1}
   m_BuildTextureStacks: []
