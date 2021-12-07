@@ -104,7 +104,6 @@ public class UITouch : MonoBehaviour
             // By default, the list is sorted from first to last from index 0. E.g, Items found beneath are at the end of the array
             for (int i = 0; i < hitResults.Count; i++)
             {
-                Debug.Log($"{hitResults[i].gameObject.name}");
                 if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out TouchFilters _val))
                 {
                     if (TouchFilter(_val))
@@ -150,16 +149,14 @@ public class UITouch : MonoBehaviour
 
             case TouchFilters.DebugToggle:
                 Debug.Log($"Hit DebugToggle");
-                touchTimer.Begin(0, float.MaxValue,3,
-                    new UnityEngine.Events.UnityAction(delegate
-                    {
+                touchTimer.Begin(0, float.MaxValue, 3, 
+                    new UnityEngine.Events.UnityAction(delegate{
                         if (!touchingOverFrames)
                         {
                             touchTimer.Restart();
                         }
                     }),
-                    new UnityEngine.Events.UnityAction(delegate
-                    {
+                    new UnityEngine.Events.UnityAction(delegate{
                         DebugActivator.instance.isActive = !DebugActivator.instance.isActive;
                         FPSDispay.inst.update = DebugActivator.instance.isActive;
                         vSyncText.gameObject.SetActive(DebugActivator.instance.isActive);

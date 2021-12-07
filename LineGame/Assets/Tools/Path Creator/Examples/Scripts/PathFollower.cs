@@ -91,6 +91,11 @@ namespace PathCreation.Examples
                 return;
             }
 
+            if (UITouch.instance.tapToPlay.gameObject.activeSelf)
+            {
+                UITouch.instance.tapToPlay.gameObject.SetActive(false);
+            }
+
             distanceTravelled += speed * Time.deltaTime;
 
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);

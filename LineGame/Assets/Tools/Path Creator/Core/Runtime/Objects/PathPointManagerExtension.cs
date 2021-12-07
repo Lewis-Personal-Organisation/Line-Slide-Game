@@ -55,7 +55,7 @@ namespace PathCreation
                 return;
             }
 
-            int _snapPointCounter = 0;
+            int snapPointCounter = 0;
 
             for (int i = 0; i < pathCreator.bezierPath.points.Count; i++)
             {
@@ -63,7 +63,7 @@ namespace PathCreation
                 if (i % 3 == 0)
                 {
                     // Move our Control Point
-                    pathCreator.bezierPath.MovePoint(i, snapPoints[_snapPointCounter].position + new Vector3(0, 0, Random.Range(0.002f, 0.003f)));
+                    pathCreator.bezierPath.MovePoint(i, snapPoints[snapPointCounter].position + new Vector3(0, 0, Random.Range(0.002f, 0.003f)));
 
                     // Move our Secondary Point(s)
                     // If this was our first control point, we only have one seconday point to move with a +1 index
@@ -74,7 +74,7 @@ namespace PathCreation
                     // Else if it was our last control point, we only have one secondary point to move with a -1 index
                     else if (i == pathCreator.bezierPath.points.Count - 1)
                     {
-                        pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[_snapPointCounter - 1].position, snapPoints[_snapPointCounter].position, _anchorPointDistance));
+                        pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[snapPointCounter - 1].position, snapPoints[snapPointCounter].position, _anchorPointDistance));
                     }
                     // Else, this is a control point in the middle, adjust both secondary points 
                     else
@@ -82,12 +82,12 @@ namespace PathCreation
                         switch (sortingMethod)
                         {
                             case AbsolutePoints.FirstPoint:
-                                pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter + 1].position, _anchorPointDistance));
-                                pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter - 1].position, _anchorPointDistance));
+                                pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter + 1].position, _anchorPointDistance));
+                                pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter - 1].position, _anchorPointDistance));
                                 break;
                             case AbsolutePoints.SecondPoint:
-                                pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter - 1].position, _anchorPointDistance));
-                                pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter + 1].position, _anchorPointDistance));
+                                pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter - 1].position, _anchorPointDistance));
+                                pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter + 1].position, _anchorPointDistance));
                                 break;
 
                             case AbsolutePoints.Random:
@@ -95,32 +95,32 @@ namespace PathCreation
 
                                 if (_r)
                                 {
-                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter + 1].position, _anchorPointDistance));
-                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter - 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter + 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter - 1].position, _anchorPointDistance));
                                 }
                                 else
                                 {
-                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter - 1].position, _anchorPointDistance));
-                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter + 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter - 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter + 1].position, _anchorPointDistance));
                                 }
                                 break;
 
                             case AbsolutePoints.Alternate:
                                 if (_alternateFactor)
                                 {
-                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter + 1].position, _anchorPointDistance));
-                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter - 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter + 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter - 1].position, _anchorPointDistance));
                                 }
                                 else
                                 {
-                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter - 1].position, _anchorPointDistance));
-                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[_snapPointCounter].position, snapPoints[_snapPointCounter + 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i - 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter - 1].position, _anchorPointDistance));
+                                    pathCreator.bezierPath.MovePoint(i + 1, PlaceAtPoint(snapPoints[snapPointCounter].position, snapPoints[snapPointCounter + 1].position, _anchorPointDistance));
                                 }
                                 break;
                         }
                         _alternateFactor = !_alternateFactor;
                     }
-                    _snapPointCounter++;
+                    snapPointCounter++;
                 }
             }
         }

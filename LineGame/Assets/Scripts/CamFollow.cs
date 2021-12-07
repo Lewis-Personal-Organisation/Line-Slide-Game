@@ -9,24 +9,22 @@ public class CamFollow : MonoBehaviour
     public Transform player;
 
     public Vector3 distance;
-
     public bool isFollowing = true;
+    public bool isFocusing = true;
 
-    //public float jumpForce;
 
     private void Awake()
     {
         instance = this;
-        distance = this.transform.position - player.transform.position;
-        transform.LookAt(player.position);
     }
 
     // Update is called once per frame
     public void OnUpdate()
     {
-        if (!isFollowing)
-            return;
+        if (isFocusing)
+            transform.LookAt(player.position);
 
-        transform.position = player.transform.position + distance;
+        if (isFollowing)
+            transform.position = player.transform.position + distance;
     }
 }

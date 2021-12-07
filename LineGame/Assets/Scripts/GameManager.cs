@@ -24,7 +24,10 @@ public class GameManager : MonoBehaviour
             return;
 
         pathfollower.OnUpdate();
-
-        CamFollow.instance.OnUpdate();
 	}
+
+	private void LateUpdate()
+    {
+        CamFollow.instance.OnUpdate();
+    }
 }

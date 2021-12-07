@@ -2,8 +2,6 @@
 
 public class Rotate : MonoBehaviour
 {
-    public Transform transformToRotate;
-
     public float speed = 5;
 
     public enum moveTypes
@@ -12,7 +10,16 @@ public class Rotate : MonoBehaviour
         Sine
     }
 
+    public enum axis
+	{
+        X,
+        Y,
+        Z
+	}
+
     public moveTypes type;
+    public axis rotationAxis;
+
 
     private void Update()
     {
@@ -22,7 +29,12 @@ public class Rotate : MonoBehaviour
         switch (type)
         {
             case moveTypes.Spin:
-                transform.Rotate(Vector3.up * speed * Time.deltaTime);
+                if (rotationAxis == axis.X)
+                    transform.Rotate(Vector3.right * speed * Time.deltaTime);
+                else if (rotationAxis == axis.Y)
+                    transform.Rotate(Vector3.up * speed * Time.deltaTime);
+                else if (rotationAxis == axis.Z)
+                    transform.Rotate(Vector3.forward * speed * Time.deltaTime);
                 break;
             case moveTypes.Sine:
                 transform.localPosition = new Vector3(0, Mathf.Sin(speed * Time.deltaTime), 0);
