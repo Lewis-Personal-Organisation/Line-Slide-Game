@@ -25,8 +25,8 @@ public class TextBounce : MonoBehaviour
     }
 
     // Each frame, If we are enabled:
-            // In/Decrement our timer based on grow or shrink
-            // Using our timer, find the scale between our min and max scale
+    // In/Decrement our timer based on grow or shrink
+    // Using our timer, find the scale between our min and max scale
     // If our timer reaches an end point, reset it and invert our grow/shrink instruction
     private void Update()
     {

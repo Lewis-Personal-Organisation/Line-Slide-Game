@@ -1,5 +1,4 @@
-﻿using PathCreation;
-using PathCreation.Examples;
+﻿using PathCreation.Examples;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,6 +6,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public PathFollower pathfollower;
+
+    public UnityEngine.Canvas uiCanvas;
+    public RectTransform uiCanvasRectTransform;
 
     public bool gameplayEnabled = true;
 

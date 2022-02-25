@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
-using PathCreation;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+// Title: UITouch Graphics Raycast Manager
+// Description: Allows graphics raycasting and attaching custom functionality to specific objects using their InstanceID() for a totally customisable system
+// Objects are linked in Awake() to a Touch Filter and the filters functionality is then processed once the object is touched
+// Objects can be linked for functionality but excluded from outside checks.
+// Author: Lewis Dawson
 
 public class UITouch : MonoBehaviour
 {
@@ -12,14 +17,13 @@ public class UITouch : MonoBehaviour
 
     public enum TouchFilters
     {
-        VSync,
         Settings,
-        FPSCounterToggle,
+        SettingsWindow,
         PathFollowerToggle,
-        PathFollowerMaxSpeed,
-        PathFollowerAccel,
         DebugToggle,
+        TapToPlay,
     }
+
     public Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>();
 
     // Graphics raycasting
@@ -27,17 +31,17 @@ public class UITouch : MonoBehaviour
     [SerializeField] private GraphicRaycaster uiRaycaster = null;
     [SerializeField] private PointerEventData uiPointerEventData = null;
     [SerializeField] private EventSystem uiEventSystem = null;
-    public List<RaycastResult> hitResults = new List<RaycastResult>();
+    private static List<RaycastResult> hitResults = new List<RaycastResult>();
+    public UnityEngine.Canvas canvas;
+    public RectTransform canvasTransform;
 
     [Header("UI Elements")]
     [SerializeField] TextMeshProUGUI vSyncText = null;
-    public TextMeshProUGUI maxMoveSpeed;
-    public TextMeshProUGUI moveAcceleration;
     public Transform settingsButton;
-    public GameObject panelWindow;
-    public Toggle FPSCounterToggleObj;
+    public Transform settingsWindow;
     public Toggle PathFollowerToggleObj;
     public TextBounce tapToPlay;
+    public RectTransform tapToPlayHitBox;
 
     // Our android keyboard
     private TouchScreenKeyboard keyboard;
@@ -47,7 +51,10 @@ public class UITouch : MonoBehaviour
     // Used to filter out touch spamming by holding down a touch
     public bool touchingOverFrames = false;
 
-    [SerializeField] private Timer touchTimer = null;
+    // Determines if we are touching a UI item
+    public static bool isTouchingUIItem => hitResults.Count > 0;
+
+    [SerializeField] private Timer debugTimer = null;
 
 
     private void Awake()
@@ -55,27 +62,23 @@ public class UITouch : MonoBehaviour
         instance = this;
 
         vSyncText.text = $"vSync: {QualitySettings.vSyncCount}";
-        maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";
-        moveAcceleration.text = $"Acceleration: {GameManager.instance.pathfollower.accelerationMultiplier}";
 
-        touchTimer = new Timer();
-        touchTimer.parent = this;
-        touchTimer.SetName("UI Touch Debug Activator");
+        debugTimer = new Timer();
+        debugTimer.parent = this;
+        debugTimer.SetName("UI Touch Debug Activator");
 
         FPSDispay.inst.ToggleVisibility(DebugActivator.instance.isActive);
         vSyncText.gameObject.SetActive(DebugActivator.instance.isActive);
 
-        InstanceIDtoFilter.Add(vSyncText.transform.GetInstanceID(), TouchFilters.VSync);
         InstanceIDtoFilter.Add(settingsButton.GetInstanceID(), TouchFilters.Settings);
-        InstanceIDtoFilter.Add(FPSCounterToggleObj.transform.GetChild(1).transform.GetInstanceID(), TouchFilters.FPSCounterToggle);
+        InstanceIDtoFilter.Add(settingsWindow.GetInstanceID(), TouchFilters.SettingsWindow);
         InstanceIDtoFilter.Add(PathFollowerToggleObj.transform.GetChild(1).transform.GetInstanceID(), TouchFilters.PathFollowerToggle);
-        InstanceIDtoFilter.Add(maxMoveSpeed.transform.GetInstanceID(), TouchFilters.PathFollowerMaxSpeed);
-        InstanceIDtoFilter.Add(moveAcceleration.transform.GetInstanceID(), TouchFilters.PathFollowerAccel);
         InstanceIDtoFilter.Add(DebugActivator.instance.hiddenDebugControl.GetInstanceID(), TouchFilters.DebugToggle);
+        InstanceIDtoFilter.Add(tapToPlayHitBox.GetInstanceID(), TouchFilters.TapToPlay);
     }
 
 
-    // Each frame, if we have provided screen input, and aren't touching over multiple frame, register where the touch was located on screen
+    // Each frame, if we have provided screen input, and aren't touching over multiple frames, register where the touch was located on screen
     // Store all hit objects hit, in our raycast list
     private void Update()
     {
@@ -104,10 +107,14 @@ public class UITouch : MonoBehaviour
             // By default, the list is sorted from first to last from index 0. E.g, Items found beneath are at the end of the array
             for (int i = 0; i < hitResults.Count; i++)
             {
-                if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out TouchFilters _val))
+                if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out TouchFilters foundFilter))
                 {
-                    if (TouchFilter(_val))
+					if (ProcessFilter(foundFilter, i))
                         break;
+                }
+                else
+                {
+                    Debug.Log($"Raycast hit {i}: {hitResults[i].gameObject.name} is not registered as clickable");
                 }
             }
         }
@@ -117,28 +124,18 @@ public class UITouch : MonoBehaviour
         }
     }
 
-    // Filter the appropriate action for the UI items we clicked
-    private bool TouchFilter(TouchFilters _filter)
+    // Filter the appropriate action for the UI items we touched
+    private bool ProcessFilter(TouchFilters _filter, int index)
     {
         switch (_filter)
         {
-            case TouchFilters.VSync:
-            case TouchFilters.PathFollowerMaxSpeed:
-            case TouchFilters.PathFollowerAccel:
-                if (!keyboardOpenRequested && keyboard.status != TouchScreenKeyboard.Status.Visible)
-                    StartCoroutine(WaitForKeyboard(_filter));
-                return true;
-
             case TouchFilters.Settings:
-                panelWindow.SetActive(!panelWindow.activeSelf);
-                GameManager.instance.gameplayEnabled = !panelWindow.activeSelf;
+                settingsWindow.gameObject.SetActive(!settingsWindow.gameObject.activeSelf);
+                GameManager.instance.gameplayEnabled = !settingsWindow.gameObject.activeSelf;
                 return true;
 
-            case TouchFilters.FPSCounterToggle:
-                FPSCounterToggleObj.isOn = !FPSCounterToggleObj.isOn;
-                FPSDispay.inst.update = FPSCounterToggleObj.isOn;
-                if (!FPSCounterToggleObj.isOn)
-                    FPSDispay.inst.StopAndHideCounter();
+            case TouchFilters.SettingsWindow:
+                Debug.Log("Touched Settings Window");
                 return true;
 
             case TouchFilters.PathFollowerToggle:
@@ -148,101 +145,115 @@ public class UITouch : MonoBehaviour
                 return true;
 
             case TouchFilters.DebugToggle:
-                Debug.Log($"Hit DebugToggle");
-                touchTimer.Begin(0, float.MaxValue, 3, 
-                    new UnityEngine.Events.UnityAction(delegate{
+                // Start a timer. If we hold onto this object for 3 seconds, show FPS counter
+                debugTimer.Begin(0, float.MaxValue, 3,
+                    new UnityEngine.Events.UnityAction(delegate
+                    {
                         if (!touchingOverFrames)
                         {
-                            touchTimer.Restart();
+                            debugTimer.Restart();
                         }
                     }),
-                    new UnityEngine.Events.UnityAction(delegate{
+                    new UnityEngine.Events.UnityAction(delegate
+                    {
                         DebugActivator.instance.isActive = !DebugActivator.instance.isActive;
                         FPSDispay.inst.update = DebugActivator.instance.isActive;
                         vSyncText.gameObject.SetActive(DebugActivator.instance.isActive);
                         FPSDispay.inst.ToggleVisibility(DebugActivator.instance.isActive);
                     }));
                 return true;
+
+            // When we touch the tap to play Hitbox, hide it and start movement
+            case TouchFilters.TapToPlay:
+                tapToPlay.gameObject.SetActive(false);
+                tapToPlayHitBox.gameObject.SetActive(false);
+
+                Vector2 startPos = CanvasUtils.GetPos(Levels.instance.image.rectTransform, Canvas.Top, canvas.scaleFactor, canvasTransform);
+                Levels.instance.image.rectTransform.Move(this, startPos, Levels.instance.onscreenPos, 1.2F, CurveType.Exponential);
+
+                // While we touch Tap-To-Play, we don't want to stop gameplay movement, so remove this item from the list immediately
+                hitResults.RemoveAt(index);
+                return false;
         }
         return false;
     }
 
     // The method used to Open the Android Keyboard to edit settings
-    public IEnumerator WaitForKeyboard(TouchFilters _filter)
-    {
-        // Stops other requests to open keyboard until we are done with this one
-        keyboardOpenRequested = true;
+    //public IEnumerator WaitForKeyboard(TouchFilters filter)
+    //{
+//        // Stops other requests to open keyboard until we are done with this one
+//        keyboardOpenRequested = true;
 
-        // If not mobile, return
-#if UNITY_EDITOR
-        keyboardOpenRequested = false;
-       yield return null;
-#endif
+//        // If not mobile, return
+//#if UNITY_EDITOR
+//        keyboardOpenRequested = false;
+//       yield return null;
+//#endif
 
-        switch (_filter)
-        {
-            case TouchFilters.VSync:
-                keyboard = TouchScreenKeyboard.Open(QualitySettings.vSyncCount.ToString(), TouchScreenKeyboardType.NumberPad);
-                break;
+        //switch (filter)
+        //{
+            //case TouchFilters.VSync:
+            //    keyboard = TouchScreenKeyboard.Open(QualitySettings.vSyncCount.ToString(), TouchScreenKeyboardType.NumberPad);
+            //    break;
 
-            case TouchFilters.PathFollowerMaxSpeed:
-                keyboard = TouchScreenKeyboard.Open(GameManager.instance.pathfollower.maxSpeed.ToString(), TouchScreenKeyboardType.NumberPad);
-                break;
+            //case TouchFilters.PathFollowerMaxSpeed:
+            //    keyboard = TouchScreenKeyboard.Open(GameManager.instance.pathfollower.maxSpeed.ToString(), TouchScreenKeyboardType.NumberPad);
+            //    break;
 
-            case TouchFilters.PathFollowerAccel:
-                keyboard = TouchScreenKeyboard.Open(GameManager.instance.pathfollower.accelerationMultiplier.ToString(), TouchScreenKeyboardType.NumberPad);
-                break;
-        }
+            //case TouchFilters.PathFollowerAccel:
+            //    keyboard = TouchScreenKeyboard.Open(GameManager.instance.pathfollower.accelerationMultiplier.ToString(), TouchScreenKeyboardType.NumberPad);
+            //    break;
+        //}
 
         // While the keyboard is visible, stop gameplay and wait
-        while (keyboard.status == TouchScreenKeyboard.Status.Visible)
-        {
-            GameManager.instance.gameplayEnabled = false;
-            yield return new WaitForEndOfFrame();
-        }
+        //while (keyboard.status == TouchScreenKeyboard.Status.Visible)
+        //{
+        //    GameManager.instance.gameplayEnabled = false;
+        //    yield return new WaitForEndOfFrame();
+        //}
 
-        if (keyboard.status == TouchScreenKeyboard.Status.Canceled)
-        {
-            keyboardOpenRequested = false;
-            yield return null;
-        }
+        //if (keyboard.status == TouchScreenKeyboard.Status.Canceled)
+        //{
+        //    keyboardOpenRequested = false;
+        //    yield return null;
+        //}
 
-        int _parsedNum = 0;
+        //int parsedNum = 0;
 
-        switch (_filter)
-        {
-            case TouchFilters.VSync:
-                if (int.TryParse(keyboard.text, out _parsedNum))
-                {
-                    if (keyboard.text == "0")
-                    {
-                        Application.targetFrameRate = int.MaxValue;
-                    }
+        //switch (filter)
+        //{
+            //case TouchFilters.VSync:
+            //    if (int.TryParse(keyboard.text, out parsedNum))
+            //    {
+            //        if (keyboard.text == "0")
+            //        {
+            //            Application.targetFrameRate = int.MaxValue;
+            //        }
 
-                    vSyncText.text = $"vSync: {keyboard.text}";
+            //        vSyncText.text = $"vSync: {keyboard.text}";
 
-                    QualitySettings.vSyncCount = (_parsedNum);
-                }
-                break;
+            //        QualitySettings.vSyncCount = (parsedNum);
+            //    }
+            //    break;
 
-            case TouchFilters.PathFollowerMaxSpeed:
+            //case TouchFilters.PathFollowerMaxSpeed:
 
-                if (int.TryParse(keyboard.text, out _parsedNum))
-                {
-                    GameManager.instance.pathfollower.maxSpeed = _parsedNum;
-                    maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";
-                }
-                break;
+            //    if (int.TryParse(keyboard.text, out parsedNum))
+            //    {
+            //        GameManager.instance.pathfollower.maxSpeed = parsedNum;
+            //        maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";
+            //    }
+            //    break;
 
-            case TouchFilters.PathFollowerAccel:
-                if (int.TryParse(keyboard.text, out _parsedNum))
-                {
-                    GameManager.instance.pathfollower.accelerationMultiplier = _parsedNum;
-                    moveAcceleration.text = $"Acceleration: {GameManager.instance.pathfollower.accelerationMultiplier}";
-                }
-                break;
-        }
+            //case TouchFilters.PathFollowerAccel:
+            //    if (int.TryParse(keyboard.text, out parsedNum))
+            //    {
+            //        GameManager.instance.pathfollower.accelerationMultiplier = parsedNum;
+            //        moveAcceleration.text = $"Acceleration: {GameManager.instance.pathfollower.accelerationMultiplier}";
+            //    }
+            //    break;
+        //}
 
-        GameManager.instance.gameplayEnabled = true;
-    }
+    //    GameManager.instance.gameplayEnabled = true;
+    //}
 }

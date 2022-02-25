@@ -28,6 +28,10 @@ namespace PathCreation.Examples
         public float maxLifetime = 0.8F;
         public float minLifetime = 0.3F;
 
+        [Header("Level Progress")]
+        [SerializeField] private Levels levelProgress;
+
+
         private void OnTriggerEnter(Collider trap)
         {
             if (trap.CompareTag("Trap"))
@@ -91,9 +95,11 @@ namespace PathCreation.Examples
                 return;
             }
 
+            // Needs moving
             if (UITouch.instance.tapToPlay.gameObject.activeSelf)
             {
-                UITouch.instance.tapToPlay.gameObject.SetActive(false);
+				Vector2 startPos = CanvasUtils.GetPos(levelProgress.image.rectTransform, Canvas.Top, UITouch.instance.canvas.scaleFactor, UITouch.instance.canvasTransform);
+                levelProgress.image.rectTransform.Move(this, startPos, levelProgress.onscreenPos, 1.2F, CurveType.Exponential);
             }
 
             distanceTravelled += speed * Time.deltaTime;
@@ -104,7 +110,7 @@ namespace PathCreation.Examples
             // Tells use where between 0 and 1 we are on the path
             //Debug.Log(pathCreator.path.GetClosestTimeOnPath(transform.position));
 
-            MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
+            levelProgress.UpdateUI(distanceTravelled, pathCreator.path.length);
 
             pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
 
@@ -117,7 +123,7 @@ namespace PathCreation.Examples
         //Increase our speed if we are touching the screen (and no UI elements) over multiple frames. Decrease if we aren't. Final value is clamped.
         private void ScaleSpeed()
         {
-            if (UITouch.instance.touchingOverFrames && UITouch.instance.hitResults.Count == 0)
+            if (UITouch.instance.touchingOverFrames && UITouch.isTouchingUIItem == false)
             {
                 speed += (Time.deltaTime * accelerationMultiplier);
             }
@@ -141,7 +147,7 @@ namespace PathCreation.Examples
         {
             distanceTravelled = 0;
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * ((correctFlatPathRotation == true) ? Quaternion.AngleAxis(90F, Vector3.forward) : Quaternion.identity);
-            MenuManager.instance.UpdateLevelProgress(distanceTravelled, pathCreator.path.length);
+            levelProgress.UpdateUI(distanceTravelled, pathCreator.path.length);
 
             playerTrail.Clear();
         }
