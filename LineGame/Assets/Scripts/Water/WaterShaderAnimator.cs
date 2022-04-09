@@ -2,7 +2,14 @@
 
 public class WaterShaderAnimator : MonoBehaviour
 {
-    public enum WaterTypes
+    public static WaterShaderAnimator instance;
+
+	private void Awake()
+	{
+        instance = this;
+	}
+
+	public enum WaterTypes
 	{
         ConstantScroll,
         BackAndForth
@@ -29,6 +36,9 @@ public class WaterShaderAnimator : MonoBehaviour
 
     private void Update()
     {
+        if (meshRenderer == null)
+            return;
+
 		switch (WaterType)
 		{
 			case WaterTypes.ConstantScroll:

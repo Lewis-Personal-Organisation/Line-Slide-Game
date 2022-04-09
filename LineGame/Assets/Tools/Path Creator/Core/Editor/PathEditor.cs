@@ -86,8 +86,8 @@ namespace PathCreationEditor {
             // Draw inspector for active tab
             switch (data.tabIndex) {
                 case bezierPathTab:
-                    DrawBezierPathInspector ();
-                    break;
+					DrawBezierPathInspector();
+					break;
                 case vertexPathTab:
                     DrawVertexPathInspector ();
                     break;
@@ -286,12 +286,12 @@ namespace PathCreationEditor {
                             ProcessBezierPathInput (Event.current);
                         }
 
-                        DrawBezierPathSceneEditor ();
-                        break;
+						DrawBezierPathSceneEditor();
+						break;
                     case vertexPathTab:
                         if (eventType == EventType.Repaint) {
-                            DrawVertexPathSceneEditor ();
-                        }
+							DrawVertexPathSceneEditor();
+						}
                         break;
                 }
 

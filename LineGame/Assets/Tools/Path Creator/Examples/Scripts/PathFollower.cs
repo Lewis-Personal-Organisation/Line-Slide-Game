@@ -29,7 +29,7 @@ namespace PathCreation.Examples
         public float minLifetime = 0.3F;
 
         [Header("Level Progress")]
-        [SerializeField] private Levels levelProgress;
+        [SerializeField] private LevelManager levelProgress;
 
 
         private void OnTriggerEnter(Collider trap)
@@ -43,6 +43,9 @@ namespace PathCreation.Examples
         // When our inspector changes, we want to make sure the Player is scaled according to our Road Mesh
         private void OnValidate()
         {
+            if (pathCreator == null)
+                return;
+
             if (!scaleToPathWidth)
             {
                 roadCreator.playerScaleTrigger -= AssignPlayerScale;
@@ -120,7 +123,8 @@ namespace PathCreation.Examples
             }
         }
 
-        //Increase our speed if we are touching the screen (and no UI elements) over multiple frames. Decrease if we aren't. Final value is clamped.
+        //Increase our speed if we are touching the screen over multiple frames. If we aren't touching screen or are touching prohibited UI
+        //elements, decrease our speed. Final value is clamped.
         private void ScaleSpeed()
         {
             if (UITouch.instance.touchingOverFrames && UITouch.isTouchingUIItem == false)
@@ -143,8 +147,13 @@ namespace PathCreation.Examples
             distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
         }
 
-        public void ResetPath()
+        public async void ResetPath()
         {
+            while(pathCreator == null)
+			{
+                await System.Threading.Tasks.Task.Yield();
+			}
+
             distanceTravelled = 0;
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * ((correctFlatPathRotation == true) ? Quaternion.AngleAxis(90F, Vector3.forward) : Quaternion.identity);
             levelProgress.UpdateUI(distanceTravelled, pathCreator.path.length);

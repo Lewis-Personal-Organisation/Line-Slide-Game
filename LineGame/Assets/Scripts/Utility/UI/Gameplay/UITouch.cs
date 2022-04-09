@@ -168,8 +168,8 @@ public class UITouch : MonoBehaviour
                 tapToPlay.gameObject.SetActive(false);
                 tapToPlayHitBox.gameObject.SetActive(false);
 
-                Vector2 startPos = CanvasUtils.GetPos(Levels.instance.image.rectTransform, Canvas.Top, canvas.scaleFactor, canvasTransform);
-                Levels.instance.image.rectTransform.Move(this, startPos, Levels.instance.onscreenPos, 1.2F, CurveType.Exponential);
+                Vector2 startPos = CanvasUtils.GetPos(LevelManager.instance.image.rectTransform, Canvas.Top, canvas.scaleFactor, canvasTransform);
+                LevelManager.instance.image.rectTransform.Move(this, startPos, LevelManager.instance.onscreenPos, 1.2F, CurveType.Exponential);
 
                 // While we touch Tap-To-Play, we don't want to stop gameplay movement, so remove this item from the list immediately
                 hitResults.RemoveAt(index);

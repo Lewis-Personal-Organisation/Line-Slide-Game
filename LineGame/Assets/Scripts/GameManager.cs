@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public CurveHelper curveHelper;
+
     public PathFollower pathfollower;
 
     public UnityEngine.Canvas uiCanvas;
@@ -12,15 +14,21 @@ public class GameManager : MonoBehaviour
 
     public bool gameplayEnabled = true;
 
-    public static int levelCount => 1;
-
 
     private void Awake()
     {
-        instance = this;
+#if UNITY_EDITOR
+		curveHelper.Generate();
+#endif
+		instance = this;
     }
 
-    private void Update()
+	private void Start()
+	{
+        StartCoroutine(LevelManager.instance.LoadLevel(1));
+	}
+
+	private void Update()
     {
         if (!gameplayEnabled)
             return;

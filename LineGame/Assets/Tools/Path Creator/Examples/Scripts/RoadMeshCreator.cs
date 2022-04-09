@@ -48,6 +48,11 @@ namespace PathCreation.Examples
         private Vector3[] verticesGizmo = new Vector3[0];
 
 
+        public void DrawPath()
+		{
+            StartCoroutine(PathUpdated());
+		}
+
         protected override IEnumerator PathUpdated() 
         {
             if (pathCreator != null) 

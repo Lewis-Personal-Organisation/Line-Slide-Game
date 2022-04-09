@@ -163,7 +163,7 @@ public static class CanvasUtils
 		}
 
         isMoving = true;
-        mono.StartCoroutine(Move(_transform, fromPosition, toPosition, time, curve));
+		mono.StartCoroutine(Move(_transform, fromPosition, toPosition, time, curve));
 	}
     private static IEnumerator Move(RectTransform movingRect, Vector2 fromPosition, Vector2 toPosition, float time, CurveType type)
     {
@@ -171,7 +171,7 @@ public static class CanvasUtils
 
 		while((countingTimer += (Time.deltaTime/time)) < 1F)
         {
-            movingRect.position = Vector2.Lerp(fromPosition, toPosition, CurveHelper.instance.Evaluate(type, CurveMode.Out, countingTimer));
+            movingRect.position = Vector2.Lerp(fromPosition, toPosition, GameManager.instance.curveHelper.Evaluate(type, CurveMode.Out, countingTimer));
             //movingRect.position = Vector2.Lerp(fromPosition, toPosition, countingTimer);
             yield return null;
 		}

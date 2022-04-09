@@ -16,7 +16,7 @@ public class GameSave : MonoBehaviour
 			return currentLevel;
 		}
 		set { 
-			currentLevel = Mathf.Clamp(value, 0, GameManager.levelCount);
+			currentLevel = Mathf.Clamp(value, 0, LevelManager.levelCount);
 			PlayerPrefs.SetInt("currentLevel", currentLevel);
 			PlayerPrefs.Save();
 		}

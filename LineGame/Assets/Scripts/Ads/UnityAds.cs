@@ -4,91 +4,107 @@ using UnityEditor.Advertisements;
 using UnityEngine.Advertisements;
 using System.Runtime.CompilerServices;
 
-public class UnityAds : MonoBehaviour
+public class UnityAds : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    public static UnityAds Static;
+	public static UnityAds Static;
 
-    private static bool awaitingInterstitial;
-    public static bool WaitingForInterstitial
-    {
-        get
-        {
-            return awaitingInterstitial;
-        }
-        private set
-        {
-            awaitingInterstitial = value;
-        }
-    }
+	private string _androidGameID;
+	private string _androidAdUnitID = "Interstitial_Android";
 
-
-    private void Awake()
-    {
-        Static = this;
-    }
-
-    private void Start()
-    {
-        Advertisement.Initialize(GetPlatformAdsID(RuntimePlatform.Android));
-        ShowInterstitialAd();
-    }
+	private static bool awaitingInterstitial;
+	public static bool WaitingForInterstitial
+	{
+		get
+		{
+			return awaitingInterstitial;
+		}
+		private set
+		{
+			awaitingInterstitial = value;
+		}
+	}
 
 
-    /// <summary>
-    /// Attempt to show an Interstitial Ad. If one is not available, abort.
-    /// If waiting for an Ad is important, use ShowInterstitialAd() instead.
-    /// </summary>
-    public void TryShowInterstitialAd()
-    {
-        if (Advertisement.IsReady())
-        {
-            Advertisement.Show();
-        }
-        else
-        {
-            Debug.LogWarning($"{this.name}::{MethodName()}:: Advertisement is not ready");
-        }
-    }
+	private void Awake()
+	{
+		Static = this;
+	}
 
-    /// <summary>
-    /// Attempt to show an Interstitial Ad now. If one is not available, wait until one is. Never Abort.
-    /// </summary>
-    public void ShowInterstitialAd()
-    {
-        StartCoroutine(ShowInterstitialAdProc());
-    }
+	private void Start()
+	{
+		_androidGameID = GetPlatformAdsID(RuntimePlatform.Android);
 
-    private IEnumerator ShowInterstitialAdProc()
-    {
-        WaitingForInterstitial = true;
+		Advertisement.Initialize(_androidGameID, true, this);
+	}
 
-        yield return new WaitUntil(() => Advertisement.IsReady());
-
-        Advertisement.Show();
-    }
+	/// <summary>
+	/// Attempt to show an Interstitial Ad. If one is not available, abort.
+	/// If waiting for an Ad is important, use ShowInterstitialAd() instead.
+	/// </summary>
+	public void LoadAdvertisement()
+	{
+		Debug.Log($"Loading Advertisement with ID: {_androidGameID}");
+		Advertisement.Load(_androidAdUnitID, this);
+	}
 
 
-    string MethodName([CallerMemberName] string name = "")
-    {
-        return name;
-    }
+	/// <summary>
+	/// Returns the ID of a specific advertisement platform as requested. Logs an error if an ID for the platform does not exist
+	/// </summary>
+	/// <param name="_platform"></param>
+	/// <returns></returns>
+	public string GetPlatformAdsID(RuntimePlatform _platform)
+	{
+		string _id = AdvertisementSettings.GetGameId(_platform);
 
+		if (_id == string.Empty)
+		{
+			Debug.LogError($"UnityAds :: Error! _id is empty using Platform: {_platform}. This Platform does not yet have an ID!", this.gameObject);
+			return null;
+		}
 
-    /// <summary>
-    /// Returns the ID of a specific advertisement platform as requested. Logs an error if an ID for the platform does not exist
-    /// </summary>
-    /// <param name="_platform"></param>
-    /// <returns></returns>
-    public string GetPlatformAdsID(RuntimePlatform _platform)
-    {
-        string _id = AdvertisementSettings.GetGameId(_platform);
+		return _id;
+	}
 
-        if (_id == string.Empty)
-        {
-            Debug.LogError($"UnityAds :: Error! _id is empty using Platform: {_platform}. This Platform does not yet have an ID!", this.gameObject);
-            return null;
-        }
+	public void OnInitializationComplete()
+	{
+		Debug.Log($"Unity Ads Initialisation Complete!");
+		//LoadAdvertisement();
+	}
 
-        return _id;
-    }
+	public void OnInitializationFailed(UnityAdsInitializationError error, string message)
+	{
+		Debug.Log($"Unity Ads Initialisation Failed!");
+	}
+
+	public void OnUnityAdsAdLoaded(string placementId)
+	{
+		Debug.Log($"Unity Ads Loaded with placement ID {placementId}");
+		Advertisement.Show(_androidAdUnitID, this);
+	}
+
+	public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+	{
+		Debug.Log($"Unity Ads Failed to Load with placement ID {placementId}. Error: {error}. Message: {message}");
+	}
+
+	public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
+	{
+		Debug.Log($"Unity Ads Failed to Show with placement ID {placementId}. Error: {error}. Message: {message}");
+	}
+
+	public void OnUnityAdsShowStart(string placementId)
+	{
+		throw new System.NotImplementedException();
+	}
+
+	public void OnUnityAdsShowClick(string placementId)
+	{
+		throw new System.NotImplementedException();
+	}
+
+	public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
+	{
+		throw new System.NotImplementedException();
+	}
 }
