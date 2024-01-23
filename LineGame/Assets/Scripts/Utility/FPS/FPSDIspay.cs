@@ -1,9 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class FPSDispay : MonoBehaviour
+public class FPSDispay : Singleton<FPSDispay>
 {
-    public static FPSDispay inst;
 
     [SerializeField] private TextMeshProUGUI display = null;
 
@@ -11,16 +10,28 @@ public class FPSDispay : MonoBehaviour
 
     public static int frameCount = 0;
 
-    public bool update = true;
 
+	private void Awake()
+	{
+		base.Awake();
+		frameTimer = new Timer();
+		frameTimer.parent = this;
+		frameTimer.SetName("FPSDisplay");
+	}
 
-    private void Awake()
-    {
-        inst = this;
-        frameTimer = new Timer();
-        frameTimer.parent = this;
-        frameTimer.SetName("FPSDisplay");
-    }
+	public void Show()
+	{
+		display.gameObject.SetActive(true);
+		frameTimer.Begin(0,
+			float.MaxValue, 1,
+			UpdateFrameCount,
+			UpdateUI);
+	}
+
+	private void OnDisable()
+	{
+		frameTimer.Reset();
+	}
 
     private void UpdateFrameCount()
     {
@@ -29,7 +40,7 @@ public class FPSDispay : MonoBehaviour
 
     public void UpdateUI()
     {
-        display.text = $"{frameCount}\n{(float)(1000f / frameCount)}ms";
+        display.text = $"{frameCount} | {(float)(1000f / frameCount)}ms";
         frameCount = 0;
     }
 
@@ -37,22 +48,5 @@ public class FPSDispay : MonoBehaviour
     {
         display.text = $"";
         frameCount = 0;
-    }
-
-    public void ToggleVisibility(bool _makeVisible)
-    {
-        display.gameObject.SetActive(_makeVisible);
-
-        if (_makeVisible)
-        {
-            frameTimer.Begin(0,
-            float.MaxValue, 1,
-            UpdateFrameCount,
-            UpdateUI);
-        }
-        else
-        {
-            frameTimer.Reset();
-        }
     }
 }

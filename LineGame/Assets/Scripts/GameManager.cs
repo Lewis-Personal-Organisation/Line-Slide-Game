@@ -1,13 +1,11 @@
 ﻿using PathCreation.Examples;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager instance;
-
     public CurveHelper curveHelper;
 
-    public PathFollower pathfollower;
+    public PathFollower playerPathFollower;
 
     public UnityEngine.Canvas uiCanvas;
     public RectTransform uiCanvasRectTransform;
@@ -15,29 +13,18 @@ public class GameManager : MonoBehaviour
     public bool gameplayEnabled = true;
 
 
-    private void Awake()
+	new private void Awake()
     {
-#if UNITY_EDITOR
-		curveHelper.Generate();
-#endif
-		instance = this;
-    }
+        base.Awake();
+	}
 
 	private void Start()
 	{
-        StartCoroutine(LevelManager.instance.LoadLevel(1));
+		LevelManager.Instance.LoadLevel(GameSave.CurrentLevel);
 	}
 
 	private void Update()
-    {
-        if (!gameplayEnabled)
-            return;
+	{
 
-        pathfollower.OnUpdate();
 	}
-
-	private void LateUpdate()
-    {
-        CamFollow.instance.OnUpdate();
-    }
 }

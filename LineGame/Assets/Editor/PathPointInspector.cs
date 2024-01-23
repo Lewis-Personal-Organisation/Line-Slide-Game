@@ -1,65 +1,37 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace PathCreation
+[CustomEditor(typeof(PathSubscriptionManager))]
+public class PathPointInspector : Editor
 {
-    [CustomEditor(typeof(PathCreation.PathPointManagerExtension))]
-    public class PathPointInspector : Editor
+    PathSubscriptionManager instance;
+
+    public override void OnInspectorGUI()
     {
-        PathCreation.PathPointManagerExtension instance;
+        instance = (PathSubscriptionManager)target;
 
+        //if (GUILayout.Button("Regenerate Positions"))
+        //{
+        //instance.UpdatePoints();
+        //instance.RecreateMeshCollider();
+        //instance.UpdateSubscribers();             
+        //}
 
-        public override void OnInspectorGUI()
+        // If we have subscribing paths, and we link more than one path, enable the Update Subscribers button
+        // Then, if we click the button, for each subscriber, update their points with the Main path points. 
+        // Also rebuild or destroy their mesh, depending on if we need the duplicate mesh
+        if (/*instance.EnableSubscribers &&*/ instance.roadMeshSubscribers.Length > 0)
         {
-            instance = (PathCreation.PathPointManagerExtension)target;
-
-            if (GUILayout.Button("Regenerate Positions"))
+            if (GUILayout.Button("Sync Subscribers"))
             {
-                instance.UpdatePoints();
-                instance.RecreateMeshCollider();
-
-                foreach (PathPointManagerExtension _subscriber in instance.subscribers)
-                {
-                    _subscriber.LinkPoints(instance.pathCreator.bezierPath.points); 
-                    
-                    if (instance.destroySubmeshes)
-                    {
-                        DestroyImmediate(_subscriber.pathMeshCollider);
-                    }
-                    else
-                    {
-                        _subscriber.RecreateMeshCollider();
-                    }
-                }                
+				//instance.RecreateMeshCollider();
+				instance.UpdateSubscribers();
             }
-
-            // If we have subscribing paths, and we link more than one path, enable the Update Subscribers button
-            // Then, if we click the button, for each subscriber, update their points with the Main path points. 
-            // Also rebuild or destroy their mesh, depending on if we need the duplicate mesh
-            if (instance.EnableSubscribers && instance.subscribers.Length > 0)
-            {
-                if (GUILayout.Button("Sync Subscriber Positions"))
-                {
-                    foreach (PathPointManagerExtension _subscriber in instance.subscribers)
-                    {
-                        _subscriber.LinkPoints(instance.pathCreator.bezierPath.points);
-
-                        if (instance.destroySubmeshes)
-                        {
-                            DestroyImmediate(_subscriber.pathMeshCollider);
-                        }
-                        else
-                        {
-                            _subscriber.RecreateMeshCollider();
-                        }
-                    }
-                }
-            }
-
-            //This draws the default screen.  You don't need this if you want
-            //to start from scratch, but I use this when I'm just adding a button or
-            //some small addition and don't feel like recreating the whole inspector.
-            DrawDefaultInspector();
         }
+
+        //This draws the default screen.  You don't need this if you want
+        //to start from scratch, but I use this when I'm just adding a button or
+        //some small addition and don't feel like recreating the whole inspector.
+        DrawDefaultInspector();
     }
 }

@@ -5,171 +5,27 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637851277919559260
-    m_Hash: 2846222336
+      ticks: 638393150036423732
+    m_Hash: 3807283917
   m_LockFileStatus:
     m_FilePath: R:/Unity Projects/LineGameNew/LineGame/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637851277919594445
-    m_Hash: 3514289829
+      ticks: 638393150036463946
+    m_Hash: 2075504765
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
-    - packageId: com.unity.ads@4.1.0
+    - packageId: com.unity.burst@1.6.6
       testable: 0
       isDirectDependency: 1
-      version: 4.1.0
+      version: 1.6.6
       source: 1
-      resolvedPath: R:\Unity Projects\LineGameNew\LineGame\Library\PackageCache\com.unity.ads@4.1.0
-      assetPath: Packages/com.unity.ads
-      name: com.unity.ads
-      displayName: Advertisement
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: Unity Ads is a video ad network for iOS and Android that allows
-        you to quickly and effectively monetize your games.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.0.3
-        - 0.0.4
-        - 0.0.5
-        - 0.0.6
-        - 0.0.7
-        - 0.0.8
-        - 0.0.10
-        - 0.0.11
-        - 0.0.12
-        - 0.0.13
-        - 0.0.14
-        - 0.0.15
-        - 0.0.16
-        - 2.0.0
-        - 2.0.3
-        - 2.0.4
-        - 2.0.7
-        - 2.0.8
-        - 2.3.1
-        - 2.3.2
-        - 3.0.1
-        - 3.0.2
-        - 3.0.3
-        - 3.1.1
-        - 3.2.0
-        - 3.3.0
-        - 3.3.1
-        - 3.4.0
-        - 3.4.1
-        - 3.4.2
-        - 3.4.4
-        - 3.4.5
-        - 3.4.7
-        - 3.4.9
-        - 3.5.0
-        - 3.5.2
-        - 3.6.1
-        - 3.7.0
-        - 3.7.1
-        - 3.7.3
-        - 3.7.5
-        - 4.0.0
-        - 4.0.1
-        - 4.1.0
-        compatible:
-        - 0.0.3
-        - 0.0.4
-        - 0.0.5
-        - 0.0.6
-        - 0.0.7
-        - 0.0.8
-        - 0.0.10
-        - 0.0.11
-        - 0.0.12
-        - 0.0.13
-        - 0.0.14
-        - 0.0.15
-        - 0.0.16
-        - 2.0.0
-        - 2.0.3
-        - 2.0.4
-        - 2.0.7
-        - 2.0.8
-        - 2.3.1
-        - 2.3.2
-        - 3.0.1
-        - 3.0.2
-        - 3.0.3
-        - 3.1.1
-        - 3.2.0
-        - 3.3.0
-        - 3.3.1
-        - 3.4.0
-        - 3.4.1
-        - 3.4.2
-        - 3.4.4
-        - 3.4.5
-        - 3.4.7
-        - 3.4.9
-        - 3.5.0
-        - 3.5.2
-        - 3.6.1
-        - 3.7.0
-        - 3.7.1
-        - 3.7.3
-        - 3.7.5
-        - 4.0.0
-        - 4.0.1
-        - 4.1.0
-        verified: 3.7.5
-      dependencies:
-      - name: com.unity.ugui
-        version: 1.0.0
-      resolvedDependencies:
-      - name: com.unity.ugui
-        version: 1.0.0
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      keywords:
-      - ads
-      - unity
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637841885960000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.com/Unity-Technologies/unity-ads-sdk.git
-        revision: 44d6cf7ea9e880e498ee68576d3b81d04897111d
-        path: 
-    - packageId: com.unity.burst@1.6.5
-      testable: 0
-      isDirectDependency: 1
-      version: 1.6.5
-      source: 1
-      resolvedPath: R:\Unity Projects\LineGameNew\LineGame\Library\PackageCache\com.unity.burst@1.6.5
+      resolvedPath: R:\Unity Projects\LineGameNew\LineGame\Library\PackageCache\com.unity.burst@1.6.6
       assetPath: Packages/com.unity.burst
       name: com.unity.burst
       displayName: Burst
@@ -178,7 +34,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Burst is a compiler that translates from IL/.NET bytecode to highly
         optimized native code using LLVM.
       status: 4
@@ -292,8 +148,25 @@ m_PackageAssets:
         - 1.6.3
         - 1.6.4
         - 1.6.5
+        - 1.6.6
         - 1.7.0-pre.1
         - 1.7.0
+        - 1.7.1
+        - 1.7.2
+        - 1.7.3
+        - 1.7.4
+        - 1.8.0-pre.1
+        - 1.8.0-pre.2
+        - 1.8.0
+        - 1.8.1
+        - 1.8.2
+        - 1.8.3
+        - 1.8.4
+        - 1.8.7
+        - 1.8.8
+        - 1.8.9
+        - 1.8.10
+        - 1.8.11
         compatible:
         - 1.1.1
         - 1.1.2
@@ -373,9 +246,26 @@ m_PackageAssets:
         - 1.6.3
         - 1.6.4
         - 1.6.5
+        - 1.6.6
         - 1.7.0-pre.1
         - 1.7.0
-        verified: 1.6.5
+        - 1.7.1
+        - 1.7.2
+        - 1.7.3
+        - 1.7.4
+        - 1.8.0-pre.1
+        - 1.8.0-pre.2
+        - 1.8.0
+        - 1.8.1
+        - 1.8.2
+        - 1.8.3
+        - 1.8.4
+        - 1.8.7
+        - 1.8.8
+        - 1.8.9
+        - 1.8.10
+        - 1.8.11
+        verified: 1.6.6
       dependencies:
       - name: com.unity.mathematics
         version: 1.2.1
@@ -391,17 +281,17 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637835629630000000
+      datePublishedTicks: 637902875830000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/burst.git
-        revision: 370080478647882de41c08e5ca4b4ec26032d9c7
+        revision: 21ee3d01c6a374f6b01106f9eb6f1b43e113b1a3
         path: 
     - packageId: com.unity.collab-proxy@1.15.12
       testable: 0
@@ -417,7 +307,7 @@ m_PackageAssets:
         email: 
         url: 
       category: Editor
-      type: 
+      type: asset
       description: The Version Control package gives you the ability to use either
         Collaborate or Plastic SCM for Unity (beta) in the Unity editor. To use Plastic
         SCM for Unity (beta), a Plastic SCM subscription is required. Learn more
@@ -461,6 +351,8 @@ m_PackageAssets:
         - 1.14.13
         - 1.14.15
         - 1.14.16
+        - 1.14.17
+        - 1.14.18
         - 1.15.1
         - 1.15.4
         - 1.15.7
@@ -469,6 +361,13 @@ m_PackageAssets:
         - 1.15.13
         - 1.15.15
         - 1.15.16
+        - 1.15.17
+        - 1.15.18
+        - 1.17.0
+        - 1.17.1
+        - 1.17.2
+        - 1.17.6
+        - 1.17.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -476,14 +375,29 @@ m_PackageAssets:
         - 2.0.0-preview.20
         - 2.0.0-preview.21
         - 2.0.0-preview.22
+        - 2.0.0
+        - 2.0.1
+        - 2.0.3
+        - 2.0.4
+        - 2.0.5
+        - 2.0.7
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
+        - 2.1.0
+        - 2.2.0
         compatible:
         - 1.15.12
         - 1.15.13
         - 1.15.15
         - 1.15.16
+        - 1.15.17
+        - 1.15.18
+        - 1.17.0
+        - 1.17.1
+        - 1.17.2
+        - 1.17.6
+        - 1.17.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -491,10 +405,15 @@ m_PackageAssets:
         - 2.0.0-preview.20
         - 2.0.0-preview.21
         - 2.0.0-preview.22
+        - 2.0.0
+        - 2.0.1
+        - 2.0.3
+        - 2.0.4
+        - 2.0.5
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.15.16
+        verified: 1.15.18
       dependencies:
       - name: com.unity.services.core
         version: 1.0.1
@@ -525,7 +444,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -537,12 +456,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
         revision: 5ca1fd4ca9f999e087d19e98afaf99905a582771
         path: 
-    - packageId: com.unity.device-simulator@2.2.3-preview
+    - packageId: com.unity.device-simulator@3.1.0-preview
       testable: 0
       isDirectDependency: 1
-      version: 2.2.3-preview
+      version: 3.1.0-preview
       source: 1
-      resolvedPath: R:\Unity Projects\LineGameNew\LineGame\Library\PackageCache\com.unity.device-simulator@2.2.3-preview
+      resolvedPath: R:\Unity Projects\LineGameNew\LineGame\Library\PackageCache\com.unity.device-simulator@3.1.0-preview
       assetPath: Packages/com.unity.device-simulator
       name: com.unity.device-simulator
       displayName: Device Simulator
@@ -551,7 +470,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Device Simulator is an alternative to the traditional Unity editor
         Game window. By simulating Screen and SystemInfo class behavior, Device Simulator
         aims to give an accurate picture of how an app will look on a device.
@@ -575,6 +494,7 @@ m_PackageAssets:
         - 3.0.1-preview
         - 3.0.2-preview
         - 3.0.3-preview
+        - 3.1.0-preview
         compatible:
         - 1.0.0-preview
         - 1.1.0-preview
@@ -592,6 +512,7 @@ m_PackageAssets:
         - 3.0.1-preview
         - 3.0.2-preview
         - 3.0.3-preview
+        - 3.1.0-preview
         verified: 
       dependencies: []
       resolvedDependencies: []
@@ -606,17 +527,17 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637317038590000000
-      documentationUrl: 
+      datePublishedTicks: 638097372990000000
+      documentationUrl: https://docs.unity3d.com/Packages/com.unity.device-simulator@3.1/manual/index.html
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/com.unity.device-simulator.git
-        revision: fde753e7de2137cdb2328019396ac4d53129c411
+        url: https://github.com/Unity-Technologies/com.unity.device-simulator.git
+        revision: 7dc2b84e68dde0037a2a2a28a0fad0b9389ab061
         path: 
     - packageId: com.unity.ide.visualstudio@2.0.14
       testable: 0
@@ -632,7 +553,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Code editor integration for supporting Visual Studio as code editor
         for unity. Adds support for generating csproj files for intellisense purposes,
         auto discovery of installations, etc.
@@ -658,6 +579,12 @@ m_PackageAssets:
         - 2.0.12
         - 2.0.14
         - 2.0.15
+        - 2.0.16
+        - 2.0.17
+        - 2.0.18
+        - 2.0.20
+        - 2.0.21
+        - 2.0.22
         compatible:
         - 1.0.2
         - 1.0.3
@@ -677,7 +604,13 @@ m_PackageAssets:
         - 2.0.12
         - 2.0.14
         - 2.0.15
-        verified: 2.0.15
+        - 2.0.16
+        - 2.0.17
+        - 2.0.18
+        - 2.0.20
+        - 2.0.21
+        - 2.0.22
+        verified: 2.0.22
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9
@@ -699,7 +632,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -710,6 +643,87 @@ m_PackageAssets:
         type: 
         url: 
         revision: 
+        path: 
+    - packageId: com.unity.mobile.android-logcat@1.2.3
+      testable: 0
+      isDirectDependency: 1
+      version: 1.2.3
+      source: 1
+      resolvedPath: R:\Unity Projects\LineGameNew\LineGame\Library\PackageCache\com.unity.mobile.android-logcat@1.2.3
+      assetPath: Packages/com.unity.mobile.android-logcat
+      name: com.unity.mobile.android-logcat
+      displayName: Android Logcat
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: asset
+      description: "Android Logcat package adds support for displaying log messages
+        coming from Android devices in Unity Editor. Click the 'View documentation'
+        link above for more information.\n\nThe window can be accessed in Unity Editor
+        via 'Window > Analysis > Android Logcat', or simply by pressing 'Alt+6' on
+        Windows or 'Option+6' on macOS. \n\nMake sure to have Android module loaded
+        and switch to Android build target in 'Build Settings' window if the menu
+        doesn't exist."
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.5-preview
+        - 0.2.7-preview
+        - 1.0.0
+        - 1.0.1-preview
+        - 1.0.3-preview
+        - 1.1.0
+        - 1.1.1
+        - 1.2.0-preview
+        - 1.2.0
+        - 1.2.1
+        - 1.2.2
+        - 1.2.3
+        - 1.3.2
+        - 1.4.0
+        compatible:
+        - 0.1.5-preview
+        - 0.2.7-preview
+        - 1.0.0
+        - 1.0.1-preview
+        - 1.0.3-preview
+        - 1.1.0
+        - 1.1.1
+        - 1.2.0-preview
+        - 1.2.0
+        - 1.2.1
+        - 1.2.2
+        - 1.2.3
+        - 1.3.2
+        verified: 1.2.3
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - Mobile
+      - Android
+      - Logcat
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 0
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637625737880000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/com.unity.mobile.logcat.git
+        revision: 59c5911d3f6465a7ecf9b03c8ad8ed681b549613
         path: 
     - packageId: com.unity.postprocessing@3.0.1
       testable: 0
@@ -725,7 +739,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: The post-processing stack (v2) comes with a collection of effects
         and image filters you can apply to your cameras to improve the visuals of
         your games.
@@ -768,6 +782,9 @@ m_PackageAssets:
         - 3.1.1
         - 3.2.0
         - 3.2.1
+        - 3.2.2
+        - 3.3.0
+        - 3.4.0
         compatible:
         - 2.3.0
         - 3.0.1
@@ -776,7 +793,10 @@ m_PackageAssets:
         - 3.1.1
         - 3.2.0
         - 3.2.1
-        verified: 3.2.1
+        - 3.2.2
+        - 3.3.0
+        - 3.4.0
+        verified: 3.2.2
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -788,7 +808,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -814,7 +834,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: "The Lightweight Render Pipeline (LWRP) is a prebuilt Scriptable
         Render Pipeline, made by Unity. The technology offers graphics that are scalable
         to mobile platforms, and you can also use it for higher-end consoles and
@@ -917,8 +937,14 @@ m_PackageAssets:
         - 10.7.0
         - 10.8.0
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         compatible:
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         verified: 10.8.1
       dependencies:
       - name: com.unity.render-pipelines.universal
@@ -963,7 +989,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -989,7 +1015,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: The Universal Render Pipeline (URP) is a prebuilt Scriptable Render
         Pipeline, made by Unity. URP provides artist-friendly workflows that let
         you quickly and easily create optimized graphics across a range of platforms,
@@ -1040,8 +1066,14 @@ m_PackageAssets:
         - 10.7.0
         - 10.8.0
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         compatible:
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         verified: 10.8.1
       dependencies:
       - name: com.unity.mathematics
@@ -1084,7 +1116,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -1110,7 +1142,7 @@ m_PackageAssets:
         email: 
         url: 
       category: Unity Test Framework
-      type: 
+      type: asset
       description: Test framework for running Edit mode and Play mode tests in Unity.
       status: 4
       errors: []
@@ -1149,15 +1181,45 @@ m_PackageAssets:
         - 1.1.29
         - 1.1.30
         - 1.1.31
+        - 1.1.33
+        - 1.3.0
+        - 1.3.1
+        - 1.3.2
+        - 1.3.3
+        - 1.3.4
+        - 1.3.5
+        - 1.3.7
+        - 1.3.8
+        - 1.3.9
+        - 1.4.0
+        - 1.4.1
+        - 1.4.2
+        - 2.0.1-exp.1
+        - 2.0.1-exp.2
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         compatible:
         - 1.1.29
         - 1.1.30
         - 1.1.31
+        - 1.1.33
+        - 1.3.0
+        - 1.3.1
+        - 1.3.2
+        - 1.3.3
+        - 1.3.4
+        - 1.3.5
+        - 1.3.7
+        - 1.3.8
+        - 1.3.9
+        - 1.4.0
+        - 1.4.1
+        - 1.4.2
+        - 2.0.1-exp.1
+        - 2.0.1-exp.2
         - 2.0.1-pre.12
         - 2.0.1-pre.18
-        verified: 1.1.31
+        verified: 1.1.33
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6
@@ -1183,7 +1245,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -1209,7 +1271,7 @@ m_PackageAssets:
         email: 
         url: 
       category: Text Rendering
-      type: 
+      type: asset
       description: 'TextMeshPro is the ultimate text solution for Unity. It''s the
         perfect replacement for Unity''s UI Text and the legacy Text Mesh.
 
@@ -1318,12 +1380,21 @@ m_PackageAssets:
         - 3.2.0-pre.1
         - 3.2.0-pre.2
         - 3.2.0-pre.3
+        - 3.2.0-pre.4
+        - 3.2.0-pre.5
+        - 3.2.0-pre.6
+        - 3.2.0-pre.7
         - 4.0.0-pre.1
+        - 4.0.0-pre.2
         compatible:
         - 3.0.6
         - 3.2.0-pre.1
         - 3.2.0-pre.2
         - 3.2.0-pre.3
+        - 3.2.0-pre.4
+        - 3.2.0-pre.5
+        - 3.2.0-pre.6
+        - 3.2.0-pre.7
         verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
@@ -1349,7 +1420,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -1375,7 +1446,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Use Unity Timeline to create cinematic content, game-play sequences,
         audio sequences, and complex particle effects.
       status: 4
@@ -1450,10 +1521,23 @@ m_PackageAssets:
         - 1.6.2
         - 1.6.3
         - 1.6.4
+        - 1.6.5
         - 1.7.0-pre.1
         - 1.7.0-pre.2
         - 1.7.0
         - 1.7.1
+        - 1.7.2
+        - 1.7.3
+        - 1.7.4
+        - 1.7.5
+        - 1.7.6
+        - 1.8.0
+        - 1.8.1
+        - 1.8.2
+        - 1.8.3
+        - 1.8.4
+        - 1.8.5
+        - 1.8.6
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1478,10 +1562,23 @@ m_PackageAssets:
         - 1.6.2
         - 1.6.3
         - 1.6.4
+        - 1.6.5
         - 1.7.0-pre.1
         - 1.7.0-pre.2
         - 1.7.0
         - 1.7.1
+        - 1.7.2
+        - 1.7.3
+        - 1.7.4
+        - 1.7.5
+        - 1.7.6
+        - 1.8.0
+        - 1.8.1
+        - 1.8.2
+        - 1.8.3
+        - 1.8.4
+        - 1.8.5
+        - 1.8.6
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -1515,7 +1612,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -1552,6 +1649,8 @@ m_PackageAssets:
       versions:
         all:
         - 1.0.0
+        - 3.0.0-exp.1
+        - 3.0.0-exp.3
         compatible:
         - 1.0.0
         verified: 1.0.0
@@ -1604,7 +1703,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: The vector graphics package provides an SVG importer and runtime
         vector graphics APIs.
       status: 4
@@ -1645,6 +1744,9 @@ m_PackageAssets:
         - 2.0.0-preview.16
         - 2.0.0-preview.17
         - 2.0.0-preview.18
+        - 2.0.0-preview.19
+        - 2.0.0-preview.20
+        - 2.0.0-preview.21
         compatible:
         - 2.0.0-preview.2
         - 2.0.0-preview.3
@@ -1663,7 +1765,10 @@ m_PackageAssets:
         - 2.0.0-preview.16
         - 2.0.0-preview.17
         - 2.0.0-preview.18
-        verified: 2.0.0-preview.18
+        - 2.0.0-preview.19
+        - 2.0.0-preview.20
+        - 2.0.0-preview.21
+        verified: 2.0.0-preview.21
       dependencies:
       - name: com.unity.2d.sprite
         version: 1.0.0
@@ -1691,7 +1796,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -1702,6 +1807,58 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.vectorgraphics.git
         revision: e774336fd5411aafbbb68cde4dd6313007193086
+        path: 
+    - packageId: xyz.candycoded.hapticfeedback@https://github.com/CandyCoded/HapticFeedback.git#v1.0.3
+      testable: 0
+      isDirectDependency: 1
+      version: 1.0.3
+      source: 5
+      resolvedPath: R:\Unity Projects\LineGameNew\LineGame\Library\PackageCache\xyz.candycoded.hapticfeedback@4597a0376e
+      assetPath: Packages/xyz.candycoded.hapticfeedback
+      name: xyz.candycoded.hapticfeedback
+      displayName: Haptic Feedback
+      author:
+        name: Scott Doxey
+        email: hello@scottdoxey.com
+        url: 
+      category: 
+      type: 
+      description: Perform haptic feedback on both iOS and Android devices.
+      status: 4
+      errors: []
+      versions:
+        all: []
+        compatible: []
+        verified: 
+      dependencies:
+      - name: com.unity.modules.androidjni
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.androidjni
+        version: 1.0.0
+      keywords:
+      - ios
+      - android
+      - haptic
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git@github.com:CandyCoded/HapticFeedback.git
+        revision: 
         path: 
     - packageId: com.unity.modules.ai@1.0.0
       testable: 0
@@ -3510,7 +3667,7 @@ m_PackageAssets:
         email: 
         url: 
       category: Libraries
-      type: 
+      type: asset
       description: Custom version of the nunit package build to work with Unity.
         Used by the Unity Test Framework.
       status: 4
@@ -3524,6 +3681,9 @@ m_PackageAssets:
         - 1.0.5
         - 1.0.6
         - 2.0.2
+        - 2.0.3
+        - 2.0.4
+        - 2.0.5
         compatible:
         - 0.1.5-preview
         - 0.1.6-preview
@@ -3532,6 +3692,9 @@ m_PackageAssets:
         - 1.0.5
         - 1.0.6
         - 2.0.2
+        - 2.0.3
+        - 2.0.4
+        - 2.0.5
         verified: 1.0.6
       dependencies: []
       resolvedDependencies: []
@@ -3547,7 +3710,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -3573,7 +3736,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: SRP Core makes it easier to create or customize a Scriptable Render
         Pipeline (SRP). SRP Core contains reusable code, including boilerplate code
         for working with platform-specific graphics APIs, utility functions for common
@@ -3680,8 +3843,14 @@ m_PackageAssets:
         - 10.7.0
         - 10.8.0
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         compatible:
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         verified: 10.8.1
       dependencies:
       - name: com.unity.ugui
@@ -3710,7 +3879,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -3736,7 +3905,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: The Shader Graph package adds a visual Shader editing tool to
         Unity. You can use this tool to create Shaders in a visual way instead of
         writing code. Specific render pipelines can implement specific graph features.
@@ -3840,8 +4009,14 @@ m_PackageAssets:
         - 10.7.0
         - 10.8.0
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         compatible:
         - 10.8.1
+        - 10.9.0
+        - 10.10.0
+        - 10.10.1
         verified: 10.8.1
       dependencies:
       - name: com.unity.render-pipelines.core
@@ -3872,7 +4047,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -3898,7 +4073,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: 'This package defines common components used by multiple Game
         Service packages.
 
@@ -3918,6 +4093,22 @@ m_PackageAssets:
         - 1.1.0-pre.69
         - 1.2.0
         - 1.3.1
+        - 1.3.2
+        - 1.4.0
+        - 1.4.1
+        - 1.4.2
+        - 1.4.3
+        - 1.5.2
+        - 1.6.0
+        - 1.7.0
+        - 1.7.1
+        - 1.8.1
+        - 1.8.2
+        - 1.9.0
+        - 1.10.1
+        - 1.11.0
+        - 1.12.0
+        - 1.12.1
         compatible:
         - 1.0.1
         - 1.1.0-pre.7
@@ -3929,6 +4120,22 @@ m_PackageAssets:
         - 1.1.0-pre.69
         - 1.2.0
         - 1.3.1
+        - 1.3.2
+        - 1.4.0
+        - 1.4.1
+        - 1.4.2
+        - 1.4.3
+        - 1.5.2
+        - 1.6.0
+        - 1.7.0
+        - 1.7.1
+        - 1.8.1
+        - 1.8.2
+        - 1.9.0
+        - 1.10.1
+        - 1.11.0
+        - 1.12.0
+        - 1.12.1
         verified: 1.0.1
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -3945,7 +4152,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -3971,7 +4178,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Unity's C# SIMD math library providing vector types and math functions
         with a shader like syntax.
       status: 4
@@ -3995,6 +4202,7 @@ m_PackageAssets:
         - 1.2.4
         - 1.2.5
         - 1.2.6
+        - 1.3.1
         compatible:
         - 0.0.12-preview.2
         - 0.0.12-preview.5
@@ -4013,6 +4221,7 @@ m_PackageAssets:
         - 1.2.4
         - 1.2.5
         - 1.2.6
+        - 1.3.1
         verified: 1.2.6
       dependencies: []
       resolvedDependencies: []
@@ -4026,7 +4235,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -4052,7 +4261,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: General search window for use in the Editor. First target use
         is for GraphView node search.
       status: 4
@@ -4106,7 +4315,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0

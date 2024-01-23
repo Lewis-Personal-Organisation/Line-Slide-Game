@@ -64,23 +64,16 @@ public class Timer
     {
         while(isStarted && !isPaused)
         {
-            onTick.Invoke();
+            onTick?.Invoke();
 
             if (timeIsUp)
             {
-                onComplete.Invoke();
+                onComplete?.Invoke();
                 time = 0;
             }
             else
             {
-                if (isDynamic == false)
-                {
-                    time += increment;
-                }
-                else
-                {
-                    time += Time.deltaTime;
-                }
+                time += isDynamic ? Time.deltaTime : increment;
             }
 
             yield return null;
@@ -91,27 +84,27 @@ public class Timer
     /// Starts the timer with: a start time, an amount to increment per tick, an end time and actions for a) when the Timer ticks and b) when the timer lapses
     /// <br></br><br></br>Note: Pass float.MaxValue in the increment field to use Time.deltaTime instead of a fixed increment
     /// </summary>
-    /// <param name="_startTime"></param>
-    /// <param name="_increment"></param>
-    /// <param name="_endTime"></param>
-    /// <param name="_onTickAction"></param>
-    /// <param name="_onComplete"></param>
-    public void Begin(float _startTime, float _increment, float _endTime, UnityAction _onTickAction, UnityAction _onComplete)
+    /// <param name="startTime"></param>
+    /// <param name="increment"></param>
+    /// <param name="endTime"></param>
+    /// <param name="onTickAction"></param>
+    /// <param name="onComplete"></param>
+    public void Begin(float startTime, float increment, float endTime, UnityAction onTickAction, UnityAction onComplete)
     {
-        time = _startTime;
+        time = startTime;
 
-        if (_increment == float.MaxValue)
+        if (increment == float.MaxValue)
             isDynamic = true;
         else
         {
             isDynamic = false;
-            increment = _increment;
+            this.increment = increment;
         }
 
-        maxTime = _endTime;
+        maxTime = endTime;
 
-        onTick = _onTickAction;
-        onComplete = _onComplete;
+        onTick = onTickAction;
+        this.onComplete = onComplete;
 
         isStarted = true;
         isPaused = false;

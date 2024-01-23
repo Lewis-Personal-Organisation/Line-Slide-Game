@@ -1,0 +1,5 @@
+Distances Between:
+Particle systems + finish line: 1.92
+End Particle System + Path End Point: 1.22250966
+Finish Line + Path End Point: 6.98251
+Path End Point + treasure chest: 0.850252

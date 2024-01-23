@@ -58,11 +58,7 @@ public class CurveHelper : MonoBehaviour
 
         // Linear
         EasingFunctionList[(int)CurveType.Linear, (int)CurveMode.In] = EasingFunctions.Linear;
-        EasingFunctionList[(int)CurveType.Linear, (int)CurveMode.Out] = EasingFunctions.Linear;
-        EasingFunctionList[(int)CurveType.Linear, (int)CurveMode.InOut] = EasingFunctions.Linear;
         curveScriptableObjects.linear.Add(GenerateCurve(NumKeyFrames, CurveType.Linear, CurveMode.In, Scalar, time));
-        curveScriptableObjects.linear.Add(GenerateCurve(NumKeyFrames, CurveType.Linear, CurveMode.Out, Scalar, time));
-        curveScriptableObjects.linear.Add(GenerateCurve(NumKeyFrames, CurveType.Linear, CurveMode.InOut, Scalar, time));
 
         // Quadratic
         EasingFunctionList[(int)CurveType.Quadratic, (int)CurveMode.In] = EasingFunctions.Quadratic.In;
@@ -143,6 +139,8 @@ public class CurveHelper : MonoBehaviour
         curveScriptableObjects.circular.Add(GenerateCurve(NumKeyFrames, CurveType.Circular, CurveMode.In, Scalar, time));
         curveScriptableObjects.circular.Add(GenerateCurve(NumKeyFrames, CurveType.Circular, CurveMode.Out, Scalar, time));
         curveScriptableObjects.circular.Add(GenerateCurve(NumKeyFrames, CurveType.Circular, CurveMode.InOut, Scalar, time));
+
+        EditorUtility.SetDirty(curveScriptableObjects);
     }
 
     /// <summary>
@@ -156,21 +154,21 @@ public class CurveHelper : MonoBehaviour
     /// <returns></returns>
 	public static AnimationCurve GenerateCurve(int keyFrameCount, CurveType curveType, CurveMode curveMode, float scalar, float animTime)
     {
-        List<Keyframe> keys = new List<Keyframe>(keyFrameCount);
+        Keyframe[] keys = new Keyframe[keyFrameCount];
         Func<float, float> function = EasingFunctionList[(int)curveType, (int)curveMode];
 
         for (int i = 0; i < NumKeyFrames; i++)
         {
-            // The point in time for this value. E.g.,  0 / 59, 1 / 58
+            // The point in time between 0 and 1
             float timeFrac = (float)i / (NumKeyFrames - 1);
 
-            // Assign a scaled time fraction, and scaled value
-            keys.Add(new Keyframe(animTime * timeFrac, function(timeFrac) * scalar));
+			// Assign a scaled time fraction, and scaled value
+			keys[i] = new Keyframe(animTime * timeFrac, function(timeFrac) * scalar);
         }
 
-        AnimationCurve curve = new AnimationCurve(keys.ToArray());
+        AnimationCurve curve = new AnimationCurve(keys);
 
-        for (int i = 0; i < keys.Count; i++)
+        for (int i = 0; i < keys.Length; i++)
         {
             AnimationUtility.SetKeyLeftTangentMode(curve, i, AnimationUtility.TangentMode.ClampedAuto);
             AnimationUtility.SetKeyRightTangentMode(curve, i, AnimationUtility.TangentMode.ClampedAuto);

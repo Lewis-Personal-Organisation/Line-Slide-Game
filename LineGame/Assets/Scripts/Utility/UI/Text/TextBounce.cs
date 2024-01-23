@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class TextBounce : MonoBehaviour
 {
-    public RectTransform textTransform;
-
-    public float duration = 2;
-    public float scaleMin;
-    public float scaleMax;
+	private bool isEnabled;
+	[SerializeField] RectTransform textTransform;
+    [SerializeField] float duration = 2;
+	[SerializeField] float scaleMin;
+	[SerializeField] float scaleMax;
 
     public bool isGrowing = true;
 
-    private bool isEnabled;
-
-    [SerializeField]
-    private float timer;
+    private float timer = 0;
 
 
     private void OnEnable()

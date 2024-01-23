@@ -2,11 +2,11 @@
 
 public class WaterShaderAnimator : MonoBehaviour
 {
-    public static WaterShaderAnimator instance;
+    public static WaterShaderAnimator Instance;
 
 	private void Awake()
 	{
-        instance = this;
+        Instance = this;
 	}
 
 	public enum WaterTypes
@@ -45,7 +45,7 @@ public class WaterShaderAnimator : MonoBehaviour
 				waterLevel = -0.5F + Mathf.Sin(Time.time * heightSpeed) * heightAggresiveness;
 				meshRenderer.gameObject.transform.position = new Vector3(0F, waterLevel, 0F);
 				meshRenderer.sharedMaterial.SetFloat("_WaterHeight", Mathf.Sin(Time.time * heightSpeed) * heightAggresiveness);
-                meshRenderer.sharedMaterial.SetVector("_MoveDirection", new Vector4(Time.time * moveSpeed * moveAggresiveness, 0F, 0F, 0F));
+                meshRenderer.sharedMaterial.SetVector("_MoveDirection", new Vector4(moveSpeed * moveAggresiveness, 0F, 0F, 0F));
                 break;
 
 			case WaterTypes.BackAndForth:
@@ -55,5 +55,14 @@ public class WaterShaderAnimator : MonoBehaviour
                 meshRenderer.sharedMaterial.SetVector("_MoveDirection", new Vector4(Mathf.Sin(Time.time * moveSpeed) * moveAggresiveness, 0F, 0F, 0F));
                 break;
 		}
+    }
+
+    /// <summary>
+    /// Set the Mesh Renderer for the Water
+    /// </summary>
+    /// <param name="meshRenderer"></param>
+    public void SetMeshRenderer(MeshRenderer meshRenderer)
+    {
+        this.meshRenderer = meshRenderer;
     }
 }

@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 
-namespace PathCreation {
     public class PathCreator : MonoBehaviour
     {
-
         /// This class stores data for the path editor, and provides accessors to get the current vertex and bezier path.
         /// Attach to a GameObject to create a new path editor.
 
@@ -11,12 +9,17 @@ namespace PathCreation {
 
         [SerializeField, HideInInspector]
         PathCreatorData editorData;
+
+        public PathCreatorData EditorData {
+            get { return editorData; } 
+        }
+
         [SerializeField, HideInInspector]
         bool initialized;
 
         GlobalDisplaySettings globalEditorDisplaySettings;
 
-        // Vertex path created from the current bezier path
+        // The Vertex path created from the current bezier path
         public VertexPath path
         {
             get
@@ -64,15 +67,6 @@ namespace PathCreation {
 
             editorData.Initialize(in2DMode);
             initialized = true;
-        }
-
-        public PathCreatorData EditorData
-        {
-            get
-            {
-                return editorData;
-            }
-
         }
 
         public void TriggerPathUpdate()
@@ -127,4 +121,3 @@ namespace PathCreation {
 
         #endregion
     }
-}

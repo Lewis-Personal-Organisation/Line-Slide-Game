@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Loading.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity
     guid: 7d9bb7eb914270d4585f2604c4b9f843
+  - enabled: 0
+    path: Assets/Scenes/Vibration/Vibration Test.unity
+    guid: f98e142e49c479f4998483e15da191fa
   m_configObjects: {}

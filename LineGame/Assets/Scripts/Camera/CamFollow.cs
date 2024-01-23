@@ -1,30 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class CamFollow : MonoBehaviour
+public class CamFollow : Singleton<CamFollow>
 {
-    public static CamFollow instance;
-
     public Transform player;
 
     public Vector3 distance;
     public bool isFollowing = true;
-    public bool isFocusing = true;
 
 
-    private void Awake()
+	new private void Awake()
     {
-        instance = this;
+        base.Awake();
     }
 
-    // Update is called once per frame
-    public void OnUpdate()
-    {
-        if (isFocusing)
-            transform.LookAt(player.position);
-
-        if (isFollowing)
-            transform.position = player.transform.position + distance;
-    }
+	private void LateUpdate()
+	{
+		if (isFollowing)
+			transform.position = player.transform.position + distance;
+	}
 }

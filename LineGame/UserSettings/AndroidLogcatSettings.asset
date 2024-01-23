@@ -1,0 +1,125 @@
+{
+    "m_SelectedDeviceId": "R3CT313EZ5Z",
+    "m_SelectedPackage": {
+        "deviceId": "R3CT313EZ5Z",
+        "name": "com.LDCom.LineGame",
+        "processId": 26885,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 15394,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 18547,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 19815,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.sec.android.app.launcher",
+            "processId": 2344,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 20828,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 22171,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 22605,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 24535,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 25820,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 26885,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "Behavior": 0
+    },
+    "m_Filter": "",
+    "m_FilterIsRegularExpression": false,
+    "m_SymbolPaths": []
+}

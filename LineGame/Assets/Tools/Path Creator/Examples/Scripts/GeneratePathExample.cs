@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-namespace PathCreation.Examples {
     // Example of creating a path at runtime from a set of points.
 
     [RequireComponent(typeof(PathCreator))]
@@ -17,4 +16,3 @@ namespace PathCreation.Examples {
             }
         }
     }
-}

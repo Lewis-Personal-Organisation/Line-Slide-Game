@@ -3,41 +3,44 @@
 public class Rotate : MonoBehaviour
 {
     public float speed = 5;
+	public Vector3 offset = Vector3.zero;
+    public float timeOffset = 0f;
 
-    public enum moveTypes
+	public enum MoveTypes
     {
         Spin,
-        Sine
+        SineY
     }
 
-    public enum axis
+    public enum Axis
 	{
         X,
         Y,
         Z
 	}
 
-    public moveTypes type;
-    public axis rotationAxis;
+    public MoveTypes type;
+    public Axis rotationAxis;
 
+	private void Start()
+	{
+		
+	}
 
-    private void Update()
-    {
-        if (transform == null)
-            return;
-
+	private void FixedUpdate()
+	{
         switch (type)
         {
-            case moveTypes.Spin:
-                if (rotationAxis == axis.X)
+            case MoveTypes.Spin:
+                if (rotationAxis == Axis.X)
                     transform.Rotate(Vector3.right * speed * Time.deltaTime);
-                else if (rotationAxis == axis.Y)
+                else if (rotationAxis == Axis.Y)
                     transform.Rotate(Vector3.up * speed * Time.deltaTime);
-                else if (rotationAxis == axis.Z)
+                else if (rotationAxis == Axis.Z)
                     transform.Rotate(Vector3.forward * speed * Time.deltaTime);
                 break;
-            case moveTypes.Sine:
-                transform.localPosition = new Vector3(0, Mathf.Sin(speed * Time.deltaTime), 0);
+            case MoveTypes.SineY:
+                transform.position = new Vector3(transform.position.x, Mathf.Sin((Time.time + timeOffset) * speed), transform.position.z) + offset;
                 break;
             default:
                 break;

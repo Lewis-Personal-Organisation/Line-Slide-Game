@@ -54,15 +54,15 @@ public class CustomSceneManager : MonoBehaviour
         sceneLoadingOperation.allowSceneActivation = true;
     }
 
-    public IEnumerator FadeStartupScreen(float _waitTimeBetweenFades)
+    public IEnumerator FadeStartupScreen(float waitTimeBetweenFades)
     {
         while (transparencyCanvasGroup.alpha < 1)
         {
-            transparencyCanvasGroup.alpha += ((1 / fadeTime) * Time.deltaTime);// Time.deltaTime * fadeSpeed);
+            transparencyCanvasGroup.alpha += ((1 / fadeTime) * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
 
-        yield return new WaitForSeconds(_waitTimeBetweenFades);
+        yield return new WaitForSeconds(waitTimeBetweenFades);
 
         while (transparencyCanvasGroup.alpha > 0)
         {

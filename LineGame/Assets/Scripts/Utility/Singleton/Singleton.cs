@@ -8,18 +8,17 @@
 public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     // Our public static instance
-    public static T instance { get; private set; }
+    public static T Instance { get; private set; }
 
     // Our Awake function should be called ideally within the Awake function of the inheriting class
     protected void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError($"An instance of {this.GetType().Name} already exists");
             Destroy(this);
             return;
         }
-
-        instance = (T)this;
+        Instance = (T)this;
     }
 }

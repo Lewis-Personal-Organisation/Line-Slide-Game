@@ -41,7 +41,7 @@ public class EnumGenerator
         }
         catch (IOException ex)
         {
-            UnityEngine.Debug.Log(ex);
+            Utils.Log(ex);
         }
 
         //The File and Folder must exist for this to function:
