@@ -3,7 +3,6 @@
 /* Singleton Pattern
  *  Desc: Any class inherited from this will have a Singleton instance created and assigned automatically. 
  *  If a Instance is already assigned, the new instance is destroyed.
- *  Example: public class MenuManager : Singleton<MenuManager>
  */
 public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {

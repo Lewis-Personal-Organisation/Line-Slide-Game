@@ -362,7 +362,7 @@ public static class CanvasUtils
 
             //Debug.Log($"{countingTimer}/{timedActions[actionIndex].t}");
 
-            if (countingTimer >= timedActions[actionIndex].t)
+            if (countingTimer >= timedActions[actionIndex].timer)
 			{
 				//Debug.Log($"Calling action {actionIndex}/{timedActions.Count-1}");
 				timedActions[actionIndex].action?.Invoke();
@@ -376,51 +376,51 @@ public static class CanvasUtils
 
     public struct TimedAction
     {
-        // The Action Mode. Should the action run only once or multiple times, when criteria is met
-        public enum Modes
+		// When criteria is met, should the action run once or multiple times?
+		public enum Modes
         {
-            Single,
-            Multi,
+            Passive,
+            Active,
         }
 
-        /// <summary>
-        /// Created a new Timed action with a Single/Multi Action, a float value to evaluate and desired action
-        /// </summary>
-        /// <param name="mode"></param>
-        /// <param name="t"></param>
-        /// <param name="action"></param>
-        public TimedAction(Modes mode, float t, UnityAction action)
+		public Modes mode;
+		public float timer;
+		public UnityAction action;
+
+		/// <summary>
+		/// Created a new Timed action with a Pass/Active mode, a time value to evaluate and action
+		/// </summary>
+		/// <param name="mode"></param>
+		/// <param name="time"></param>
+		/// <param name="action"></param>
+		public TimedAction(Modes mode, float time, UnityAction action)
         {
             if (action == null)
                 Debug.LogError($"Action is null. Assign an action to use this class!");
 
             this.mode = mode;
-            this.t = t;
+            this.timer = time;
             this.action = action;
         }
 
         /// <summary>
         /// Evaluates whether the action should be invoked
         /// </summary>
-        /// <param name="t"></param>
-        public void Evaluate(float t)
+        /// <param name="value"></param>
+        public void Evaluate(float value)
         {
             if (action == null)
                 return;
 
-            if (t > this.t)
+            if (value > this.timer)
 			{
 				action.Invoke();
-                if (this.mode == Modes.Single)
+                if (this.mode == Modes.Passive)
                 {
                     action = null;
 				}
 			}
         }
-
-        public Modes mode;
-        public float t;
-        public UnityAction action;
     }
 	#endregion
 

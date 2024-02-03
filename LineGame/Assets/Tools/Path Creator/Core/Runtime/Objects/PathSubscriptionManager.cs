@@ -18,6 +18,27 @@ public class PathSubscriptionManager : MonoBehaviour
 
 		foreach (RoadMeshCreator _subscriber in roadMeshSubscribers)
 		{
+			//int count = pathCreator.bezierPath.points.Count - _subscriber.pathCreator.bezierPath.points.Count;
+			//if (count > 0)
+			//{
+			//	Debug.Log($"Creator has {count} more points. Adding {count} points");
+
+			//	for (int i = 0; i < count; i++)
+			//	{
+			//		_subscriber.pathCreator.bezierPath.AddSegmentToEnd(Vector3.zero);
+			//	}
+			//}
+			//else if (count < 0)
+			//{
+			//	count = Mathf.Abs(count);
+			//	Debug.Log($"Creator has {count} LESS points. DELETING {count} points");
+			//	for (int i = 0; i < Mathf.Abs(count); i++)
+			//	{
+			//		_subscriber.pathCreator.bezierPath.DeleteSegment(_subscriber.pathCreator.bezierPath.points.Count - 1);
+			//	}
+			//}
+
+			// Issue: If pathCreator has more points than subscriber, 
 			for (int i = 0; i < pathCreator.bezierPath.points.Count; i++)
 			{
 				_subscriber.pathCreator.bezierPath.MovePoint(i, pathCreator.bezierPath.points[i]);
@@ -28,9 +49,6 @@ public class PathSubscriptionManager : MonoBehaviour
 			_subscriber.pathCreator.EditorData.PathTransformed();
 
 			UnityEditor.SceneView.RepaintAll();
-
-			// Does the same as above - not needed
-			//_subscriber.DrawPath();
 		}
 #endif
 	}

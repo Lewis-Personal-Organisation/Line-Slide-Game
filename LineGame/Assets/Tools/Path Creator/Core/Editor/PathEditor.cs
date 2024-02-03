@@ -483,7 +483,6 @@ public class PathEditor : Editor
         // Control click or backspace/delete to remove point
         if (e.keyCode == KeyCode.Backspace || e.keyCode == KeyCode.Delete || ((e.control || e.command) && e.type == EventType.MouseDown && e.button == 0))
         {
-
             if (mouseOverHandleIndex != -1)
             {
                 Undo.RecordObject(creator, "Delete segment");

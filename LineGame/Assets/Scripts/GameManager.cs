@@ -6,11 +6,13 @@ public class GameManager : Singleton<GameManager>
     public CurveHelper curveHelper;
 
     public PathFollower playerPathFollower;
+	public Material playerParticleMaterial;
 
-    public UnityEngine.Canvas uiCanvas;
+	public Canvas uiCanvas;
     public RectTransform uiCanvasRectTransform;
 
     public bool gameplayEnabled = true;
+	public bool useTestLevel = false;
 
 
 	new private void Awake()
@@ -20,11 +22,6 @@ public class GameManager : Singleton<GameManager>
 
 	private void Start()
 	{
-		LevelManager.Instance.LoadLevel(GameSave.CurrentLevel);
-	}
-
-	private void Update()
-	{
-
+		LevelManager.Instance.LoadLevel(useTestLevel ? -1 : GameSave.CurrentLevel);
 	}
 }

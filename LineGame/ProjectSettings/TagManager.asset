@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Trap
   - SplashCanvas
+  - Water
+  - Coin
   layers:
   - Default
   - TransparentFX

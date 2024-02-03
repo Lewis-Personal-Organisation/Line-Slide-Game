@@ -28,8 +28,8 @@ public class PathFollower : MonoBehaviour
     [SerializeField] private Collider trapCollider;
 
     [Header("Particle System")]
-    public ParticleSystem pigParticles;
-    ParticleSystem.MainModule pigParticlesModule;
+    public ParticleSystem playerParticles;
+    ParticleSystem.MainModule playerParticlesModule;
     public float maxLifetime = 0.8F;
     public float minLifetime = 0.3F;
 
@@ -37,16 +37,12 @@ public class PathFollower : MonoBehaviour
 	public int pathPercentComplete => (int)Math.Round(Mathf.Clamp(distanceTravelled / pathCreator.path.length, 0F, 1F) * 100F, MidpointRounding.AwayFromZero);
 	public bool pathComplete => Mathf.Clamp(distanceTravelled / pathCreator.path.length, 0, 1) == 1;
 	private bool finishLineReached => pathCreator.path.GetClosestDistanceAlongPath(transform.position) >= LevelManager.Instance.currentLevel.finishLineDistance;
-	//public float finishToEndPercent => Mathf.InverseLerp(LevelManager.Instance.currentLevel.finishLineDistance, LevelManager.Instance.currentLevel.treasureChestDistance, pathCreator.path.GetClosestDistanceAlongPath(transform.position)) * 100;
-	public bool PSOneReached => pathCreator.path.GetClosestDistanceAlongPath(transform.position) >= LevelManager.Instance.particleSystemOneDistance;
-	public bool PSTwoReached => pathCreator.path.GetClosestDistanceAlongPath(transform.position) >= LevelManager.Instance.particleSystemTwoDistance;
-	public bool PSThreeReached => pathCreator.path.GetClosestDistanceAlongPath(transform.position) >= LevelManager.Instance.particleSystemThreeDistance;
-
+	
 
 	private void Awake()
     {
-        pigParticlesModule = pigParticles.main;
-        pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
+        playerParticlesModule = playerParticles.main;
+        //pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
     }
 
 	/// <summary>
@@ -99,9 +95,9 @@ public class PathFollower : MonoBehaviour
 
 			if (speed == 0)
 			{
-				if (pigParticles.isPlaying)
+				if (playerParticles.isPlaying)
 				{
-					pigParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+					playerParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 				}
 				return;
 			}
@@ -114,11 +110,11 @@ public class PathFollower : MonoBehaviour
 
 			LevelManager.Instance.UpdateUIProgress(distanceTravelled, pathCreator.path.length);
 
-            pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
+            //pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
 
-            if (!pigParticles.isPlaying)
+            if (!playerParticles.isPlaying)
 			{
-				pigParticles.Play(false);
+				playerParticles.Play(false);
 			}
 		}
     }

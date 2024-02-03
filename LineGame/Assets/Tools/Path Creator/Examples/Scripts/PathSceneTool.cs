@@ -19,7 +19,6 @@ public abstract class PathSceneTool : MonoBehaviour
 
     public void TriggerUpdate()
     {
-        Debug.Log($"{ColouredString.Colorize($"PathSceneTool :: Updated Texture on {this.gameObject.name}", "f7671e")}");
         StartCoroutine(PathUpdated());
     }
 

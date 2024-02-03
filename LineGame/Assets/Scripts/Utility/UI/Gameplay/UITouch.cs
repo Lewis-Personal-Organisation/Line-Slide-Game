@@ -196,8 +196,8 @@ public class UITouch : Singleton<UITouch>
 					settings.Button.RotateOverTime(this, Vector3.forward * (settings.open ? 1F : -1F) * 60F, .3F);
 					
 					List<CanvasUtils.TimedAction> actions = new List<CanvasUtils.TimedAction>(){
-						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Single, settings.open ? 0.2F: 0.7F, () => settings.testImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 40F, .1F, null)),
-						new CanvasUtils.TimedAction( CanvasUtils.TimedAction.Modes.Single, 1F, () => settings.isAnimating = false)
+						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, settings.open ? 0.2F: 0.7F, () => settings.testImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 40F, .1F, null)),
+						new CanvasUtils.TimedAction( CanvasUtils.TimedAction.Modes.Passive, 1F, () => settings.isAnimating = false)
 					};
 
 					settings.backgroundImage.rectTransform.ResizeOverTimeWithActions(this, (settings.open ? -1F : 1F) * settings.backgroundHeight * Vector3.up, .3F, actions);

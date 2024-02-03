@@ -154,7 +154,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1436868526}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5286142
 MonoBehaviour:
@@ -540,49 +540,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &309182945
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 309182946}
-  - component: {fileID: 309182947}
-  m_Layer: 0
-  m_Name: Debug Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &309182946
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309182945}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1436868526}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &309182947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309182945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97db1db1d3036c548b3f15e25b9883e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &353806378
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +746,7 @@ Transform:
   m_GameObject: {fileID: 407604102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0.38}
-  m_LocalScale: {x: 2.2951748, y: 4.9218755, z: 0}
+  m_LocalScale: {x: 2.7685547, y: 4.9218755, z: 0}
   m_Children: []
   m_Father: {fileID: 2102236517}
   m_RootOrder: 1
@@ -1154,7 +1111,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1436868526}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &617539229
 MonoBehaviour:
@@ -1503,7 +1460,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1436868526}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &997360925
 MonoBehaviour:
@@ -1706,7 +1663,7 @@ GameObject:
   - component: {fileID: 1110764577}
   - component: {fileID: 1110764578}
   m_Layer: 0
-  m_Name: Level Progress Manager
+  m_Name: Level Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1744,9 +1701,12 @@ MonoBehaviour:
   - {fileID: -2273451654948029314, guid: cd24dfc50ddd84b4daa32d825a525c60, type: 3}
   - {fileID: -2273451654948029314, guid: e3548bc533014364192fa93b32eb15c5, type: 3}
   - {fileID: -2273451654948029314, guid: ac9d8b2e7af961d428935c0c9c17332a, type: 3}
+  testLevel: {fileID: -2273451654948029314, guid: ea5f7a06ac3922442bf3d4bc46d5254e,
+    type: 3}
   progressImage: {fileID: 1416745726}
   progressImageonscreenPos: {x: 0, y: 0}
   progressImageOffscreenPos: {x: 0, y: 0}
+  playerMaterial: {fileID: 2100000, guid: 95c6e70d832e9ca44ace2b7c3d4f5a27, type: 2}
   beginnerTrailColour: {r: 0, g: 0.8509804, b: 0.20392157, a: 1}
   IntermediateTrailColour: {r: 1, g: 0.7137255, b: 0, a: 1}
   hardTrailColour: {r: 1, g: 0.23137255, b: 0, a: 1}
@@ -1957,9 +1917,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curveHelper: {fileID: 617539229}
   playerPathFollower: {fileID: 2129095045}
+  playerParticleMaterial: {fileID: 2100000, guid: f6b6c242089c7874bbf845e1fef513db,
+    type: 2}
   uiCanvas: {fileID: 2144649527}
   uiCanvasRectTransform: {fileID: 2144649528}
   gameplayEnabled: 1
+  useTestLevel: 0
 --- !u!1 &1329929945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2410,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436868523}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64c4699b1fc77440bc50a32bfb14c11, type: 3}
   m_Name: 
@@ -2467,7 +2430,6 @@ Transform:
   - {fileID: 1166428404}
   - {fileID: 1110764577}
   - {fileID: 1440418817}
-  - {fileID: 309182946}
   - {fileID: 997360924}
   - {fileID: 5286141}
   - {fileID: 617539228}
@@ -3667,7 +3629,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1436868526}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061659848
 GameObject:
@@ -3975,7 +3937,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8718bfcd9997a144f91fbd925bf24cec, type: 2}
+  - {fileID: 2100000, guid: 95c6e70d832e9ca44ace2b7c3d4f5a27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4040,7 +4002,7 @@ MonoBehaviour:
   scaleToPathWidth: 1
   playerTrail: {fileID: 353806380}
   trapCollider: {fileID: 2129095041}
-  pigParticles: {fileID: 2129095050}
+  playerParticles: {fileID: 2129095050}
   maxLifetime: 0.8
   minLifetime: 0.3
 --- !u!54 &2129095048
@@ -4079,7 +4041,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8718bfcd9997a144f91fbd925bf24cec, type: 2}
+  - {fileID: 2100000, guid: f6b6c242089c7874bbf845e1fef513db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4100,7 +4062,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 4
   m_SortMode: 3
   m_MinParticleSize: 0
   m_MaxParticleSize: 1
@@ -4120,7 +4082,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4208,7 +4170,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4261,7 +4223,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4377,7 +4339,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4693,7 +4655,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 30
+    maxNumParticles: 25
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4752,15 +4714,15 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 5
     angle: 8.02724
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
     donutRadius: 0.2
-    m_Position: {x: 0, y: -0.5, z: 0}
-    m_Rotation: {x: -153.81, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Position: {x: 0, y: 0, z: -0.5}
+    m_Rotation: {x: -180, y: 0, z: 0}
+    m_Scale: {x: 1, y: 1, z: 0.001}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4827,7 +4789,7 @@ ParticleSystem:
     m_SpriteRenderer: {fileID: 0}
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
-    alignToDirection: 0
+    alignToDirection: 1
     m_Texture: {fileID: 0}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
@@ -4958,7 +4920,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 18
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5064,7 +5026,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -5075,22 +5037,31 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 1
           inSlope: 0
-          outSlope: 1
+          outSlope: 0
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.454312
+          value: 1
+          inSlope: -0.013774592
+          outSlope: -0.013774592
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.9973549
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
-          tangentMode: 0
+          value: 0
+          inSlope: -1.8325489
+          outSlope: -1.8325489
+          tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4

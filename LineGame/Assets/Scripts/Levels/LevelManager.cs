@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using TMPro;
 using System.Collections;
+using static Level;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -11,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	[Header("Game Levels")]
 	public List<Level> levels = new List<Level>();
+	public Level testLevel;
 	public int LevelCount => levels.Count;
 	public static UnityAction OnLevelComplete;
 
@@ -18,6 +21,9 @@ public class LevelManager : Singleton<LevelManager>
 	public SlicedFilledImage progressImage;
 	public Vector2 progressImageonscreenPos;
 	public Vector2 progressImageOffscreenPos;
+
+	[Header("Player Colours")]
+	public Material playerMaterial;
 
 	[Header("Player Trail Colours")]
 	[Space(10)]
@@ -39,9 +45,12 @@ public class LevelManager : Singleton<LevelManager>
 	public float forwardSpeed = 0;
 	public float sideSpeed = 0;
 
-	internal float particleSystemOneDistance;
-	internal float particleSystemTwoDistance;
-	internal float particleSystemThreeDistance;
+	[Header("Coin Velocity")]
+	private bool clampCoinVelocity = false;
+
+	private bool PlayerHasPassedFirstParticleSystem => currentLevel.pathCreator.path.GetClosestDistanceAlongPath(GameManager.Instance.playerPathFollower.transform.position) >= currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.finishingParticleSystems[0].transform.position);
+	private bool PlayerHasPassedSecondParticleSystem => currentLevel.pathCreator.path.GetClosestDistanceAlongPath(GameManager.Instance.playerPathFollower.transform.position) >= currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.finishingParticleSystems[2].transform.position);
+	private bool PlayerHasPassedThirdParticleSystem => currentLevel.pathCreator.path.GetClosestDistanceAlongPath(GameManager.Instance.playerPathFollower.transform.position) >= currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.finishingParticleSystems[4].transform.position);
 
 	public enum ConfettiSets
 	{
@@ -61,8 +70,17 @@ public class LevelManager : Singleton<LevelManager>
 		progressImageOffscreenPos = CanvasUtils.GetPos(progressImage.rectTransform, CanvasPositions.Top, UITouch.Instance.gameplayCanvas.scaleFactor, UITouch.Instance.gameplayCanvasTransform);
 		progressImageonscreenPos = UITouch.Instance.gameplayCanvasTransform.GetPos(UITouch.Instance.imagePositioner.values);
 		progressImage.rectTransform.position = progressImageOffscreenPos;
+	}
 
-		//Debug.Log($"OFF POS: {progressImageOffscreenPos} | ON POS: {progressImageonscreenPos} | ANCHORS: Min - {UITouch.Instance.imagePositioner.rectTransform.anchorMin}, Max - {UITouch.Instance.imagePositioner.rectTransform.anchorMax}");
+	private void FixedUpdate()
+	{
+		if (!clampCoinVelocity)
+			return;
+
+		foreach (var coin in currentLevel.TreasureChestCoins)
+		{
+			coin.velocity = Vector3.ClampMagnitude(coin.velocity, 10F);
+		}
 	}
 
 	/// <summary>
@@ -76,15 +94,15 @@ public class LevelManager : Singleton<LevelManager>
 		Destroy(levelObject);
 
 		// Create new level
-		levelObject = Instantiate(GetLevelObject(levelNum), null);
+		levelObject = Instantiate( levelNum == -1 ? testLevel.gameObject : GetLevelObject(levelNum), null);
 		levelObject.transform.position = Vector3.zero;
 		currentLevel = levelObject.GetComponent<Level>();
-		particleSystemOneDistance = currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.particles[0].transform.position);
-		particleSystemTwoDistance = currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.particles[2].transform.position);
-		particleSystemThreeDistance = currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.particles[4].transform.position);
-		UITouch.Instance.progressText.text = $"Level {levelNum}";
+		SetupLevel();
+
+		UITouch.Instance.progressText.text = levelNum == -1 ? "Test Level" : $"Level {levelNum}";
 		WaterShaderAnimator.Instance.SetMeshRenderer(currentLevel.WaterMesh);
 		GameManager.Instance.playerPathFollower.Setup();
+		clampCoinVelocity = false;
 
 		OnLevelComplete = delegate ()
 		{
@@ -95,8 +113,61 @@ public class LevelManager : Singleton<LevelManager>
 	}
 
 	/// <summary>
-	/// Called when we reach finish line. Increments the Level preference and fades the level mask
+	/// Sets up various level objects
 	/// </summary>
+	private void SetupLevel()
+	{
+#if UNITY_EDITOR
+		if (UnityEditor.EditorApplication.isPlaying == false)
+			return;
+#endif
+		switch (currentLevel.Difficulty)
+		{
+			case LevelDifficulty.Beginner:
+				GameManager.Instance.playerPathFollower.PlayerTrailColour = beginnerTrailColour;
+				playerMaterial.color = beginnerTrailColour;
+				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
+				progressImage.color = beginnerTrailColour;
+				currentLevel.WaterMesh.material.SetColor("_WaterColor", beginnerWaterColour);
+				break;
+			case LevelDifficulty.Intermediate:
+				GameManager.Instance.playerPathFollower.PlayerTrailColour = IntermediateTrailColour;
+				playerMaterial.color = IntermediateTrailColour;
+				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
+				progressImage.color = IntermediateTrailColour;
+				currentLevel.WaterMesh.material.SetColor("_WaterColor", IntermediateWaterColour);
+				break;
+			case LevelDifficulty.Hard:
+				GameManager.Instance.playerPathFollower.PlayerTrailColour = hardTrailColour;
+				playerMaterial.color = hardTrailColour;
+				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
+				progressImage.color = hardTrailColour;
+				currentLevel.WaterMesh.material.SetColor("_WaterColor", hardWaterColour);
+				break;
+			case LevelDifficulty.Impossible:
+				GameManager.Instance.playerPathFollower.PlayerTrailColour = impossibleTrailColour;
+				playerMaterial.color = impossibleTrailColour;
+				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
+				progressImage.color = impossibleTrailColour;
+				currentLevel.WaterMesh.material.SetColor("_WaterColor", impossibleWaterColour);
+				break;
+		}
+	}
+
+	/// <summary>
+	/// Retuns an offset colour of an original. Offset values -> 0 - 255
+	/// </summary>
+	/// <param name="original"></param>
+	/// <param name="offset"></param>
+	/// <returns></returns>
+	public Color GetOffsetColour(Color original, float offset)
+	{
+		float amount = offset * (1F / 255F);
+		return new Color(original.r + amount, original.g + amount, original.b + amount, original.a);
+	}
+	/// <summary>
+	/// Called when we reach finish line - Fires Confetti, Shakes and Opens Chest, Fires Coins, Processes UI Fades
+	/// /// </summary>
 	public IEnumerator LevelComplete()
 	{
 		OnLevelComplete = null;
@@ -104,31 +175,26 @@ public class LevelManager : Singleton<LevelManager>
 		GameSave.Save();
 
 		GameManager.Instance.playerPathFollower.ApplyCruiseSpeed();
-		Coroutine tempShake = StartCoroutine(ShakeTreasureChest()); // Begin shaking chest when we cross finish line
+		Coroutine ChestShakeRoutine = StartCoroutine(ShakeTreasureChest()); // Begin shaking chest when we cross finish line
 
-		// When we have done 50% of the Finish Line to End section of path, Fire confetti
-		//yield return new WaitUntil(() => GameManager.Instance.playerPathFollower.finishToEndPercent > 50F);
-
-		yield return new WaitUntil(() => GameManager.Instance.playerPathFollower.PSOneReached);
+		// Wait for the Player to pass each Particle system before playihng confety particle systems
+		yield return new WaitUntil(() => PlayerHasPassedFirstParticleSystem);
 		FireConfetti(ConfettiSets.One);
 
-		yield return new WaitUntil(() => GameManager.Instance.playerPathFollower.PSTwoReached);
+		yield return new WaitUntil(() => PlayerHasPassedSecondParticleSystem);
 		FireConfetti(ConfettiSets.Two);
 
-		yield return new WaitUntil(() => GameManager.Instance.playerPathFollower.PSThreeReached);
+		yield return new WaitUntil(() => PlayerHasPassedThirdParticleSystem);
 		FireConfetti(ConfettiSets.Three);
-
 
 		// Wait until we reach the end of path
 		yield return new WaitUntil(() => GameManager.Instance.playerPathFollower.pathComplete);
 
 		// Stop chest shaking and open
-		StopCoroutine(tempShake);
+		StopCoroutine(ChestShakeRoutine);
 
-		yield return StartCoroutine(OpenTreasureChest(new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Single, .8F, FireTreasureChestCoins)));
-
-		// Trigger and Move Player through finish zone (Fire confetti), 
-		// When they stop, Fire chest with Coins
+		// Open the treasure chest and fire coins
+		yield return StartCoroutine(OpenTreasureChest(new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, .5F, FireTreasureChestCoins)));
 
 		//UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);
 		//yield return new WaitUntil(() => UITouch.Instance.maskScaleState == ScaleStates.Inactive);
@@ -157,12 +223,14 @@ public class LevelManager : Singleton<LevelManager>
 		return levels[Mathf.Clamp(level - 1, 0, levels.Count)].gameObject;
 	}
 
+	// Open the chest over a period of 1 second
 	private IEnumerator OpenTreasureChest(CanvasUtils.TimedAction timedAction)
 	{
-		float t = 0;
-		while ((t += Time.deltaTime) < 1)
+		float t = Time.time;
+		while (Time.time - t < 1)
 		{
-			currentLevel.treasureChestPivot.localEulerAngles = Vector3.right * 100F * GameManager.Instance.curveHelper.Evaluate(CurveType.Exponential, CurveMode.Out, t);
+			Debug.Log(Time.time - t);
+			currentLevel.treasureChestPivot.localEulerAngles = Vector3.right * 100F * GameManager.Instance.curveHelper.Evaluate(CurveType.Exponential, CurveMode.Out, Time.time - t);
 			timedAction.Evaluate(t);
 			yield return null;
 		}
@@ -182,7 +250,13 @@ public class LevelManager : Singleton<LevelManager>
 
 	private void FireTreasureChestCoins()
 	{
-		Debug.Log(Utils.ColourText("COIN FIRE TEST", Color.yellow));
+		clampCoinVelocity = true;
+
+		foreach (var coinRB in currentLevel.TreasureChestCoins)
+		{
+			coinRB.AddTorque(new Vector3(Random.Range(2, 50), Random.Range(2, 50), Random.Range(2, 50)));
+			coinRB.AddForce(Vector3.up * 450F, ForceMode.Force);
+		}
 	}
 
 	/// <summary>
@@ -194,16 +268,16 @@ public class LevelManager : Singleton<LevelManager>
 		switch (set)
 		{
 			case ConfettiSets.One:
-				currentLevel.particles[0].Play();
-				currentLevel.particles[0 + 1].Play();
+				currentLevel.finishingParticleSystems[0].Play();
+				currentLevel.finishingParticleSystems[0 + 1].Play();
 				break;
 			case ConfettiSets.Two:
-				currentLevel.particles[2].Play();
-				currentLevel.particles[2 + 1].Play();
+				currentLevel.finishingParticleSystems[2].Play();
+				currentLevel.finishingParticleSystems[2 + 1].Play();
 				break;
 			case ConfettiSets.Three:
-				currentLevel.particles[4].Play();
-				currentLevel.particles[4 + 1].Play();
+				currentLevel.finishingParticleSystems[4].Play();
+				currentLevel.finishingParticleSystems[4 + 1].Play();
 				break;
 		}
 	}
