@@ -1706,7 +1706,6 @@ MonoBehaviour:
   progressImage: {fileID: 1416745726}
   progressImageonscreenPos: {x: 0, y: 0}
   progressImageOffscreenPos: {x: 0, y: 0}
-  playerMaterial: {fileID: 2100000, guid: 95c6e70d832e9ca44ace2b7c3d4f5a27, type: 2}
   beginnerTrailColour: {r: 0, g: 0.8509804, b: 0.20392157, a: 1}
   IntermediateTrailColour: {r: 1, g: 0.7137255, b: 0, a: 1}
   hardTrailColour: {r: 1, g: 0.23137255, b: 0, a: 1}
@@ -4001,6 +4000,7 @@ MonoBehaviour:
   distanceTravelled: 0
   scaleToPathWidth: 1
   playerTrail: {fileID: 353806380}
+  playerMaterial: {fileID: 2100000, guid: 95c6e70d832e9ca44ace2b7c3d4f5a27, type: 2}
   trapCollider: {fileID: 2129095041}
   playerParticles: {fileID: 2129095050}
   maxLifetime: 0.8

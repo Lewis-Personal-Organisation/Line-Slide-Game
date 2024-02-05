@@ -22,8 +22,6 @@ public class LevelManager : Singleton<LevelManager>
 	public Vector2 progressImageonscreenPos;
 	public Vector2 progressImageOffscreenPos;
 
-	[Header("Player Colours")]
-	public Material playerMaterial;
 
 	[Header("Player Trail Colours")]
 	[Space(10)]
@@ -125,28 +123,28 @@ public class LevelManager : Singleton<LevelManager>
 		{
 			case LevelDifficulty.Beginner:
 				GameManager.Instance.playerPathFollower.PlayerTrailColour = beginnerTrailColour;
-				playerMaterial.color = beginnerTrailColour;
+				GameManager.Instance.playerPathFollower.playerMaterial.color = beginnerTrailColour;
 				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
 				progressImage.color = beginnerTrailColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", beginnerWaterColour);
 				break;
 			case LevelDifficulty.Intermediate:
 				GameManager.Instance.playerPathFollower.PlayerTrailColour = IntermediateTrailColour;
-				playerMaterial.color = IntermediateTrailColour;
+				GameManager.Instance.playerPathFollower.playerMaterial.color = IntermediateTrailColour;
 				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
 				progressImage.color = IntermediateTrailColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", IntermediateWaterColour);
 				break;
 			case LevelDifficulty.Hard:
 				GameManager.Instance.playerPathFollower.PlayerTrailColour = hardTrailColour;
-				playerMaterial.color = hardTrailColour;
+				GameManager.Instance.playerPathFollower.playerMaterial.color = hardTrailColour;
 				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
 				progressImage.color = hardTrailColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", hardWaterColour);
 				break;
 			case LevelDifficulty.Impossible:
 				GameManager.Instance.playerPathFollower.PlayerTrailColour = impossibleTrailColour;
-				playerMaterial.color = impossibleTrailColour;
+				GameManager.Instance.playerPathFollower.playerMaterial.color = impossibleTrailColour;
 				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
 				progressImage.color = impossibleTrailColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", impossibleWaterColour);
@@ -189,6 +187,9 @@ public class LevelManager : Singleton<LevelManager>
 
 		// Wait until we reach the end of path
 		yield return new WaitUntil(() => GameManager.Instance.playerPathFollower.pathComplete);
+
+		// Stop emitting particles
+		GameManager.Instance.playerPathFollower.playerParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 
 		// Stop chest shaking and open
 		StopCoroutine(ChestShakeRoutine);

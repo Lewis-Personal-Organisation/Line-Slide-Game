@@ -24,8 +24,10 @@ public class PathFollower : MonoBehaviour
     public Color PlayerTrailColour
     {
         set { playerTrail.sharedMaterial.color = value; }
-    }
-    [SerializeField] private Collider trapCollider;
+	}
+	[Header("Player Colours")]
+	public Material playerMaterial;
+	[SerializeField] private Collider trapCollider;
 
     [Header("Particle System")]
     public ParticleSystem playerParticles;
@@ -46,15 +48,16 @@ public class PathFollower : MonoBehaviour
     }
 
 	/// <summary>
-	/// When the player hits a trap and UI is in the Gameplay state, trigger end of level state
+	/// When the player hits a trap, stop particles and toggle colliders. Trigger end of level state
 	/// </summary>
 	/// <param name="Collider"></param>
 	private void OnTriggerEnter(Collider Collider)
     {
         if (Collider.CompareTag("Trap"))
-        {
-            UITouch.Instance.SwitchView(UITouch.ViewStates.LevelFailed);
-            ToggleEnabled();
+		{
+            playerParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+			ToggleEnabled();
+			UITouch.Instance.SwitchView(UITouch.ViewStates.LevelFailed);
 		}
     }
 
