@@ -20,6 +20,7 @@ public class PathFollower : MonoBehaviour
 	public bool scaleToPathWidth;
 
     [Header("Player")]
+    public MeshRenderer playerMeshRenderer;
     public TrailRenderer playerTrail;
     public Color PlayerTrailColour
     {
@@ -28,6 +29,7 @@ public class PathFollower : MonoBehaviour
 	[Header("Player Colours")]
 	public Material playerMaterial;
 	[SerializeField] private Collider trapCollider;
+    public Rigidbody[] splitCubeObjects;
 
     [Header("Particle System")]
     public ParticleSystem playerParticles;
@@ -56,7 +58,17 @@ public class PathFollower : MonoBehaviour
         if (Collider.CompareTag("Trap"))
 		{
             playerParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-			ToggleEnabled();
+
+            playerMeshRenderer.enabled = false;
+            splitCubeObjects[0].transform.parent.gameObject.SetActive(true);
+            foreach (Rigidbody splitCube in splitCubeObjects)
+            {
+                splitCube.AddTorque(new Vector3(UnityEngine.Random.Range(1, 3), UnityEngine.Random.Range(2, 5), UnityEngine.Random.Range(1, 3)));
+                splitCube.AddExplosionForce(1.6F, splitCubeObjects[0].transform.parent.position, 1);
+            }
+
+            //splitCubeObjects.SetParent(null);
+            ToggleEnabled();
 			UITouch.Instance.SwitchView(UITouch.ViewStates.LevelFailed);
 		}
     }
