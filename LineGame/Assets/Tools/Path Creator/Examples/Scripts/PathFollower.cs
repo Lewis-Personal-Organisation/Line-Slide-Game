@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Moves along a path at constant speed.
 // Depending on the end of path instruction, will either loop, reverse, or stop at the end of the path.
@@ -28,8 +30,9 @@ public class PathFollower : MonoBehaviour
 	}
 	[Header("Player Colours")]
 	public Material playerMaterial;
-	[SerializeField] private Collider trapCollider;
+	[SerializeField] private Collider playerCollider;
     public Rigidbody[] splitCubeObjects;
+    public Vector3[] cachedPositions;
 
     [Header("Particle System")]
     public ParticleSystem playerParticles;
@@ -49,6 +52,7 @@ public class PathFollower : MonoBehaviour
         //pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
     }
 
+
 	/// <summary>
 	/// When the player hits a trap, stop particles and toggle colliders. Trigger end of level state
 	/// </summary>
@@ -58,16 +62,8 @@ public class PathFollower : MonoBehaviour
         if (Collider.CompareTag("Trap"))
 		{
             playerParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-
             playerMeshRenderer.enabled = false;
-            splitCubeObjects[0].transform.parent.gameObject.SetActive(true);
-            foreach (Rigidbody splitCube in splitCubeObjects)
-            {
-                splitCube.AddTorque(new Vector3(UnityEngine.Random.Range(1, 3), UnityEngine.Random.Range(2, 5), UnityEngine.Random.Range(1, 3)));
-                splitCube.AddExplosionForce(1.6F, splitCubeObjects[0].transform.parent.position, 1);
-            }
-
-            //splitCubeObjects.SetParent(null);
+            FireSplitCubes();
             ToggleEnabled();
 			UITouch.Instance.SwitchView(UITouch.ViewStates.LevelFailed);
 		}
@@ -159,7 +155,10 @@ public class PathFollower : MonoBehaviour
 
         // Reset our Player so they begin at the start of the level
         ResetPath();
-    }
+
+        ResetSplitCubes();
+
+	}
 
     //Increase our speed if we are touching the screen over multiple frames. If we aren't touching screen or are touching prohibited UI
     //elements, decrease our speed. Final value is clamped.
@@ -186,6 +185,7 @@ public class PathFollower : MonoBehaviour
     // is as close as possible to its position on the old path
     void OnPathChanged()
     {
+        Debug.Log("TEST");
         distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
     }
 
@@ -196,8 +196,10 @@ public class PathFollower : MonoBehaviour
     {
         ResetPath();
         enabled = true;
-        ToggleCollisions();
-    }
+        playerMeshRenderer.enabled = true;
+		ToggleCollisions();
+		ResetSplitCubes();
+	}
 
     /// <summary>
     /// Reset the distance travelled, Player position, UI status and Player Trail
@@ -211,21 +213,68 @@ public class PathFollower : MonoBehaviour
         playerTrail.Clear();
 	}
 
+    /// <summary>
+    /// Assigns the Player Scale to fit the path size
+    /// </summary>
     public void AssignPlayerScale()
     {
         this.transform.localScale = new Vector3(roadCreator.roadWidth * 2, roadCreator.roadWidth * 2, roadCreator.roadWidth * 2);
     }
 
+    /// <summary>
+    /// Toggle player collisions
+    /// </summary>
+    /// <returns></returns>
     public bool ToggleCollisions()
     {
-        trapCollider.enabled = !trapCollider.enabled;
-        return trapCollider.enabled;
+        playerCollider.enabled = !playerCollider.enabled;
+        return playerCollider.enabled;
     }
 
-    public bool ToggleEnabled()
+    /// <summary>
+    /// Toggles the player and its collider
+    /// </summary>
+    /// <returns></returns>
+    public void ToggleEnabled()
 	{
-		trapCollider.enabled = !trapCollider.enabled;
+        ToggleCollisions();
 		this.enabled = !this.enabled;
-        return this.enabled;
+	}
+
+    /// <summary>
+    /// Cache the Cube positions. These positions are where the cubes reset to
+    /// </summary>
+	public void CacheSplitCubePositions()
+	{
+		cachedPositions = new Vector3[splitCubeObjects.Length];
+		for (int i = 0; i < splitCubeObjects.Length; i++)
+		{
+			cachedPositions[i] = splitCubeObjects[i].transform.localPosition;
+		}
+	}
+
+    /// <summary>
+    /// Set the Cubes positions back to pre-fire state
+    /// </summary>
+    private void ResetSplitCubes()
+    {
+		splitCubeObjects[0].transform.parent.gameObject.SetActive(false);
+		for (int i = 0; i < splitCubeObjects.Length; i++)
+		{
+			splitCubeObjects[i].transform.localPosition = cachedPositions[i];
+		}
+	}
+
+    /// <summary>
+    /// Fire the Split Cubes when we die
+    /// </summary>
+    public void FireSplitCubes()
+    {
+		splitCubeObjects[0].transform.parent.gameObject.SetActive(true);
+		foreach (Rigidbody splitCube in splitCubeObjects)
+		{
+			splitCube.AddTorque(new Vector3(UnityEngine.Random.Range(1, 3), UnityEngine.Random.Range(2, 5), UnityEngine.Random.Range(1, 3)));
+			splitCube.AddExplosionForce(1.6F, splitCubeObjects[0].transform.parent.position, 1);
+		}
 	}
 }

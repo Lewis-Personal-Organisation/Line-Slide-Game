@@ -20,12 +20,17 @@ public class RoadMeshCreator : PathSceneTool
     public Vector3 ExtendedVerticesHeight = new Vector3(0, 0.032f, 0);
     public bool showAllVerts = false;
     private Vector3[] allVerts = new Vector3[0];
-    public bool showFrontBackFaceVerts = false;
+    public bool showFrontFaceVerts = false;
     private Vector3[] startEndVerts = new Vector3[0];
-    public MeshFilter startEndMeshFilter;
-    public bool renderStartEndTriangles = false;
 
-	[Header("Material settings")]
+    [Header("Additional Rendering Path Settings")]
+	public bool renderStartAndEndFaces = false;
+	public MeshFilter startMeshFilter;
+    public MeshRenderer startMeshRenderer;
+    public MeshFilter endMeshFilter;
+    public MeshRenderer endMeshRenderer;
+
+    [Header("Material settings")]
     public Material roadMaterial;
     public Material undersideMaterial;
     public float textureTiling = 1;
@@ -82,7 +87,7 @@ public class RoadMeshCreator : PathSceneTool
                 Handles.Label(allVerts[t], new GUIContent($"v{t}"), new GUIStyle());
             }
         }
-        else if (showFrontBackFaceVerts)
+        else if (showFrontFaceVerts)
         {
             Gizmos.color = Color.red;
             for (int t = 0; t < this.startEndVerts.Length; t += 1)
@@ -97,8 +102,6 @@ public class RoadMeshCreator : PathSceneTool
     void CreateRoadMesh()
     {
         allVerts = new Vector3[0];
-        startEndVerts = new Vector3[0];
-
         Vector3[] verts = new Vector3[path.NumPoints * 8];
         Vector2[] uvs = new Vector2[verts.Length];
         Vector3[] normals = new Vector3[verts.Length];
@@ -121,8 +124,7 @@ public class RoadMeshCreator : PathSceneTool
         bool usePathNormals = !(path.space == PathSpace.xyz && flattenSurface);
         for (int i = 0; i < path.NumPoints; i++)
         {
-			//Debug.Log($"A: {usePathNormals}");
-			Vector3 localUp = usePathNormals ? Vector3.Cross(path.GetTangent(i), path.GetNormal(i)) : path.up;
+            Vector3 localUp = usePathNormals ? Vector3.Cross(path.GetTangent(i), path.GetNormal(i)) : path.up;
             Vector3 localRight = usePathNormals ? path.GetNormal(i) : Vector3.Cross(localUp, path.GetTangent(i));
 
             // Find position to left and right of current path vertex
@@ -201,39 +203,76 @@ public class RoadMeshCreator : PathSceneTool
             }
         }
 
-        if (startEndMeshFilter == null)
-            return;
-
-        if (renderStartEndTriangles)
+        // Rendering of Start and End Front faces
+        if (renderStartAndEndFaces)
         {
-                Vector3 up = usePathNormals ? Vector3.Cross(path.GetTangent(0), path.GetNormal(0)) : path.up;
-                Vector3 right = usePathNormals ? path.GetNormal(0) : Vector3.Cross(up, path.GetTangent(0));
+			Vector3 up = usePathNormals ? Vector3.Cross(path.GetTangent(0), path.GetNormal(0)) : path.up;
+            Vector3 right = usePathNormals ? path.GetNormal(0) : Vector3.Cross(up, path.GetTangent(0));
+            Vector3[] vertPoints = new Vector3[4];
+            int[] triOrder = { 0, 1, 3, 0, 3, 2 };
+			
+				// Start Mesh
+				if (!startMeshFilter)
+            {
+                GameObject filterHolder = new GameObject("Start Face Mesh Holder");
+                filterHolder.transform.SetParent(transform, true);
+                startMeshFilter = filterHolder.AddComponent<MeshFilter>();
+                startMeshRenderer = filterHolder.AddComponent<MeshRenderer>();
+                startMeshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                startMeshRenderer.sharedMaterial = undersideMaterial;
+            }
 
-                Vector3[] startEndVerts = new Vector3[]{
-                path.GetPoint(0) - right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
-                path.GetPoint(0) + right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
-                path.GetPoint(0) - right * Mathf.Abs(roadWidth) - up * thickness,
-                path.GetPoint(0) + right * Mathf.Abs(roadWidth) - up * thickness,
-                path.GetPoint(path.localPoints.Length-1) - right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
-                path.GetPoint(path.localPoints.Length-1) + right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
-                path.GetPoint(path.localPoints.Length-1) - right * Mathf.Abs(roadWidth) - up * thickness,
-                path.GetPoint(path.localPoints.Length-1) + right * Mathf.Abs(roadWidth) - up * thickness
-                };
+            Mesh startmesh = new Mesh();
+            startmesh.name = "Start Mesh";
+            vertPoints[0] = path.GetPoint(0) - right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight;   // Upper Left
+            vertPoints[1] = path.GetPoint(0) + right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight;   // Upper Right
+            vertPoints[2] = path.GetPoint(0) - right * Mathf.Abs(roadWidth) - up * thickness;           // Lower Left
+            vertPoints[3] = path.GetPoint(0) + right * Mathf.Abs(roadWidth) - up * thickness;           // Lower Right
+            startmesh.vertices = vertPoints;
+            startmesh.triangles = triOrder;
+            startMeshFilter.sharedMesh = startmesh;
 
-                Mesh mesh = new Mesh();
-                mesh.vertices = startEndVerts;
-                mesh.triangles = new int[] { 0, 1, 3, 0, 3, 2, 4, 5, 7, 4, 7, 6 };
-                startEndMeshFilter.sharedMesh = mesh;
+			up = usePathNormals ? Vector3.Cross(path.GetTangent(path.localPoints.Length - 1), path.GetNormal(path.localPoints.Length - 1)) : path.up;
+			right = usePathNormals ? path.GetNormal(path.localPoints.Length - 1) : Vector3.Cross(up, path.GetTangent(path.localPoints.Length - 1));
 
-                if (showFrontBackFaceVerts)
-                {
-                    this.startEndVerts = startEndVerts;
-                }
+			// End Mesh
+			if (!endMeshFilter)
+            {
+                GameObject filterHolder = new GameObject("End Face Mesh Holder");
+                filterHolder.transform.SetParent(transform, true);
+                endMeshFilter = filterHolder.AddComponent<MeshFilter>();
+                endMeshRenderer = filterHolder.AddComponent<MeshRenderer>();
+                endMeshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                endMeshRenderer.sharedMaterial = undersideMaterial;
+            }
+
+			Mesh endMesh = new Mesh();
+            endMesh.name = "End Mesh";
+            endMeshRenderer.material = undersideMaterial;
+            vertPoints[0] = path.GetPoint(path.localPoints.Length - 1) - right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight;   // Upper Left
+            vertPoints[1] = path.GetPoint(path.localPoints.Length - 1) + right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight;   // Upper Right
+            vertPoints[2] = path.GetPoint(path.localPoints.Length - 1) - right * Mathf.Abs(roadWidth) - up * thickness;           // Lower Left
+            vertPoints[3] = path.GetPoint(path.localPoints.Length - 1) + right * Mathf.Abs(roadWidth) - up * thickness;           // Lower Right
+            endMesh.vertices = vertPoints;
+            endMesh.triangles = triOrder;
+            endMeshFilter.sharedMesh = endMesh;
+
+            if (showFrontFaceVerts)
+			{
+				startEndVerts[0] = startmesh.vertices[0];
+				startEndVerts[1] = startmesh.vertices[1];
+				startEndVerts[2] = startmesh.vertices[2];
+				startEndVerts[3] = startmesh.vertices[3];
+				startEndVerts[4] = endMesh.vertices[0];
+				startEndVerts[5] = endMesh.vertices[1];
+				startEndVerts[6] = endMesh.vertices[2];
+				startEndVerts[7] = endMesh.vertices[3];
+			}
         }
         else
         {
-            if (startEndMeshFilter.sharedMesh != null)
-                startEndMeshFilter.sharedMesh.Clear();
+            if (startMeshFilter && startMeshFilter.sharedMesh != null) startMeshFilter.mesh = null;
+            if (endMeshFilter && endMeshFilter.sharedMesh != null) endMeshFilter.mesh = null;
         }
     }
 

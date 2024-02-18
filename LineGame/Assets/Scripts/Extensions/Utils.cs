@@ -5,15 +5,7 @@ using UnityEngine;
 using UnityEngineInternal;
 
 public static class Utils
-{
-	//public static Vector2 GetMainGameViewSize()
-	//{
-	//	System.Type T = System.Type.GetType("UnityEditor.GameView,UnityEditor");
-	//	System.Reflection.MethodInfo GetSizeOfMainGameView = T.GetMethod("GetSizeOfMainGameView", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-	//	System.Object Res = GetSizeOfMainGameView.Invoke(null, null);
-	//	return (Vector2)Res;
-	//}
-	
+{	
 	public static float InverseLerp(float a, float b, float value) => (value - a) / (b - a);
 
 	public static Vector3 InverseLerp(Vector3 a, Vector3 b, Vector3 t)
@@ -31,6 +23,37 @@ public static class Utils
 		InverseLerp(a.x, b.x, t.x),
 		InverseLerp(a.y, b.y, t.y)
 		);
+	}
+
+	public enum Axis
+	{
+		X,
+		Y,
+		Z
+	}
+
+	/// <summary>
+	/// Returns the original Vector3 with a specific axis value replaced
+	/// </summary>
+	/// <param name="original"></param>
+	/// <param name="selected"></param>
+	/// <returns></returns>
+	public static Vector3 Replace(this Vector3 original, Axis selected, float newValue)
+	{
+		switch (selected)
+		{
+			case Axis.X:
+				original.x = newValue;
+				break;
+			case Axis.Y:
+				original.y = newValue;
+				break;
+			case Axis.Z:
+				original.z = newValue;
+				break;
+		}
+
+		return original;
 	}
 
 	///// <summary>

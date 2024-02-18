@@ -274,7 +274,11 @@ public class VertexPath
         return MathUtility.TransformPoint(localResult, transform, space);
     }
 
+    /// <summary>
     /// Finds the 'time' (0=start of path, 1=end of path) along the path that is closest to the given point
+    /// </summary>
+    /// <param name="worldPoint"></param>
+    /// <returns></returns>
     public float GetClosestTimeOnPath(Vector3 worldPoint)
     {
         Vector3 localPoint = MathUtility.InverseTransformPoint(worldPoint, transform, space);

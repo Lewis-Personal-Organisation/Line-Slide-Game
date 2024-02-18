@@ -42,7 +42,7 @@ public class PathSubscriptionManager : MonoBehaviour
 			for (int i = 0; i < pathCreator.bezierPath.points.Count; i++)
 			{
 				_subscriber.pathCreator.bezierPath.MovePoint(i, pathCreator.bezierPath.points[i]);
-				Debug.Log($"Moved Point {i} on {_subscriber.gameObject.name}");
+				//Debug.Log($"Moved Point {i} on {_subscriber.gameObject.name}");
 			}
 
 			// Tell the Path Creator its path has been updated, which creates the road mesh

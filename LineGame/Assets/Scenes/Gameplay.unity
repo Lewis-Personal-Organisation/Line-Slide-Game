@@ -1199,7 +1199,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9072158372428719148, guid: 4fc34d5063125e44cbfad83412b4cd23, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4fc34d5063125e44cbfad83412b4cd23, type: 3}
 --- !u!54 &633098689 stripped
 Rigidbody:
@@ -4155,7 +4156,7 @@ MonoBehaviour:
   playerMeshRenderer: {fileID: 2129095042}
   playerTrail: {fileID: 353806380}
   playerMaterial: {fileID: 2100000, guid: 95c6e70d832e9ca44ace2b7c3d4f5a27, type: 2}
-  trapCollider: {fileID: 2129095041}
+  playerCollider: {fileID: 2129095041}
   splitCubeObjects:
   - {fileID: 633098701}
   - {fileID: 633098700}
@@ -4169,6 +4170,7 @@ MonoBehaviour:
   - {fileID: 633098692}
   - {fileID: 633098691}
   - {fileID: 633098689}
+  cachedPositions: []
   playerParticles: {fileID: 2129095050}
   maxLifetime: 0.8
   minLifetime: 0.3

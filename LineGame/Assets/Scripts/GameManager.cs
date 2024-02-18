@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 
 	private void Start()
 	{
+		playerPathFollower.CacheSplitCubePositions();
 		LevelManager.Instance.LoadLevel(useTestLevel ? -1 : GameSave.CurrentLevel);
 	}
 }

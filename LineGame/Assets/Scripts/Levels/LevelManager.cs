@@ -197,10 +197,16 @@ public class LevelManager : Singleton<LevelManager>
 		// Open the treasure chest and fire coins
 		yield return StartCoroutine(OpenTreasureChest(new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, .5F, FireTreasureChestCoins)));
 
-		//UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);
-		//yield return new WaitUntil(() => UITouch.Instance.maskScaleState == ScaleStates.Inactive);
-		//Debug.Log(Utils.ColourText($"Fade has finished! Loading new level", Color.cyan));
-		//LoadLevel(GameSave.CurrentLevel);
+		// Wait until coins have settled in place
+		yield return new WaitForSeconds(3);
+
+		// Water Animations for coins and cubes
+		// Change Level complete screen
+
+		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);
+		yield return new WaitUntil(() => UITouch.Instance.maskScaleState == ScaleStates.Inactive);
+		Debug.Log(Utils.ColourText($"Fade has finished! Loading new level", Color.cyan));
+		LoadLevel(GameSave.CurrentLevel);
 		yield return null;
 	}
 
@@ -230,7 +236,6 @@ public class LevelManager : Singleton<LevelManager>
 		float t = Time.time;
 		while (Time.time - t < 1)
 		{
-			Debug.Log(Time.time - t);
 			currentLevel.treasureChestPivot.localEulerAngles = Vector3.right * 100F * GameManager.Instance.curveHelper.Evaluate(CurveType.Exponential, CurveMode.Out, Time.time - t);
 			timedAction.Evaluate(t);
 			yield return null;
