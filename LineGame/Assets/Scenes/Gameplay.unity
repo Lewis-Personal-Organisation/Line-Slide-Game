@@ -2074,7 +2074,7 @@ MonoBehaviour:
   uiCanvas: {fileID: 2144649527}
   uiCanvasRectTransform: {fileID: 2144649528}
   gameplayEnabled: 1
-  useTestLevel: 1
+  useTestLevel: 0
 --- !u!1 &1329929945
 GameObject:
   m_ObjectHideFlags: 0
