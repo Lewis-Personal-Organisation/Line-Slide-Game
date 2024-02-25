@@ -207,9 +207,10 @@ public class PathFollower : MonoBehaviour
     public void ResetPath()
     {
         speed = 0;
-        distanceTravelled = 0;
+        distanceTravelled = .24F;
 		transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
-        LevelManager.Instance.UpdateUIProgress(distanceTravelled, pathCreator.path.length);
+		//transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
+		LevelManager.Instance.UpdateUIProgress(distanceTravelled, pathCreator.path.length);
         playerTrail.Clear();
 	}
 

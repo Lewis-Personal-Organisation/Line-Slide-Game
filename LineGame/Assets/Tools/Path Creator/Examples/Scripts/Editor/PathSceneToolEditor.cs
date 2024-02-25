@@ -9,6 +9,8 @@ public class PathSceneToolEditor : Editor
 
     public override void OnInspectorGUI()
     {
+
+
         using (var check = new EditorGUI.ChangeCheckScope())
         {
             DrawDefaultInspector();
@@ -77,7 +79,6 @@ public class PathSceneToolEditor : Editor
 
     protected virtual void Subscribe()
     {
-        //Debug.Log("Subscribed");
         if (pathTool.pathCreator != null)
         {
             isSubscribed = true;

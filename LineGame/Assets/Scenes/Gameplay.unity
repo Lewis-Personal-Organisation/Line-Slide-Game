@@ -565,7 +565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353806378}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0, y: -0.45, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2129095044}
@@ -2074,7 +2074,7 @@ MonoBehaviour:
   uiCanvas: {fileID: 2144649527}
   uiCanvasRectTransform: {fileID: 2144649528}
   gameplayEnabled: 1
-  useTestLevel: 0
+  useTestLevel: 1
 --- !u!1 &1329929945
 GameObject:
   m_ObjectHideFlags: 0

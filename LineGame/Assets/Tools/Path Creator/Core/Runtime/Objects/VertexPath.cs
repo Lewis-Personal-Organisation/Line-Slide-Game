@@ -189,19 +189,35 @@ public class VertexPath
         return MathUtility.TransformDirection(localNormals[index], transform, space);
     }
 
+    /// <summary>
+    /// Returns a Vertex Path Point of the given index
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     public Vector3 GetPoint(int index)
     {
         return MathUtility.TransformPoint(localPoints[index], transform, space);
     }
 
+    /// <summary>
     /// Gets point on path based on distance travelled.
+    /// Used to offset the Players starting position so they no longer hang over the start of a level
+    /// </summary>
+    /// <param name="dst"></param>
+    /// <param name="endOfPathInstruction"></param>
+    /// <returns></returns>
     public Vector3 GetPointAtDistance(float dst, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop)
     {
         float t = dst / length;
         return GetPointAtTime(t, endOfPathInstruction);
     }
 
+    /// <summary>
     /// Gets forward direction on path based on distance travelled.
+    /// </summary>
+    /// <param name="dst"></param>
+    /// <param name="endOfPathInstruction"></param>
+    /// <returns></returns>
     public Vector3 GetDirectionAtDistance(float dst, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop)
     {
         float t = dst / length;
