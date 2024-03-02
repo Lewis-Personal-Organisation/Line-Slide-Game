@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     public PathFollower playerPathFollower;
 	public Material playerParticleMaterial;
 
+	public Camera mainCamera;
 	public Canvas uiCanvas;
     public RectTransform uiCanvasRectTransform;
 
@@ -24,5 +25,6 @@ public class GameManager : Singleton<GameManager>
 	{
 		playerPathFollower.CacheSplitCubePositions();
 		LevelManager.Instance.LoadLevel(useTestLevel ? -1 : GameSave.CurrentLevel);
+		UITouch.Instance.coinCounterText.text = GameSave.CoinCount.ToString();
 	}
 }

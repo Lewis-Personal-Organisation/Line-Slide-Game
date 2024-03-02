@@ -41,8 +41,6 @@ public class Level : MonoBehaviour
 	public Transform treasureChestPivot;
 	public ParticleSystem[] finishingParticleSystems;
 	public Rigidbody[] TreasureChestCoins;
-
-
 	
 
 	// Render our Path and Road when it becomes visible

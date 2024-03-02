@@ -202,6 +202,9 @@ public class LevelManager : Singleton<LevelManager>
 
 		// Water Animations for coins and cubes
 		// Change Level complete screen
+		yield return StartCoroutine(MoveCoinsToCoinCounter());
+
+		yield return new WaitForSeconds(1.5F);
 
 		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);
 		yield return new WaitUntil(() => UITouch.Instance.maskScaleState == ScaleStates.Inactive);
@@ -287,4 +290,69 @@ public class LevelManager : Singleton<LevelManager>
 				break;
 		}
 	}
+
+	/// <summary>
+	/// Spawn the UI Coins in the world to screen position of where they landed
+	/// If they land offscreen, spawn them at a random radius from screen center
+	/// </summary>
+	public IEnumerator MoveCoinsToCoinCounter()
+	{
+		List<Vector2> startPositions = new List<Vector2>();
+
+		for (int i = 0; i < currentLevel.TreasureChestCoins.Length; i++)
+		{
+			UITouch.Instance.coinImages[i].transform.position = GameManager.Instance.mainCamera.WorldToScreenPoint(currentLevel.TreasureChestCoins[i].transform.position);
+			UITouch.Instance.coinImages[i].gameObject.SetActive(true);
+			startPositions.Add(UITouch.Instance.coinImages[i].rectTransform.position);
+		}
+
+		float t = 0;
+
+		while(t < 1)
+		{
+			for (int i = 0; i < UITouch.Instance.coinImages.Count; i++)
+			{
+				UITouch.Instance.coinImages[i].rectTransform.position = Vector3.Slerp(startPositions[i], UITouch.Instance.coinCounterImage.rectTransform.position, t);
+				UITouch.Instance.coinImages[i].rectTransform.localScale = Vector2.one * UITouch.Instance.coinSizeCurve.Evaluate(t);
+			}
+
+			t += Time.deltaTime;
+			yield return null;
+		}
+
+		for (int i = 0; i < UITouch.Instance.coinImages.Count; i++)
+		{
+			UITouch.Instance.coinImages[i].gameObject.SetActive(false);
+		}
+
+		float coinCountToUpdate = GameSave.CoinCount;		// The Coin Count to update
+		GameSave.CoinCount += ProcessLevelReward();
+		GameSave.Save();
+
+		// While coinCountToUpdate does not match the new coin count, update it visually
+		while (coinCountToUpdate < GameSave.CoinCount)
+		{
+			coinCountToUpdate += Time.deltaTime * UITouch.Instance.coinCounterUpdateSpeed;
+			UITouch.Instance.coinCounterText.text = ((int)coinCountToUpdate).ToString();
+			yield return null;
+		}
+	}
+
+	private int ProcessLevelReward()
+	{
+		switch (currentLevel.Difficulty)
+		{
+			case LevelDifficulty.Beginner:
+				return 50;
+			case LevelDifficulty.Intermediate:
+				return 75;
+			case LevelDifficulty.Hard:
+				return 110;
+			case LevelDifficulty.Impossible:
+				return 160;
+		}
+		return 0;
+	}
+
+	
 }

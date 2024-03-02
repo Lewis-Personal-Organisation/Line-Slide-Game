@@ -32,8 +32,8 @@ public static class GameSave
 	{
 		get
 		{
-			if (coinCount <= 1)
-				coinCount = PlayerPrefs.GetInt("coinCount", 1);
+			if (coinCount == 0)
+				coinCount = PlayerPrefs.GetInt("coinCount", 0);
 			return coinCount;
 		}
 		set

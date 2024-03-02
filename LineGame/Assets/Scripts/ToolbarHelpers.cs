@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class ToolbarHelpers : MonoBehaviour
 {
-
-	[MenuItem("Game/Save State/Reset Level")]
+	[MenuItem("Game Editor/Save State/Reset Level")]
 	static void ResetLevel()
 	{
 		GameSave.CurrentLevel = 0;
@@ -15,8 +15,15 @@ public class ToolbarHelpers : MonoBehaviour
 		Debug.Log(Utils.ColourText($"Current Level Reset to 0", Color.cyan));
 	}
 
+	[MenuItem("Game Editor/Save State/Reset Coins")]
+	static void ResetCoins()
+	{
+		GameSave.CoinCount = 0;
 
-	[MenuItem("Game/Player/Toggle Player Collisions")]
+		Debug.Log(Utils.ColourText($"Current Coins Reset to 0", Color.cyan));
+	}
+
+	[MenuItem("Game Editor/Player/Toggle Player Collisions")]
 	private static void TogglePlayerCollisions()
 	{
 		if (GameManager.Instance)
@@ -38,7 +45,7 @@ public class ToolbarHelpers : MonoBehaviour
 		}
 	}
 
-	[MenuItem("Game/Performance/Toggle FPS Display")]
+	[MenuItem("Game Editor/Performance/Toggle FPS Display")]
 	static void ShowFPS()
 	{
 		if (FPSDispay.Instance)

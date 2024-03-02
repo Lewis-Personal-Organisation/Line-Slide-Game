@@ -36,7 +36,6 @@ public enum ScaleStates
 }
 
 
-
 public class UITouch : Singleton<UITouch>
 {
 	public bool touchingOverFrames = false;		// Used to filter out touch spamming by holding down a touch
@@ -72,6 +71,13 @@ public class UITouch : Singleton<UITouch>
 		set { levelPercentTMPText.text = value; }
 	}
 	public TextMeshProUGUI progressText; // MOVE TO UI SCRIPT
+
+	[Header("Coins")]
+	public Image coinCounterImage;
+	public float coinCounterUpdateSpeed = 1;
+	public TextMeshProUGUI coinCounterText;
+	public AnimationCurve coinSizeCurve;
+	public List<Image> coinImages;
 
 
 	public enum ViewStates
