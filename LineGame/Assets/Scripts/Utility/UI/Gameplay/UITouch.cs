@@ -49,6 +49,7 @@ public class UITouch : Singleton<UITouch>
         DebugToggle,
         TapToPlay,
 		TapToRestart,
+		PlayerSelection
     }
 
     private Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>();
@@ -70,7 +71,10 @@ public class UITouch : Singleton<UITouch>
 	{
 		set { levelPercentTMPText.text = value; }
 	}
-	public TextMeshProUGUI progressText; // MOVE TO UI SCRIPT
+	public TextMeshProUGUI progressText;
+	public Vector2 progressImageOffScreenPos = Vector2.zero;
+	public Vector2 progressImageOnScreenPos = Vector2.zero;
+	public SlicedFilledImage levelProgressImage = null;
 
 	[Header("Coins")]
 	public Image coinCounterImage;
@@ -85,7 +89,8 @@ public class UITouch : Singleton<UITouch>
 		LoadLevel,
 		LevelComplete,
 		LevelFailed,
-		LevelRestart
+		LevelRestart,
+		PlayerSelection,
 	}
 	private static ViewStates viewState;
 	public static ViewStates GetViewState => viewState;
@@ -107,6 +112,7 @@ public class UITouch : Singleton<UITouch>
 	[SerializeField] TextMeshProUGUI vSyncText = null;
 	public TextBounce tapToPlay;
     public RectTransform tapToPlayHitBox;
+	public RectTransform playerSelectionHitBox;
 
 
 	[Header("Restart View Interactables")]
@@ -133,9 +139,15 @@ public class UITouch : Singleton<UITouch>
 		InstanceIDtoFilter.Add(settings.Button.GetInstanceID(), TouchFilters.Settings);
 		InstanceIDtoFilter.Add(tapToPlayHitBox.GetInstanceID(), TouchFilters.TapToPlay);
 		InstanceIDtoFilter.Add(tapToRestartHitBox.GetInstanceID(), TouchFilters.TapToRestart);
+		InstanceIDtoFilter.Add(playerSelectionHitBox.GetInstanceID(), TouchFilters.PlayerSelection);
 
 		maskFadeSpriteMaxSize = maskFadeSprite.transform.localScale;
 		gameplayCanvasGroup.alpha = 0;
+
+		// Cache the positions for our Progress Image
+		progressImageOffScreenPos = CanvasUtils.GetPos(levelProgressImage.rectTransform, CanvasPositions.Top, Instance.gameplayCanvas.scaleFactor, Instance.gameplayCanvasTransform);
+		progressImageOnScreenPos = Instance.gameplayCanvasTransform.GetPos(Instance.imagePositioner.values);
+		levelProgressImage.rectTransform.position = progressImageOffScreenPos;
 	}
 
 	// Each frame, if we have provided Mouse/Touch input, and aren't touching over multiple frames,
@@ -220,7 +232,8 @@ public class UITouch : Singleton<UITouch>
 			case TouchFilters.TapToPlay:
 				tapToPlay.gameObject.SetActive(false);
 				tapToPlayHitBox.gameObject.SetActive(false);
-				LevelManager.Instance.progressImage.rectTransform.Move(this, LevelManager.Instance.progressImageOffscreenPos, LevelManager.Instance.progressImageonscreenPos, 1.2F, CurveType.Exponential);
+				Instance.levelProgressImage.rectTransform.Move(this, Instance.progressImageOffScreenPos, Instance.progressImageOnScreenPos, 1.2F, CurveType.Exponential);
+				playerSelectionHitBox.gameObject.SetActive(false);
 				return false;
 
 			case TouchFilters.TapToRestart:
@@ -228,6 +241,16 @@ public class UITouch : Singleton<UITouch>
 				tapToRestartHitBox.gameObject.SetActive(false);
 				SwitchView(ViewStates.LevelRestart);
 				return false;
+
+			case TouchFilters.PlayerSelection:
+				tapToPlay.gameObject.SetActive(false);
+				tapToPlayHitBox.gameObject.SetActive(false);
+				tapToRestart.gameObject.SetActive(false);
+				tapToRestartHitBox.gameObject.SetActive(false);
+				settings.Button.parent.gameObject.SetActive(false);
+				playerSelectionHitBox.gameObject.SetActive(false);
+				SwitchView(ViewStates.PlayerSelection);
+				return true;
 		}
         return false;
     }
@@ -274,6 +297,10 @@ public class UITouch : Singleton<UITouch>
 				GameManager.Instance.playerPathFollower.OnLevelReset();
 				SwitchView(ViewStates.LoadLevel);
 				break;
+
+			case ViewStates.PlayerSelection:
+				StartCoroutine(IScaleMask(ScaleTypes.Down, false, 3.5F));
+				break;
 		}
 	}
 
@@ -285,13 +312,6 @@ public class UITouch : Singleton<UITouch>
 	{
 		switch (viewState)
 		{
-			case ViewStates.LoadLevel:
-				break;
-
-			case ViewStates.LevelComplete:
-				// Open Chest, Fire out coins, show level complete screen
-				break;
-
 			case ViewStates.LevelFailed:
 				levelPercentText = $"{GameManager.Instance.playerPathFollower.pathPercentComplete}% COMPLETED";
 				tapToRestart.gameObject.SetActive(true);
@@ -308,13 +328,13 @@ public class UITouch : Singleton<UITouch>
 	/// <param name="type"></param>
 	/// <param name="speed"></param>
 	/// <returns></returns>
-	private IEnumerator IScaleMask(ScaleTypes type, bool levelFailed = false)
+	private IEnumerator IScaleMask(ScaleTypes type, bool levelFailed = false, float customSpeed = 0)
 	{
 		maskScaleState = ScaleStates.InProgress;
 		spriteRenderer.color = levelFailed ? levelFailedColour : Color.black;
 
 		float t = 0;
-		float speed = GetFadeSpeed(LevelManager.Instance.currentLevel.Difficulty);
+		float speed = customSpeed > 0 ? customSpeed : GetFadeSpeed(LevelManager.Instance.currentLevel.Difficulty);
 
 		// the Sprite size from start to end
 		Vector3 startSpriteScale = type == ScaleTypes.Down ? maskFadeSpriteMaxSize : Vector3.zero;
@@ -378,6 +398,16 @@ public class UITouch : Singleton<UITouch>
 		}
 
 		return 1F;
+	}
+
+	/// <summary>
+	/// Update our level progress image to match our travelled distance in the level
+	/// </summary>
+	/// <param name="distance"></param>
+	/// <param name="vertCount"></param>
+	public void UpdateLevelProgressUI(float distance, float vertCount)
+	{
+		levelProgressImage.fillAmount = distance / vertCount;
 	}
 
 	// The method used to Open the Android Keyboard to edit settings

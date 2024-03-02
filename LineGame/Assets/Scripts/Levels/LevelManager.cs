@@ -63,13 +63,6 @@ public class LevelManager : Singleton<LevelManager>
 		base.Awake();
 	}
 
-	private void Start()
-	{
-		progressImageOffscreenPos = CanvasUtils.GetPos(progressImage.rectTransform, CanvasPositions.Top, UITouch.Instance.gameplayCanvas.scaleFactor, UITouch.Instance.gameplayCanvasTransform);
-		progressImageonscreenPos = UITouch.Instance.gameplayCanvasTransform.GetPos(UITouch.Instance.imagePositioner.values);
-		progressImage.rectTransform.position = progressImageOffscreenPos;
-	}
-
 	private void FixedUpdate()
 	{
 		if (!clampCoinVelocity)
@@ -211,16 +204,6 @@ public class LevelManager : Singleton<LevelManager>
 		Debug.Log(Utils.ColourText($"Fade has finished! Loading new level", Color.cyan));
 		LoadLevel(GameSave.CurrentLevel);
 		yield return null;
-	}
-
-	/// <summary>
-	/// Update our level progress image to match our travelled distance in the level
-	/// </summary>
-	/// <param name="distance"></param>
-	/// <param name="vertCount"></param>
-	public void UpdateUIProgress(float distance, float vertCount)
-	{
-		progressImage.fillAmount = distance / vertCount;
 	}
 
 	/// <summary>

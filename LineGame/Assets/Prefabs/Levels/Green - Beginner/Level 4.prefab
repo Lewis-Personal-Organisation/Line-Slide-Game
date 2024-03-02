@@ -256,8 +256,8 @@ MonoBehaviour:
       - {x: 4.895631, y: -0.0000109495595, z: -2.1862898}
       - {x: 3.0218093, y: -0.0000109495595, z: -2.25}
       - {x: 1.125606, y: -0.0000109495595, z: -2.3144712}
-      - {x: -9.732961, y: -0.0000109495595, z: -2.25}
-      - {x: -12.61251, y: -0.0000109495595, z: -2.25}
+      - {x: -9.732961, y: 0.00008777529, z: -2.2331648}
+      - {x: -12.61251, y: 0.00008777529, z: -2.2331648}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -314,9 +314,13 @@ MonoBehaviour:
   flattenSurface: 0
   ExtendedVerticesHeight: {x: 0, y: 0.02, z: 0}
   showAllVerts: 0
-  showFrontBackFaceVerts: 0
-  startEndMeshFilter: {fileID: 0}
-  renderStartEndTriangles: 0
+  showFrontFaceVerts: 0
+  renderStartAndEndFaces: 0
+  materialChoice: 0
+  startMeshFilter: {fileID: 0}
+  startMeshRenderer: {fileID: 0}
+  endMeshFilter: {fileID: 0}
+  endMeshRenderer: {fileID: 0}
   roadMaterial: {fileID: 2100000, guid: 8b565f351f797bd46a1fe9c65076fbfa, type: 2}
   undersideMaterial: {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
   textureTiling: 1
@@ -443,9 +447,13 @@ MonoBehaviour:
   flattenSurface: 1
   ExtendedVerticesHeight: {x: 0, y: -0.05, z: 0}
   showAllVerts: 0
-  showFrontBackFaceVerts: 0
-  startEndMeshFilter: {fileID: 7725699681832198974}
-  renderStartEndTriangles: 1
+  showFrontFaceVerts: 0
+  renderStartAndEndFaces: 0
+  materialChoice: 0
+  startMeshFilter: {fileID: 0}
+  startMeshRenderer: {fileID: 0}
+  endMeshFilter: {fileID: 0}
+  endMeshRenderer: {fileID: 0}
   roadMaterial: {fileID: 2100000, guid: 0a4e5642ea7e5dc4e9530f3c6f7f5df6, type: 2}
   undersideMaterial: {fileID: 2100000, guid: c1d8d882244c5344fa86a8fd23246f81, type: 2}
   textureTiling: 1

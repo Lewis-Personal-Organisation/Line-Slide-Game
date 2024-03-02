@@ -779,8 +779,8 @@ MonoBehaviour:
       - {x: 4.9180384, y: -0.0000109495595, z: -2.1862898}
       - {x: 3.0218093, y: -0.0000109495595, z: -2.25}
       - {x: 1.1255803, y: -0.0000109495595, z: -2.3137102}
-      - {x: -14.172722, y: -0.0000109495595, z: -2.25}
-      - {x: -17.05227, y: -0.0000109495595, z: -2.25}
+      - {x: -9.732961, y: -0.0000109495595, z: -2.25}
+      - {x: -12.61251, y: -0.0000109495595, z: -2.25}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -839,6 +839,7 @@ MonoBehaviour:
   showAllVerts: 0
   showFrontFaceVerts: 0
   renderStartAndEndFaces: 0
+  materialChoice: 0
   startMeshFilter: {fileID: 0}
   startMeshRenderer: {fileID: 0}
   endMeshFilter: {fileID: 0}
@@ -973,6 +974,7 @@ MonoBehaviour:
   showAllVerts: 0
   showFrontFaceVerts: 1
   renderStartAndEndFaces: 1
+  materialChoice: 0
   startMeshFilter: {fileID: 2438384107063256129}
   startMeshRenderer: {fileID: 3058295405368952741}
   endMeshFilter: {fileID: 7255980226807427376}

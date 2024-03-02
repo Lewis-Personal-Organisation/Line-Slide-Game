@@ -98,7 +98,7 @@ public class PathFollower : MonoBehaviour
 			distanceTravelled += speed * Time.deltaTime;
 			transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
 			transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
-			LevelManager.Instance.UpdateUIProgress(distanceTravelled, pathCreator.path.length);
+			UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
 		}
         else
         {
@@ -119,7 +119,7 @@ public class PathFollower : MonoBehaviour
 			transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
 			transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
 
-			LevelManager.Instance.UpdateUIProgress(distanceTravelled, pathCreator.path.length);
+			UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
 
             //pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
 
@@ -209,7 +209,7 @@ public class PathFollower : MonoBehaviour
         speed = 0;
         distanceTravelled = .25F;
 		transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
-		LevelManager.Instance.UpdateUIProgress(distanceTravelled, pathCreator.path.length);
+		UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
         playerTrail.Clear();
 	}
 

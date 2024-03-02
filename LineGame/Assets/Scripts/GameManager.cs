@@ -13,7 +13,11 @@ public class GameManager : Singleton<GameManager>
     public RectTransform uiCanvasRectTransform;
 
     public bool gameplayEnabled = true;
+
+	[Header("TESTING/DEBUGGING")]
 	public bool useTestLevel = false;
+	public bool AlwaysUseFirstLevel = false;
+	public bool AlwaysResetCoins = false;
 
 
 	new private void Awake()
@@ -24,7 +28,28 @@ public class GameManager : Singleton<GameManager>
 	private void Start()
 	{
 		playerPathFollower.CacheSplitCubePositions();
-		LevelManager.Instance.LoadLevel(useTestLevel ? -1 : GameSave.CurrentLevel);
+
+		if (useTestLevel)
+		{
+			LevelManager.Instance.LoadLevel(-1);
+		}
+		else
+		{
+			if (AlwaysUseFirstLevel)
+			{
+				LevelManager.Instance.LoadLevel(1);
+			}
+			else
+			{
+				LevelManager.Instance.LoadLevel(GameSave.CurrentLevel);
+			}
+		}
+
+		if (AlwaysResetCoins)
+		{
+			GameSave.CoinCount = 0;
+		}
+		
 		UITouch.Instance.coinCounterText.text = GameSave.CoinCount.ToString();
 	}
 }
