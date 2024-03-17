@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -184,7 +185,7 @@ public static class Utils
 
 
 	/// <summary>
-	/// Rescales a Sprite Renderer to fit into a Camera's Orthographic Fustrum.
+	/// Sets the Sprite Renderer Scale values to fit exactly into a Camera's Orthographic Fustrum.
 	///  Assumes the Sprite is alligned with Camera
 	/// </summary>
 	/// <returns></returns>
@@ -267,5 +268,27 @@ public static class Utils
 	public static string FromClipboard()
 	{
 		return GUIUtility.systemCopyBuffer;
+	}
+
+	/// <summary>
+	/// Replace the Alpha value of a given colour
+	/// </summary>
+	/// <param name="col"></param>
+	/// <param name="alpha"></param>
+	/// <returns></returns>
+	public static Color AlphaFade(Color col, float alpha)
+	{
+		col.a = alpha;
+		return col;
+	}
+
+	public static int Clamp(int value, int min, int max)
+	{
+		int result = value;
+		if (value.CompareTo(max) > 0)
+			result = max;
+		if (value.CompareTo(min) < 0)
+			result = min;
+		return result;
 	}
 }

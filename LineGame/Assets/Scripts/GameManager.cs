@@ -12,8 +12,6 @@ public class GameManager : Singleton<GameManager>
 	public Canvas uiCanvas;
     public RectTransform uiCanvasRectTransform;
 
-    public bool gameplayEnabled = true;
-
 	[Header("TESTING/DEBUGGING")]
 	public bool useTestLevel = false;
 	public bool AlwaysUseFirstLevel = false;
@@ -27,6 +25,9 @@ public class GameManager : Singleton<GameManager>
 
 	private void Start()
 	{
+		GameSave.ConfigureUnlocks(UITouch.Instance.playerUnlockCount);
+		UITouch.Instance.ApplyPlayerSelectionUnlockableStates();
+
 		playerPathFollower.CacheSplitCubePositions();
 
 		if (useTestLevel)

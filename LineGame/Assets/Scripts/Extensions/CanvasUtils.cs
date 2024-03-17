@@ -22,7 +22,7 @@ public static class CanvasUtils
 	#region Properties
 
 	/// <summary>
-	/// Returns the RectTransform's Position where it would sit on the edge of the Canvas, specified by a Position.
+	/// Returns a specified UI position for the edge of the Canvas
     /// E.g, Using the Top position results in the RectTransform's bottom edge sitting on the Canvas' top edge
 	/// </summary>
 	/// <param name="rectTransform"></param>
@@ -49,13 +49,13 @@ public static class CanvasUtils
         return Vector2.zero;
 	}
 
-    /// <summary>
-    /// Returns a Width and Height Percentage of a Canvas Rect. Usefull for positioning elements programatically
-    /// </summary>
-	public static Vector2 GetPos(this RectTransform canvas, Vector2 percentages)
+	/// <summary>
+	/// Given a Screen Percentage, returns the equivalent position within a UI Canvas. Usefull for positioning elements programatically
+	/// </summary>
+	public static Vector2 GetPos(this RectTransform canvas, Vector2 screenPercent)
 	{
-		return new Vector2((canvas.rect.width * canvas.localScale.x / 100) * percentages.x,
-						   (canvas.rect.height * canvas.localScale.y / 100) * percentages.y);
+		return new Vector2((canvas.rect.width * canvas.localScale.x / 100) * screenPercent.x,
+						   (canvas.rect.height * canvas.localScale.y / 100) * screenPercent.y);
 	}
 	public static Vector2 Bottom(this RectTransform transform)
     {

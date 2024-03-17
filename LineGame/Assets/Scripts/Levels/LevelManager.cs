@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
-using TMPro;
 using System.Collections;
 using static Level;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -23,12 +21,12 @@ public class LevelManager : Singleton<LevelManager>
 	public Vector2 progressImageOffscreenPos;
 
 
-	[Header("Player Trail Colours")]
+	[Header("Progress Image Colours")]
 	[Space(10)]
-	public Color beginnerTrailColour;
-	public Color IntermediateTrailColour;
-	public Color hardTrailColour;
-	public Color impossibleTrailColour;
+	public Color beginnerProgressImageColour;
+	public Color intermediateProgressImageColour;
+	public Color hardProgressImageColour;
+	public Color impossibleProgressImageColour;
 
 	[Header("Player Water Colours")]
 	[Space(10)]
@@ -100,7 +98,7 @@ public class LevelManager : Singleton<LevelManager>
 			StartCoroutine(LevelComplete());
 		};
 
-		UITouch.Instance.SwitchView(UITouch.ViewStates.LoadLevel);
+		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelLoaded);
 	}
 
 	/// <summary>
@@ -115,31 +113,19 @@ public class LevelManager : Singleton<LevelManager>
 		switch (currentLevel.Difficulty)
 		{
 			case LevelDifficulty.Beginner:
-				GameManager.Instance.playerPathFollower.PlayerTrailColour = beginnerTrailColour;
-				GameManager.Instance.playerPathFollower.playerMaterial.color = beginnerTrailColour;
-				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
-				progressImage.color = beginnerTrailColour;
+				progressImage.color = beginnerProgressImageColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", beginnerWaterColour);
 				break;
 			case LevelDifficulty.Intermediate:
-				GameManager.Instance.playerPathFollower.PlayerTrailColour = IntermediateTrailColour;
-				GameManager.Instance.playerPathFollower.playerMaterial.color = IntermediateTrailColour;
-				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
-				progressImage.color = IntermediateTrailColour;
+				progressImage.color = intermediateProgressImageColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", IntermediateWaterColour);
 				break;
 			case LevelDifficulty.Hard:
-				GameManager.Instance.playerPathFollower.PlayerTrailColour = hardTrailColour;
-				GameManager.Instance.playerPathFollower.playerMaterial.color = hardTrailColour;
-				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
-				progressImage.color = hardTrailColour;
+				progressImage.color = hardProgressImageColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", hardWaterColour);
 				break;
 			case LevelDifficulty.Impossible:
-				GameManager.Instance.playerPathFollower.PlayerTrailColour = impossibleTrailColour;
-				GameManager.Instance.playerPathFollower.playerMaterial.color = impossibleTrailColour;
-				GameManager.Instance.playerParticleMaterial.color = GetOffsetColour(beginnerTrailColour, -100F);
-				progressImage.color = impossibleTrailColour;
+				progressImage.color = impossibleProgressImageColour;
 				currentLevel.WaterMesh.material.SetColor("_WaterColor", impossibleWaterColour);
 				break;
 		}
@@ -156,6 +142,7 @@ public class LevelManager : Singleton<LevelManager>
 		float amount = offset * (1F / 255F);
 		return new Color(original.r + amount, original.g + amount, original.b + amount, original.a);
 	}
+
 	/// <summary>
 	/// Called when we reach finish line - Fires Confetti, Shakes and Opens Chest, Fires Coins, Processes UI Fades
 	/// /// </summary>
@@ -275,13 +262,14 @@ public class LevelManager : Singleton<LevelManager>
 	}
 
 	/// <summary>
-	/// Spawn the UI Coins in the world to screen position of where they landed
-	/// If they land offscreen, spawn them at a random radius from screen center
+	/// Spawn the UI Coins at screen position of where they landed in the world
+	/// Spherically interpolate the Coin positions to the Coin Counter UI element whilst applying scale over time
 	/// </summary>
 	public IEnumerator MoveCoinsToCoinCounter()
 	{
+		
 		List<Vector2> startPositions = new List<Vector2>();
-
+		// Spawn and enable the UI Coins at screen position of where they landed in the world. Also cache the start positions
 		for (int i = 0; i < currentLevel.TreasureChestCoins.Length; i++)
 		{
 			UITouch.Instance.coinImages[i].transform.position = GameManager.Instance.mainCamera.WorldToScreenPoint(currentLevel.TreasureChestCoins[i].transform.position);
@@ -289,53 +277,53 @@ public class LevelManager : Singleton<LevelManager>
 			startPositions.Add(UITouch.Instance.coinImages[i].rectTransform.position);
 		}
 
+		// Spherically interpolate the Coins positions to Coin Counter UI element, applying scaling over time
+		// If time < one, move and scale the coin images. If t elapses, disable the Gameobject
 		float t = 0;
-
-		while(t < 1)
+		while (t < 1)
 		{
+			t += Time.deltaTime;
 			for (int i = 0; i < UITouch.Instance.coinImages.Count; i++)
 			{
 				UITouch.Instance.coinImages[i].rectTransform.position = Vector3.Slerp(startPositions[i], UITouch.Instance.coinCounterImage.rectTransform.position, t);
 				UITouch.Instance.coinImages[i].rectTransform.localScale = Vector2.one * UITouch.Instance.coinSizeCurve.Evaluate(t);
+
+				if (t >= 1) 
+					UITouch.Instance.coinImages[i].gameObject.SetActive(false);
 			}
-
-			t += Time.deltaTime;
 			yield return null;
 		}
 
-		for (int i = 0; i < UITouch.Instance.coinImages.Count; i++)
-		{
-			UITouch.Instance.coinImages[i].gameObject.SetActive(false);
-		}
+		// Count up the UI element from the previous Coin count to new coin count over time
+		// Cache the now-old coin count
+		float oldCointCount = GameSave.CoinCount;   
+		ApplyLevelReward();
 
-		float coinCountToUpdate = GameSave.CoinCount;		// The Coin Count to update
-		GameSave.CoinCount += ProcessLevelReward();
-		GameSave.Save();
-
-		// While coinCountToUpdate does not match the new coin count, update it visually
-		while (coinCountToUpdate < GameSave.CoinCount)
-		{
-			coinCountToUpdate += Time.deltaTime * UITouch.Instance.coinCounterUpdateSpeed;
-			UITouch.Instance.coinCounterText.text = ((int)coinCountToUpdate).ToString();
-			yield return null;
-		}
+		// Update the Coin Count Display
+		UITouch.Instance.UpdateUICoins(oldCointCount);
 	}
 
-	private int ProcessLevelReward()
+	/// <summary>
+	/// Apply the Reward in coins for this level. This is persistant and saved to Device Storage using PlayerPrefs
+	/// </summary>
+	/// <returns></returns>
+	private void ApplyLevelReward()
 	{
 		switch (currentLevel.Difficulty)
 		{
 			case LevelDifficulty.Beginner:
-				return 50;
+				GameSave.CoinCount += 50;
+				break;
 			case LevelDifficulty.Intermediate:
-				return 75;
+				GameSave.CoinCount += 75;
+				break;
 			case LevelDifficulty.Hard:
-				return 110;
+				GameSave.CoinCount += 110;
+				break;
 			case LevelDifficulty.Impossible:
-				return 160;
+				GameSave.CoinCount += 160;
+				break;
 		}
-		return 0;
+		GameSave.Save();
 	}
-
-	
 }

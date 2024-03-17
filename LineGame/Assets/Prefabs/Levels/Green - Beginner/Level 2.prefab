@@ -972,7 +972,7 @@ MonoBehaviour:
   flattenSurface: 1
   ExtendedVerticesHeight: {x: 0, y: -0.05, z: 0}
   showAllVerts: 0
-  showFrontFaceVerts: 1
+  showFrontFaceVerts: 0
   renderStartAndEndFaces: 1
   materialChoice: 0
   startMeshFilter: {fileID: 2438384107063256129}
@@ -4167,11 +4167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8d321cc58af7d42b6d7bb8b3d83b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  rotationAxis: 1
+  axisContext: 0
   speed: 100
   offset: {x: 0, y: 0, z: 0}
   timeOffset: 0
-  type: 0
-  rotationAxis: 1
 --- !u!1001 &6766824133601103237
 PrefabInstance:
   m_ObjectHideFlags: 0

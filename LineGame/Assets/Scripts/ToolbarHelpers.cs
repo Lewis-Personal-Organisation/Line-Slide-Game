@@ -11,7 +11,6 @@ public class ToolbarHelpers : MonoBehaviour
 	static void ResetLevel()
 	{
 		GameSave.CurrentLevel = 0;
-
 		Debug.Log(Utils.ColourText($"Current Level Reset to 0", Color.cyan));
 	}
 
@@ -19,8 +18,15 @@ public class ToolbarHelpers : MonoBehaviour
 	static void ResetCoins()
 	{
 		GameSave.CoinCount = 0;
-
 		Debug.Log(Utils.ColourText($"Current Coins Reset to 0", Color.cyan));
+	}
+
+	[MenuItem("Game Editor/Save State/Reset Unlockables")]
+	static void ResetUnlockables()
+	{
+		GameSave.ResetUnlockables();
+		GameSave.Save();
+		Debug.Log(Utils.ColourText($"Unlockables Reset", Color.cyan));
 	}
 
 	[MenuItem("Game Editor/Player/Toggle Player Collisions")]

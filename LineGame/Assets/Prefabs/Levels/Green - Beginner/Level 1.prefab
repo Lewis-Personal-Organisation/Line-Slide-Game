@@ -513,6 +513,7 @@ MonoBehaviour:
   showAllVerts: 0
   showFrontFaceVerts: 0
   renderStartAndEndFaces: 0
+  materialChoice: 0
   startMeshFilter: {fileID: 0}
   startMeshRenderer: {fileID: 0}
   endMeshFilter: {fileID: 0}
@@ -694,8 +695,9 @@ MonoBehaviour:
   flattenSurface: 1
   ExtendedVerticesHeight: {x: 0, y: -0.05, z: 0}
   showAllVerts: 0
-  showFrontFaceVerts: 1
+  showFrontFaceVerts: 0
   renderStartAndEndFaces: 1
+  materialChoice: 0
   startMeshFilter: {fileID: 4754850939683243997}
   startMeshRenderer: {fileID: 8710717928572217590}
   endMeshFilter: {fileID: 8569141070063077635}
