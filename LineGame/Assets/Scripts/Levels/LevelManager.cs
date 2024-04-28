@@ -106,10 +106,10 @@ public class LevelManager : Singleton<LevelManager>
 	/// </summary>
 	private void SetupLevel()
 	{
-#if UNITY_EDITOR
-		if (UnityEditor.EditorApplication.isPlaying == false)
-			return;
-#endif
+//#if UNITY_EDITOR
+//		if (UnityEditor.EditorApplication.isPlaying == false)
+//			return;
+//#endif
 		switch (currentLevel.Difficulty)
 		{
 			case LevelDifficulty.Beginner:
@@ -158,10 +158,8 @@ public class LevelManager : Singleton<LevelManager>
 		// Wait for the Player to pass each Particle system before playihng confety particle systems
 		yield return new WaitUntil(() => PlayerHasPassedFirstParticleSystem);
 		FireConfetti(ConfettiSets.One);
-
 		yield return new WaitUntil(() => PlayerHasPassedSecondParticleSystem);
 		FireConfetti(ConfettiSets.Two);
-
 		yield return new WaitUntil(() => PlayerHasPassedThirdParticleSystem);
 		FireConfetti(ConfettiSets.Three);
 
@@ -171,7 +169,7 @@ public class LevelManager : Singleton<LevelManager>
 		// Stop emitting particles
 		GameManager.Instance.playerPathFollower.playerParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 
-		// Stop chest shaking and open
+		// Stop chest shaking
 		StopCoroutine(ChestShakeRoutine);
 
 		// Open the treasure chest and fire coins
@@ -181,13 +179,16 @@ public class LevelManager : Singleton<LevelManager>
 		yield return new WaitForSeconds(3);
 
 		// Water Animations for coins and cubes
-		// Change Level complete screen
-		yield return StartCoroutine(MoveCoinsToCoinCounter());
+		// ADD^^
 
+		// Animate UI coins and wait
+		yield return StartCoroutine(MoveCoinsToCoinCounter());
 		yield return new WaitForSeconds(1.5F);
 
-		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);
-		yield return new WaitUntil(() => UITouch.Instance.maskScaleState == ScaleStates.Inactive);
+		// Switch game view to Level Complete. Once complete, wait then load the new level
+		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);				
+		yield return new WaitUntil(() => !UITouch.Instance.maskScaleActive);
+		yield return new WaitForSeconds(.5F);
 		Debug.Log(Utils.ColourText($"Fade has finished! Loading new level", Color.cyan));
 		LoadLevel(GameSave.CurrentLevel);
 		yield return null;
@@ -325,5 +326,10 @@ public class LevelManager : Singleton<LevelManager>
 				break;
 		}
 		GameSave.Save();
+	}
+
+	public void ToggleLevel(bool choice)
+	{
+		levelObject.SetActive(choice);
 	}
 }

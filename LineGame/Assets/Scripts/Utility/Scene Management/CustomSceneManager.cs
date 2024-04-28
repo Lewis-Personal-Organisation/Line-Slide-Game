@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class CustomSceneManager : MonoBehaviour
 {
-    public Scenes sceneToLoad;
+    [HideInInspector] public int sceneIndex;
 
     public CanvasGroup transparencyCanvasGroup;
 
@@ -14,8 +14,6 @@ public class CustomSceneManager : MonoBehaviour
     public float fadeTime = 1;
     // The length of time between fading (How long our canvas group is visible)
     public float visibleTime = 0.4F;
-
-    private bool fadingIsComplete;
 
 
     private void Start()
@@ -29,27 +27,30 @@ public class CustomSceneManager : MonoBehaviour
     {
         if (fadeTime == 0)
         {
-            Debug.LogError("Fade Speed is set to 0, Loading would have never completed!! Changed to 1.");
+            Debug.LogError("Fade Speed can't be 0. Set to 1.");
             fadeTime = 1;
         }
 
         if (transparencyCanvasGroup == null)
         {
-            Debug.LogError("Splash Canvas Group is null, assign it in the inspector!");
+            Debug.LogError("Splash Canvas Group is null, assign in inspector.");
         }
+
+        if (sceneIndex == -1)
+		{
+			Debug.LogError("No Scenes are included to build. Tick at least 1 Scene to allow transitioning in File > Build Settings");
+		}
 
         DontDestroyOnLoad(this.gameObject);
     }
 
     public IEnumerator LoadSceneAsync()
     {
-        fadingIsComplete = false;
-        sceneLoadingOperation = SceneManager.LoadSceneAsync((int)sceneToLoad);
+        Debug.Log($"Loading Scene {sceneIndex} with index {sceneIndex} at path {System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(sceneIndex))}");
+        sceneLoadingOperation = SceneManager.LoadSceneAsync(sceneIndex/*(int)sceneToLoad*/);
         sceneLoadingOperation.allowSceneActivation = false;
 
-        StartCoroutine(FadeStartupScreen(visibleTime));
-        
-        yield return new WaitUntil(() => fadingIsComplete);
+        yield return StartCoroutine(FadeStartupScreen(visibleTime));
 
         sceneLoadingOperation.allowSceneActivation = true;
     }
@@ -69,8 +70,6 @@ public class CustomSceneManager : MonoBehaviour
             transparencyCanvasGroup.alpha -= (Time.deltaTime * fadeTime);
             yield return new WaitForEndOfFrame();
         }
-
-        fadingIsComplete = true;
     }
 }
 

@@ -277,4 +277,12 @@ public class PathFollower : MonoBehaviour
 			splitCube.AddExplosionForce(1.6F, splitCubeObjects[0].transform.parent.position, 1);
 		}
 	}
+
+    /// <summary>
+    /// Adjusts the Trail following position, so the trail encapuslates the vertices positions when traversing curved paths sections
+    /// </summary>
+    public void SetTrailDistance()
+    {
+		playerTrail.transform.localPosition = new Vector3(0, -0.45F, -0.45F);
+	}
 }

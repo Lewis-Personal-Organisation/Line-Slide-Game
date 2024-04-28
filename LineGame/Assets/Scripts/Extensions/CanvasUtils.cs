@@ -304,9 +304,9 @@ public static class CanvasUtils
 	}
 	#endregion
 	#region Size
-	public static void ResizeOverTime(this RectTransform transform, MonoBehaviour routineOwner, Vector3 extension, float time, UnityAction onStart = null, UnityAction onDone = null, float waitTime = 0)
+	public static void ResizeOverTime(this RectTransform transform, MonoBehaviour owner, Vector3 offset, float time, UnityAction onStart = null, UnityAction onDone = null, float waitTime = 0)
 	{
-		routineOwner.StartCoroutine(IExtend(transform, extension, time, onStart, onDone, waitTime));
+		owner.StartCoroutine(IExtend(transform, offset, time, onStart, onDone, waitTime));
 	}
 
 	public static IEnumerator IExtend(RectTransform transform, Vector3 extension, float time, UnityAction onStart, UnityAction onDone, float waitTime)
@@ -360,11 +360,8 @@ public static class CanvasUtils
 
 			transform.sizeDelta = Vector3.Lerp(fromSize, extension, countingTimer);
 
-            //Debug.Log($"{countingTimer}/{timedActions[actionIndex].t}");
-
             if (countingTimer >= timedActions[actionIndex].timer)
 			{
-				//Debug.Log($"Calling action {actionIndex}/{timedActions.Count-1}");
 				timedActions[actionIndex].action?.Invoke();
                 if (actionIndex < timedActions.LastIndex())
                     actionIndex++;
@@ -474,7 +471,7 @@ public static class CanvasUtils
 	/// Positive 2D (1,1,0)
 	/// </summary>
 	public static Vector3 Positive2D => Vector3.up + Vector3.right;
-	//public static Vector3 Positive2D => new Vector3(1, 1, 0);
+    public static Vector3 Negative2D => Vector3.down + Vector3.left;
 
 
 

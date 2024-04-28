@@ -29,6 +29,13 @@ public class ToolbarHelpers : MonoBehaviour
 		Debug.Log(Utils.ColourText($"Unlockables Reset", Color.cyan));
 	}
 
+	[MenuItem("Game Editor/Save State/Add 200 Coins")]
+	static void AddCoins()
+	{
+		GameSave.CoinCount += 200;
+		Debug.Log(Utils.ColourText($"Added 200 Coins. New count: {GameSave.CoinCount}", Color.cyan));
+	}
+
 	[MenuItem("Game Editor/Player/Toggle Player Collisions")]
 	private static void TogglePlayerCollisions()
 	{

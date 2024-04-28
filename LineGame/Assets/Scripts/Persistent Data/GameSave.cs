@@ -51,7 +51,6 @@ public static class GameSave
 	/// </summary>
 	private static int[] playerSkinUnlockables;
 	private static readonly string playerSkinUnlockableString = "playerSelectionUnlockables";
-	private static int activeSkin = 0;
 	/// <summary>
 	/// Reset the Status of all unlocks to -1 on game start. This saves us having to read from Storage each time IsPlayerSkinUnlocked(),
 	/// since it's impossible to identify whether an unlock is Locked or not Initialised with 0 values
@@ -62,11 +61,6 @@ public static class GameSave
 		// Our array size should match the amount of unlockables available
 		playerSkinUnlockables = new int[count];
 
-		//for (int i = 0; i < count; i++)
-		//{
-		//	playerSkinUnlockables[i] = -1;
-		//}
-
 		// The player always has the first skin unlocked
 		SetPlayerSkinUnlocked(0);
 
@@ -75,9 +69,6 @@ public static class GameSave
 		{
 			RestoreUnlock(i);
 		}
-
-		// Set the previosuly Active Skin
-
 	}
 
 	/// <summary>
@@ -103,8 +94,6 @@ public static class GameSave
 	public static bool IsPlayerSkinUnlocked(int index)
 	{
 		index = Utils.Clamp(index, 0, playerSkinUnlockables.Length - 1);
-		//Debug.Log($"Unlockable {index} Unlocked?: {(playerSkinUnlockables[index] == 1 ? true : false)}");
-
 		return playerSkinUnlockables[index] == 1 ? true : false;
 	}
 
@@ -122,11 +111,9 @@ public static class GameSave
 	/// </summary>
 	public static void ResetUnlockables()
 	{
-		UITouch uITouchScript = null;
-
 		try
 		{
-			uITouchScript = UnityEngine.Object.FindObjectOfType<UITouch>();
+			UITouch uITouchScript = UnityEngine.Object.FindObjectOfType<UITouch>();
 			for (int i = 1; i < uITouchScript.playerUnlockCount; i++)
 			{
 				PlayerPrefs.SetInt($"{playerSkinUnlockableString}{i}", -1);
@@ -138,15 +125,4 @@ public static class GameSave
 		}
 	}
 	#endregion
-
-	//#region EXTENSIONS
-	//public static bool GetBool(this PlayerPrefs prefs, string name, bool defaultChoice)
-	//{
-	//	return PlayerPrefs.GetInt(name, defaultChoice == true ? 1 : 0) == 1 ? true : false;
-	//}
-	//public static void SetBool(this PlayerPrefs prefs, string name, bool choice)
-	//{
-	//	PlayerPrefs.SetInt(name, choice ? 1 : 0);
-	//}
-	//#endregion
 }

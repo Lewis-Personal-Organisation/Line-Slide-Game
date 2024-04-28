@@ -16,53 +16,27 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 
-public enum Fade
-{
-    ToTransparent,
-	ToOpaque,
-}
-
-public enum Scale
-{
-	Up,
-	Down,
-}
-
-public enum ScaleStates
-{
-    Inactive,
-    InProgress,
-}
-
 
 public class UITouch : Singleton<UITouch>
 {
 	public bool touchingOverFrames = false;		// Used to filter out touch spamming by holding down a touch
 	public bool isTouchingUIElement = false;	// Determines if we are touching a UI item
 
-	public enum TouchFilters
-    {
-        Settings,
-        SettingsWindow,
-        PathFollowerToggle,
-        DebugToggle,
-        TapToPlay,
-		TapToRestart,
-		ToPlayerSelectionWindow,
-		FromPlayerSelectionWindow,
-		PlayerSelectionPurchaseButton,
-		PlayerSelectable1,
-		PlayerSelectable2,
-		PlayerSelectable3,
-		PlayerSelectable4,
-		PlayerSelectable5,
-		PlayerSelectable6,
-		PlayerSelectable7,
-		PlayerSelectable8,
-		PlayerSelectable9,
+	public enum Fade
+	{
+		ToTransparent,
+		ToOpaque,
 	}
-
-    private Dictionary<int, TouchFilters> InstanceIDtoFilter = new Dictionary<int, TouchFilters>(); 
+	public enum Scale
+	{
+		Up,
+		Down,
+	}
+	public enum ScaleStates
+	{
+		Inactive,
+		InProgress,
+	}
 	private Dictionary<int, Action> InstanceIDtoAction = new Dictionary<int, Action>();
 
 	// Graphics raycasting
@@ -84,9 +58,12 @@ public class UITouch : Singleton<UITouch>
 		set { levelPercentTMPText.text = value; }
 	}
 	public TextMeshProUGUI progressText;
-	public Vector2 progressImageOffScreenPos = Vector2.zero;
-	public Vector2 progressImageOnScreenPos = Vector2.zero;
+	private Vector2 progressImageOffScreenPos = Vector2.zero;
+	private Vector2 progressImageOnScreenPos = Vector2.zero;
 	public SlicedFilledImage levelProgressImage = null;
+	private Vector3 maskFadeSpriteMaxSize = Vector3.zero;
+	private ScaleStates maskScaleState;
+	public bool maskScaleActive => maskScaleState == ScaleStates.InProgress;
 
 	[Header("Coins")]
 	public Image coinCounterImage;
@@ -114,6 +91,7 @@ public class UITouch : Singleton<UITouch>
 	public struct Settings
 	{
 		public Transform Button;
+		public GameObject slidingObject;
 		public float backgroundHeight;
 		public Image backgroundImage;
 		public Image testImage;
@@ -132,14 +110,10 @@ public class UITouch : Singleton<UITouch>
 	[Header("Restart View Interactables")]
 	public TextBounce tapToRestart;
 	public RectTransform tapToRestartHitBox;
-
     [SerializeField] private Timer debugTimer = null;
-
     [SerializeField] private SpriteRenderer spriteRenderer = null;
 	[SerializeField] private Transform maskFadeSprite;
 	[SerializeField] private Color levelFailedColour = Color.clear;
-    private Vector3 maskFadeSpriteMaxSize = Vector3.zero;
-    public ScaleStates maskScaleState;
 	public RectPositioner imagePositioner;
 
 	[Header("Player Selection Variables")]
@@ -147,15 +121,16 @@ public class UITouch : Singleton<UITouch>
 	public Color PlayerSelectColour;
 	[SerializeField] private Material playerSelectHighlightMat;
 	[SerializeField] private Material playerSelectLockedMat;
+	[SerializeField] private Color playerSelectLockedColourCached;
 	[SerializeField] private MeshRenderer previewCubeMeshRenderer;
+	[SerializeField] private Material previewCubeMaterial;
 	public Rotate previewCubeRotator;
 	[SerializeField] private GameObject playerSelectionPurchaseButton;
 	[SerializeField] private TextMeshProUGUI playerSelectionPurchaseText;
 	[SerializeField] private GameObject playerSelectionPurchaseButtonOverlay;
-	[SerializeField] List<PlayerUnlockable> playerUnlockables;
+	[SerializeField] List<PlayerUnlockable> playerUnlockables = new List<PlayerUnlockable>();
 	public int playerUnlockCount => playerUnlockables.Count;
 	private int skinIndex = -1;
-
 
 
 	new private void Awake()
@@ -171,10 +146,14 @@ public class UITouch : Singleton<UITouch>
 		gameplayCanvasGroup.alpha = 0;
 
 		// Cache the positions for our Progress Image
-
 		progressImageOffScreenPos = CanvasUtils.GetPos(levelProgressImage.rectTransform, CanvasPositions.Top, Instance.gameplayCanvas.scaleFactor, Instance.gameplayCanvasTransform);
 		progressImageOnScreenPos = Instance.gameplayCanvasTransform.GetPos(Instance.imagePositioner.values);
 		levelProgressImage.rectTransform.position = progressImageOffScreenPos;
+
+		playerUnlockables[0].selectableImage.material.color = new Color(playerUnlockables[0].selectableImage.material.color.r,
+																		playerUnlockables[0].selectableImage.material.color.g,
+																		playerUnlockables[0].selectableImage.material.color.b,
+																		1F);
 
 		ResetPlayerSelectionCubes();
 	}
@@ -190,7 +169,7 @@ public class UITouch : Singleton<UITouch>
             if (touchingOverFrames)
                 return;
 
-            // If we didn't touch screen in last update, We are now touching over previous frames with this frame
+            // If we didn't touch screen in last update, We are now touching over multiple frames with this frame
             touchingOverFrames = true;
 
             // Set up the new Pointer Event and assign the mouse position
@@ -209,36 +188,22 @@ public class UITouch : Singleton<UITouch>
 				gameplayUIRaycaster.Raycast(uiPointerEventData, hitResults);
 
 			// TEST
-			//for (int i = 0; i < hitResults.Count; i++)
-			//{
-			//	bool isValid = InstanceIDtoAction.ContainsKey(hitResults[i].gameObject.transform.GetInstanceID());
-
-			//	if (isValid)
-			//	{
-			//		InstanceIDtoAction[hitResults[i].gameObject.transform.GetInstanceID()].Invoke();
-
-			//		if(isTouchingUIElement)
-			//			break;
-			//	}
-			//}
-			// TEST ^^^
-
-			// Do the appropriate action for the hit object. We only want to hit the top-most item. We only break if we find a dictionary match.
-			// By default, the list is sorted from first to last from index 0. E.g, Items layered beneath are at the end of the array.
 			for (int i = 0; i < hitResults.Count; i++)
-            {
-                if (InstanceIDtoFilter.TryGetValue(hitResults[i].gameObject.transform.GetInstanceID(), out TouchFilters foundFilter))
-                {
-                    isTouchingUIElement = ProcessFilter(foundFilter);
+			{
+				bool isValid = InstanceIDtoAction.ContainsKey(hitResults[i].gameObject.transform.GetInstanceID());
 
-                    if (isTouchingUIElement)
-                        break;
-                }
-                else
-                {
-					//Debug.Log(Utils.ColourText($"Raycast hit {i}: {hitResults[i].gameObject.name} is not registered as clickable", Color.green));
-                }
-            }
+				if (isValid)
+				{
+					InstanceIDtoAction[hitResults[i].gameObject.transform.GetInstanceID()].Invoke();
+
+					if (isTouchingUIElement)
+						break;
+				}
+				else
+				{
+					Debug.Log(Utils.ColourText($"UI TEST. NO KEY FOR ID {hitResults[i].gameObject.transform.GetInstanceID()} ({hitResults[i].gameObject.name}).", Color.green));
+				}
+			}
         }
         else
         {
@@ -248,114 +213,90 @@ public class UITouch : Singleton<UITouch>
     }
 
 	/// <summary>
-	/// Assigns the touchable/interactable Objects to their filters for custom functionality
+	/// Assigns the touchable/interactable Objects to custom functionality
 	/// InstanceID's have to be set using the Transform Component of an Object
 	/// </summary>
 	private void AddFilterableObjects()
 	{
-		//InstanceIDtoAction.Add(settings.Button.GetInstanceID(), () => { Debug.Log("Settings Test!"); isTouchingUIElement = true; });
-		InstanceIDtoFilter.Add(settings.Button.GetInstanceID(), TouchFilters.Settings);
-		InstanceIDtoFilter.Add(tapToPlayHitBox.GetInstanceID(), TouchFilters.TapToPlay);
-		InstanceIDtoFilter.Add(tapToRestartHitBox.GetInstanceID(), TouchFilters.TapToRestart);
-		InstanceIDtoFilter.Add(playerSelectionHitBox.GetInstanceID(), TouchFilters.ToPlayerSelectionWindow);
-		InstanceIDtoFilter.Add(playerSelectionPurchaseButton.transform.GetInstanceID(), TouchFilters.PlayerSelectionPurchaseButton);
-		InstanceIDtoFilter.Add(PlayerSelectionReturnHitBox.GetInstanceID(), TouchFilters.FromPlayerSelectionWindow);
-
-		InstanceIDtoFilter.Add(playerUnlockables[0].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable1);
-		InstanceIDtoFilter.Add(playerUnlockables[1].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable2);
-		InstanceIDtoFilter.Add(playerUnlockables[2].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable3);
-		InstanceIDtoFilter.Add(playerUnlockables[3].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable4);
-		InstanceIDtoFilter.Add(playerUnlockables[4].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable5);
-		InstanceIDtoFilter.Add(playerUnlockables[5].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable6);
-		InstanceIDtoFilter.Add(playerUnlockables[6].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable7);
-		InstanceIDtoFilter.Add(playerUnlockables[7].selectableImage.transform.GetInstanceID(), TouchFilters.PlayerSelectable8);
-
-	}
-
-    // Filter the appropriate action for the UI items we touched
-    private bool ProcessFilter(TouchFilters filter)
-    {
-		switch (filter)
-		{
-			case TouchFilters.Settings:
-
+		InstanceIDtoAction.Add(settings.Button.GetInstanceID(), () =>
+			{
 				if (!settings.isAnimating)
 				{
+					if (settings.open == false)
+						settings.slidingObject.SetActive(true);
+
 					settings.isAnimating = true;
 					settings.Button.RotateOverTime(this, Vector3.forward * (settings.open ? 1F : -1F) * 60F, .3F);
-					
-					List<CanvasUtils.TimedAction> actions = new List<CanvasUtils.TimedAction>(){
-						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, settings.open ? 0.2F: 0.7F, () => settings.testImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 40F, .1F, null)),
-						new CanvasUtils.TimedAction( CanvasUtils.TimedAction.Modes.Passive, 1F, () => settings.isAnimating = false)
+
+					List<CanvasUtils.TimedAction> actions = new List<CanvasUtils.TimedAction>()
+					{
+						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, settings.open ? 0.2F: 0.7F, () =>
+						{
+							settings.testImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 40F, .1F, null);
+						}),
+						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, 1F, () =>
+						{
+							settings.isAnimating = false;
+							if (settings.open == false)
+								settings.slidingObject.SetActive(false);
+						})
 					};
 
 					settings.backgroundImage.rectTransform.ResizeOverTimeWithActions(this, (settings.open ? -1F : 1F) * settings.backgroundHeight * Vector3.up, .3F, actions);
 					settings.open = !settings.open;
+					Debug.Log("Settings Test!"); 
+					isTouchingUIElement = true;
 				}
-				return true;
+			});
+		InstanceIDtoAction.Add(tapToPlayHitBox.GetInstanceID(), () => {
+			tapToPlay.gameObject.SetActive(false);
+			tapToPlayHitBox.gameObject.SetActive(false);
+			Instance.levelProgressImage.rectTransform.Move(this, Instance.progressImageOffScreenPos, Instance.progressImageOnScreenPos, 1.2F, CurveType.Exponential);
+			playerSelectionHitBox.gameObject.SetActive(false);
+			GameManager.Instance.playerPathFollower.SetTrailDistance();
+			isTouchingUIElement = false;
+		});
+		InstanceIDtoAction.Add(tapToRestart.GetInstanceID(), () => {
+			SwitchView(ViewStates.LevelRestart);
+			isTouchingUIElement = true;
+		});
+		InstanceIDtoAction.Add(playerSelectionHitBox.GetInstanceID(), () => {
+			SwitchView(ViewStates.PlayerSelection);
+			isTouchingUIElement = true;
+		});
+		InstanceIDtoAction.Add(playerSelectionPurchaseButton.transform.GetInstanceID(), () => {
+			if (GameSave.CoinCount < playerUnlockables[skinIndex].cost)
+				return;
+			GameSave.SetPlayerSkinUnlocked(skinIndex, true);
+			playerSelectionPurchaseButton.SetActive(false);
+			playerUnlockables[skinIndex].overlay.gameObject.SetActive(false);
+			float oldCoinCount = GameSave.CoinCount;
+			GameSave.CoinCount -= playerUnlockables[skinIndex].cost;
+			GameSave.Save();
+			UpdateUICoins(oldCoinCount);
+			SwapColoursOnSelection();
+			isTouchingUIElement = true;
+		});
+		InstanceIDtoAction.Add(PlayerSelectionReturnHitBox.GetInstanceID(), () => {
 
-			case TouchFilters.SettingsWindow:
-				Utils.Log("Touched Settings Window");
-				return true;
+			Vector2 cachedSize = PlayerSelectionReturnHitBox.sizeDelta;  // Cache the og size
 
-			// When we touch the tap to play Hitbox, hide it and start movement
-			// While we touch Tap-To-Play, we don't want to block background touch for movement, so report back as false
-			case TouchFilters.TapToPlay:
-				tapToPlay.gameObject.SetActive(false);
-				tapToPlayHitBox.gameObject.SetActive(false);
-				Instance.levelProgressImage.rectTransform.Move(this, Instance.progressImageOffScreenPos, Instance.progressImageOnScreenPos, 1.2F, CurveType.Exponential);
-				playerSelectionHitBox.gameObject.SetActive(false);
-				return false;
+			// Scale down, and scale up once complete
+			PlayerSelectionReturnHitBox.ResizeOverTime(this, cachedSize * CanvasUtils.Negative2D * 0.20F, .075F, null, () =>
+			{
+				PlayerSelectionReturnHitBox.ResizeOverTime(this, cachedSize * CanvasUtils.Positive2D * 0.20F, .075F);
+			});
 
-			case TouchFilters.TapToRestart:
-				SwitchView(ViewStates.LevelRestart);
-				return false;
+			SwitchView(ViewStates.LevelLoaded);
+		});
 
-			case TouchFilters.ToPlayerSelectionWindow:
-				SwitchView(ViewStates.PlayerSelection);
-				return true;
-
-			case TouchFilters.FromPlayerSelectionWindow:
-				SwitchView(ViewStates.LevelLoaded);
-				break;
-
-			case TouchFilters.PlayerSelectionPurchaseButton:
-				GameSave.SetPlayerSkinUnlocked(skinIndex, true);
-				playerSelectionPurchaseButton.SetActive(false);
-				playerUnlockables[skinIndex].overlay.gameObject.SetActive(false);
-				float oldCoinCount = GameSave.CoinCount;
-				GameSave.CoinCount -= playerUnlockables[skinIndex].cost;
-				GameSave.Save();
-				UpdateUICoins(oldCoinCount);
-				SwapColoursOnSelection();
-				break;
-
-			case TouchFilters.PlayerSelectable1:
-				return HighlightOnUnlockableSelected(0);
-
-			case TouchFilters.PlayerSelectable2:
-				return HighlightOnUnlockableSelected(1);
-
-			case TouchFilters.PlayerSelectable3:
-				return HighlightOnUnlockableSelected(2);
-
-			case TouchFilters.PlayerSelectable4:
-				return HighlightOnUnlockableSelected(3);
-
-			case TouchFilters.PlayerSelectable5:
-				return HighlightOnUnlockableSelected(4);
-
-			case TouchFilters.PlayerSelectable6:
-				return HighlightOnUnlockableSelected(5);
-
-			case TouchFilters.PlayerSelectable7:
-				return HighlightOnUnlockableSelected(6);
-
-			case TouchFilters.PlayerSelectable8:
-				return HighlightOnUnlockableSelected(7);
+		
+		for (int i = 0; i < playerUnlockables.Count; i++)
+		{
+			int x = i;
+			InstanceIDtoAction.Add(playerUnlockables[i].selectableImage.transform.GetInstanceID(),() => isTouchingUIElement = HighlightOnUnlockableSelected(x));
 		}
-        return false;
-    }
+	}
 
 	public void SwitchView(ViewStates newState)
 	{
@@ -380,17 +321,22 @@ public class UITouch : Singleton<UITouch>
 					yield return new WaitForSeconds(0.5F);
 					spriteRenderer.color = Color.black;
 					FadeCanvasGroup(Fade.ToOpaque, gameplayCanvasGroup);
+					tapToPlay.gameObject.SetActive(true);
+					tapToPlayHitBox.gameObject.SetActive(true);
+					playerSelectionHitBox.gameObject.SetActive(true);
 				}
 				// If we are switching to Level Loaded from Player Selection state
 				if (previousViewState == ViewStates.PlayerSelection)
 				{
-					yield return FadeSelectionItems(Fade.ToTransparent, 5F);
-					FadeCanvasGroup(Fade.ToTransparent, playerSelectCanvasGroup, 5F);
+					LevelManager.Instance.ToggleLevel(true);
+					FadeSelectionCubes(Fade.ToTransparent, 5F);
+					FadeOverlays(Fade.ToTransparent, 5F);
+					yield return new WaitForSeconds(.05F);
+					yield return FadeCanvasGroup(Fade.ToTransparent, playerSelectCanvasGroup, 2F);
 					yield return new WaitForSeconds(.05F);
 					yield return ScaleMask(Scale.Up, PlayerSelectColour, 3.5F);
-
+					SetPlayerSelectionObjectVisibility(false);
 					GameManager.Instance.playerPathFollower.enabled = true;
-					previewCubeRotator.enabled = false;
 					tapToPlay.gameObject.SetActive(true);
 					tapToPlayHitBox.gameObject.SetActive(true);
 					tapToRestart.gameObject.SetActive(true);
@@ -400,7 +346,6 @@ public class UITouch : Singleton<UITouch>
 				}
 				else if (previousViewState == ViewStates.LevelRestart)
 				{
-					Debug.Log("Hit");
 					tapToPlay.gameObject.SetActive(true);
 					tapToPlayHitBox.gameObject.SetActive(true);
 					playerSelectionHitBox.gameObject.SetActive(true);
@@ -409,13 +354,15 @@ public class UITouch : Singleton<UITouch>
 					spriteRenderer.color = Color.black;
 					FadeCanvasGroup(Fade.ToOpaque, gameplayCanvasGroup);
 				}
+				previewCubeRotator.enabled = false;
 				break;
 
 			case ViewStates.LevelComplete:
 				ScaleMask(Scale.Down, Color.black);
 				yield return new WaitForSeconds(0.5F);
 				spriteRenderer.color = Color.black;
-				FadeCanvasGroup(Fade.ToTransparent, gameplayCanvasGroup);
+				yield return FadeCanvasGroup(Fade.ToTransparent, gameplayCanvasGroup);
+				levelProgressImage.rectTransform.position = progressImageOffScreenPos;
 				break;
 
 			case ViewStates.LevelFailed:
@@ -452,13 +399,17 @@ public class UITouch : Singleton<UITouch>
 				settings.Button.parent.gameObject.SetActive(false);
 				playerSelectionHitBox.gameObject.SetActive(false);
 				ApplyPlayerSelectionUnlockableStates();
+				SetPlayerSelectionObjectVisibility(true);
 				previewCubeRotator.enabled = true;
 				spriteRenderer.color = PlayerSelectColour;
 				yield return ScaleMask(Scale.Down, PlayerSelectColour, 3.5F);
+				LevelManager.Instance.ToggleLevel(false);
 				yield return new WaitForSeconds(.05F);
-				FadeCanvasGroup(Fade.ToOpaque, playerSelectCanvasGroup, 5F);
+				FadeCanvasGroup(Fade.ToOpaque, playerSelectCanvasGroup, 3.5F);
 				yield return new WaitForSeconds(.05F);
-				FadeSelectionItems(Fade.ToOpaque, 5F);
+				FadeSelectionCubes(Fade.ToOpaque, 3.5F);
+				FadeSlots(Fade.ToOpaque, 3.5F);
+				yield return FadeOverlays(Fade.ToOpaque, 3.5F);
 				break;
 		}
 	}
@@ -487,7 +438,7 @@ public class UITouch : Singleton<UITouch>
 
 		// the Sprite size from start to end
 		Vector3 startSpriteScale = type == Scale.Down ? maskFadeSpriteMaxSize : Vector3.zero;
-        Vector3 endSpriteScale = type == Scale.Down ? Vector3.zero : maskFadeSpriteMaxSize;
+		Vector3 endSpriteScale = type == Scale.Down ? Vector3.zero : maskFadeSpriteMaxSize;
 
 		while (t < 1)
 		{
@@ -498,7 +449,6 @@ public class UITouch : Singleton<UITouch>
 
 		maskScaleState = ScaleStates.Inactive;
 	}
-
 
 	/// <summary>
 	/// Wrapper function for IFadeBackgroundColour
@@ -542,13 +492,10 @@ public class UITouch : Singleton<UITouch>
 		float t = 0;
 		float x = speed > 0 ? speed : GetFadeSpeed(LevelManager.Instance.currentLevel.Difficulty);
 
-		float startAlpha = type == Fade.ToOpaque ? 0 : 1;
-		float endAlpha	 = type == Fade.ToOpaque ? 1 : 0;
-
 		while (t < 1)
 		{
 			t += Time.deltaTime * x;
-			canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
+			canvasGroup.alpha = type == Fade.ToOpaque ? t : 1F - t;
 			yield return null;
 		}
 	}
@@ -575,6 +522,19 @@ public class UITouch : Singleton<UITouch>
 	}
 
 	/// <summary>
+	/// Enables/Disables Gameobjects in the Player Selection UI which use transparency
+	/// </summary>
+	private void SetPlayerSelectionObjectVisibility(bool visible)
+	{
+		playerSelectCanvasGroup.gameObject.SetActive(visible);
+
+		foreach (PlayerUnlockable unlockable in playerUnlockables)
+		{
+			unlockable.cubeMeshRenderer.gameObject.SetActive(visible);
+		}
+	}
+
+	/// <summary>
 	/// Adjust the UI for the Player Skin unlockables currently unlocked by the player
 	/// </summary>
 	public void ApplyPlayerSelectionUnlockableStates()
@@ -590,18 +550,31 @@ public class UITouch : Singleton<UITouch>
 	/// </summary>
 	private bool HighlightOnUnlockableSelected(int index)
 	{
-		// If we pick the same Item, return
-		if (index == skinIndex)
-			return true;
+		// Animate Item Box when touched - Scale down then back up
+		if (playerUnlockables[index].isAnimating == false)
+		{
+			playerUnlockables[index].isAnimating = true;		// We are animating
+			Vector2 sd = playerUnlockables[index].selectableImage.rectTransform.sizeDelta;	// Cache the og size
 
-		Debug.Log("Here 1");
+			// Scale down, and scale up once complete
+			playerUnlockables[index].selectableImage.rectTransform.ResizeOverTime(this, sd * CanvasUtils.Negative2D * 0.20F, .075F, null, () =>
+			{
+				playerUnlockables[index].selectableImage.rectTransform.ResizeOverTime(this, sd * CanvasUtils.Positive2D * 0.20F, .075F, null, () =>
+				{
+					playerUnlockables[index].isAnimating = false;
+				});
+			});
+		}
+
+		// If we pick the same Item, return
+		if (index == skinIndex) return true;
+
 		// If we have previous selected an unlockable and its not unlocked, set it to the locked colour
 		if (skinIndex != -1 && !GameSave.IsPlayerSkinUnlocked(skinIndex))
 			playerUnlockables[skinIndex].overlay.material = playerSelectLockedMat;
 
 		skinIndex = index;
 
-		Debug.Log("Here 2");
 		// If we have already unlocked this skin, hide the purchase button, apply the skin and return
 		if (GameSave.IsPlayerSkinUnlocked(skinIndex))
 		{
@@ -613,7 +586,6 @@ public class UITouch : Singleton<UITouch>
 			return true;
 		}
 
-		Debug.Log("Here 3");
 		// If we have not unlocked the skin, highlight the unlockable
 		playerUnlockables[skinIndex].overlay.material = playerSelectHighlightMat;
 		
@@ -642,46 +614,40 @@ public class UITouch : Singleton<UITouch>
 	/// <summary>
 	/// Wrapper function for IFadePlayerSelectionItems
 	/// </summary>
-	private Coroutine FadeSelectionItems(Fade type, float fadeSpeed)
+	private Coroutine FadeSelectionCubes(Fade type, float fadeSpeed)
 	{
-		return StartCoroutine(IFadePlayerSelectionItems(type, fadeSpeed));
+		return StartCoroutine(IFadeSelectionCubes(type, fadeSpeed));
+	}
+
+	private Coroutine FadeOverlays(Fade type, float fadeSpeed)
+	{
+		return StartCoroutine(IFadeOverlays(type, fadeSpeed));
+	}
+
+	private Coroutine FadeSlots(Fade fade, float fadeSpeed)
+	{
+		return StartCoroutine(IFadeSlots(fade, fadeSpeed));
 	}
 
 	/// <summary>
-	/// Fade the Selectable Player Cubes In or Out with speed
+	/// Fade the Selectable Player Cubes and Preview Cube In or Out with speed
 	/// </summary>
-	private IEnumerator IFadePlayerSelectionItems(Fade type, float fadeSpeed)
+	private IEnumerator IFadeSelectionCubes(Fade type, float fadeSpeed)
 	{
 		float t = 0;
-
-		Color[] fromColours = new Color[playerUnlockables.Count];
-
-		for (int i = 0; i < fromColours.Length; i++)
-		{
-			fromColours[i] = new Color(playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color.r,
-									   playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color.g,
-									   playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color.b, 
-									   type == Fade.ToOpaque ? 0 : 1);
-		}
-
 		while (t < 1)
 		{
 			t += Time.deltaTime * fadeSpeed;
 			for (int i = 0; i < playerUnlockables.Count; i++)
 			{
-				playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color = new Color(fromColours[i].r, fromColours[i].g, fromColours[i].b, type == Fade.ToOpaque ? t : 1F - t);
+				playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color = new Color(playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color.r,
+																					   playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color.g,
+																					   playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color.b, 
+																					   type == Fade.ToOpaque ? t : 1F - t);
 
-				if (type == Fade.ToTransparent)
-				{
-					if (playerUnlockables[i].cubeMeshRenderer.sharedMaterial.color.a <= 0)
-						playerUnlockables[i].cubeMeshRenderer.gameObject.SetActive(false);
-				}
-				else
-				{
-					if (!playerUnlockables[i].cubeMeshRenderer.gameObject.activeInHierarchy)
-						playerUnlockables[i].cubeMeshRenderer.gameObject.SetActive(true);
-				}
+				
 			}
+
 			previewCubeMeshRenderer.sharedMaterial.color = new Color(previewCubeMeshRenderer.sharedMaterial.color.r,
 																	 previewCubeMeshRenderer.sharedMaterial.color.g,
 																	 previewCubeMeshRenderer.sharedMaterial.color.b,
@@ -691,6 +657,44 @@ public class UITouch : Singleton<UITouch>
 		}
 	}
 
+
+	/// <summary>
+	/// Fade transparency between two specific alpha values for Unlockable overlays
+	/// </summary>
+	private IEnumerator IFadeOverlays(Fade type, float fadeSpeed)
+	{
+		float t = 0;
+		while (t < 1)
+		{
+			t += Time.deltaTime * fadeSpeed;
+			for (int i = 0; i < playerUnlockables.Count; i++)
+			{
+				playerUnlockables[i].overlay.material.color = new Color(playerUnlockables[i].overlay.material.color.r,
+																		playerUnlockables[i].overlay.material.color.g,
+																		playerUnlockables[i].overlay.material.color.b,
+																		type == Fade.ToOpaque ? Mathf.Lerp(0, playerSelectLockedColourCached.a, t) : Mathf.Lerp(playerSelectLockedColourCached.a, 0, t));
+				
+			}
+			yield return null;
+		}
+	}
+
+	private IEnumerator IFadeSlots (Fade type, float fadeSpeed)
+	{
+		float t = 0;
+		while (t < 1)
+		{
+			t += Time.deltaTime * fadeSpeed;
+			for (int i = 0; i < playerUnlockables.Count; i++)
+			{
+				playerUnlockables[i].selectableImage.material.color = new Color(playerUnlockables[i].selectableImage.material.color.r,
+																		playerUnlockables[i].selectableImage.material.color.g,
+																		playerUnlockables[i].selectableImage.material.color.b,
+																		type == Fade.ToOpaque ? 1 : 0);
+			}
+			yield return null;
+		}
+	}
 
 	/// <summary>
 	/// Get the Fade Speed for the Level Difficulty. Harder levels have a faster speed.
@@ -716,7 +720,6 @@ public class UITouch : Singleton<UITouch>
 		levelProgressImage.fillAmount = distance / vertCount;
 	}
 
-
 	/// <summary>
 	/// Update the UI Coins over time using the IUpdateUICoins Method
 	/// </summary>
@@ -741,83 +744,4 @@ public class UITouch : Singleton<UITouch>
 			yield return null;
 		}
 	}
-
-	// The method used to Open the Android Keyboard to edit settings
-	//public IEnumerator WaitForKeyboard(TouchFilters filter)
-	//{
-	//        // Stops other requests to open keyboard until we are done with this one
-	//        keyboardOpenRequested = true;
-
-	//        // If not mobile, return
-	//#if UNITY_EDITOR
-	//        keyboardOpenRequested = false;
-	//       yield return null;
-	//#endif
-
-	//switch (filter)
-	//{
-	//case TouchFilters.VSync:
-	//    keyboard = TouchScreenKeyboard.Open(QualitySettings.vSyncCount.ToString(), TouchScreenKeyboardType.NumberPad);
-	//    break;
-
-	//case TouchFilters.PathFollowerMaxSpeed:
-	//    keyboard = TouchScreenKeyboard.Open(GameManager.instance.pathfollower.maxSpeed.ToString(), TouchScreenKeyboardType.NumberPad);
-	//    break;
-
-	//case TouchFilters.PathFollowerAccel:
-	//    keyboard = TouchScreenKeyboard.Open(GameManager.instance.pathfollower.accelerationMultiplier.ToString(), TouchScreenKeyboardType.NumberPad);
-	//    break;
-	//}
-
-	// While the keyboard is visible, stop gameplay and wait
-	//while (keyboard.status == TouchScreenKeyboard.Status.Visible)
-	//{
-	//    GameManager.instance.gameplayEnabled = false;
-	//    yield return new WaitForEndOfFrame();
-	//}
-
-	//if (keyboard.status == TouchScreenKeyboard.Status.Canceled)
-	//{
-	//    keyboardOpenRequested = false;
-	//    yield return null;
-	//}
-
-	//int parsedNum = 0;
-
-	//switch (filter)
-	//{
-	//case TouchFilters.VSync:
-	//    if (int.TryParse(keyboard.text, out parsedNum))
-	//    {
-	//        if (keyboard.text == "0")
-	//        {
-	//            Application.targetFrameRate = int.MaxValue;
-	//        }
-
-	//        vSyncText.text = $"vSync: {keyboard.text}";
-
-	//        QualitySettings.vSyncCount = (parsedNum);
-	//    }
-	//    break;
-
-	//case TouchFilters.PathFollowerMaxSpeed:
-
-	//    if (int.TryParse(keyboard.text, out parsedNum))
-	//    {
-	//        GameManager.instance.pathfollower.maxSpeed = parsedNum;
-	//        maxMoveSpeed.text = $"Max Speed: {GameManager.instance.pathfollower.maxSpeed}";
-	//    }
-	//    break;
-
-	//case TouchFilters.PathFollowerAccel:
-	//    if (int.TryParse(keyboard.text, out parsedNum))
-	//    {
-	//        GameManager.instance.pathfollower.accelerationMultiplier = parsedNum;
-	//        moveAcceleration.text = $"Acceleration: {GameManager.instance.pathfollower.accelerationMultiplier}";
-	//    }
-	//    break;
-	//}
-
-	//    GameManager.instance.gameplayEnabled = true;
-	//}
 }

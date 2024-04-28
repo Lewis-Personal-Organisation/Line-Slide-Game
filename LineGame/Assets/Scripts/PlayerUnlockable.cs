@@ -3,10 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
-public struct PlayerUnlockable
+public class PlayerUnlockable
 {
 	public Image selectableImage;
 	public int cost;
 	public MeshRenderer cubeMeshRenderer;
 	public Image overlay;
+	public bool isAnimating;
 }
