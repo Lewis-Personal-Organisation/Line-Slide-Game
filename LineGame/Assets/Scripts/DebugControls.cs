@@ -7,14 +7,17 @@ public class DebugControls : MonoBehaviour
     /// Listens for Key Presses for Toggling Editor Pause/Play
     /// </summary>
     /// 
+
+    [ExecuteAlways]
     void Update()
-    {
-        if (Input.GetKey(KeyCode.Alpha1))
-		{
-            if (Input.GetKey(KeyCode.LeftControl))
+	{
+		Debug.Log(Utils.ColourText($"Executing", Color.cyan));
+		if (Application.isPlaying && Application.isEditor)
+        {
+            if (Input.GetKey(KeyCode.Pause))
             {
-				Debug.Break();
-			}
-		}
-	}
+                Debug.Break();
+            }
+        }
+    }
 }

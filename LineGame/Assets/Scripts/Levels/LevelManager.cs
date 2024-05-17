@@ -149,6 +149,9 @@ public class LevelManager : Singleton<LevelManager>
 	public IEnumerator LevelComplete()
 	{
 		OnLevelComplete = null;
+
+		// CHECK IF ANDROID HERE
+
 		GameSave.CurrentLevel++;
 		GameSave.Save();
 

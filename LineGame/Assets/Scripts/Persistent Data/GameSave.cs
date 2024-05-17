@@ -47,7 +47,7 @@ public static class GameSave
 	}
 
 	/// <summary>
-	/// The Status of the playerSkinUnlockables
+	/// The Status of the Player Unlockables
 	/// </summary>
 	private static int[] playerSkinUnlockables;
 	private static readonly string playerSkinUnlockableString = "playerSelectionUnlockables";
@@ -56,10 +56,10 @@ public static class GameSave
 	/// since it's impossible to identify whether an unlock is Locked or not Initialised with 0 values
 	/// Then, restore the Unlock statuses based on -1 values
 	/// </summary>
-	public static void ConfigureUnlocks(int count)
+	public static void ConfigureUnlocks()
 	{
 		// Our array size should match the amount of unlockables available
-		playerSkinUnlockables = new int[count];
+		playerSkinUnlockables = new int[UITouch.Instance.playerUnlockCount];
 
 		// The player always has the first skin unlocked
 		SetPlayerSkinUnlocked(0);
@@ -77,12 +77,8 @@ public static class GameSave
 	public static void SetPlayerSkinUnlocked(int index, bool applySkin = false)
 	{
 		if (IsPlayerSkinUnlocked(index))
-		{
-			if (applySkin)
-
-				
 			return;
-		}
+
 		index = Utils.Clamp(index, 0, playerSkinUnlockables.Length-1);
 		PlayerPrefs.SetInt($"{playerSkinUnlockableString}{index}", 1);
 		playerSkinUnlockables[index] = 1;

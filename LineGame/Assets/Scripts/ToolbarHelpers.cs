@@ -58,6 +58,19 @@ public class ToolbarHelpers : MonoBehaviour
 		}
 	}
 
+	[MenuItem("Game Editor/Player/Toggle Level Progression")]
+	private static void ToggleLevelProgression()
+	{
+		if (GameManager.Instance)
+		{
+			GameManager.Instance.progressLevels = !GameManager.Instance.progressLevels;
+		}
+		else
+		{
+			Debug.Log(Utils.ColourText($"GameManager Instance is null. Play the Editor to uses this functionality", Color.red));
+		}
+	}
+
 	[MenuItem("Game Editor/Performance/Toggle FPS Display")]
 	static void ShowFPS()
 	{

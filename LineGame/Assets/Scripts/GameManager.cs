@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
 
 	private void Start()
 	{
-		GameSave.ConfigureUnlocks(UITouch.Instance.playerUnlockCount);
+		GameSave.ConfigureUnlocks();
 		UITouch.Instance.ApplyPlayerSelectionUnlockableStates();
 
 		playerPathFollower.CacheSplitCubePositions();

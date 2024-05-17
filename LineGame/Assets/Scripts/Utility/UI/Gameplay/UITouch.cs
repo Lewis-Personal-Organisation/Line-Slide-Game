@@ -118,7 +118,9 @@ public class UITouch : Singleton<UITouch>
 
 	[Header("Player Selection Variables")]
 	public CanvasGroup playerSelectCanvasGroup = null;
-	public Color PlayerSelectColour;
+	[SerializeField] private float backgroundImageScrollSpeed;
+	[SerializeField] private Material playerSelectScrollingBackgroundImage;
+	[SerializeField] private Image playerSelectbackgroundImage;
 	[SerializeField] private Material playerSelectHighlightMat;
 	[SerializeField] private Material playerSelectLockedMat;
 	[SerializeField] private Color playerSelectLockedColourCached;
@@ -131,6 +133,7 @@ public class UITouch : Singleton<UITouch>
 	[SerializeField] List<PlayerUnlockable> playerUnlockables = new List<PlayerUnlockable>();
 	public int playerUnlockCount => playerUnlockables.Count;
 	private int skinIndex = -1;
+	private Coroutine playerSelectScrollCoroutine;
 
 
 	new private void Awake()
@@ -140,7 +143,7 @@ public class UITouch : Singleton<UITouch>
 		FPSDispay.Instance.enabled = false;
 		vSyncText.gameObject.SetActive(false);
 
-		AddFilterableObjects();
+		LinkUIObjectActions();
 
 		maskFadeSpriteMaxSize = maskFadeSprite.transform.localScale;
 		gameplayCanvasGroup.alpha = 0;
@@ -216,7 +219,7 @@ public class UITouch : Singleton<UITouch>
 	/// Assigns the touchable/interactable Objects to custom functionality
 	/// InstanceID's have to be set using the Transform Component of an Object
 	/// </summary>
-	private void AddFilterableObjects()
+	private void LinkUIObjectActions()
 	{
 		InstanceIDtoAction.Add(settings.Button.GetInstanceID(), () =>
 			{
@@ -256,7 +259,7 @@ public class UITouch : Singleton<UITouch>
 			GameManager.Instance.playerPathFollower.SetTrailDistance();
 			isTouchingUIElement = false;
 		});
-		InstanceIDtoAction.Add(tapToRestart.GetInstanceID(), () => {
+		InstanceIDtoAction.Add(tapToRestartHitBox.GetInstanceID(), () => {
 			SwitchView(ViewStates.LevelRestart);
 			isTouchingUIElement = true;
 		});
@@ -274,7 +277,7 @@ public class UITouch : Singleton<UITouch>
 			GameSave.CoinCount -= playerUnlockables[skinIndex].cost;
 			GameSave.Save();
 			UpdateUICoins(oldCoinCount);
-			SwapColoursOnSelection();
+			SwapPlayerColoursOnSelection();
 			isTouchingUIElement = true;
 		});
 		InstanceIDtoAction.Add(PlayerSelectionReturnHitBox.GetInstanceID(), () => {
@@ -293,7 +296,7 @@ public class UITouch : Singleton<UITouch>
 		
 		for (int i = 0; i < playerUnlockables.Count; i++)
 		{
-			int x = i;
+			int x = i;		// Local scope for Lambda
 			InstanceIDtoAction.Add(playerUnlockables[i].selectableImage.transform.GetInstanceID(),() => isTouchingUIElement = HighlightOnUnlockableSelected(x));
 		}
 	}
@@ -328,13 +331,15 @@ public class UITouch : Singleton<UITouch>
 				// If we are switching to Level Loaded from Player Selection state
 				if (previousViewState == ViewStates.PlayerSelection)
 				{
+					Debug.Log("Stop Called");
 					LevelManager.Instance.ToggleLevel(true);
 					FadeSelectionCubes(Fade.ToTransparent, 5F);
 					FadeOverlays(Fade.ToTransparent, 5F);
 					yield return new WaitForSeconds(.05F);
 					yield return FadeCanvasGroup(Fade.ToTransparent, playerSelectCanvasGroup, 2F);
 					yield return new WaitForSeconds(.05F);
-					yield return ScaleMask(Scale.Up, PlayerSelectColour, 3.5F);
+					yield return ScaleMask(Scale.Up, Color.black, 3.5F);
+					StopCoroutine(playerSelectScrollCoroutine);
 					SetPlayerSelectionObjectVisibility(false);
 					GameManager.Instance.playerPathFollower.enabled = true;
 					tapToPlay.gameObject.SetActive(true);
@@ -391,6 +396,7 @@ public class UITouch : Singleton<UITouch>
 				break;
 
 			case ViewStates.PlayerSelection:
+				playerSelectScrollCoroutine = StartCoroutine(ScrollUIImage());
 				GameManager.Instance.playerPathFollower.enabled = false;
 				tapToPlay.gameObject.SetActive(false);
 				tapToPlayHitBox.gameObject.SetActive(false);
@@ -401,8 +407,8 @@ public class UITouch : Singleton<UITouch>
 				ApplyPlayerSelectionUnlockableStates();
 				SetPlayerSelectionObjectVisibility(true);
 				previewCubeRotator.enabled = true;
-				spriteRenderer.color = PlayerSelectColour;
-				yield return ScaleMask(Scale.Down, PlayerSelectColour, 3.5F);
+				//spriteRenderer.color = PlayerSelectColour;
+				yield return ScaleMask(Scale.Down, Color.black, 3.5F);
 				LevelManager.Instance.ToggleLevel(false);
 				yield return new WaitForSeconds(.05F);
 				FadeCanvasGroup(Fade.ToOpaque, playerSelectCanvasGroup, 3.5F);
@@ -541,7 +547,10 @@ public class UITouch : Singleton<UITouch>
 	{
         for (int i = 0; i < playerUnlockables.Count; i++)
         {
-			playerUnlockables[i].overlay.gameObject.SetActive(!GameSave.IsPlayerSkinUnlocked(i));
+			if (GameSave.IsPlayerSkinUnlocked(i))
+				playerUnlockables[i].overlay.gameObject.SetActive(false);
+			else
+				playerUnlockables[i].overlay.material = playerSelectLockedMat;
 		}
 	}
 
@@ -582,7 +591,7 @@ public class UITouch : Singleton<UITouch>
 				playerSelectionPurchaseButton.SetActive(false);
 
 			// Swap the current Materials
-			SwapColoursOnSelection();
+			SwapPlayerColoursOnSelection();
 			return true;
 		}
 
@@ -603,7 +612,7 @@ public class UITouch : Singleton<UITouch>
 	/// <summary>
 	/// Swaps the changeable colours when the Player selects a unlocked material
 	/// </summary>
-	private void SwapColoursOnSelection()
+	private void SwapPlayerColoursOnSelection()
 	{
 		previewCubeMeshRenderer.sharedMaterial.color = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
 		GameManager.Instance.playerPathFollower.playerMeshRenderer.sharedMaterial.color = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
@@ -741,6 +750,33 @@ public class UITouch : Singleton<UITouch>
 		{
 			oldCoinCount += Time.deltaTime * Instance.coinCounterUpdateSpeed * sign;
 			Instance.coinCounterText.text = ((int)oldCoinCount).ToString();
+			yield return null;
+		}
+	}
+
+	private IEnumerator ScrollUIImage()
+	{
+		Debug.Log("Start Called");
+		switch (LevelManager.Instance.currentLevel.Difficulty)
+		{
+			case Level.LevelDifficulty.Beginner:
+				playerSelectbackgroundImage.color = LevelManager.Instance.beginnerWaterColour;
+				break;
+			case Level.LevelDifficulty.Intermediate:
+				playerSelectbackgroundImage.color = LevelManager.Instance.IntermediateWaterColour;
+				break;
+			case Level.LevelDifficulty.Hard:
+				playerSelectbackgroundImage.color = LevelManager.Instance.hardWaterColour;
+				break;
+			case Level.LevelDifficulty.Impossible:
+				playerSelectbackgroundImage.color = LevelManager.Instance.impossibleWaterColour;
+				break;
+		}
+
+		while (true)
+		{
+			playerSelectScrollingBackgroundImage.mainTextureOffset += Vector2.left * backgroundImageScrollSpeed * Time.deltaTime;
+			Debug.Log("Scrolling");
 			yield return null;
 		}
 	}
