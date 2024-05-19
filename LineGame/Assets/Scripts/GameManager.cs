@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
 
 	[Header("TESTING/DEBUGGING")]
 	public bool useTestLevel = false;
+	public bool progressLevels = true;
 	public bool AlwaysUseFirstLevel = false;
 	public bool AlwaysResetCoins = false;
 

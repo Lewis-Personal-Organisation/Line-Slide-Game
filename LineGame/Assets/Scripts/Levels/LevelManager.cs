@@ -152,8 +152,16 @@ public class LevelManager : Singleton<LevelManager>
 
 		// CHECK IF ANDROID HERE
 
+#if PLATFORM_ANDROID && !UNITY_EDITOR
 		GameSave.CurrentLevel++;
 		GameSave.Save();
+#elif PLATFORM_ANDROID && UNITY_EDITOR
+		if (GameManager.Instance.progressLevels)
+		{
+			GameSave.CurrentLevel++;
+			GameSave.Save();
+		}
+#endif
 
 		GameManager.Instance.playerPathFollower.ApplyCruiseSpeed();
 		Coroutine ChestShakeRoutine = StartCoroutine(ShakeTreasureChest()); // Begin shaking chest when we cross finish line

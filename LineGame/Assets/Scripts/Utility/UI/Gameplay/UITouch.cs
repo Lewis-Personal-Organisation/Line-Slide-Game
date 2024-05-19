@@ -204,7 +204,7 @@ public class UITouch : Singleton<UITouch>
 				}
 				else
 				{
-					Debug.Log(Utils.ColourText($"UI TEST. NO KEY FOR ID {hitResults[i].gameObject.transform.GetInstanceID()} ({hitResults[i].gameObject.name}).", Color.green));
+					Debug.Log(Utils.ColourText($"UITouch.cs :: InstanceID for {hitResults[i].gameObject.transform.GetInstanceID()} - {hitResults[i].gameObject.name}", Color.green));
 				}
 			}
         }

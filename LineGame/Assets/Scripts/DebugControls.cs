@@ -11,7 +11,6 @@ public class DebugControls : MonoBehaviour
     [ExecuteAlways]
     void Update()
 	{
-		Debug.Log(Utils.ColourText($"Executing", Color.cyan));
 		if (Application.isPlaying && Application.isEditor)
         {
             if (Input.GetKey(KeyCode.Pause))

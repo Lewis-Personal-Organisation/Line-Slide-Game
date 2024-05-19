@@ -46,13 +46,14 @@ public class PathEditor : Editor
     int draggingHandleIndex;
     int mouseOverHandleIndex;
     int handleIndexToDisplayAsTransform;
+	bool controlPointBehind = false;
 
-    bool shiftLastFrame;
+	bool shiftLastFrame;
     bool hasUpdatedScreenSpaceLine;
     bool hasUpdatedNormalsVertexPath;
     bool editingNormalsOld;
 
-    Vector3 transformPos;
+	Vector3 transformPos;
     Vector3 transformScale;
     Quaternion transformRot;
 
@@ -105,8 +106,6 @@ public class PathEditor : Editor
 
     void DrawBezierPathInspector()
     {
-        //Debug.Log("Bezier Path Redraw Triggered");
-
         using (var check = new EditorGUI.ChangeCheckScope())
         {
             // Path options:
@@ -138,29 +137,65 @@ public class PathEditor : Editor
 
                     using (new EditorGUI.IndentLevelScope())
                     {
-                        var currentPosition = creator.bezierPath[handleIndexToDisplayAsTransform];
-                        var newPosition = EditorGUILayout.Vector3Field("Position", currentPosition);
+                        Vector3 currentPosition = creator.bezierPath[handleIndexToDisplayAsTransform];
+                        Vector3 newPosition = EditorGUILayout.Vector3Field("Position", currentPosition);
                         if (newPosition != currentPosition)
                         {
                             Undo.RecordObject(creator, "Move point");
                             creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, newPosition);
                         }
 
-      //                  if (GUILayout.Button("Copy"))
-      //                  {
-      //                      VectorCache.cachedPosition = currentPosition;
-      //                      Debug.Log($"Copied {VectorCache.cachedPosition} to cache");
-      //                      Utils.CopyToClipboard($"({VectorCache.cachedPosition.x}, {VectorCache.cachedPosition.y}, {VectorCache.cachedPosition.z})");
-      //                  }
+						// If Control Point Selected, allow Copy/Paste of Distance from Anchor Point
+						if (handleIndexToDisplayAsTransform % 3 != 0)
+                        {
+							if (GUILayout.Button("Copy Anchor Distance"))
+							{
+                                // If next point is Anchor
+                                if ((handleIndexToDisplayAsTransform + 1) % 3 == 0)
+                                {
+									VectorCache.controlPointOffset = creator.bezierPath[handleIndexToDisplayAsTransform + 1] - creator.bezierPath[handleIndexToDisplayAsTransform];
+									controlPointBehind = true;
+                                }
+                                else
+								{
+									VectorCache.controlPointOffset = creator.bezierPath[handleIndexToDisplayAsTransform - 1] - creator.bezierPath[handleIndexToDisplayAsTransform];
+                                    controlPointBehind = false;
+								}
+							}
 
-						//if (GUILayout.Button("Paste"))
-						//{
-						//	creator.bezierPath.SetPoint(handleIndexToDisplayAsTransform, creator.transform.InverseTransformPoint(VectorCache.cachedPosition), true);
-						//	Debug.Log($"Applying {VectorCache.cachedPosition} to Point. New Position: {creator.bezierPath[handleIndexToDisplayAsTransform]}");
-						//}
+                            // Apply Distance from Anchor to Control Point, accounting for opposing positions of their anchors
+                            if (GUILayout.Button("Paste Anchor Distance"))
+                            {
+								if ((handleIndexToDisplayAsTransform + 1) % 3 == 0)
+								{
+                                    // If the Source and Target Control Points are behind their Anchor points subtract distance, else add distance
+                                    if (controlPointBehind)
+                                        creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform + 1)] - VectorCache.controlPointOffset);
+									else
+										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform + 1)] + VectorCache.controlPointOffset);
 
-						// Don't draw the angle field if we aren't selecting an anchor point/not in 3d space
-						if (handleIndexToDisplayAsTransform % 3 == 0 && creator.bezierPath.Space == PathSpace.xyz)
+								}
+								else
+								{
+									// If the Source and Target Control Points are ahead their Anchor points add distance, else subtract distance
+									if (!controlPointBehind)
+										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform - 1)] - VectorCache.controlPointOffset);
+									else
+										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform - 1)] + VectorCache.controlPointOffset);
+								}
+							}
+						}
+
+						
+
+                        //if (GUILayout.Button("Paste"))
+                        //{
+                        //	creator.bezierPath.SetPoint(handleIndexToDisplayAsTransform, creator.transform.InverseTransformPoint(VectorCache.cachedPosition), true);
+                        //	Debug.Log($"Applying {VectorCache.cachedPosition} to Point. New Position: {creator.bezierPath[handleIndexToDisplayAsTransform]}");
+                        //}
+
+                        // Don't draw the angle field if we aren't selecting an anchor point/not in 3d space
+                        if (handleIndexToDisplayAsTransform % 3 == 0 && creator.bezierPath.Space == PathSpace.xyz)
                         {
                             var anchorIndex = handleIndexToDisplayAsTransform / 3;
                             var currentAngle = creator.bezierPath.GetAnchorNormalAngle(anchorIndex);

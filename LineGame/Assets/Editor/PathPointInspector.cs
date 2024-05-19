@@ -10,21 +10,13 @@ public class PathPointInspector : Editor
     {
         instance = (PathSubscriptionManager)target;
 
-        //if (GUILayout.Button("Regenerate Positions"))
-        //{
-        //instance.UpdatePoints();
-        //instance.RecreateMeshCollider();
-        //instance.UpdateSubscribers();             
-        //}
-
         // If we have subscribing paths, and we link more than one path, enable the Update Subscribers button
         // Then, if we click the button, for each subscriber, update their points with the Main path points. 
         // Also rebuild or destroy their mesh, depending on if we need the duplicate mesh
-        if (/*instance.EnableSubscribers &&*/ instance.roadMeshSubscribers.Length > 0)
+        if (instance.roadMeshSubscribers.Length > 0)
         {
             if (GUILayout.Button("Sync Subscribers"))
             {
-				//instance.RecreateMeshCollider();
 				instance.UpdateSubscribers();
             }
         }
