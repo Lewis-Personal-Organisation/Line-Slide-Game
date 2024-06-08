@@ -2,16 +2,13 @@
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 /// Editor class for the creation of Bezier and Vertex paths
 
 [CustomEditor(typeof(PathCreator))]
 public class PathEditor : Editor
 {
-
     #region Fields
-
     // Interaction:
     const float segmentSelectDistanceThreshold = 10f;
     const float screenPolylineMaxAngleError = .3f;
@@ -46,6 +43,7 @@ public class PathEditor : Editor
     int draggingHandleIndex;
     int mouseOverHandleIndex;
     int handleIndexToDisplayAsTransform;
+	int lastHandleIndex = 0;
 	bool controlPointBehind = false;
 
 	bool shiftLastFrame;
@@ -62,6 +60,7 @@ public class PathEditor : Editor
     // Constants
     const int bezierPathTab = 0;
     const int vertexPathTab = 1;
+
 
     #endregion
 
@@ -145,20 +144,22 @@ public class PathEditor : Editor
                             creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, newPosition);
                         }
 
+                        // NEED TO ACCOUNT FOR FORWARDS/BACKWARDS SELECTION
 						// If Control Point Selected, allow Copy/Paste of Distance from Anchor Point
 						if (handleIndexToDisplayAsTransform % 3 != 0)
                         {
 							if (GUILayout.Button("Copy Anchor Distance"))
 							{
-                                // If next point is Anchor
-                                if ((handleIndexToDisplayAsTransform + 1) % 3 == 0)
+								lastHandleIndex = handleIndexToDisplayAsTransform;
+								// If next point is Anchor
+								if ((handleIndexToDisplayAsTransform + 1) % 3 == 0)
                                 {
-									VectorCache.controlPointOffset = creator.bezierPath[handleIndexToDisplayAsTransform + 1] - creator.bezierPath[handleIndexToDisplayAsTransform];
+									VectorCache.controlPointOffset = (creator.bezierPath[handleIndexToDisplayAsTransform + 1] - creator.bezierPath[handleIndexToDisplayAsTransform]);
 									controlPointBehind = true;
                                 }
                                 else
 								{
-									VectorCache.controlPointOffset = creator.bezierPath[handleIndexToDisplayAsTransform - 1] - creator.bezierPath[handleIndexToDisplayAsTransform];
+									VectorCache.controlPointOffset = (creator.bezierPath[handleIndexToDisplayAsTransform - 1] - creator.bezierPath[handleIndexToDisplayAsTransform]);
                                     controlPointBehind = false;
 								}
 							}
@@ -170,29 +171,20 @@ public class PathEditor : Editor
 								{
                                     // If the Source and Target Control Points are behind their Anchor points subtract distance, else add distance
                                     if (controlPointBehind)
-                                        creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform + 1)] - VectorCache.controlPointOffset);
+                                        creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, (creator.bezierPath[handleIndexToDisplayAsTransform + 1] - VectorCache.controlPointOffset));
 									else
-										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform + 1)] + VectorCache.controlPointOffset);
-
+										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, (creator.bezierPath[handleIndexToDisplayAsTransform + 1] + VectorCache.controlPointOffset));
 								}
 								else
 								{
 									// If the Source and Target Control Points are ahead their Anchor points add distance, else subtract distance
 									if (!controlPointBehind)
-										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform - 1)] - VectorCache.controlPointOffset);
+										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, (creator.bezierPath[handleIndexToDisplayAsTransform - 1] - VectorCache.controlPointOffset));
 									else
-										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, creator.bezierPath[(handleIndexToDisplayAsTransform - 1)] + VectorCache.controlPointOffset);
+										creator.bezierPath.MovePoint(handleIndexToDisplayAsTransform, (creator.bezierPath[handleIndexToDisplayAsTransform - 1] + VectorCache.controlPointOffset));
 								}
 							}
 						}
-
-						
-
-                        //if (GUILayout.Button("Paste"))
-                        //{
-                        //	creator.bezierPath.SetPoint(handleIndexToDisplayAsTransform, creator.transform.InverseTransformPoint(VectorCache.cachedPosition), true);
-                        //	Debug.Log($"Applying {VectorCache.cachedPosition} to Point. New Position: {creator.bezierPath[handleIndexToDisplayAsTransform]}");
-                        //}
 
                         // Don't draw the angle field if we aren't selecting an anchor point/not in 3d space
                         if (handleIndexToDisplayAsTransform % 3 == 0 && creator.bezierPath.Space == PathSpace.xyz)
@@ -371,7 +363,7 @@ public class PathEditor : Editor
 
         EventType eventType = Event.current.type;
 
-        using (var check = new EditorGUI.ChangeCheckScope())
+		using (var check = new EditorGUI.ChangeCheckScope())
         {
             handlesStartCol = Handles.color;
             switch (data.tabIndex)
@@ -383,14 +375,13 @@ public class PathEditor : Editor
                     }
 
                     DrawBezierPathSceneEditor();
-                    break;
+					break;
                 case vertexPathTab:
                     if (eventType == EventType.Repaint)
                     {
-                        Debug.Log($"Repaint on {this.creator.gameObject.name}");
                         DrawVertexPathSceneEditor();
                     }
-                    break;
+					break;
             }
 
             // Don't allow clicking over empty space to deselect the object
@@ -410,7 +401,6 @@ public class PathEditor : Editor
 
     void DrawVertexPathSceneEditor()
     {
-
         Color bezierCol = globalDisplaySettings.bezierPath;
         bezierCol.a *= .5f;
 
@@ -515,8 +505,14 @@ public class PathEditor : Editor
             }
         }
 
-        // Control click or backspace/delete to remove point
-        if (e.keyCode == KeyCode.Backspace || e.keyCode == KeyCode.Delete || ((e.control || e.command) && e.type == EventType.MouseDown && e.button == 0))
+		//if (e.keyCode == KeyCode.P)
+		//{
+		//	UpdatePathMouseInfo();
+		//	creator.timeOnPath = pathMouseInfo.timeOnPath;
+		//}
+
+		// Control click or backspace/delete to remove point
+		if (e.keyCode == KeyCode.Backspace || e.keyCode == KeyCode.Delete || ((e.control || e.command) && e.type == EventType.MouseDown && e.button == 0))
         {
             if (mouseOverHandleIndex != -1)
             {
@@ -558,13 +554,11 @@ public class PathEditor : Editor
         }
 
         shiftLastFrame = e.shift;
-
     }
 
-    void DrawBezierPathSceneEditor()
-    {
 
-        //return;
+	void DrawBezierPathSceneEditor()
+    {
         bool displayControlPoints = data.displayControlPoints && (bezierPath.ControlPointMode != BezierPath.ControlMode.Automatic || !globalDisplaySettings.hideAutoControls);
         Bounds bounds = bezierPath.CalculateBoundsWithTransform(creator.transform);
 
@@ -878,7 +872,6 @@ public class PathEditor : Editor
 
     void UpdatePathMouseInfo()
     {
-
         if (!hasUpdatedScreenSpaceLine || (screenSpaceLine != null && screenSpaceLine.TransformIsOutOfDate()))
         {
             screenSpaceLine = new ScreenSpacePolyLine(bezierPath, creator.transform, screenPolylineMaxAngleError, screenPolylineMinVertexDst);

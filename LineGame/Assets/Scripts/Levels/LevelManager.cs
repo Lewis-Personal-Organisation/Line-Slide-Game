@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using System.Collections;
 using static Level;
+using UnityEditor;
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -150,8 +151,6 @@ public class LevelManager : Singleton<LevelManager>
 	{
 		OnLevelComplete = null;
 
-		// CHECK IF ANDROID HERE
-
 #if PLATFORM_ANDROID && !UNITY_EDITOR
 		GameSave.CurrentLevel++;
 		GameSave.Save();
@@ -176,6 +175,7 @@ public class LevelManager : Singleton<LevelManager>
 
 		// Wait until we reach the end of path
 		yield return new WaitUntil(() => GameManager.Instance.playerPathFollower.pathComplete);
+		GameManager.Instance.playerPathFollower.speed = 0;
 
 		// Stop emitting particles
 		GameManager.Instance.playerPathFollower.playerParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);

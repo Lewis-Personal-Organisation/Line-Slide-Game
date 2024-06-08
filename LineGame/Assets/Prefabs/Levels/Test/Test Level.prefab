@@ -307,6 +307,8 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
+  drawClosestPoint: 0
+  timeOnPath: 0
 --- !u!114 &1762925179921301970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +454,8 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
+  drawClosestPoint: 0
+  timeOnPath: 0
 --- !u!114 &1762925180458580210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d68c4d772348c4585fc4a4da5c7e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathCreator: {fileID: 1762925180458580208}
   roadMeshSubscribers:
   - {fileID: 1762925179921301970}
 --- !u!1 &1762925180505506073

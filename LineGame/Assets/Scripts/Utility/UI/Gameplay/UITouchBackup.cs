@@ -448,7 +448,7 @@ public class UITouchBackup : Singleton<UITouchBackup>
 				break;
 
 			case ViewStates.LevelFailed:
-				levelPercentText = $"{GameManager.Instance.playerPathFollower.pathPercentComplete}% COMPLETED";
+				levelPercentText = $"{GameManager.Instance.playerPathFollower.timeOnPath * 100F}% COMPLETED";
 				tapToRestart.gameObject.SetActive(true);
 				tapToRestartHitBox.gameObject.SetActive(true);
 				spriteRenderer.color = Color.black;

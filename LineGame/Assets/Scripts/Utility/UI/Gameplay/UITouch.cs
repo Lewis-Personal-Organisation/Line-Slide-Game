@@ -72,7 +72,6 @@ public class UITouch : Singleton<UITouch>
 	public AnimationCurve coinSizeCurve;
 	public List<Image> coinImages;
 
-
 	public enum ViewStates
 	{
 		LevelLoaded,
@@ -193,9 +192,9 @@ public class UITouch : Singleton<UITouch>
 			// TEST
 			for (int i = 0; i < hitResults.Count; i++)
 			{
-				bool isValid = InstanceIDtoAction.ContainsKey(hitResults[i].gameObject.transform.GetInstanceID());
+				bool IDHasAction = InstanceIDtoAction.ContainsKey(hitResults[i].gameObject.transform.GetInstanceID());
 
-				if (isValid)
+				if (IDHasAction)
 				{
 					InstanceIDtoAction[hitResults[i].gameObject.transform.GetInstanceID()].Invoke();
 
@@ -204,7 +203,7 @@ public class UITouch : Singleton<UITouch>
 				}
 				else
 				{
-					Debug.Log(Utils.ColourText($"UITouch.cs :: InstanceID for {hitResults[i].gameObject.transform.GetInstanceID()} - {hitResults[i].gameObject.name}", Color.green));
+					Debug.Log(Utils.ColourText($"UITouch.cs :: ID for {hitResults[i].gameObject.transform.GetInstanceID()} - {hitResults[i].gameObject.name } has no action", Color.cyan));
 				}
 			}
         }
@@ -247,7 +246,6 @@ public class UITouch : Singleton<UITouch>
 
 					settings.backgroundImage.rectTransform.ResizeOverTimeWithActions(this, (settings.open ? -1F : 1F) * settings.backgroundHeight * Vector3.up, .3F, actions);
 					settings.open = !settings.open;
-					Debug.Log("Settings Test!"); 
 					isTouchingUIElement = true;
 				}
 			});
@@ -331,7 +329,6 @@ public class UITouch : Singleton<UITouch>
 				// If we are switching to Level Loaded from Player Selection state
 				if (previousViewState == ViewStates.PlayerSelection)
 				{
-					Debug.Log("Stop Called");
 					LevelManager.Instance.ToggleLevel(true);
 					FadeSelectionCubes(Fade.ToTransparent, 5F);
 					FadeOverlays(Fade.ToTransparent, 5F);
@@ -371,7 +368,7 @@ public class UITouch : Singleton<UITouch>
 				break;
 
 			case ViewStates.LevelFailed:
-				levelPercentText = $"{GameManager.Instance.playerPathFollower.pathPercentComplete}% COMPLETED";
+				levelPercentText = $"{GameManager.Instance.playerPathFollower.timeOnPath * 100F}% COMPLETED";
 				tapToRestart.gameObject.SetActive(true);
 				tapToRestartHitBox.gameObject.SetActive(true);
 				spriteRenderer.color = Color.black;
@@ -726,7 +723,7 @@ public class UITouch : Singleton<UITouch>
 	/// </summary>
 	public void UpdateLevelProgressUI(float distance, float vertCount)
 	{
-		levelProgressImage.fillAmount = distance / vertCount;
+		levelProgressImage.fillAmount = GameManager.Instance.playerPathFollower.timeOnPath;
 	}
 
 	/// <summary>
@@ -756,7 +753,6 @@ public class UITouch : Singleton<UITouch>
 
 	private IEnumerator ScrollUIImage()
 	{
-		Debug.Log("Start Called");
 		switch (LevelManager.Instance.currentLevel.Difficulty)
 		{
 			case Level.LevelDifficulty.Beginner:
@@ -776,7 +772,6 @@ public class UITouch : Singleton<UITouch>
 		while (true)
 		{
 			playerSelectScrollingBackgroundImage.mainTextureOffset += Vector2.left * backgroundImageScrollSpeed * Time.deltaTime;
-			Debug.Log("Scrolling");
 			yield return null;
 		}
 	}

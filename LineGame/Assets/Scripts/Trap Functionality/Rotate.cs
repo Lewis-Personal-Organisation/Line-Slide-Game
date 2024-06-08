@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
@@ -52,9 +53,9 @@ public class Rotate : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-        switch (type)
-        {
-            case MoveTypes.Spin:
+		switch (type)
+		{
+			case MoveTypes.Spin:
 				if (rotationAxis == Axis.X)
 					transform.Rotate(Vector3.right * speed * Time.deltaTime, axisContext == AxisContext.Global ? Space.World : Space.Self);
 				else if (rotationAxis == Axis.Y)
@@ -62,14 +63,14 @@ public class Rotate : MonoBehaviour
 				else if (rotationAxis == Axis.Z)
 					transform.Rotate(Vector3.forward * speed * Time.deltaTime, axisContext == AxisContext.Global ? Space.World : Space.Self);
 				break;
-            case MoveTypes.SineY:
-                if (axisContext == AxisContext.Global)
-                    transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time * speed), transform.position.z) + offset;
+			case MoveTypes.SineY:
+				if (axisContext == AxisContext.Global)
+					transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time * speed), transform.position.z) + offset;
 				else
 					transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Sin(Time.time * speed), transform.localPosition.z) + offset;
 				break;
-            default:
-                break;
-        }
-    }
+			default:
+				break;
+		}
+	}
 }

@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
 	public bool progressLevels = true;
 	public bool AlwaysUseFirstLevel = false;
 	public bool AlwaysResetCoins = false;
+	public int forcedLevel = -1;
 
 
 	new private void Awake()
@@ -31,7 +32,11 @@ public class GameManager : Singleton<GameManager>
 
 		playerPathFollower.CacheSplitCubePositions();
 
-		if (useTestLevel)
+		if (forcedLevel != -1)
+		{
+			LevelManager.Instance.LoadLevel(forcedLevel);
+		}
+		else if(useTestLevel)
 		{
 			LevelManager.Instance.LoadLevel(-1);
 		}

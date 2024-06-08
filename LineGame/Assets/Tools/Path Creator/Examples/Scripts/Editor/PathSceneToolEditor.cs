@@ -9,8 +9,6 @@ public class PathSceneToolEditor : Editor
 
     public override void OnInspectorGUI()
     {
-
-
         using (var check = new EditorGUI.ChangeCheckScope())
         {
             DrawDefaultInspector();
@@ -29,16 +27,6 @@ public class PathSceneToolEditor : Editor
                 }
             }
         }
-
-        if (GUILayout.Button("Manual Update"))
-        {
-            if (TryFindPathCreator())
-            {
-                TriggerUpdate();
-                SceneView.RepaintAll();
-            }
-        }
-
     }
 
     void TriggerUpdate()

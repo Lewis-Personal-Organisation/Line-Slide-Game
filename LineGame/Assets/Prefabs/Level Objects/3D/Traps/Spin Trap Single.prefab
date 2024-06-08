@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6215755604056327942}
   - component: {fileID: 6215755604056327943}
   - component: {fileID: 6215755604056327936}
+  - component: {fileID: 6606418454244281404}
   m_Layer: 0
   m_Name: TrapHead
   m_TagString: Trap
@@ -95,6 +96,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6606418454244281404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215755604056327939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8d321cc58af7d42b6d7bb8b3d83b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  rotationAxis: 1
+  axisContext: 0
+  speed: -150
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &6215755604173283326
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +124,6 @@ GameObject:
   - component: {fileID: 6215755604173283315}
   - component: {fileID: 6215755604173283324}
   - component: {fileID: 6215755604173283325}
-  - component: {fileID: 5630362291349524858}
   m_Layer: 0
   m_Name: Spin Trap Single
   m_TagString: Trap
@@ -178,20 +195,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5630362291349524858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6215755604173283326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8d321cc58af7d42b6d7bb8b3d83b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: -150
-  offset: {x: 0, y: 0, z: 0}
-  timeOffset: 0
-  type: 0
-  rotationAxis: 1

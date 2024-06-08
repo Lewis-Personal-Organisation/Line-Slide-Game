@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 // Moves along a path at constant speed.
 // Depending on the end of path instruction, will either loop, reverse, or stop at the end of the path.
@@ -40,23 +35,18 @@ public class PathFollower : MonoBehaviour
     public float maxLifetime = 0.8F;
     public float minLifetime = 0.3F;
 
-	//Path Queries
-	public int pathPercentComplete => (int)Math.Round(Mathf.Clamp(distanceTravelled / pathCreator.path.length, 0F, 1F) * 100F, MidpointRounding.AwayFromZero);
-	public bool pathComplete => Mathf.Clamp(distanceTravelled / pathCreator.path.length, 0, 1) == 1;
-	private bool finishLineReached => pathCreator.path.GetClosestDistanceAlongPath(transform.position) >= LevelManager.Instance.currentLevel.finishLineDistance;
-	
+    public Transform frontObj;
 
-	private void Awake()
-    {
-        playerParticlesModule = playerParticles.main;
-        //pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
-    }
+    // Player front position
+    public Vector3 playerFront => transform.position + transform.forward * transform.localScale.z * 0.5F;
+    public bool pathComplete => pathCreator.path.GetClosestTimeOnPath(playerFront) >= 1; 
+    public float timeOnPath => pathCreator.path.GetClosestTimeOnPath(playerFront);
+    private bool finishLineReached => pathCreator.path.GetClosestDistanceAlongPath(transform.position) >= LevelManager.Instance.currentLevel.finishLineDistance;
 
 
 	/// <summary>
 	/// When the player hits a trap, stop particles and toggle colliders. Trigger end of level state
 	/// </summary>
-	/// <param name="Collider"></param>
 	private void OnTriggerEnter(Collider Collider)
     {
         if (Collider.CompareTag("Trap"))
@@ -119,16 +109,17 @@ public class PathFollower : MonoBehaviour
 			transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
 			transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
 
-			UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
 
-            //pigParticlesModule.startLifetime = Mathf.Clamp(maxLifetime - speed, minLifetime, maxLifetime);
+			UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
 
             if (!playerParticles.isPlaying)
 			{
 				playerParticles.Play(false);
 			}
 		}
-    }
+
+		frontObj.transform.position = playerFront;
+	}
 
     /// <summary>
     /// Setup our Path Follower variables, now that our level is loaded
@@ -283,6 +274,6 @@ public class PathFollower : MonoBehaviour
     /// </summary>
     public void SetTrailDistance()
     {
-		playerTrail.transform.localPosition = new Vector3(0, -0.45F, -0.45F);
+		playerTrail.transform.localPosition = new Vector3(0, -0.43F, -0.45F);
 	}
 }
