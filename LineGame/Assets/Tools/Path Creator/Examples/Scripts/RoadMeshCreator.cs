@@ -52,8 +52,7 @@ public class RoadMeshCreator : PathSceneTool
     {
         StartCoroutine(PathUpdated());
     }
-
-    public void DrawPathInstant()
+	public void DrawPathInstant()
     {
         if (pathCreator != null)
         {
@@ -78,7 +77,9 @@ public class RoadMeshCreator : PathSceneTool
             }
 
             // Tell Unity to repaint
+#if UNITY_EDITOR
             SceneView.RepaintAll();
+#endif
         }
     }
 
@@ -106,8 +107,10 @@ public class RoadMeshCreator : PathSceneTool
                 roadMeshSubscribers[i].DrawPathInstant();
             }
 
-            // Tell Unity to repaint
-            SceneView.RepaintAll();
+			// Tell Unity to repaint
+#if UNITY_EDITOR
+			SceneView.RepaintAll();
+#endif
         }
     }
 
@@ -258,7 +261,7 @@ public class RoadMeshCreator : PathSceneTool
             // The up and right vectors for offsets for the first path point index
             Vector3 up = usePathNormals ? Vector3.Cross(path.GetTangent(0), path.GetNormal(0)) : path.up;
             Vector3 right = usePathNormals ? path.GetNormal(0) : Vector3.Cross(up, path.GetTangent(0));
-            Vector3 firstPathPoint = path.GetPoint(0);          // The first path point
+            Vector3 firstPathPoint = pathCreator.bezierPath.GetPoint(0);          // The first path point
             int[] triOrder = new int[] { 0, 1, 3, 0, 3, 2 };    // The rendering order for rendering two triangles 
 
             // Create Objects for rendering a mesh if they don't exist
@@ -316,10 +319,10 @@ public class RoadMeshCreator : PathSceneTool
             Mesh endMesh = new Mesh();
             endMesh.name = "End Mesh";
             endMesh.vertices = new Vector3[] {
-                path.GetPoint(path.localPoints.Length - 1) - right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
-                path.GetPoint(path.localPoints.Length - 1) + right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
-                path.GetPoint(path.localPoints.Length - 1) - right * Mathf.Abs(roadWidth) - up * thickness,
-                path.GetPoint(path.localPoints.Length - 1) + right * Mathf.Abs(roadWidth) - up * thickness
+                /*path.GetPoint(path.localPoints.Length - 1)*/ pathCreator.bezierPath.GetPoint(pathCreator.bezierPath.points.Count - 1) - right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
+                /*path.GetPoint(path.localPoints.Length - 1)*/ pathCreator.bezierPath.GetPoint(pathCreator.bezierPath.points.Count - 1) + right * Mathf.Abs(roadWidth) + ExtendedVerticesHeight,
+                /*path.GetPoint(path.localPoints.Length - 1)*/ pathCreator.bezierPath.GetPoint(pathCreator.bezierPath.points.Count - 1) - right * Mathf.Abs(roadWidth) - up * thickness,
+                /*path.GetPoint(path.localPoints.Length - 1)*/ pathCreator.bezierPath.GetPoint(pathCreator.bezierPath.points.Count - 1) + right * Mathf.Abs(roadWidth) - up * thickness
             };
             endMesh.triangles = triOrder.Reverse().ToArray();
             endMeshFilter.sharedMesh = endMesh;

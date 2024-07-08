@@ -19,17 +19,22 @@ public class RectPositioner : MonoBehaviour
 		rectTransform = GetComponent<RectTransform>();
 	}
 
+#if UNITY_EDITOR
 	/// <summary>
 	/// Calculates and caches the rectTransform position as Screen Resolution Percentage
 	/// The Values can be used to retain the exact position of the transform on screens of any resolution
 	/// </summary>
 	internal void CachePosition()
 	{
+		if (rectTransform == null)
+			rectTransform = GetComponent<RectTransform>();
+
 		values = Utils.InverseLerp(Vector2.zero, UnityEditor.Handles.GetMainGameViewSize(), (Vector2)rectTransform.position) * 100F;
 		values.z = rectTransform.position.z;
 	}
+#endif
 
-	
+
 
 	//	internal void ShowMainGameViewSize()
 	//	{

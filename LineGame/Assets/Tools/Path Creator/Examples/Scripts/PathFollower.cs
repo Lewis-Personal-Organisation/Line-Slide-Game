@@ -31,11 +31,11 @@ public class PathFollower : MonoBehaviour
 
     [Header("Particle System")]
     public ParticleSystem playerParticles;
-    ParticleSystem.MainModule playerParticlesModule;
     public float maxLifetime = 0.8F;
     public float minLifetime = 0.3F;
 
-    public Transform frontObj;
+    [Header("Audio")]
+    public AudioSource audioSource;
 
     // Player front position
     public Vector3 playerFront => transform.position + transform.forward * transform.localScale.z * 0.5F;
@@ -80,7 +80,7 @@ public class PathFollower : MonoBehaviour
         roadCreator.playerScaleTrigger.Invoke();
     }
 
-    public void LateUpdate()
+    public void FixedUpdate()
 	{
 		if (finishLineReached)
 		{
@@ -117,8 +117,6 @@ public class PathFollower : MonoBehaviour
 				playerParticles.Play(false);
 			}
 		}
-
-		frontObj.transform.position = playerFront;
 	}
 
     /// <summary>
@@ -201,6 +199,7 @@ public class PathFollower : MonoBehaviour
         distanceTravelled = .25F;
 		transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
 		UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
+        playerTrail.transform.localPosition = new Vector3(0, -0.43F, -0.5F);
         playerTrail.Clear();
 	}
 
@@ -274,6 +273,6 @@ public class PathFollower : MonoBehaviour
     /// </summary>
     public void SetTrailDistance()
     {
-		playerTrail.transform.localPosition = new Vector3(0, -0.43F, -0.45F);
+		playerTrail.transform.localPosition = new Vector3(0, -0.43F, 0 /*-0.45F*/);
 	}
 }

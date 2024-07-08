@@ -531,10 +531,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8caf630bf7f78104589159a3595d5bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 1
+  includedScenes: 2
+  options:
+  - Loading
+  - Gameplay
+  sceneIndex: 1
   transparencyCanvasGroup: {fileID: 1872782871}
-  fadeTime: 0.7
-  visibleTime: 1
+  fadeTime: 0.5
+  visibleTime: 0.8
 --- !u!1 &1528378324
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.CompilerServices;
-using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
+#if UNITY_EDITOR 
 using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 
 public class ColliderGenerator : MonoBehaviour
@@ -29,6 +26,7 @@ public class ColliderGenerator : MonoBehaviour
 		public int colliderCount;
 	}
 
+#if UNITY_EDITOR
 	/// <summary>
 	/// Finds existing colliderHolder object. If one does not exist, create one
 	/// </summary>
@@ -151,7 +149,7 @@ public class ColliderGenerator : MonoBehaviour
 		// Insert the collider to the start or end of the collider list
 		generatedColliders.Insert(isFirst ? 0 : generatedColliders.Count, collider);
 	}
-
+#endif
 	/// <summary>
 	/// Returns the Index of the collider which is either the first or last along the path
 	/// </summary>

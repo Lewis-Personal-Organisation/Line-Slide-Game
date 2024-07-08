@@ -1,9 +1,13 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CustomSceneManager : MonoBehaviour
 {
+    [HideInInspector] public int includedScenes = 0;
+    [HideInInspector] public List<string> options = new List<string>();
+
     [HideInInspector] public int sceneIndex;
 
     public CanvasGroup transparencyCanvasGroup;
@@ -19,7 +23,6 @@ public class CustomSceneManager : MonoBehaviour
     private void Start()
     {
         PreCheck();
-
         StartCoroutine(LoadSceneAsync());
     }
 
@@ -47,7 +50,7 @@ public class CustomSceneManager : MonoBehaviour
     public IEnumerator LoadSceneAsync()
     {
         Debug.Log($"Loading Scene {sceneIndex} with index {sceneIndex} at path {System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(sceneIndex))}");
-        sceneLoadingOperation = SceneManager.LoadSceneAsync(sceneIndex/*(int)sceneToLoad*/);
+        sceneLoadingOperation = SceneManager.LoadSceneAsync(sceneIndex);
         sceneLoadingOperation.allowSceneActivation = false;
 
         yield return StartCoroutine(FadeStartupScreen(visibleTime));

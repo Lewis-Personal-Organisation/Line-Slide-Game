@@ -69,8 +69,6 @@ public class Rotate : MonoBehaviour
 				else
 					transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Sin(Time.time * speed), transform.localPosition.z) + offset;
 				break;
-			default:
-				break;
 		}
 	}
 }

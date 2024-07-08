@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
 using UnityEditor;
 
 [CustomEditor(typeof(PathSceneTool), true)]
@@ -92,3 +92,4 @@ public class PathSceneToolEditor : Editor
         return pathTool.pathCreator != null;
     }
 }
+#endif

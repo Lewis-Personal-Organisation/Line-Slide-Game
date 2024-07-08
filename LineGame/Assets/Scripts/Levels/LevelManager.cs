@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using System.Collections;
 using static Level;
 using UnityEditor;
+using RDG;
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -146,24 +147,42 @@ public class LevelManager : Singleton<LevelManager>
 
 	/// <summary>
 	/// Called when we reach finish line - Fires Confetti, Shakes and Opens Chest, Fires Coins, Processes UI Fades
+	/// and loads next level
 	/// /// </summary>
 	public IEnumerator LevelComplete()
 	{
 		OnLevelComplete = null;
 
 #if PLATFORM_ANDROID && !UNITY_EDITOR
-		GameSave.CurrentLevel++;
-		GameSave.Save();
+		if (GameSave.CurrentLevel == LevelManager.Instance.LevelCount)
+		{
+			Debug.Log($"Finished All Levels on level {GameSave.CurrentLevel}. Going back to level 1");
+			GameSave.CurrentLevel = 1;
+		}
+		else
+		{
+			GameSave.CurrentLevel++;
+		}
 #elif PLATFORM_ANDROID && UNITY_EDITOR
 		if (GameManager.Instance.progressLevels)
 		{
-			GameSave.CurrentLevel++;
-			GameSave.Save();
+			if (GameSave.CurrentLevel == LevelManager.Instance.LevelCount)
+			{
+				Debug.Log($"Finished All Levels on level {GameSave.CurrentLevel}. Going back to level 1");
+				GameSave.CurrentLevel = 1;
+			}
+			else
+			{
+				GameSave.CurrentLevel++;
+			}
 		}
 #endif
+		GameSave.Save();
 
 		GameManager.Instance.playerPathFollower.ApplyCruiseSpeed();
-		Coroutine ChestShakeRoutine = StartCoroutine(ShakeTreasureChest()); // Begin shaking chest when we cross finish line
+		CameraController.Instance.ToggleRotation();
+
+		Coroutine ChestShakeRoutine = StartCoroutine(ShakeTreasureChest()); // Shake chest when we cross finish line
 
 		// Wait for the Player to pass each Particle system before playihng confety particle systems
 		yield return new WaitUntil(() => PlayerHasPassedFirstParticleSystem);
@@ -185,6 +204,9 @@ public class LevelManager : Singleton<LevelManager>
 
 		// Open the treasure chest and fire coins
 		yield return StartCoroutine(OpenTreasureChest(new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, .5F, FireTreasureChestCoins)));
+		
+		// Vibrate device
+		Vibration.Vibrate(1000);
 
 		// Wait until coins have settled in place
 		yield return new WaitForSeconds(3);
@@ -197,8 +219,9 @@ public class LevelManager : Singleton<LevelManager>
 		yield return new WaitForSeconds(1.5F);
 
 		// Switch game view to Level Complete. Once complete, wait then load the new level
-		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);				
+		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);
 		yield return new WaitUntil(() => !UITouch.Instance.maskScaleActive);
+		CameraController.Instance.ResetCamera();
 		yield return new WaitForSeconds(.5F);
 		Debug.Log(Utils.ColourText($"Fade has finished! Loading new level", Color.cyan));
 		LoadLevel(GameSave.CurrentLevel);
@@ -261,14 +284,19 @@ public class LevelManager : Singleton<LevelManager>
 			case ConfettiSets.One:
 				currentLevel.finishingParticleSystems[0].Play();
 				currentLevel.finishingParticleSystems[0 + 1].Play();
+				AudioManager.Instance.PlayFireworksAudio();
+				//AudioManager.Instance.FadeInAudio(GameManager.Instance.playerPathFollower.audioSource, 1, 0, 1);
+				//GameManager.Instance.playerPathFollower.audioSource.PlayOneShot(AudioManager.Instance.fireworksAudio);
 				break;
 			case ConfettiSets.Two:
 				currentLevel.finishingParticleSystems[2].Play();
 				currentLevel.finishingParticleSystems[2 + 1].Play();
+				//GameManager.Instance.playerPathFollower.audioSource.PlayOneShot(AudioManager.Instance.fireworksAudio);
 				break;
 			case ConfettiSets.Three:
 				currentLevel.finishingParticleSystems[4].Play();
 				currentLevel.finishingParticleSystems[4 + 1].Play();
+				//GameManager.Instance.playerPathFollower.audioSource.PlayOneShot(AudioManager.Instance.fireworksAudio);
 				break;
 		}
 	}

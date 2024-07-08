@@ -1,7 +1,4 @@
-using System;
-using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [ExecuteInEditMode]
 public class Level : MonoBehaviour

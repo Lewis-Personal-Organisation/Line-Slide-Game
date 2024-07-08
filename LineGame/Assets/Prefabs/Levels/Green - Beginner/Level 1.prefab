@@ -494,8 +494,6 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
-  drawClosestPoint: 0
-  timeOnPath: 0
 --- !u!114 &1762925179921301970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,8 +678,6 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
-  drawClosestPoint: 0
-  timeOnPath: 0
 --- !u!114 &1762925180458580210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,6 +2074,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 282867493156799741, guid: 5b7b90a580a7714488a212a1da4dd055,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 282867493156799741, guid: 5b7b90a580a7714488a212a1da4dd055,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 282867493156799741, guid: 5b7b90a580a7714488a212a1da4dd055,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 282867493156799741, guid: 5b7b90a580a7714488a212a1da4dd055,
         type: 3}

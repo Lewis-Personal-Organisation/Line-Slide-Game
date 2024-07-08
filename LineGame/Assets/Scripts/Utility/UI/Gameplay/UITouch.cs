@@ -15,7 +15,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
-
+using RDG;
+using System.Dynamic;
 
 public class UITouch : Singleton<UITouch>
 {
@@ -93,12 +94,20 @@ public class UITouch : Singleton<UITouch>
 		public GameObject slidingObject;
 		public float backgroundHeight;
 		public Image backgroundImage;
-		public Image testImage;
-
 		public bool open;
 		public bool isAnimating;
-	}
 
+		// Vibration
+		public Image vibrateImage;
+		public Image vibrateBackgroundImage;
+		public Color vibrationOnColour;
+		public Color vibrationOffColour;
+
+		// Level Timing
+		public Image timerImage;
+		public Image timerBackgroundImage;
+	}
+	[Space(10)]
 	[SerializeField] TextMeshProUGUI vSyncText = null;
 	public TextBounce tapToPlay;
     public RectTransform tapToPlayHitBox;
@@ -109,6 +118,7 @@ public class UITouch : Singleton<UITouch>
 	[Header("Restart View Interactables")]
 	public TextBounce tapToRestart;
 	public RectTransform tapToRestartHitBox;
+	private bool tapToRestartEnabled = false;
     [SerializeField] private Timer debugTimer = null;
     [SerializeField] private SpriteRenderer spriteRenderer = null;
 	[SerializeField] private Transform maskFadeSprite;
@@ -142,7 +152,7 @@ public class UITouch : Singleton<UITouch>
 		FPSDispay.Instance.enabled = false;
 		vSyncText.gameObject.SetActive(false);
 
-		LinkUIObjectActions();
+		LinkUIIDActions();
 
 		maskFadeSpriteMaxSize = maskFadeSprite.transform.localScale;
 		gameplayCanvasGroup.alpha = 0;
@@ -189,13 +199,12 @@ public class UITouch : Singleton<UITouch>
 			else
 				gameplayUIRaycaster.Raycast(uiPointerEventData, hitResults);
 
-			// TEST
 			for (int i = 0; i < hitResults.Count; i++)
 			{
-				bool IDHasAction = InstanceIDtoAction.ContainsKey(hitResults[i].gameObject.transform.GetInstanceID());
-
-				if (IDHasAction)
+				// Does this ID have an action?
+				if (InstanceIDtoAction.ContainsKey(hitResults[i].gameObject.transform.GetInstanceID()))
 				{
+					Debug.Log(Utils.ColourText($"Touched {hitResults[i].gameObject.transform.name}", Color.green));
 					InstanceIDtoAction[hitResults[i].gameObject.transform.GetInstanceID()].Invoke();
 
 					if (isTouchingUIElement)
@@ -215,13 +224,14 @@ public class UITouch : Singleton<UITouch>
     }
 
 	/// <summary>
-	/// Assigns the touchable/interactable Objects to custom functionality
+	/// Assigns the touchable/interactable Objects to custom functionality.
 	/// InstanceID's have to be set using the Transform Component of an Object
 	/// </summary>
-	private void LinkUIObjectActions()
+	private void LinkUIIDActions()
 	{
 		InstanceIDtoAction.Add(settings.Button.GetInstanceID(), () =>
 			{
+				//Debug.Log("We are animating");
 				if (!settings.isAnimating)
 				{
 					if (settings.open == false)
@@ -232,23 +242,52 @@ public class UITouch : Singleton<UITouch>
 
 					List<CanvasUtils.TimedAction> actions = new List<CanvasUtils.TimedAction>()
 					{
-						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, settings.open ? 0.2F: 0.7F, () =>
+						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, settings.open ? 0F : 1F, () => 
 						{
-							settings.testImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 40F, .1F, null);
+							settings.vibrateImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 40F, .1F, null);
+							settings.vibrateBackgroundImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 50F, .1F, null);
 						}),
-						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, 1F, () =>
+						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, settings.open ? 0F : 1.5F, () =>
 						{
+							settings.timerImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 40F, .1F, null);
+							settings.timerBackgroundImage.rectTransform.ResizeOverTime(this, CanvasUtils.Positive2D * (settings.open ? 1F : -1F) * 50F, .1F, null);
+						}),
+						new CanvasUtils.TimedAction(CanvasUtils.TimedAction.Modes.Passive, 2F, () =>
+						{
+							//Debug.Log("Animating stopped");
 							settings.isAnimating = false;
 							if (settings.open == false)
 								settings.slidingObject.SetActive(false);
 						})
 					};
 
-					settings.backgroundImage.rectTransform.ResizeOverTimeWithActions(this, (settings.open ? -1F : 1F) * settings.backgroundHeight * Vector3.up, .3F, actions);
+					//Debug.Log("Resizing");
+					// Resize settings background, fire actions when done
+					settings.backgroundImage.rectTransform.ResizeOverTimeWithActions(this, (settings.open ? -1F : 1F) * settings.backgroundHeight * Vector3.up, .3F, actions, 0, .15F);
 					settings.open = !settings.open;
 					isTouchingUIElement = true;
 				}
 			});
+		InstanceIDtoAction.Add(settings.vibrateImage.transform.GetInstanceID(), () =>
+		{
+			Vibration.enabled = !Vibration.enabled;
+			PlayerPrefs.SetInt("vibrationState", Vibration.enabled ? 1 : 0);
+			PlayerPrefs.Save();
+			settings.vibrateBackgroundImage.color = Vibration.enabled ? settings.vibrationOnColour : settings.vibrationOffColour;
+			
+			if (Vibration.enabled)
+				Vibration.Vibrate(100);
+
+			isTouchingUIElement = true;
+		});
+		InstanceIDtoAction.Add(settings.timerImage.transform.GetInstanceID(), () =>
+		{
+			bool timerEnabled = PlayerPrefs.GetInt("timedLevels") == 1;
+			PlayerPrefs.SetInt("timedLevels", timerEnabled ? 0 : 1);
+			PlayerPrefs.Save();
+			settings.timerImage.color = timerEnabled ? settings.vibrationOnColour : settings.vibrationOffColour;
+			isTouchingUIElement = true;
+		});
 		InstanceIDtoAction.Add(tapToPlayHitBox.GetInstanceID(), () => {
 			tapToPlay.gameObject.SetActive(false);
 			tapToPlayHitBox.gameObject.SetActive(false);
@@ -258,6 +297,8 @@ public class UITouch : Singleton<UITouch>
 			isTouchingUIElement = false;
 		});
 		InstanceIDtoAction.Add(tapToRestartHitBox.GetInstanceID(), () => {
+			if (!tapToRestartEnabled)
+				return;
 			SwitchView(ViewStates.LevelRestart);
 			isTouchingUIElement = true;
 		});
@@ -274,7 +315,7 @@ public class UITouch : Singleton<UITouch>
 			float oldCoinCount = GameSave.CoinCount;
 			GameSave.CoinCount -= playerUnlockables[skinIndex].cost;
 			GameSave.Save();
-			UpdateUICoins(oldCoinCount);
+			UpdateUICoins(oldCoinCount, 240);
 			SwapPlayerColoursOnSelection();
 			isTouchingUIElement = true;
 		});
@@ -368,18 +409,21 @@ public class UITouch : Singleton<UITouch>
 				break;
 
 			case ViewStates.LevelFailed:
-				levelPercentText = $"{GameManager.Instance.playerPathFollower.timeOnPath * 100F}% COMPLETED";
+				tapToRestartEnabled = false;
 				tapToRestart.gameObject.SetActive(true);
 				tapToRestartHitBox.gameObject.SetActive(true);
+				levelPercentText = $"{(int)(GameManager.Instance.playerPathFollower.timeOnPath * 100F)}% COMPLETED";
 				spriteRenderer.color = Color.black;
 				FadeCanvasGroup(Fade.ToTransparent, gameplayCanvasGroup);
 				ScaleMask(Scale.Down, levelFailedColour);
 				yield return new WaitForSeconds(0.5F);
 				spriteRenderer.color = levelFailedColour;
-				FadeCanvasGroup(Fade.ToOpaque, levelFailedCanvasGroup);
+				yield return FadeCanvasGroup(Fade.ToOpaque, levelFailedCanvasGroup, 2F);
+				tapToRestartEnabled = true;
 				break;
 
 			case ViewStates.LevelRestart:
+				GameManager.Instance.playerPathFollower.enabled = false;
 				tapToRestart.gameObject.SetActive(false);
 				tapToRestartHitBox.gameObject.SetActive(false);
 				spriteRenderer.color = levelFailedColour;
@@ -560,12 +604,12 @@ public class UITouch : Singleton<UITouch>
 		if (playerUnlockables[index].isAnimating == false)
 		{
 			playerUnlockables[index].isAnimating = true;		// We are animating
-			Vector2 sd = playerUnlockables[index].selectableImage.rectTransform.sizeDelta;	// Cache the og size
+			Vector2 sizeDelta = playerUnlockables[index].selectableImage.rectTransform.sizeDelta;	// Cache the og size
 
 			// Scale down, and scale up once complete
-			playerUnlockables[index].selectableImage.rectTransform.ResizeOverTime(this, sd * CanvasUtils.Negative2D * 0.20F, .075F, null, () =>
+			playerUnlockables[index].selectableImage.rectTransform.ResizeOverTime(this, sizeDelta * CanvasUtils.Negative2D * 0.20F, .075F, null, () =>
 			{
-				playerUnlockables[index].selectableImage.rectTransform.ResizeOverTime(this, sd * CanvasUtils.Positive2D * 0.20F, .075F, null, () =>
+				playerUnlockables[index].selectableImage.rectTransform.ResizeOverTime(this, sizeDelta * CanvasUtils.Positive2D * 0.20F, .075F, null, () =>
 				{
 					playerUnlockables[index].isAnimating = false;
 				});
@@ -589,6 +633,7 @@ public class UITouch : Singleton<UITouch>
 
 			// Swap the current Materials
 			SwapPlayerColoursOnSelection();
+
 			return true;
 		}
 
@@ -615,6 +660,32 @@ public class UITouch : Singleton<UITouch>
 		GameManager.Instance.playerPathFollower.playerMeshRenderer.sharedMaterial.color = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
 		GameManager.Instance.playerPathFollower.PlayerTrailColour = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
 		GameManager.Instance.playerParticleMaterial.color = LevelManager.Instance.GetOffsetColour(playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color, -100F);
+		GameSave.SetLastSkinIndex(skinIndex);
+	}
+
+	/// <summary>
+	/// Defaults the Player Colours
+	/// </summary>
+	public void SwapPlayerColoursToDefault()
+	{
+		previewCubeMeshRenderer.sharedMaterial.color = playerUnlockables[0].cubeMeshRenderer.sharedMaterial.color;
+		GameManager.Instance.playerPathFollower.playerMeshRenderer.sharedMaterial.color = playerUnlockables[0].cubeMeshRenderer.sharedMaterial.color;
+		GameManager.Instance.playerPathFollower.PlayerTrailColour = playerUnlockables[0].cubeMeshRenderer.sharedMaterial.color;
+		GameManager.Instance.playerParticleMaterial.color = LevelManager.Instance.GetOffsetColour(playerUnlockables[0].cubeMeshRenderer.sharedMaterial.color, -100F);
+		GameSave.SetLastSkinIndex(0);
+	}
+
+	/// <summary>
+	/// Applies the last unlocked skin on Game Startup
+	/// </summary>
+	/// <param name="skinIndex"></param>
+	public void ApplyLastUnlockedSkin(int skinIndex)
+	{
+		previewCubeMeshRenderer.sharedMaterial.color = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
+		GameManager.Instance.playerPathFollower.playerMeshRenderer.sharedMaterial.color = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
+		GameManager.Instance.playerPathFollower.PlayerTrailColour = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
+		GameManager.Instance.playerParticleMaterial.color = LevelManager.Instance.GetOffsetColour(playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color, -100F);
+		Debug.Log($"LAI Apply: {skinIndex}");
 	}
 
 	/// <summary>
@@ -730,22 +801,22 @@ public class UITouch : Singleton<UITouch>
 	/// Update the UI Coins over time using the IUpdateUICoins Method
 	/// </summary>
 	/// <param name="oldCoinCount"></param>
-	public void UpdateUICoins(float oldCoinCount)
+	public void UpdateUICoins(float oldCoinCount, float speed = 0)
 	{
-		StartCoroutine(IUpdateUICoins(oldCoinCount));
+		StartCoroutine(IUpdateUICoins(oldCoinCount, speed));
 	}
 
 	/// <summary>
 	/// Update UI Coins over time
 	/// </summary>
-	private IEnumerator IUpdateUICoins(float oldCoinCount)
+	private IEnumerator IUpdateUICoins(float oldCoinCount, float speed = 0F)
 	{
 		float sign = oldCoinCount < GameSave.CoinCount ? 1 : -1;
 
 		// While the old coin coint is not equal to the new one, update our display value
 		while ((int)oldCoinCount != GameSave.CoinCount)
 		{
-			oldCoinCount += Time.deltaTime * Instance.coinCounterUpdateSpeed * sign;
+			oldCoinCount += Time.deltaTime * (speed == 0F ? Instance.coinCounterUpdateSpeed : speed) * sign;
 			Instance.coinCounterText.text = ((int)oldCoinCount).ToString();
 			yield return null;
 		}

@@ -18,7 +18,7 @@ public static class GameSave
 		{
 			if (currentLevel == 0)
 			{
-				currentLevel = PlayerPrefs.GetInt("currentLevel", 0);
+				currentLevel = PlayerPrefs.GetInt("currentLevel", 1);
 			}
 			return currentLevel;
 		}
@@ -46,10 +46,12 @@ public static class GameSave
 		}
 	}
 
+
 	/// <summary>
 	/// The Status of the Player Unlockables
 	/// </summary>
 	private static int[] playerSkinUnlockables;
+	private static int lastAppliedSkin;
 	private static readonly string playerSkinUnlockableString = "playerSelectionUnlockables";
 	/// <summary>
 	/// Reset the Status of all unlocks to -1 on game start. This saves us having to read from Storage each time IsPlayerSkinUnlocked(),
@@ -66,9 +68,14 @@ public static class GameSave
 
 		// Restores the unlock state of unlockables
 		for (int i = 1; i < playerSkinUnlockables.Length; i++)
-		{
 			RestoreUnlock(i);
-		}
+
+		// Set the default colours active, if we have not unlocked anything
+		// Else, if we have unlocked something, we need to check the last applied skin
+		if (UnlocksAreDefault())
+			UITouch.Instance.SwapPlayerColoursToDefault();
+		else
+			UITouch.Instance.ApplyLastUnlockedSkin(GetLastSkinIndex());
 	}
 
 	/// <summary>
@@ -94,9 +101,30 @@ public static class GameSave
 	}
 
 	/// <summary>
+	/// Sets the last applied skin to PlayerPrefs
+	/// </summary>
+	public static void SetLastSkinIndex(int index)
+	{
+		lastAppliedSkin = index;
+		PlayerPrefs.SetInt("lastSkinSelected", lastAppliedSkin);
+		Debug.Log($"LAI Set: {lastAppliedSkin}");
+		PlayerPrefs.Save();
+	}
+
+	/// <summary>
+	/// Returns the last applied skin for the Player. If not skin has been set, set it to 0 (default skin)
+	/// </summary>
+	public static int GetLastSkinIndex()
+	{
+		lastAppliedSkin = PlayerPrefs.GetInt("lastSkinSelected", 0);
+		Debug.Log($"LAI Get: {lastAppliedSkin}");
+		return lastAppliedSkin;
+	}
+
+
+	/// <summary>
 	/// Restore the active state of an unlockable. UI elements are updated based on the playerSkinUnlockables array
 	/// </summary>
-	/// <param name="index"></param>
 	private static void RestoreUnlock(int index)
 	{
 		playerSkinUnlockables[index] = PlayerPrefs.GetInt($"{playerSkinUnlockableString}{index}", -1);
@@ -109,8 +137,7 @@ public static class GameSave
 	{
 		try
 		{
-			UITouch uITouchScript = UnityEngine.Object.FindObjectOfType<UITouch>();
-			for (int i = 1; i < uITouchScript.playerUnlockCount; i++)
+			for (int i = 1; i < UITouch.Instance.playerUnlockCount; i++)
 			{
 				PlayerPrefs.SetInt($"{playerSkinUnlockableString}{i}", -1);
 			}
@@ -119,6 +146,18 @@ public static class GameSave
 		{
 			throw ex;
 		}
+	}
+
+	/// <summary>
+	/// Checks if the Unlocks are in the default state - Used to avoid exploit: User data deletion, but last applied skin remains active
+	/// </summary>
+	private static bool UnlocksAreDefault()
+	{
+		for (int i = 1; i < UITouch.Instance.playerUnlockCount; i++)
+			if (PlayerPrefs.GetInt($"{playerSkinUnlockableString}{i}") != -1)
+				return false;
+
+		return true;
 	}
 	#endregion
 }

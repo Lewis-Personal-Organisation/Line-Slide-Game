@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static CanvasUtils;
 
 public enum CanvasPositions
 {
@@ -331,47 +334,60 @@ public static class CanvasUtils
 		onDone?.Invoke();
 	}
 
-	public static void ResizeOverTimeWithActions(this RectTransform transform, MonoBehaviour routineOwner, Vector3 extension, float time, List<TimedAction> timedActions, float waitTime = 0)
+	public static void ResizeOverTimeWithActions(this RectTransform transform, MonoBehaviour routineOwner, Vector3 extension, float time, List<TimedAction> timedActions, float waitTime = 0, float actionWaitTime = 0)
 	{
-		routineOwner.StartCoroutine(IExtendActions(transform, extension, time, timedActions, waitTime));
+		routineOwner.StartCoroutine(IExtendActions(transform, extension, time, timedActions, waitTime, actionWaitTime));
 	}
 
     /// <summary>
     /// The IEnumerated method for resizing a RectTransform. Use a list of TimedActions to call functionality at given times
     /// </summary>
-    /// <param name="transform"></param>
-    /// <param name="extension"></param>
-    /// <param name="time"></param>
-    /// <param name="timedActions"></param>
-    /// <param name="waitTime"></param>
-    /// <returns></returns>
-	public static IEnumerator IExtendActions(RectTransform transform, Vector3 extension, float time, List<TimedAction> timedActions, float waitTime)
-	{
-		yield return new WaitForSeconds(waitTime);
-        int actionIndex = 0;
-		float countingTimer = 0;
+	public static IEnumerator IExtendActions(RectTransform transform, Vector3 extension, float resizeTime, List<TimedAction> timedActions, float waitTime, float actionWaitTime = 0)
+    {
+        yield return new WaitForSeconds(waitTime);
+        float sizeTimer = 0;
+        float actionWaitTimer = actionWaitTime;
+        float actionTimer = 0;
+        Vector3 fromSize = transform.sizeDelta;
+        extension += fromSize;
 
-		Vector3 fromSize = transform.sizeDelta;
-		extension += fromSize;
+        while (true)
+        {
+            Debug.Log($"Resizing {sizeTimer}");
+            sizeTimer += Time.deltaTime * (1 / resizeTime);
+            //Debug.Log($"{fromSize} -> {extension} : {countingTimer}");
+            transform.sizeDelta = Vector3.Lerp(fromSize, extension, sizeTimer);
 
-		while (countingTimer < 1F)
-		{
-			countingTimer += (Time.deltaTime / time);
+            if (sizeTimer > 1)
+            {
+                EditorApplication.isPaused = true;
+                if (actionWaitTimer <= 0)
+                {
+                    for (int i = 0; i < timedActions.Count; i++)
+                    {
+                        if (actionTimer >= timedActions[i].timer && !timedActions[i].invoked)
+                        {
+                            Debug.Log($"Action Hit at: {actionTimer}");
+                            timedActions[i].action?.Invoke();
+                            timedActions[i].invoked = true;
+                            if (i == timedActions.Count - 1)
+                                yield break;
+                        }
+                    }
+                    actionTimer += Time.deltaTime;
+                    Debug.Log($"Action Timer: {actionWaitTimer}");
+                }
+                else
+                {
+                    Debug.Log($"Action Wait Timer: {actionWaitTimer}");
+                    actionWaitTimer -= Time.deltaTime;
+                }
+            }
+            yield return null;
+        }
+    }
 
-			transform.sizeDelta = Vector3.Lerp(fromSize, extension, countingTimer);
-
-            if (countingTimer >= timedActions[actionIndex].timer)
-			{
-				timedActions[actionIndex].action?.Invoke();
-                if (actionIndex < timedActions.LastIndex())
-                    actionIndex++;
-			}
-
-			yield return null;
-		}
-	}
-
-    public struct TimedAction
+    public class TimedAction
     {
 		// When criteria is met, should the action run once or multiple times?
 		public enum Modes
@@ -383,6 +399,7 @@ public static class CanvasUtils
 		public Modes mode;
 		public float timer;
 		public UnityAction action;
+        public bool invoked;
 
 		/// <summary>
 		/// Created a new Timed action with a Pass/Active mode, a time value to evaluate and action
@@ -398,6 +415,7 @@ public static class CanvasUtils
             this.mode = mode;
             this.timer = time;
             this.action = action;
+            this.invoked = false;
         }
 
         /// <summary>

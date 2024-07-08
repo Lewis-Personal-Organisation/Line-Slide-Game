@@ -1534,8 +1534,6 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
-  drawClosestPoint: 0
-  timeOnPath: 0
 --- !u!114 &1762925179921301970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,8 +1681,6 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
-  drawClosestPoint: 0
-  timeOnPath: 0
 --- !u!114 &1762925180458580210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6392,6 +6388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spin Trap Single
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606418454244281404, guid: 1d15fe9b2309396448b45ae2404e0b24,
+        type: 3}
+      propertyPath: speed
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d15fe9b2309396448b45ae2404e0b24, type: 3}

@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R3CT313EZ5Z",
         "name": "com.LDCom.LineGame",
-        "processId": 26885,
+        "processId": 26756,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,61 +11,79 @@
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 15394,
+            "processId": 9681,
             "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 18547,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
-            "processId": 19815,
+            "processId": 10801,
             "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.sec.android.app.launcher",
-            "processId": 2344,
+            "processId": 17878,
             "exited": false
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 20828,
+            "processId": 19381,
             "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 22171,
+            "processId": 31047,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.hambastudio.linecolor",
+            "processId": 4457,
             "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 22605,
+            "processId": 23959,
             "exited": false
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 24535,
+            "processId": 14869,
             "exited": false
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 25820,
+            "processId": 15596,
             "exited": false
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 26885,
+            "processId": 16625,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 22456,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 27848,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDCom.LineGame",
+            "processId": 26756,
             "exited": false
         }
     ],
