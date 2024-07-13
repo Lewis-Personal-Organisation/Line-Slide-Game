@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "R3CT313EZ5Z",
     "m_SelectedPackage": {
         "deviceId": "R3CT313EZ5Z",
-        "name": "com.LDCom.LineGame",
-        "processId": 26756,
+        "name": "com.samsung.ecomm.global.gbr",
+        "processId": 11123,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,79 +11,37 @@
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
-            "processId": 9681,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
-            "processId": 10801,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.sec.android.app.launcher",
-            "processId": 17878,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
-            "processId": 19381,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
-            "processId": 31047,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.hambastudio.linecolor",
-            "processId": 4457,
-            "exited": true
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
-            "processId": 23959,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
-            "processId": 14869,
-            "exited": false
-        },
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
             "processId": 15596,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
             "processId": 16625,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
             "processId": 22456,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
             "processId": 27848,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
             "processId": 26756,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.samsung.ecomm.global.gbr",
+            "processId": 11123,
             "exited": false
         }
     ],
@@ -137,7 +95,7 @@
         "MemoryGroup": 2,
         "Behavior": 0
     },
-    "m_Filter": "",
-    "m_FilterIsRegularExpression": false,
+    "m_Filter": "samsung",
+    "m_FilterIsRegularExpression": true,
     "m_SymbolPaths": []
 }

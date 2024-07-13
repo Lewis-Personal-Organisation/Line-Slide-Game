@@ -11,7 +11,7 @@ public class FPSDispay : Singleton<FPSDispay>
     public static int frameCount = 0;
 
 
-	private void Awake()
+	new private void Awake()
 	{
 		base.Awake();
 		frameTimer = new Timer();

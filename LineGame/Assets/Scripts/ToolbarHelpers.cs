@@ -29,6 +29,14 @@ public class ToolbarHelpers : MonoBehaviour
 		Debug.Log(Utils.ColourText($"Unlockables Reset", Color.cyan));
 	}
 
+	[MenuItem("Game Editor/Save State/Reset Level Times")]
+	static void ResetLevelTimes()
+	{
+		GameSave.ResetLevelTimes();
+		GameSave.Save();
+		Debug.Log(Utils.ColourText($"Level Times Reset", Color.cyan));
+	}
+
 	[MenuItem("Game Editor/Save State/Add 200 Coins")]
 	static void AddCoins()
 	{

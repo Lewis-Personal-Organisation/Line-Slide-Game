@@ -34,10 +34,12 @@ public class GameManager : Singleton<GameManager>
 	private void Start()
 	{
 		GameSave.ConfigureUnlocks();
-		UITouch.Instance.ApplyPlayerSelectionUnlockableStates();
+		UIManager.Instance.ApplyPlayerSelectionUnlockableStates();
 
 		Vibration.enabled = PlayerPrefs.GetInt("vibrationState", 0) == 1 ? true : false;
-		UITouch.Instance.settings.vibrateBackgroundImage.color = Vibration.enabled ? UITouch.Instance.settings.vibrationOnColour : UITouch.Instance.settings.vibrationOffColour;
+		UIManager.Instance.settings.vibrateBackgroundImage.color = Vibration.enabled ? UIManager.Instance.settings.onColour : UIManager.Instance.settings.offColour;
+		UIManager.Instance.settings.timerBackgroundImage.color = GameSave.LevelTimerEnabled ? UIManager.Instance.settings.onColour : UIManager.Instance.settings.offColour;
+		UIManager.Instance.SetLevelTimerUIVisibility(GameSave.LevelTimerEnabled);
 
 		playerPathFollower.CacheSplitCubePositions();
 #if UNITY_EDITOR
@@ -68,10 +70,8 @@ public class GameManager : Singleton<GameManager>
 			GameSave.CoinCount = 0;
 		}
 		
-		UITouch.Instance.coinCounterText.text = GameSave.CoinCount.ToString();
-
+		UIManager.Instance.coinCounterText.text = GameSave.CoinCount.ToString();
 	}
-
 
 
 	public void SetAntiAliasing(int option)

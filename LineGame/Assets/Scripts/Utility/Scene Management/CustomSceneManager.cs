@@ -49,7 +49,6 @@ public class CustomSceneManager : MonoBehaviour
 
     public IEnumerator LoadSceneAsync()
     {
-        Debug.Log($"Loading Scene {sceneIndex} with index {sceneIndex} at path {System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(sceneIndex))}");
         sceneLoadingOperation = SceneManager.LoadSceneAsync(sceneIndex);
         sceneLoadingOperation.allowSceneActivation = false;
 

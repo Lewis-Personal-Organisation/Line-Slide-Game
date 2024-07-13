@@ -282,9 +282,9 @@ public static class CanvasUtils
 	/// <param name="routineOwner"></param>
 	/// <param name="additionalAngle"></param>
 	/// <param name="time"></param>
-	public static void RotateOverTime(this Transform transform, MonoBehaviour routineOwner, Vector3 additionalAngle, float time, UnityAction onStart = null, UnityAction onDone = null)
+	public static Coroutine RotateOverTime(this Transform transform, MonoBehaviour routineOwner, Vector3 additionalAngle, float time, UnityAction onStart = null, UnityAction onDone = null)
 	{
-		routineOwner.StartCoroutine(IRotate(transform, transform.eulerAngles, transform.eulerAngles + additionalAngle, time, onStart, onDone));
+		return routineOwner.StartCoroutine(IRotate(transform, transform.eulerAngles, transform.eulerAngles + additionalAngle, time, onStart, onDone));
 	}
 
 	public static IEnumerator IRotate(Transform transform, Vector3 fromRotation, Vector3 toRotation, float time, UnityAction onStart, UnityAction onDone)
@@ -307,9 +307,9 @@ public static class CanvasUtils
 	}
 	#endregion
 	#region Size
-	public static void ResizeOverTime(this RectTransform transform, MonoBehaviour owner, Vector3 offset, float time, UnityAction onStart = null, UnityAction onDone = null, float waitTime = 0)
+	public static Coroutine ResizeOverTime(this RectTransform transform, MonoBehaviour owner, Vector3 offset, float time, UnityAction onStart = null, UnityAction onDone = null, float waitTime = 0)
 	{
-		owner.StartCoroutine(IExtend(transform, offset, time, onStart, onDone, waitTime));
+		return owner.StartCoroutine(IExtend(transform, offset, time, onStart, onDone, waitTime));
 	}
 
 	public static IEnumerator IExtend(RectTransform transform, Vector3 extension, float time, UnityAction onStart, UnityAction onDone, float waitTime)
@@ -334,53 +334,101 @@ public static class CanvasUtils
 		onDone?.Invoke();
 	}
 
-	public static void ResizeOverTimeWithActions(this RectTransform transform, MonoBehaviour routineOwner, Vector3 extension, float time, List<TimedAction> timedActions, float waitTime = 0, float actionWaitTime = 0)
+	public static Coroutine ResizeOverTimeWithActions(this RectTransform transform, MonoBehaviour owner, bool actionsFirst, Vector3 from, Vector3 to, float time, List<TimedAction> actions,  float resizeDelay = 0, float actionDelay = 0)
 	{
-		routineOwner.StartCoroutine(IExtendActions(transform, extension, time, timedActions, waitTime, actionWaitTime));
+		return owner.StartCoroutine(IExtendActions(transform, actionsFirst, from, to, time, actions, resizeDelay, actionDelay));
 	}
 
     /// <summary>
     /// The IEnumerated method for resizing a RectTransform. Use a list of TimedActions to call functionality at given times
     /// </summary>
-	public static IEnumerator IExtendActions(RectTransform transform, Vector3 extension, float resizeTime, List<TimedAction> timedActions, float waitTime, float actionWaitTime = 0)
+	public static IEnumerator IExtendActions(RectTransform transform, bool actionsFirst, Vector3 from, Vector3 to, float time, List<TimedAction> actions, float resizeDelay = 0, float actionDelay = 0)
     {
-        yield return new WaitForSeconds(waitTime);
-        float sizeTimer = 0;
-        float actionWaitTimer = actionWaitTime;
+		Debug.Log($"Background Resize Time: {time}");
         float actionTimer = 0;
-        Vector3 fromSize = transform.sizeDelta;
-        extension += fromSize;
+		float sizeTimer = 0;
 
         while (true)
         {
-            Debug.Log($"Resizing {sizeTimer}");
-            sizeTimer += Time.deltaTime * (1 / resizeTime);
-            //Debug.Log($"{fromSize} -> {extension} : {countingTimer}");
-            transform.sizeDelta = Vector3.Lerp(fromSize, extension, sizeTimer);
-
-            if (sizeTimer > 1)
-            {
-                EditorApplication.isPaused = true;
-                if (actionWaitTimer <= 0)
+            if (actionsFirst)
+			{
+				if (actionDelay <= 0)
                 {
-                    for (int i = 0; i < timedActions.Count; i++)
+                    if (!actions[actions.Count - 1].invoked)
                     {
-                        if (actionTimer >= timedActions[i].timer && !timedActions[i].invoked)
+                        for (int i = 0; i < actions.Count; i++)
                         {
-                            Debug.Log($"Action Hit at: {actionTimer}");
-                            timedActions[i].action?.Invoke();
-                            timedActions[i].invoked = true;
-                            if (i == timedActions.Count - 1)
-                                yield break;
+                            if (!actions[i].invoked && actions[i].Evaluate(actionTimer))
+                                Debug.Log($"Action Hit at: {actionTimer}");
+                        }
+                        actionTimer += Time.deltaTime;
+                        Debug.Log($"Action Timer: {actionTimer}");
+                    }
+                    else if (sizeTimer < 1)
+                    {
+                        if (resizeDelay > 0F)
+                        {
+                            resizeDelay -= Time.deltaTime;
+                            Debug.Log($"Resize delay A: {resizeDelay}");
+                        }
+                        else
+                        {
+                            Debug.Log($"Resizing {sizeTimer} :: {transform.sizeDelta} with {1} / {time} => {1 / time}");
+                            sizeTimer += Time.deltaTime * (1 / time);
+                            transform.sizeDelta = Vector3.Lerp(from + to, from, sizeTimer);
                         }
                     }
-                    actionTimer += Time.deltaTime;
-                    Debug.Log($"Action Timer: {actionWaitTimer}");
+                    else
+					{
+						yield break;
+                    }
                 }
                 else
                 {
-                    Debug.Log($"Action Wait Timer: {actionWaitTimer}");
-                    actionWaitTimer -= Time.deltaTime;
+                    actionDelay -= Time.deltaTime;
+                    Debug.Log($"Action Wait Timer: {actionDelay}");
+                }
+            }
+            else
+			{
+				if (sizeTimer < 1)
+				{
+                    if (resizeDelay > 0F)
+                    {
+                        resizeDelay -= Time.deltaTime;
+						Debug.Log($"Resize delay B: {resizeDelay}");
+					}
+                    else
+                    {
+                        Debug.Log($"Resizing {sizeTimer} :: {transform.sizeDelta} with {1} / {time} => {1 / time}");
+                        sizeTimer += Time.deltaTime * (1 / time);
+                        transform.sizeDelta = Vector3.Lerp(from, from + to, sizeTimer);
+                    }
+                }
+                else if (sizeTimer >= 1)
+                {
+                    if (actionDelay <= 0)
+                    {
+                        for (int i = 0; i < actions.Count; i++)
+                        {
+							if (!actions[i].invoked && actions[i].Evaluate(actionTimer))
+							{
+								Debug.Log($"Action Hit at: {actionTimer}");
+
+                                if (i == actions.Count - 1)
+								{
+									yield break;
+                                }
+							}
+                        }
+                        actionTimer += Time.deltaTime;
+                        Debug.Log($"Action Timer: {actionTimer}");
+                    }
+                    else
+                    {
+                        actionDelay -= Time.deltaTime;
+                        Debug.Log($"Action Wait Timer: {actionDelay}");
+                    }
                 }
             }
             yield return null;
@@ -422,19 +470,28 @@ public static class CanvasUtils
         /// Evaluates whether the action should be invoked
         /// </summary>
         /// <param name="value"></param>
-        public void Evaluate(float value)
+        public bool Evaluate(float value)
         {
             if (action == null)
-                return;
+                return false;
+
+            if (this.mode == Modes.Passive && invoked)
+                return false;
 
             if (value > this.timer)
 			{
 				action.Invoke();
+                invoked = true;
                 if (this.mode == Modes.Passive)
                 {
                     action = null;
 				}
+                return true;
 			}
+            else
+            {
+                return false;
+            }
         }
     }
 	#endregion

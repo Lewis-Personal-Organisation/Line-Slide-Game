@@ -5,11 +5,13 @@ using System.Collections;
 using static Level;
 using UnityEditor;
 using RDG;
+using TMPro;
 
 public class LevelManager : Singleton<LevelManager>
 {
 	private GameObject levelObject;
 	public Level currentLevel;
+
 
 	[Header("Game Levels")]
 	public List<Level> levels = new List<Level>();
@@ -21,7 +23,6 @@ public class LevelManager : Singleton<LevelManager>
 	public SlicedFilledImage progressImage;
 	public Vector2 progressImageonscreenPos;
 	public Vector2 progressImageOffscreenPos;
-
 
 	[Header("Progress Image Colours")]
 	[Space(10)]
@@ -45,6 +46,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	[Header("Coin Velocity")]
 	private bool clampCoinVelocity = false;
+
 
 	private bool PlayerHasPassedFirstParticleSystem => currentLevel.pathCreator.path.GetClosestDistanceAlongPath(GameManager.Instance.playerPathFollower.transform.position) >= currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.finishingParticleSystems[0].transform.position);
 	private bool PlayerHasPassedSecondParticleSystem => currentLevel.pathCreator.path.GetClosestDistanceAlongPath(GameManager.Instance.playerPathFollower.transform.position) >= currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.finishingParticleSystems[2].transform.position);
@@ -90,17 +92,35 @@ public class LevelManager : Singleton<LevelManager>
 		currentLevel = levelObject.GetComponent<Level>();
 		SetupLevel();
 
-		UITouch.Instance.progressText.text = levelNum == -1 ? "Test Level" : $"Level {levelNum}";
+		UIManager.Instance.progressText.text = levelNum == -1 ? "Test Level" : $"Level {levelNum}";
 		WaterShaderAnimator.Instance.SetMeshRenderer(currentLevel.WaterMesh);
 		GameManager.Instance.playerPathFollower.Setup();
 		clampCoinVelocity = false;
 
 		OnLevelComplete = delegate ()
 		{
+            if (GameSave.LevelTimerEnabled)
+            {
+				float levelTime = GameSave.GetLevelTimeS(GameSave.CurrentLevel) + GameSave.GetLevelTimeMS(GameSave.CurrentLevel);
+				// Update the Levels saved time if it is higher than current
+				if (GameSave.GetLevelTime(GameSave.CurrentLevel) <= 0 ||
+					UIManager.Instance.LevelTimerValue() < GameSave.GetLevelTime(GameSave.CurrentLevel) && UIManager.Instance.LevelTimerValue() > 0)
+				{
+					Debug.Log($"Saved new time for level {GameSave.CurrentLevel}. Old:{GameSave.GetLevelTime(GameSave.CurrentLevel)} => New:{UIManager.Instance.LevelTimerValue()}");
+					GameSave.SetLevelTime(GameSave.CurrentLevel, UIManager.Instance.LevelTimerSecondsValue(), UIManager.Instance.LevelTimerMilisecondsValue());
+					GameSave.Save();
+				}
+				else
+				{
+					Debug.Log($"Time not beaten. This run: {UIManager.Instance.LevelTimerMilisecondsValue()} => Best: {GameSave.GetLevelTimeMS(GameSave.CurrentLevel)}");
+				}
+			}
+            
 			StartCoroutine(LevelComplete());
+			OnLevelComplete = null;
 		};
 
-		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelLoaded);
+		UIManager.Instance.SwitchView(UIManager.ViewStates.LevelLoaded);
 	}
 
 	/// <summary>
@@ -108,10 +128,6 @@ public class LevelManager : Singleton<LevelManager>
 	/// </summary>
 	private void SetupLevel()
 	{
-//#if UNITY_EDITOR
-//		if (UnityEditor.EditorApplication.isPlaying == false)
-//			return;
-//#endif
 		switch (currentLevel.Difficulty)
 		{
 			case LevelDifficulty.Beginner:
@@ -151,8 +167,6 @@ public class LevelManager : Singleton<LevelManager>
 	/// /// </summary>
 	public IEnumerator LevelComplete()
 	{
-		OnLevelComplete = null;
-
 #if PLATFORM_ANDROID && !UNITY_EDITOR
 		if (GameSave.CurrentLevel == LevelManager.Instance.LevelCount)
 		{
@@ -219,8 +233,8 @@ public class LevelManager : Singleton<LevelManager>
 		yield return new WaitForSeconds(1.5F);
 
 		// Switch game view to Level Complete. Once complete, wait then load the new level
-		UITouch.Instance.SwitchView(UITouch.ViewStates.LevelComplete);
-		yield return new WaitUntil(() => !UITouch.Instance.maskScaleActive);
+		UIManager.Instance.SwitchView(UIManager.ViewStates.LevelComplete);
+		yield return new WaitUntil(() => !UIManager.Instance.maskScaleActive);
 		CameraController.Instance.ResetCamera();
 		yield return new WaitForSeconds(.5F);
 		Debug.Log(Utils.ColourText($"Fade has finished! Loading new level", Color.cyan));
@@ -312,9 +326,9 @@ public class LevelManager : Singleton<LevelManager>
 		// Spawn and enable the UI Coins at screen position of where they landed in the world. Also cache the start positions
 		for (int i = 0; i < currentLevel.TreasureChestCoins.Length; i++)
 		{
-			UITouch.Instance.coinImages[i].transform.position = GameManager.Instance.mainCamera.WorldToScreenPoint(currentLevel.TreasureChestCoins[i].transform.position);
-			UITouch.Instance.coinImages[i].gameObject.SetActive(true);
-			startPositions.Add(UITouch.Instance.coinImages[i].rectTransform.position);
+			UIManager.Instance.coinImages[i].transform.position = GameManager.Instance.mainCamera.WorldToScreenPoint(currentLevel.TreasureChestCoins[i].transform.position);
+			UIManager.Instance.coinImages[i].gameObject.SetActive(true);
+			startPositions.Add(UIManager.Instance.coinImages[i].rectTransform.position);
 		}
 
 		// Spherically interpolate the Coins positions to Coin Counter UI element, applying scaling over time
@@ -323,13 +337,13 @@ public class LevelManager : Singleton<LevelManager>
 		while (t < 1)
 		{
 			t += Time.deltaTime;
-			for (int i = 0; i < UITouch.Instance.coinImages.Count; i++)
+			for (int i = 0; i < UIManager.Instance.coinImages.Count; i++)
 			{
-				UITouch.Instance.coinImages[i].rectTransform.position = Vector3.Slerp(startPositions[i], UITouch.Instance.coinCounterImage.rectTransform.position, t);
-				UITouch.Instance.coinImages[i].rectTransform.localScale = Vector2.one * UITouch.Instance.coinSizeCurve.Evaluate(t);
+				UIManager.Instance.coinImages[i].rectTransform.position = Vector3.Slerp(startPositions[i], UIManager.Instance.coinCounterImage.rectTransform.position, t);
+				UIManager.Instance.coinImages[i].rectTransform.localScale = Vector2.one * UIManager.Instance.coinSizeCurve.Evaluate(t);
 
 				if (t >= 1) 
-					UITouch.Instance.coinImages[i].gameObject.SetActive(false);
+					UIManager.Instance.coinImages[i].gameObject.SetActive(false);
 			}
 			yield return null;
 		}
@@ -340,7 +354,7 @@ public class LevelManager : Singleton<LevelManager>
 		ApplyLevelReward();
 
 		// Update the Coin Count Display
-		UITouch.Instance.UpdateUICoins(oldCointCount);
+		UIManager.Instance.UpdateUICoins(oldCointCount);
 	}
 
 	/// <summary>

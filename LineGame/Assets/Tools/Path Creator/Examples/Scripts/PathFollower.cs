@@ -55,7 +55,7 @@ public class PathFollower : MonoBehaviour
             playerMeshRenderer.enabled = false;
             FireSplitCubes();
             ToggleEnabled();
-			UITouch.Instance.SwitchView(UITouch.ViewStates.LevelFailed);
+			UIManager.Instance.SwitchView(UIManager.ViewStates.LevelFailed);
 		}
     }
 
@@ -71,13 +71,14 @@ public class PathFollower : MonoBehaviour
         if (!scaleToPathWidth)
         {
             roadCreator.playerScaleTrigger -= AssignPlayerScale;
-            return;
         }
+        else
+		{
+			if (roadCreator.playerScaleTrigger == null)
+				roadCreator.playerScaleTrigger += AssignPlayerScale;
 
-        if (roadCreator.playerScaleTrigger == null)
-            roadCreator.playerScaleTrigger += AssignPlayerScale;
-
-        roadCreator.playerScaleTrigger.Invoke();
+			roadCreator.playerScaleTrigger.Invoke();
+		}
     }
 
     public void FixedUpdate()
@@ -85,10 +86,11 @@ public class PathFollower : MonoBehaviour
 		if (finishLineReached)
 		{
 			LevelManager.OnLevelComplete?.Invoke();
+            UIManager.Instance.EnableLevelTimer(false);
+
 			distanceTravelled += speed * Time.deltaTime;
 			transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
 			transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
-			UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
 		}
         else
         {
@@ -109,14 +111,13 @@ public class PathFollower : MonoBehaviour
 			transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f);
 			transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
 
-
-			UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
-
             if (!playerParticles.isPlaying)
 			{
 				playerParticles.Play(false);
 			}
 		}
+
+		UIManager.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
 	}
 
     /// <summary>
@@ -132,15 +133,16 @@ public class PathFollower : MonoBehaviour
         if (!scaleToPathWidth)
         {
             roadCreator.playerScaleTrigger -= AssignPlayerScale;
-            return;
         }
-
-        if (roadCreator.playerScaleTrigger == null)
+        else
         {
-            roadCreator.playerScaleTrigger += AssignPlayerScale;
-        }
+			if (roadCreator.playerScaleTrigger == null)
+			{
+				roadCreator.playerScaleTrigger += AssignPlayerScale;
+			}
 
-        roadCreator.playerScaleTrigger.Invoke();
+			roadCreator.playerScaleTrigger?.Invoke();
+		}
 
         // Reset our Player so they begin at the start of the level
         ResetPath();
@@ -153,7 +155,7 @@ public class PathFollower : MonoBehaviour
     //elements, decrease our speed. Final value is clamped.
     private void AdjustSpeed()
     {
-        if (UITouch.Instance.touchingOverFrames && UITouch.Instance.isTouchingUIElement == false)
+        if (UIManager.Instance.touchingOverFrames && UIManager.Instance.isTouchingUIElement == false)
         {
             speed += Time.deltaTime * accelerationMultiplier;
         }
@@ -198,7 +200,7 @@ public class PathFollower : MonoBehaviour
         speed = 0;
         distanceTravelled = .25F;
 		transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction) + new Vector3(0f, transform.localScale.x / 2, 0f); transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction) * Quaternion.AngleAxis(90F, Vector3.forward);
-		UITouch.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
+		UIManager.Instance.UpdateLevelProgressUI(distanceTravelled, pathCreator.path.length);
         playerTrail.transform.localPosition = new Vector3(0, -0.43F, -0.5F);
         playerTrail.Clear();
 	}

@@ -16,8 +16,6 @@ public class ColliderGenerator : MonoBehaviour
 	private Transform colliderHolder;
 	public List<BoxCollider> generatedColliders = new List<BoxCollider>();
 
-	private static readonly string colliderHolderObjName = "Generated Collider Holder";
-
 	[Serializable]
 	public class ColliderZone
 	{
@@ -35,7 +33,7 @@ public class ColliderGenerator : MonoBehaviour
 	{
 		foreach (Transform child in this.transform)
 		{
-			if (child.name == colliderHolderObjName)
+			if (child.name == "Generated Collider Holder")
 			{
 				colliderHolder = child;
 				return;
@@ -44,7 +42,7 @@ public class ColliderGenerator : MonoBehaviour
 
 		if (colliderHolder == null)
 		{
-			colliderHolder = new GameObject(colliderHolderObjName).transform;
+			colliderHolder = new GameObject("Generated Collider Holder").transform;
 			StageUtility.PlaceGameObjectInCurrentStage(colliderHolder.gameObject);
 		}
 	}

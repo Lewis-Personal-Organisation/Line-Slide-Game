@@ -46,7 +46,63 @@ public static class GameSave
 		}
 	}
 
+	private static int levelTimerEnabled = -1;
+	public static bool LevelTimerEnabled
+	{
+		get
+		{
+			if (levelTimerEnabled == -1)
+				levelTimerEnabled = PlayerPrefs.GetInt("timedLevels", 0);
+			return (levelTimerEnabled == 1 ? true : false);
+		}
+		set
+		{
+			levelTimerEnabled = value == true ? 1 : 0;
+			PlayerPrefs.SetInt("timedLevels", levelTimerEnabled);
+		}
+	}
 
+	private static int[] levelTimes;
+	private static readonly string levelTimerStringMS = "LevelTimeMS";
+	private static readonly string levelTimerStringS = "LevelTimeS";
+	/// <summary>
+	/// Sets the Level Time for a given level
+	/// </summary>
+	public static void SetLevelTime(int levelNumber, int timeSeconds, float timeMiliseconds)
+	{
+		PlayerPrefs.SetInt($"{levelTimerStringS}{levelNumber}", timeSeconds);
+		PlayerPrefs.SetFloat($"{levelTimerStringMS}{levelNumber}", timeMiliseconds);
+	}
+	/// <summary>
+	/// Returns the Level Time for a given level
+	/// </summary>
+	public static float GetLevelTimeMS(int levelNumber)
+	{
+		return PlayerPrefs.GetFloat($"{levelTimerStringMS}{levelNumber}", -1F);
+	}
+	public static int GetLevelTimeS(int levelNumber)
+	{
+		return PlayerPrefs.GetInt($"{levelTimerStringS}{levelNumber}", -1);
+	}
+
+	public static float GetLevelTime(int levelNumber)
+	{
+		return PlayerPrefs.GetInt($"{levelTimerStringS}{levelNumber}", -1) + PlayerPrefs.GetFloat($"{levelTimerStringMS}{levelNumber}", -1F);
+	}
+
+	public static void ResetLevelTimes()
+	{
+		for (int levelNumber = 0; levelNumber < LevelManager.Instance.LevelCount; levelNumber++)
+		{
+			PlayerPrefs.SetInt($"{levelTimerStringS}{levelNumber}", -1);
+			PlayerPrefs.SetInt($"{levelTimerStringMS}{levelNumber}", -1);
+		}
+
+		Save();
+	}
+
+
+	#region PLAYER SKINS
 	/// <summary>
 	/// The Status of the Player Unlockables
 	/// </summary>
@@ -61,7 +117,7 @@ public static class GameSave
 	public static void ConfigureUnlocks()
 	{
 		// Our array size should match the amount of unlockables available
-		playerSkinUnlockables = new int[UITouch.Instance.playerUnlockCount];
+		playerSkinUnlockables = new int[UIManager.Instance.playerUnlockCount];
 
 		// The player always has the first skin unlocked
 		SetPlayerSkinUnlocked(0);
@@ -73,9 +129,9 @@ public static class GameSave
 		// Set the default colours active, if we have not unlocked anything
 		// Else, if we have unlocked something, we need to check the last applied skin
 		if (UnlocksAreDefault())
-			UITouch.Instance.SwapPlayerColoursToDefault();
+			UIManager.Instance.SwapPlayerColoursToDefault();
 		else
-			UITouch.Instance.ApplyLastUnlockedSkin(GetLastSkinIndex());
+			UIManager.Instance.ApplyLastUnlockedSkin(GetLastSkinIndex());
 	}
 
 	/// <summary>
@@ -107,7 +163,6 @@ public static class GameSave
 	{
 		lastAppliedSkin = index;
 		PlayerPrefs.SetInt("lastSkinSelected", lastAppliedSkin);
-		Debug.Log($"LAI Set: {lastAppliedSkin}");
 		PlayerPrefs.Save();
 	}
 
@@ -117,7 +172,6 @@ public static class GameSave
 	public static int GetLastSkinIndex()
 	{
 		lastAppliedSkin = PlayerPrefs.GetInt("lastSkinSelected", 0);
-		Debug.Log($"LAI Get: {lastAppliedSkin}");
 		return lastAppliedSkin;
 	}
 
@@ -137,7 +191,7 @@ public static class GameSave
 	{
 		try
 		{
-			for (int i = 1; i < UITouch.Instance.playerUnlockCount; i++)
+			for (int i = 1; i < UIManager.Instance.playerUnlockCount; i++)
 			{
 				PlayerPrefs.SetInt($"{playerSkinUnlockableString}{i}", -1);
 			}
@@ -153,11 +207,12 @@ public static class GameSave
 	/// </summary>
 	private static bool UnlocksAreDefault()
 	{
-		for (int i = 1; i < UITouch.Instance.playerUnlockCount; i++)
+		for (int i = 1; i < UIManager.Instance.playerUnlockCount; i++)
 			if (PlayerPrefs.GetInt($"{playerSkinUnlockableString}{i}") != -1)
 				return false;
 
 		return true;
 	}
+	#endregion
 	#endregion
 }

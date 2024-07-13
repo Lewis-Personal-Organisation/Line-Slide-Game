@@ -18,7 +18,7 @@ public class AudioManager : Singleton<AudioManager>
 
 		while (fireworksAudioSource.isPlaying)
 		{
-			Debug.Log(GetNormalisedTimeOnClip(fireworksAudioSource));
+			//Debug.Log(GetNormalisedTimeOnClip(fireworksAudioSource));
 			fireworksAudioSource.volume = fireworksFadeCurve.Evaluate(GetNormalisedTimeOnClip(fireworksAudioSource));
 			yield return null;
 		}

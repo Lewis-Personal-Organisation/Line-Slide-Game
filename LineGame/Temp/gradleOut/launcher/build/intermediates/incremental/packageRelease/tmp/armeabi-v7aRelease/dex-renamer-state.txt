@@ -1,0 +1,4 @@
+#Sat Jul 13 14:09:12 BST 2024
+base.0=R\:\\Unity Projects\\LineGameNew\\LineGame\\Temp\\gradleOut\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
