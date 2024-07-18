@@ -132,7 +132,6 @@ public class UIManager : Singleton<UIManager>
 	public RectTransform playerSelectionHitBox;
 	public RectTransform PlayerSelectionReturnHitBox;
 
-
 	[Header("Restart View Interactables")]
 	public TextBounce tapToRestart;
 	public RectTransform tapToRestartHitBox;
@@ -225,7 +224,7 @@ public class UIManager : Singleton<UIManager>
 					// Does this ID have an action?
 					if (InstanceIDtoAction.ContainsKey(hitResults[i].gameObject.transform.GetInstanceID()))
 					{
-						Debug.Log(Utils.ColourText($"Touched {hitResults[i].gameObject.transform.name}", Color.green));
+						//Debug.Log(Utils.ColourText($"Touched {hitResults[i].gameObject.transform.name}", Color.green));
 						InstanceIDtoAction[hitResults[i].gameObject.transform.GetInstanceID()].Invoke();
 
 						if (isTouchingUIElement)
@@ -329,6 +328,7 @@ public class UIManager : Singleton<UIManager>
 			Instance.levelProgressImage.rectTransform.Move(this, Instance.progressImageOffScreenPos, Instance.progressImageOnScreenPos, 1.2F, CurveType.Exponential);
 			playerSelectionHitBox.gameObject.SetActive(false);
 			GameManager.Instance.playerPathFollower.SetTrailDistance();
+			GameManager.Instance.playerPathFollower.SetPlayerControl(true);
 			isTouchingUIElement = false;
 		});
 		InstanceIDtoAction.Add(tapToRestartHitBox.GetInstanceID(), () => {
@@ -397,7 +397,7 @@ public class UIManager : Singleton<UIManager>
 				if (GameSave.LevelTimerEnabled)
 					UIManager.Instance.EnableLevelTimer(false);
 				
-				Debug.Log($"Timer Enabled: {GameSave.LevelTimerEnabled}. Level {GameSave.CurrentLevel} Time: {GameSave.GetLevelTimeMS(GameSave.CurrentLevel)}");
+				//Debug.Log($"Timer Enabled: {GameSave.LevelTimerEnabled}. Level {GameSave.CurrentLevel} Time: {GameSave.GetLevelTimeMS(GameSave.CurrentLevel)}");
 
 				if (previousViewState == ViewStates.LevelLoaded || previousViewState == ViewStates.LevelComplete)
 				{
@@ -421,7 +421,7 @@ public class UIManager : Singleton<UIManager>
 					yield return ScaleMask(Scale.Up, Color.black, 3.5F);
 					StopCoroutine(playerSelectScrollCoroutine);
 					SetPlayerSelectionObjectVisibility(false);
-					GameManager.Instance.playerPathFollower.enabled = true;
+					//GameManager.Instance.playerPathFollower.enabled = true;
 					tapToPlay.gameObject.SetActive(true);
 					tapToPlayHitBox.gameObject.SetActive(true);
 					tapToRestart.gameObject.SetActive(true);
@@ -458,6 +458,7 @@ public class UIManager : Singleton<UIManager>
 				break;
 
 			case ViewStates.LevelComplete:
+				GameManager.Instance.playerPathFollower.SetPlayerControl(false);
 				ScaleMask(Scale.Down, Color.black);
 				yield return new WaitForSeconds(0.5F);
 				spriteRenderer.color = Color.black;
@@ -466,6 +467,7 @@ public class UIManager : Singleton<UIManager>
 				break;
 
 			case ViewStates.LevelFailed:
+				GameManager.Instance.playerPathFollower.SetPlayerControl(false);
 				tapToRestartEnabled = false;
 				tapToRestart.gameObject.SetActive(true);
 				tapToRestartHitBox.gameObject.SetActive(true);
@@ -480,7 +482,8 @@ public class UIManager : Singleton<UIManager>
 				break;
 
 			case ViewStates.LevelRestart:
-				GameManager.Instance.playerPathFollower.enabled = false;
+				GameManager.Instance.playerPathFollower.SetPlayerControl(false);
+				//GameManager.Instance.playerPathFollower.enabled = false;
 				tapToRestart.gameObject.SetActive(false);
 				tapToRestartHitBox.gameObject.SetActive(false);
 				spriteRenderer.color = levelFailedColour;
@@ -495,7 +498,8 @@ public class UIManager : Singleton<UIManager>
 
 			case ViewStates.PlayerSelection:
 				playerSelectScrollCoroutine = StartCoroutine(ScrollUIImage());
-				GameManager.Instance.playerPathFollower.enabled = false;
+				GameManager.Instance.playerPathFollower.SetPlayerControl(false);
+				//GameManager.Instance.playerPathFollower.enabled = false;
 				tapToPlay.gameObject.SetActive(false);
 				tapToPlayHitBox.gameObject.SetActive(false);
 				tapToRestart.gameObject.SetActive(false);

@@ -15,6 +15,7 @@ public class PathFollower : MonoBehaviour
     public float accelerationMultiplier = 5;
     public float distanceTravelled = 0;
 	public bool scaleToPathWidth;
+    [SerializeField] private bool isControllable = false;
 
     [Header("Player")]
     public MeshRenderer playerMeshRenderer;
@@ -148,14 +149,13 @@ public class PathFollower : MonoBehaviour
         ResetPath();
 
         ResetSplitCubes();
-
 	}
 
     //Increase our speed if we are touching the screen over multiple frames. If we aren't touching screen or are touching prohibited UI
     //elements, decrease our speed. Final value is clamped.
     private void AdjustSpeed()
     {
-        if (UIManager.Instance.touchingOverFrames && UIManager.Instance.isTouchingUIElement == false)
+        if (UIManager.Instance.touchingOverFrames && UIManager.Instance.isTouchingUIElement == false && isControllable)
         {
             speed += Time.deltaTime * accelerationMultiplier;
         }
@@ -277,4 +277,12 @@ public class PathFollower : MonoBehaviour
     {
 		playerTrail.transform.localPosition = new Vector3(0, -0.43F, 0 /*-0.45F*/);
 	}
+
+    /// <summary>
+    /// Can the Player control the Path Follower?
+    /// </summary>
+    public void SetPlayerControl(bool choice)
+    {
+        isControllable = choice;
+    }
 }

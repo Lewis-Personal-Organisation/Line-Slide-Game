@@ -1,0 +1,2307 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.30f1 (1fb1bf06830e) revision 2077119'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19042) 64bit Professional' Language: 'en' Physical Memory: 32689 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+E:\Unity Editors\2020.3.30f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+R:/Unity Projects/LineGameNew/LineGame
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+55480
+Successfully changed project path to: R:/Unity Projects/LineGameNew/LineGame
+R:/Unity Projects/LineGameNew/LineGame
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 78.64 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
+[Subsystems] Discovering subsystems at path E:/Unity Editors/2020.3.30f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path R:/Unity Projects/LineGameNew/LineGame/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon RX 6800 XT (ID=0x73bf)
+    Vendor:   
+    VRAM:     16337 MB
+    Driver:   32.0.11021.1011
+Initialize mono
+Mono path[0] = 'E:/Unity Editors/2020.3.30f1/Editor/Data/Managed'
+Mono path[1] = 'E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56352
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity Editors/2020.3.30f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: E:/Unity Editors/2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004554 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 69.19 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.623 seconds
+Domain Reload Profiling:
+	ReloadAssembly (623ms)
+		BeginReloadAssembly (86ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (455ms)
+			LoadAssemblies (82ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (144ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (189ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (69ms)
+				BeforeProcessingInitializeOnLoad (13ms)
+				ProcessInitializeOnLoadAttributes (74ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004937 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 73.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.194 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1195ms)
+		BeginReloadAssembly (166ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (20ms)
+		EndReloadAssembly (960ms)
+			LoadAssemblies (122ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (312ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (48ms)
+			SetupLoadedEditorAssemblies (395ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (74ms)
+				BeforeProcessingInitializeOnLoad (98ms)
+				ProcessInitializeOnLoadAttributes (194ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3362 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 156.7 MB.
+System memory in use after: 156.9 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 3792.
+Total: 3.171400 ms (FindLiveObjects: 0.291100 ms CreateObjectMapping: 0.081200 ms MarkObjects: 2.771300 ms  DeleteObjects: 0.027000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Images/UI/Animated Cube/frame_177_delay-0.02s.png
+  artifactKey: Guid(bc3c6b8939025d64fa3226a0ce4089de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_177_delay-0.02s.png using Guid(bc3c6b8939025d64fa3226a0ce4089de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57e4448f248704c98423bd556bd45ff8') in 0.116746 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005075 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.956 seconds
+Domain Reload Profiling:
+	ReloadAssembly (957ms)
+		BeginReloadAssembly (128ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (33ms)
+		EndReloadAssembly (757ms)
+			LoadAssemblies (118ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (279ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (261ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (84ms)
+				ProcessInitializeOnLoadAttributes (149ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.78 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3197 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 147.1 MB.
+System memory in use after: 147.3 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3800.
+Total: 2.967100 ms (FindLiveObjects: 0.262700 ms CreateObjectMapping: 0.080900 ms MarkObjects: 2.602400 ms  DeleteObjects: 0.020400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 5.43 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.0 MB.
+System memory in use after: 84.2 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 3800.
+Total: 4.153500 ms (FindLiveObjects: 0.287000 ms CreateObjectMapping: 0.073900 ms MarkObjects: 3.769900 ms  DeleteObjects: 0.022200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006067 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.081 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1082ms)
+		BeginReloadAssembly (141ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (36ms)
+		EndReloadAssembly (858ms)
+			LoadAssemblies (136ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (301ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (295ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (99ms)
+				ProcessInitializeOnLoadAttributes (166ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (14ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3197 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 147.1 MB.
+System memory in use after: 147.4 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3802.
+Total: 2.865900 ms (FindLiveObjects: 0.259100 ms CreateObjectMapping: 0.078500 ms MarkObjects: 2.506900 ms  DeleteObjects: 0.020600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.0 MB.
+System memory in use after: 84.3 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 3802.
+Total: 2.896400 ms (FindLiveObjects: 0.270300 ms CreateObjectMapping: 0.071700 ms MarkObjects: 2.533600 ms  DeleteObjects: 0.019800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.64 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.0 MB.
+System memory in use after: 84.3 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 3802.
+Total: 3.536700 ms (FindLiveObjects: 0.279100 ms CreateObjectMapping: 0.073400 ms MarkObjects: 3.166200 ms  DeleteObjects: 0.017400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006748 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.342 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1345ms)
+		BeginReloadAssembly (273ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (110ms)
+		EndReloadAssembly (986ms)
+			LoadAssemblies (165ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (372ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (51ms)
+			SetupLoadedEditorAssemblies (333ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (107ms)
+				ProcessInitializeOnLoadAttributes (191ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3197 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 147.2 MB.
+System memory in use after: 147.4 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3804.
+Total: 3.410900 ms (FindLiveObjects: 0.317000 ms CreateObjectMapping: 0.081300 ms MarkObjects: 2.990300 ms  DeleteObjects: 0.021700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007191 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.00 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.246 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1247ms)
+		BeginReloadAssembly (145ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (36ms)
+		EndReloadAssembly (1007ms)
+			LoadAssemblies (147ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (361ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (361ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (128ms)
+				ProcessInitializeOnLoadAttributes (199ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3197 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 147.3 MB.
+System memory in use after: 147.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3806.
+Total: 3.442700 ms (FindLiveObjects: 0.319100 ms CreateObjectMapping: 0.074000 ms MarkObjects: 3.017800 ms  DeleteObjects: 0.030900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005834 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.973 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2973ms)
+		BeginReloadAssembly (145ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (37ms)
+		EndReloadAssembly (2757ms)
+			LoadAssemblies (132ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (311ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (100ms)
+			SetupLoadedEditorAssemblies (1640ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (113ms)
+				ProcessInitializeOnLoadAttributes (1168ms)
+				ProcessInitializeOnLoadMethodAttributes (123ms)
+				AfterProcessingInitializeOnLoad (229ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (375ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.99 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3197 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 147.3 MB.
+System memory in use after: 147.6 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3808.
+Total: 4.503000 ms (FindLiveObjects: 0.558900 ms CreateObjectMapping: 0.135800 ms MarkObjects: 3.779700 ms  DeleteObjects: 0.027200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 5.15 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.2 MB.
+System memory in use after: 84.5 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 3808.
+Total: 2.911500 ms (FindLiveObjects: 0.296800 ms CreateObjectMapping: 0.072900 ms MarkObjects: 2.521300 ms  DeleteObjects: 0.019800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.2 MB.
+System memory in use after: 84.5 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 3808.
+Total: 3.306100 ms (FindLiveObjects: 0.283100 ms CreateObjectMapping: 0.081800 ms MarkObjects: 2.919900 ms  DeleteObjects: 0.020400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 6381.044394 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/loading@2x.png
+  artifactKey: Guid(5dbc069eb79bd4d43840847264d6d956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/loading@2x.png using Guid(5dbc069eb79bd4d43840847264d6d956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50bfcffa6e4ab0d99a706c8e4bbbe454') in 0.072951 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/LookDev.png
+  artifactKey: Guid(85099cb723efe4444a23b08281d721c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/LookDev.png using Guid(85099cb723efe4444a23b08281d721c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b396ef46fff36b14f80c2ffe25999d3f') in 0.015964 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/notondisk.png
+  artifactKey: Guid(b205f4b28f59dda49af458b35d8a3ff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/notondisk.png using Guid(b205f4b28f59dda49af458b35d8a3ff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a948d0ca12e02e96a2500fe0dba510ba') in 0.015589 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/ok.png
+  artifactKey: Guid(3238dca1e9ea9fb4aa64b28298ba6dbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/ok.png using Guid(3238dca1e9ea9fb4aa64b28298ba6dbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a9e0e3dce2c076899e550b5b0bcc895') in 0.016317 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/renderdoc.png
+  artifactKey: Guid(cf13fb90f91d2a545a00591d75b43bd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/renderdoc.png using Guid(cf13fb90f91d2a545a00591d75b43bd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7bef88fccaf8bb8327c96572eaaa398') in 0.015012 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Materials/Placeholder/placeholder.png
+  artifactKey: Guid(f87c5920addd68345908db502599d580) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Placeholder/placeholder.png using Guid(f87c5920addd68345908db502599d580) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f97c7559ed6e098137e48f4326a09d87') in 0.018216 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/RenderDoc@2x.png
+  artifactKey: Guid(89608b060fc7279479398a62e245a409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/RenderDoc@2x.png using Guid(89608b060fc7279479398a62e245a409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec0e203f55c6ec44d70b5d7373ee016f') in 0.015683 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000232 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/refresh@2x.png
+  artifactKey: Guid(59571f82a0dc1a14da606dc0df6f8ea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/refresh@2x.png using Guid(59571f82a0dc1a14da606dc0df6f8ea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f0e5de241ef9cfc312ebba24484fe18') in 0.015910 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/RightArrow.png
+  artifactKey: Guid(df4dc708bd8692446a6d5c3531ac377b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/RightArrow.png using Guid(df4dc708bd8692446a6d5c3531ac377b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07641f3c7de086e6437f4d5f0fa9163e') in 0.015195 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/Remove@2x.png
+  artifactKey: Guid(049c8a7821177594692244298d82e4af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/Remove@2x.png using Guid(049c8a7821177594692244298d82e4af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b04bafaa702261e0be6a5d179d90bf2') in 0.014458 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/Remove.png
+  artifactKey: Guid(a5c48bfebeb031a4b8d66da4be0e27b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/Remove.png using Guid(a5c48bfebeb031a4b8d66da4be0e27b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06ea6c44dedee8737de4196e91b73a9c') in 0.014821 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/LookDev@2x.png
+  artifactKey: Guid(bd76726ffb1eb94429fb8143429bd978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/LookDev@2x.png using Guid(bd76726ffb1eb94429fb8143429bd978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e20cbd1b96d9e4f35784a07884ad0168') in 0.015646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000289 seconds.
+  path: Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/refresh.png
+  artifactKey: Guid(6f6a4c6bd7cdc654d9d91f7de72afcb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/refresh.png using Guid(6f6a4c6bd7cdc654d9d91f7de72afcb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df51708f36e7a857a2ff7d88835df93f') in 0.015706 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/RightArrow@2x.png
+  artifactKey: Guid(e194270977977b24da0c6e1c962a5ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.render-pipelines.core/Editor/LookDev/Icons/RightArrow@2x.png using Guid(e194270977977b24da0c6e1c962a5ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea42fd2a551850297b996e37da2778db') in 0.015106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000206 seconds.
+  path: Assets/Materials/Placeholder/Mask.png
+  artifactKey: Guid(59fbe10a9c0a4de4ebcdedcba77c6c80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Placeholder/Mask.png using Guid(59fbe10a9c0a4de4ebcdedcba77c6c80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '740170abc122a95c83f28947674af537') in 0.034119 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.187532 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_254_delay-0.02s.png
+  artifactKey: Guid(e18a09eb4e7ec91428292000c3151a80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_254_delay-0.02s.png using Guid(e18a09eb4e7ec91428292000c3151a80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eabaf68b2cc8828f0c3b49aa0f7daacb') in 0.039054 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_263_delay-0.02s.png
+  artifactKey: Guid(1ba5120182292a34a9ffdbb980c1bc99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_263_delay-0.02s.png using Guid(1ba5120182292a34a9ffdbb980c1bc99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edf36f57681cd67e6f4a508f6321c030') in 0.017077 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_255_delay-0.02s.png
+  artifactKey: Guid(f632df02aa7252d41aa4a40107c94568) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_255_delay-0.02s.png using Guid(f632df02aa7252d41aa4a40107c94568) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '408a8de4aa9b99386b01ca6e93972fdc') in 0.017904 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_258_delay-0.02s.png
+  artifactKey: Guid(5e74a7236e486034da1c3764471fc2f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_258_delay-0.02s.png using Guid(5e74a7236e486034da1c3764471fc2f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9945e5d817e370641ed3f35d66524d1') in 0.016619 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_262_delay-0.02s.png
+  artifactKey: Guid(bbffa9c2735aa3b4a8c3db89349acd96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_262_delay-0.02s.png using Guid(bbffa9c2735aa3b4a8c3db89349acd96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2521191b0bc68beaa55097c309566a42') in 0.017261 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_264_delay-0.02s.png
+  artifactKey: Guid(994d4b12480cbb748834f1d1e8a2b165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_264_delay-0.02s.png using Guid(994d4b12480cbb748834f1d1e8a2b165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b24f3d615b212a84052339bb487401f') in 0.016997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_256_delay-0.02s.png
+  artifactKey: Guid(66f71b4bfcdc28940af955513396d30b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_256_delay-0.02s.png using Guid(66f71b4bfcdc28940af955513396d30b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f4b98ffbcb82cd223aa86be1e1d60f2') in 0.017052 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000311 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_266_delay-0.02s.png
+  artifactKey: Guid(d227349a2fb5876449d5a0599e51726d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_266_delay-0.02s.png using Guid(d227349a2fb5876449d5a0599e51726d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8392c02eb1a48feff0af6e486014db92') in 0.019640 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_261_delay-0.02s.png
+  artifactKey: Guid(70193dae1d5b3ad47a332746690fdef6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_261_delay-0.02s.png using Guid(70193dae1d5b3ad47a332746690fdef6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78cc0766aba0b512170df8c2bae0b4d1') in 0.017971 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_260_delay-0.02s.png
+  artifactKey: Guid(86985d72520eaca4cb48b1e162b3081c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_260_delay-0.02s.png using Guid(86985d72520eaca4cb48b1e162b3081c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5ee6c8e691a1adf8651c298d28d3a94') in 0.017609 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000214 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_259_delay-0.02s.png
+  artifactKey: Guid(c9f1c1520f9b957448e8037e471afad0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_259_delay-0.02s.png using Guid(c9f1c1520f9b957448e8037e471afad0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70ec10fdad139643fce9bb52f53b4eeb') in 0.018690 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_257_delay-0.02s.png
+  artifactKey: Guid(f810d53f1b0900241900b12847b1b255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_257_delay-0.02s.png using Guid(f810d53f1b0900241900b12847b1b255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdb75b3356dca4c66815af22200a4a7d') in 0.017000 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_265_delay-0.02s.png
+  artifactKey: Guid(d741b553a2461544d988fc753956108c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_265_delay-0.02s.png using Guid(d741b553a2461544d988fc753956108c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16659a2a141e8e0336049cbb79f882b7') in 0.018483 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.551225 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_251_delay-0.02s.png
+  artifactKey: Guid(fbbe8f7279b90874abc1fad2d9d52309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_251_delay-0.02s.png using Guid(fbbe8f7279b90874abc1fad2d9d52309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21d3760356919a014cd0f788b37315ca') in 0.038809 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_252_delay-0.02s.png
+  artifactKey: Guid(776f8c75049224c499cf88c94948f00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_252_delay-0.02s.png using Guid(776f8c75049224c499cf88c94948f00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89acfe16ae494df89be2eedce190413c') in 0.019051 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_250_delay-0.02s.png
+  artifactKey: Guid(3ea2ae0595f72fe4e9430f72d2ba6385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_250_delay-0.02s.png using Guid(3ea2ae0595f72fe4e9430f72d2ba6385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea1de2704a55f3026736bd04568c84ab') in 0.018650 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000284 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_245_delay-0.02s.png
+  artifactKey: Guid(bfeda7c1190b66e4b909aaaaac656dc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_245_delay-0.02s.png using Guid(bfeda7c1190b66e4b909aaaaac656dc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd9c744c8efffb98478d0ff612e33806') in 0.018846 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_253_delay-0.02s.png
+  artifactKey: Guid(6bea8d9858837b544aff3227cd592f2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_253_delay-0.02s.png using Guid(6bea8d9858837b544aff3227cd592f2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6da796cb72312ebc199ba3d79aedbc7') in 0.017490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_242_delay-0.02s.png
+  artifactKey: Guid(63a42e3600a278f448dc4775bf2fb5a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_242_delay-0.02s.png using Guid(63a42e3600a278f448dc4775bf2fb5a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a91d71b1d2be653c0a8a3677ac867f31') in 0.016775 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_244_delay-0.02s.png
+  artifactKey: Guid(c3644f0809f53c045a6dc77f4694fd5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_244_delay-0.02s.png using Guid(c3644f0809f53c045a6dc77f4694fd5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7640ceb67fe9774368fe5614cd0c0288') in 0.018901 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_249_delay-0.02s.png
+  artifactKey: Guid(22cb73241f82c0c4999405a09e90d2f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_249_delay-0.02s.png using Guid(22cb73241f82c0c4999405a09e90d2f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4a098f52d1ef1d8ee81869c671624aa') in 0.017449 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_246_delay-0.02s.png
+  artifactKey: Guid(0908b9d8d05e6b44498343e967abe940) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_246_delay-0.02s.png using Guid(0908b9d8d05e6b44498343e967abe940) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d49c6b0212184f3ae9b2c4167f48245') in 0.017936 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_247_delay-0.02s.png
+  artifactKey: Guid(392116b9ac7faf44fa3841ac541921b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_247_delay-0.02s.png using Guid(392116b9ac7faf44fa3841ac541921b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1df72569f111118c2e5fbf6fc51847b0') in 0.017420 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_248_delay-0.02s.png
+  artifactKey: Guid(33505638fee40564dba2e6fa12bbda03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_248_delay-0.02s.png using Guid(33505638fee40564dba2e6fa12bbda03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98bdd6bfac16723e1886436b0e353ae0') in 0.017709 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_243_delay-0.02s.png
+  artifactKey: Guid(6a2290ca1bb68a84e89e3a9f5c17acfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_243_delay-0.02s.png using Guid(6a2290ca1bb68a84e89e3a9f5c17acfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '227e0140f8df781cd049452f61efc90a') in 0.017336 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_236_delay-0.02s.png
+  artifactKey: Guid(0387d115fde13174c978a7d393c8fc68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_236_delay-0.02s.png using Guid(0387d115fde13174c978a7d393c8fc68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdafac5d2b427eda7512eef3c4635cea') in 0.018298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_237_delay-0.02s.png
+  artifactKey: Guid(a6c1f5a69e710b64890be0266408dfab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_237_delay-0.02s.png using Guid(a6c1f5a69e710b64890be0266408dfab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e370c72bd19540e6ab25ad815b55ca6') in 0.019010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_233_delay-0.02s.png
+  artifactKey: Guid(a3268e62b1cd73f45ac5b257f7f00a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_233_delay-0.02s.png using Guid(a3268e62b1cd73f45ac5b257f7f00a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5711e4056e06a89bd3cba1e47f8ba44') in 0.017608 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_230_delay-0.02s.png
+  artifactKey: Guid(643530c00150d8a4dac2858e88cde9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_230_delay-0.02s.png using Guid(643530c00150d8a4dac2858e88cde9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd2ceba95fb6302c9f313c41ce32f9f') in 0.019133 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_232_delay-0.02s.png
+  artifactKey: Guid(d86f4bfd7332d1e449d36bfa25e1ea70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_232_delay-0.02s.png using Guid(d86f4bfd7332d1e449d36bfa25e1ea70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec177708a3ad47c7ca061c3bcbe553ff') in 0.017560 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_238_delay-0.02s.png
+  artifactKey: Guid(8f1e61e22e0020d41877aee7119f3d7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_238_delay-0.02s.png using Guid(8f1e61e22e0020d41877aee7119f3d7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d0394db23a9979d4bddd574aaf8c266') in 0.017613 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_239_delay-0.02s.png
+  artifactKey: Guid(7a520b267abe8e64cad9ccd5a3d3a049) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_239_delay-0.02s.png using Guid(7a520b267abe8e64cad9ccd5a3d3a049) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac0fd281f49e573e50f9f8a8fa0570f3') in 0.016846 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_240_delay-0.02s.png
+  artifactKey: Guid(df4778a8b5df4144f9c6bbfc40b06301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_240_delay-0.02s.png using Guid(df4778a8b5df4144f9c6bbfc40b06301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '629639bb2c22a9740f576e1679934052') in 0.017188 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_234_delay-0.02s.png
+  artifactKey: Guid(99d0222bdde1a5e43a3a64bba2883253) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_234_delay-0.02s.png using Guid(99d0222bdde1a5e43a3a64bba2883253) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82251f5f1eeefd7856ea8a9d8bf8d254') in 0.017636 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_235_delay-0.02s.png
+  artifactKey: Guid(3f0755b99f1987049afa42b1d8d8d251) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_235_delay-0.02s.png using Guid(3f0755b99f1987049afa42b1d8d8d251) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16ab99d6b5aa133b8a63d4fb106c500f') in 0.017388 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_231_delay-0.02s.png
+  artifactKey: Guid(5777c5217eaed7342add2ab85bc71206) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_231_delay-0.02s.png using Guid(5777c5217eaed7342add2ab85bc71206) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eed815b05585e5fa9228739e7af32c57') in 0.033261 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_241_delay-0.02s.png
+  artifactKey: Guid(e9a212a4370591b4b98f7cc862845469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_241_delay-0.02s.png using Guid(e9a212a4370591b4b98f7cc862845469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fff6fe245997dd30c9617a5fb9b5420') in 0.017523 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.147997 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_227_delay-0.02s.png
+  artifactKey: Guid(7660257d4aed9a64286c6265c428901b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_227_delay-0.02s.png using Guid(7660257d4aed9a64286c6265c428901b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbba49d83c8132bd7fd64b49c56b9a96') in 0.016017 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_226_delay-0.02s.png
+  artifactKey: Guid(d76cf7a63c7010a4caa59c66e7e62dd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_226_delay-0.02s.png using Guid(d76cf7a63c7010a4caa59c66e7e62dd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b297401f93218e5149ebcc42385a7b68') in 0.040197 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_229_delay-0.02s.png
+  artifactKey: Guid(1ebd13730f6e3794291867914388126b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_229_delay-0.02s.png using Guid(1ebd13730f6e3794291867914388126b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3637433d24115336eaf637e02e6c8d8b') in 0.017448 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_214_delay-0.02s.png
+  artifactKey: Guid(2bacd15ade6049b41a18cbcc1fbc35a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_214_delay-0.02s.png using Guid(2bacd15ade6049b41a18cbcc1fbc35a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a197df295a82a011bf5052d184f80230') in 0.017488 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_211_delay-0.02s.png
+  artifactKey: Guid(ecaab086ad5838944a662d401ced1e67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_211_delay-0.02s.png using Guid(ecaab086ad5838944a662d401ced1e67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f116a6136ab4f520cd58e8f35e0878f6') in 0.018134 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_206_delay-0.02s.png
+  artifactKey: Guid(6a7605cdabba93b4da5fc9e4cb94a853) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_206_delay-0.02s.png using Guid(6a7605cdabba93b4da5fc9e4cb94a853) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '603be190f4593431d3ec8edc23d417da') in 0.017399 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_209_delay-0.02s.png
+  artifactKey: Guid(8033fdcb9336bf848a9b272225461584) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_209_delay-0.02s.png using Guid(8033fdcb9336bf848a9b272225461584) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbe52c0a5fc8c196261b9e7608fda5fc') in 0.016969 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_202_delay-0.02s.png
+  artifactKey: Guid(73954184ff5d7b8479d5f0dd6db62bbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_202_delay-0.02s.png using Guid(73954184ff5d7b8479d5f0dd6db62bbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96d552b066da9e659fa561d622f37ea5') in 0.016051 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_207_delay-0.02s.png
+  artifactKey: Guid(81f5b3a7acc6281479b1eb78fc432482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_207_delay-0.02s.png using Guid(81f5b3a7acc6281479b1eb78fc432482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad5c981b4e7d6efd415d389f18a24a52') in 0.017799 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_210_delay-0.02s.png
+  artifactKey: Guid(f44f74689504dbf4e93636e59892e4f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_210_delay-0.02s.png using Guid(f44f74689504dbf4e93636e59892e4f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '596274e20c3eeb0afb59662b28ef5f16') in 0.017905 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000282 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_208_delay-0.02s.png
+  artifactKey: Guid(90971209f7b7c7d40b096a909f5e6d6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_208_delay-0.02s.png using Guid(90971209f7b7c7d40b096a909f5e6d6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80ce769104faafe5cf1b77f6e5207612') in 0.017346 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_195_delay-0.02s.png
+  artifactKey: Guid(dbd22f56ef38a5d4eb32ab9de2050f53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_195_delay-0.02s.png using Guid(dbd22f56ef38a5d4eb32ab9de2050f53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89b321142f3fb42e53e5ebe5666325a5') in 0.016551 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_203_delay-0.02s.png
+  artifactKey: Guid(17e831b1a4faaf34db3730d9191c25c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_203_delay-0.02s.png using Guid(17e831b1a4faaf34db3730d9191c25c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2096026ee061ce256544635d3c5ac24') in 0.017315 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_212_delay-0.02s.png
+  artifactKey: Guid(531a8d95f30ae3547ba879a357fc6125) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_212_delay-0.02s.png using Guid(531a8d95f30ae3547ba879a357fc6125) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1c27027cdba88ba9796c91fb1b35cd9') in 0.017793 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_218_delay-0.02s.png
+  artifactKey: Guid(77e3c0949dba10646936ff1af2102af9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_218_delay-0.02s.png using Guid(77e3c0949dba10646936ff1af2102af9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d707ea8d344361f0b36f706b7afd1cb') in 0.016734 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_221_delay-0.02s.png
+  artifactKey: Guid(bd0941299d7a8c543a4b1fa1da35e1a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_221_delay-0.02s.png using Guid(bd0941299d7a8c543a4b1fa1da35e1a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '415cb640dbd36d81e34e6195481b41ce') in 0.017327 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_193_delay-0.02s.png
+  artifactKey: Guid(d88b1d59d49c3144996a36934584aef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_193_delay-0.02s.png using Guid(d88b1d59d49c3144996a36934584aef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5624d2645b68107fbdb55ce09c61539') in 0.017733 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000222 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_201_delay-0.02s.png
+  artifactKey: Guid(57c5caf7ee57a4241888cb69c2ec00b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_201_delay-0.02s.png using Guid(57c5caf7ee57a4241888cb69c2ec00b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03fe3ae68312f5bad12a37416a3b92c5') in 0.017281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_191_delay-0.02s.png
+  artifactKey: Guid(162a1b4b1096f024b9cb735d77cc5d76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_191_delay-0.02s.png using Guid(162a1b4b1096f024b9cb735d77cc5d76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '643376f2ac40f91fcfb962964b86dad9') in 0.018326 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_204_delay-0.02s.png
+  artifactKey: Guid(6411228dbdca1c4448d7df07d45219aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_204_delay-0.02s.png using Guid(6411228dbdca1c4448d7df07d45219aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8a98afacdc2b1195a911fed5b2558a5') in 0.017637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_189_delay-0.02s.png
+  artifactKey: Guid(ae2312f16623b9842bfcbb52f7ec27d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_189_delay-0.02s.png using Guid(ae2312f16623b9842bfcbb52f7ec27d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26b60e5aca4404ed2fc9506eb54c06d4') in 0.017311 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_186_delay-0.02s.png
+  artifactKey: Guid(0655e189dfff22f4ba7c095ecab86eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_186_delay-0.02s.png using Guid(0655e189dfff22f4ba7c095ecab86eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78258a1bf6be9322d495fb45026b6309') in 0.017992 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_198_delay-0.02s.png
+  artifactKey: Guid(1942c8518f25f174a87899eac179623e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_198_delay-0.02s.png using Guid(1942c8518f25f174a87899eac179623e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3097dd2f1802cf766f0ad28c859ae84e') in 0.016554 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_178_delay-0.02s.png
+  artifactKey: Guid(cdd70b99bd930234db9bb264a43a2ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_178_delay-0.02s.png using Guid(cdd70b99bd930234db9bb264a43a2ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f22a977dcf26d1329c56ab21367a1d95') in 0.016616 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_216_delay-0.02s.png
+  artifactKey: Guid(28300c98d3d072149961aedc67282477) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_216_delay-0.02s.png using Guid(28300c98d3d072149961aedc67282477) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98e344a2b370d2f79ad2d793b3bdc5b7') in 0.016898 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_174_delay-0.02s.png
+  artifactKey: Guid(050543ab260704844aee7ad8813a8203) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_174_delay-0.02s.png using Guid(050543ab260704844aee7ad8813a8203) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '669f9d79a226daf36751c107ce3a433c') in 0.016581 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_213_delay-0.02s.png
+  artifactKey: Guid(b6e4e78fb7e54f64eb0b203bf14f64aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_213_delay-0.02s.png using Guid(b6e4e78fb7e54f64eb0b203bf14f64aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afe5ecc4edcfd0ac3b855b2ece4d4624') in 0.016256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_205_delay-0.02s.png
+  artifactKey: Guid(9c8ef3244fc8f584eb17c4d62311006e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_205_delay-0.02s.png using Guid(9c8ef3244fc8f584eb17c4d62311006e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2390203ec74828d8010a042c443a43a') in 0.017026 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_223_delay-0.02s.png
+  artifactKey: Guid(06aefe505068e4f4887ae3411edf7bbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_223_delay-0.02s.png using Guid(06aefe505068e4f4887ae3411edf7bbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc2870876c5c8a48064a23c2ab0602ea') in 0.016563 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_200_delay-0.02s.png
+  artifactKey: Guid(51de31c078507f64bb30b8b3631568de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_200_delay-0.02s.png using Guid(51de31c078507f64bb30b8b3631568de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b81e1ac39cba929e61a85915dbdb4bd') in 0.016466 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_224_delay-0.02s.png
+  artifactKey: Guid(2aed051119a0bc94094168ea97fc273a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_224_delay-0.02s.png using Guid(2aed051119a0bc94094168ea97fc273a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edafdd12525b465afd1507906300a8b2') in 0.016411 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_225_delay-0.02s.png
+  artifactKey: Guid(a15437be21051dd4fb0407f05e5ac1be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_225_delay-0.02s.png using Guid(a15437be21051dd4fb0407f05e5ac1be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3196ede2ff7215d1b47da9d886874ff2') in 0.016534 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_167_delay-0.02s.png
+  artifactKey: Guid(3c58c0cd1ffd0fa4e95d037be4723f3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_167_delay-0.02s.png using Guid(3c58c0cd1ffd0fa4e95d037be4723f3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47f21e18e203f345f6294e233b8cc5db') in 0.016378 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_171_delay-0.02s.png
+  artifactKey: Guid(00b1a945d484bac4197f0cba45c2e181) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_171_delay-0.02s.png using Guid(00b1a945d484bac4197f0cba45c2e181) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dd639f089a5643f5451af6a1ed717bf') in 0.016053 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_181_delay-0.02s.png
+  artifactKey: Guid(05c9da1fc195c9240b890c42c2bb583d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_181_delay-0.02s.png using Guid(05c9da1fc195c9240b890c42c2bb583d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6792f2ed60295b494c5a95ba65fa7092') in 0.016971 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_228_delay-0.02s.png
+  artifactKey: Guid(c6633f5c9e986424cbe87a3d725eee8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_228_delay-0.02s.png using Guid(c6633f5c9e986424cbe87a3d725eee8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '721e113c806b8db3c8b683f0bacc959e') in 0.017005 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_166_delay-0.02s.png
+  artifactKey: Guid(516e29f3072e5c04dbb5c660cf663581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_166_delay-0.02s.png using Guid(516e29f3072e5c04dbb5c660cf663581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7371c0458edf5d17de62cf103b21bf3d') in 0.016099 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_170_delay-0.02s.png
+  artifactKey: Guid(af166f58779c2cc449e944290d580a2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_170_delay-0.02s.png using Guid(af166f58779c2cc449e944290d580a2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab0da749e3a6dbd8919f28e091fc511') in 0.015801 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_188_delay-0.02s.png
+  artifactKey: Guid(dba3b4874546f694097153c1cadbbc4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_188_delay-0.02s.png using Guid(dba3b4874546f694097153c1cadbbc4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cc39347bf760586a5982dcd99ceeee0') in 0.017484 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_187_delay-0.02s.png
+  artifactKey: Guid(77be397c143ca8a4f8e413642528cc90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_187_delay-0.02s.png using Guid(77be397c143ca8a4f8e413642528cc90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfd7cedfd7f6f251aef34dd051206741') in 0.017262 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_199_delay-0.02s.png
+  artifactKey: Guid(eb6037343d6301e46933bc90bb95cfd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_199_delay-0.02s.png using Guid(eb6037343d6301e46933bc90bb95cfd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '542d19b02e3034be200d3b6b1a99dd09') in 0.017338 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_161_delay-0.02s.png
+  artifactKey: Guid(3665bdd8736d80546b3a552100155c89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_161_delay-0.02s.png using Guid(3665bdd8736d80546b3a552100155c89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '751e13237484fe1dfba534b8df130596') in 0.016533 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_164_delay-0.02s.png
+  artifactKey: Guid(1d99cafdc41523a4fbd454afb4c341de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_164_delay-0.02s.png using Guid(1d99cafdc41523a4fbd454afb4c341de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb1f0d822b100797c020037a5b6c17e7') in 0.017153 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_160_delay-0.02s.png
+  artifactKey: Guid(b74a8c3425af0134ab4956feb1ec30b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_160_delay-0.02s.png using Guid(b74a8c3425af0134ab4956feb1ec30b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2afaf291e6232a3c18495ebd7cc20187') in 0.016832 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_158_delay-0.02s.png
+  artifactKey: Guid(ff97e6df059b7bf41bf3d963b81ce3d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_158_delay-0.02s.png using Guid(ff97e6df059b7bf41bf3d963b81ce3d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6b9dcc3915b480d35c4c6d9436b0c4b') in 0.017059 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_169_delay-0.02s.png
+  artifactKey: Guid(8bfc4217a6f1dba429ec9f817a1e824f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_169_delay-0.02s.png using Guid(8bfc4217a6f1dba429ec9f817a1e824f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8221a4d54f17fa27b4b973985cef6ad') in 0.017358 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_156_delay-0.02s.png
+  artifactKey: Guid(0684fc4dbfd09644cb5541a547baff60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_156_delay-0.02s.png using Guid(0684fc4dbfd09644cb5541a547baff60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa0dc67720ecb0099e58e0b2703ef1ee') in 0.017040 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_152_delay-0.02s.png
+  artifactKey: Guid(45256b082a806d1428533fe487191646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_152_delay-0.02s.png using Guid(45256b082a806d1428533fe487191646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0737928237f479cc59bc2428dcf07809') in 0.017933 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_176_delay-0.02s.png
+  artifactKey: Guid(853c02a9167c9b148a56d455ae9e1c01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_176_delay-0.02s.png using Guid(853c02a9167c9b148a56d455ae9e1c01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8438a60ca5e9c9a915ab37cf51f90aa') in 0.016672 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_151_delay-0.02s.png
+  artifactKey: Guid(7b51d4560dd347a47b64637f3afc2a71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_151_delay-0.02s.png using Guid(7b51d4560dd347a47b64637f3afc2a71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88d2d0c087cb4e8a55ee2ce94b84bbae') in 0.017997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_149_delay-0.02s.png
+  artifactKey: Guid(a19161ac2ccc30642b0be14afd3b67bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_149_delay-0.02s.png using Guid(a19161ac2ccc30642b0be14afd3b67bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76204607579b788b0374ad5c371db9f2') in 0.016726 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_173_delay-0.02s.png
+  artifactKey: Guid(8f52053a112bc6c4682b808340350cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_173_delay-0.02s.png using Guid(8f52053a112bc6c4682b808340350cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24d7c761c52c8cb9a755b50b2df08eca') in 0.016662 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_148_delay-0.02s.png
+  artifactKey: Guid(9483f57847e3ab6499556c5a6b133b19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_148_delay-0.02s.png using Guid(9483f57847e3ab6499556c5a6b133b19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f17c499f44c43eafd21fc70a570a7c2') in 0.015960 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_175_delay-0.02s.png
+  artifactKey: Guid(aaa880a77d78aad408f8c9db6599ee95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_175_delay-0.02s.png using Guid(aaa880a77d78aad408f8c9db6599ee95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac615069b23f96485143c30237809ec1') in 0.016592 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_168_delay-0.02s.png
+  artifactKey: Guid(14eb868eb991c8b4987bcea8e4c57e55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_168_delay-0.02s.png using Guid(14eb868eb991c8b4987bcea8e4c57e55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0bc4605e98ba8814a6f8f1db1f7bbba') in 0.016532 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_145_delay-0.02s.png
+  artifactKey: Guid(12c2ddde4a7943f4ebf68f136c209395) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_145_delay-0.02s.png using Guid(12c2ddde4a7943f4ebf68f136c209395) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28ad88d965967cd0db64e684c293b161') in 0.017684 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_143_delay-0.02s.png
+  artifactKey: Guid(03357ce6cd446ef45a13b734a9aad469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_143_delay-0.02s.png using Guid(03357ce6cd446ef45a13b734a9aad469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbb873c470b0e6ab26f367a6acf99e19') in 0.016871 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_144_delay-0.02s.png
+  artifactKey: Guid(c355a7e3f9f566b4b84c841e84864b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_144_delay-0.02s.png using Guid(c355a7e3f9f566b4b84c841e84864b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a99d798754e141312aeb16fb1f9a5e9') in 0.016534 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_141_delay-0.02s.png
+  artifactKey: Guid(bab87a1ee863a2749a0fedf789bcb17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_141_delay-0.02s.png using Guid(bab87a1ee863a2749a0fedf789bcb17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3d2a7ca086b351e2ac78c08ac979f04') in 0.016904 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_140_delay-0.01s.png
+  artifactKey: Guid(d58586d988c04d741ac5fff67a74aa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_140_delay-0.01s.png using Guid(d58586d988c04d741ac5fff67a74aa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '596ea01a64395205cbae00da7439c401') in 0.017417 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_137_delay-0.02s.png
+  artifactKey: Guid(83c11fdef6cc2174cbc6838a0f912c4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_137_delay-0.02s.png using Guid(83c11fdef6cc2174cbc6838a0f912c4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '798af79d0d39a4f877b65e65dab79f99') in 0.016585 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_139_delay-0.02s.png
+  artifactKey: Guid(f294ad6b607cb574089600b793524d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_139_delay-0.02s.png using Guid(f294ad6b607cb574089600b793524d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5462a45fe92a818b99737c22b887a82f') in 0.018633 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_136_delay-0.02s.png
+  artifactKey: Guid(90873e160e425464cb802832116f3764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_136_delay-0.02s.png using Guid(90873e160e425464cb802832116f3764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b67ad67842e96e2433ec1009423d964') in 0.017395 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000214 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_132_delay-0.02s.png
+  artifactKey: Guid(480b6112e82422e4fa46970183ab6f34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_132_delay-0.02s.png using Guid(480b6112e82422e4fa46970183ab6f34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85497aecc543e17f106d9fdfcc8fcbe9') in 0.016942 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000222 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_129_delay-0.02s.png
+  artifactKey: Guid(0c8308f063d59824fbcc27904c1ebb41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_129_delay-0.02s.png using Guid(0c8308f063d59824fbcc27904c1ebb41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ada6019deeae46a81fd217296fb696b0') in 0.019365 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_127_delay-0.02s.png
+  artifactKey: Guid(ad5a69dc4813817419480e57464788df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_127_delay-0.02s.png using Guid(ad5a69dc4813817419480e57464788df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76aba5e933b25d7820e60c53f7c5cd74') in 0.018575 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000231 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_123_delay-0.02s.png
+  artifactKey: Guid(a24e3773440a12948aef9ea6d9c29c47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_123_delay-0.02s.png using Guid(a24e3773440a12948aef9ea6d9c29c47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e9d39c389c17b6d3f284240b77aa72d') in 0.017357 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_122_delay-0.02s.png
+  artifactKey: Guid(31d6fb80c8cf7244f96ba2ca76696a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_122_delay-0.02s.png using Guid(31d6fb80c8cf7244f96ba2ca76696a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c98107a7b4652da06206d110520e2791') in 0.017230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_121_delay-0.02s.png
+  artifactKey: Guid(5752a7d9aff14b64480965295dfc31c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_121_delay-0.02s.png using Guid(5752a7d9aff14b64480965295dfc31c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d5c186c86f730962b3cd6221d8feed2') in 0.017472 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_117_delay-0.02s.png
+  artifactKey: Guid(f37c826f7445286458a3d891719528d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_117_delay-0.02s.png using Guid(f37c826f7445286458a3d891719528d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '131d574e20a0be061d3d488508538e37') in 0.016838 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_110_delay-0.02s.png
+  artifactKey: Guid(5ddd7b2e3bfdbdf45903157a15f96d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_110_delay-0.02s.png using Guid(5ddd7b2e3bfdbdf45903157a15f96d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dd8299ddc3d9ec5d36a3fc14d478445') in 0.017388 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_113_delay-0.02s.png
+  artifactKey: Guid(75635d46dc74ecd42af2a1e40a42bb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_113_delay-0.02s.png using Guid(75635d46dc74ecd42af2a1e40a42bb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9817db28873d9d0bdbd2bf32a794922a') in 0.019161 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_119_delay-0.02s.png
+  artifactKey: Guid(d0a375dc244329846ad858e159dec5f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_119_delay-0.02s.png using Guid(d0a375dc244329846ad858e159dec5f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb64ffd6cee88739b4d63f2c3417f042') in 0.015687 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_104_delay-0.02s.png
+  artifactKey: Guid(fb6610a737048d84892590a4e95df9ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_104_delay-0.02s.png using Guid(fb6610a737048d84892590a4e95df9ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc3afd5b46f601565ac58713a066bcce') in 0.017409 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_075_delay-0.02s.png
+  artifactKey: Guid(af19058a3dca210468df74c80d4c43df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_075_delay-0.02s.png using Guid(af19058a3dca210468df74c80d4c43df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1da104d8864945d156f08c44c4a9666f') in 0.016015 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_071_delay-0.02s.png
+  artifactKey: Guid(fa0c168913c529341a07bd8aa2e7f619) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_071_delay-0.02s.png using Guid(fa0c168913c529341a07bd8aa2e7f619) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77a393b460c341800af28b4da043a8fa') in 0.015527 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_073_delay-0.02s.png
+  artifactKey: Guid(f573150c61c3d56479f10d0efd38149d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_073_delay-0.02s.png using Guid(f573150c61c3d56479f10d0efd38149d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28ac7efcc5b50c42c5140a6e1c88350a') in 0.016589 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_077_delay-0.02s.png
+  artifactKey: Guid(e386303faf10cd045ac9f62475e74808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_077_delay-0.02s.png using Guid(e386303faf10cd045ac9f62475e74808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfbd91beba6b8bedf844dcb156c74e7b') in 0.017207 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000236 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_057_delay-0.02s.png
+  artifactKey: Guid(47266bd75ffd5114088002923c7e2d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_057_delay-0.02s.png using Guid(47266bd75ffd5114088002923c7e2d7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b18e3d91852c4261ab60737af0b1be1c') in 0.015675 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_050_delay-0.02s.png
+  artifactKey: Guid(a3ed18c7e714f5c479953bbdea264508) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_050_delay-0.02s.png using Guid(a3ed18c7e714f5c479953bbdea264508) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f77bb4d92f31114caa7a1d2630643833') in 0.016677 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_061_delay-0.02s.png
+  artifactKey: Guid(b65648f921f1a03419c8f3e5ef003372) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_061_delay-0.02s.png using Guid(b65648f921f1a03419c8f3e5ef003372) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '106ebf0c8a2a9f31968949f577b686a9') in 0.017520 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000273 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_041_delay-0.02s.png
+  artifactKey: Guid(59f23ebfbe4ad67479267dbf4f52ec32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_041_delay-0.02s.png using Guid(59f23ebfbe4ad67479267dbf4f52ec32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba1de3b01f5ec99e9866c9da9e752b43') in 0.017258 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000351 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_037_delay-0.02s.png
+  artifactKey: Guid(bd6c64779389101468510d44852466ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_037_delay-0.02s.png using Guid(bd6c64779389101468510d44852466ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a8b999228c5e8d6cc257b08812f3095') in 0.018360 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000242 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_051_delay-0.02s.png
+  artifactKey: Guid(b228528f32ea4cc44b92e41e2b1e881c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_051_delay-0.02s.png using Guid(b228528f32ea4cc44b92e41e2b1e881c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc367977783816a00278812f5850a6ad') in 0.018537 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000242 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_060_delay-0.02s.png
+  artifactKey: Guid(97cd432410b3a1f4fb264bf7c28148b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_060_delay-0.02s.png using Guid(97cd432410b3a1f4fb264bf7c28148b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72d1869b581053b22f3e92a7336a6847') in 0.017688 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_086_delay-0.02s.png
+  artifactKey: Guid(3749c1449b0510748bd1b28baefe8531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_086_delay-0.02s.png using Guid(3749c1449b0510748bd1b28baefe8531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e7c55b18d84016bc14eeab0c0c974d4') in 0.017475 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_102_delay-0.02s.png
+  artifactKey: Guid(3bb01e6159bfc804098f794275a2c293) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_102_delay-0.02s.png using Guid(3bb01e6159bfc804098f794275a2c293) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '948ad8c83884a1df57be0361a09eadba') in 0.016702 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_009_delay-0.02s.png
+  artifactKey: Guid(8c4e3b8c6528cd5449c6fc12a930c874) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_009_delay-0.02s.png using Guid(8c4e3b8c6528cd5449c6fc12a930c874) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc0969c9dd68ab6e601bf39a8e26ba94') in 0.017024 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000257 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_007_delay-0.02s.png
+  artifactKey: Guid(6eb1f00901bf23240baf131b41d24744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_007_delay-0.02s.png using Guid(6eb1f00901bf23240baf131b41d24744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85d01cb6086b913e69fa76ee3efe6e7c') in 0.017212 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_042_delay-0.02s.png
+  artifactKey: Guid(7fe3a53deef04084b9a87479ddd6cc37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_042_delay-0.02s.png using Guid(7fe3a53deef04084b9a87479ddd6cc37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e8e7db3d93b15c37c374a10d5051de5') in 0.016820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_105_delay-0.02s.png
+  artifactKey: Guid(c3f06782dad7ead418fe3f225b2be89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_105_delay-0.02s.png using Guid(c3f06782dad7ead418fe3f225b2be89e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a7734e9aca4f7de83c3c7f0b5747307') in 0.016979 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_068_delay-0.02s.png
+  artifactKey: Guid(8ae85ff78ed3dfa43a80346ae21dc6e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_068_delay-0.02s.png using Guid(8ae85ff78ed3dfa43a80346ae21dc6e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '242bb4abf2c5220d279a39a11b9028a0') in 0.016584 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_070_delay-0.02s.png
+  artifactKey: Guid(0b4656e2ccb7f244eb5e7f69797f62a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_070_delay-0.02s.png using Guid(0b4656e2ccb7f244eb5e7f69797f62a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36936e79e94247b3588e872b11afac01') in 0.015703 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_054_delay-0.02s.png
+  artifactKey: Guid(f4c14ebf8d5e72b489456cbbaf36f763) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_054_delay-0.02s.png using Guid(f4c14ebf8d5e72b489456cbbaf36f763) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35fa87a3b95dd6174a178c5c9dd43980') in 0.015727 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_111_delay-0.02s.png
+  artifactKey: Guid(7bdc81a03f40272448bcd998468bd66d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_111_delay-0.02s.png using Guid(7bdc81a03f40272448bcd998468bd66d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b95953e01bb058c2ed8f90bd680110d') in 0.016745 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_094_delay-0.02s.png
+  artifactKey: Guid(3e732a567795dd7489314d2afeed6571) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_094_delay-0.02s.png using Guid(3e732a567795dd7489314d2afeed6571) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04628c6b09ff29e8b2ff6bbcea0d7c2e') in 0.016861 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_022_delay-0.02s.png
+  artifactKey: Guid(133699a472a4bb142a145af1a2f09781) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_022_delay-0.02s.png using Guid(133699a472a4bb142a145af1a2f09781) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7501089a06dfe7b3664f9dbb882dde9c') in 0.015978 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_115_delay-0.02s.png
+  artifactKey: Guid(c348b2331c2532649b55fb43d23acb19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_115_delay-0.02s.png using Guid(c348b2331c2532649b55fb43d23acb19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a840b64fdefb93ab74f80d6badcceec0') in 0.016941 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000216 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_120_delay-0.02s.png
+  artifactKey: Guid(16bf35e6b92ffa04a9389824725aec7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_120_delay-0.02s.png using Guid(16bf35e6b92ffa04a9389824725aec7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab141dc1b07ed5325619f45ad7fb9de1') in 0.016720 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_048_delay-0.02s.png
+  artifactKey: Guid(d035413c77240724887cf2bfd7b8737f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_048_delay-0.02s.png using Guid(d035413c77240724887cf2bfd7b8737f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1f428a9c58933acced8794d5536c978') in 0.017389 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_076_delay-0.02s.png
+  artifactKey: Guid(0f11f662a0cffbe49984ba12142b02b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_076_delay-0.02s.png using Guid(0f11f662a0cffbe49984ba12142b02b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fdf89f36b0d37ba344396adb0ef42f0') in 0.016435 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_033_delay-0.02s.png
+  artifactKey: Guid(68b76865cebdeac4fb0ebd2fb1266df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_033_delay-0.02s.png using Guid(68b76865cebdeac4fb0ebd2fb1266df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2539b258dada3a734f39023c41b014d4') in 0.017637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_045_delay-0.02s.png
+  artifactKey: Guid(9570f8585bbd42444b750629f58d28b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_045_delay-0.02s.png using Guid(9570f8585bbd42444b750629f58d28b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cea258b971536f6c3fc665179916174a') in 0.016529 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_043_delay-0.02s.png
+  artifactKey: Guid(f0a80ad37f937e74ea03d52e39aa518c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_043_delay-0.02s.png using Guid(f0a80ad37f937e74ea03d52e39aa518c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '161430db3693530f744980e4efa5a66e') in 0.016595 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_031_delay-0.02s.png
+  artifactKey: Guid(7700a9f8fb2e1f142a442bd8cf4da5c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_031_delay-0.02s.png using Guid(7700a9f8fb2e1f142a442bd8cf4da5c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd83b99b5b373446d1210b757b942b3d5') in 0.018126 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000222 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_059_delay-0.02s.png
+  artifactKey: Guid(e4b2a214a2eec7f46b0352ab695f151d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_059_delay-0.02s.png using Guid(e4b2a214a2eec7f46b0352ab695f151d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '974239cfbf8c500507feaa459194ba59') in 0.016537 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_095_delay-0.02s.png
+  artifactKey: Guid(73bc3007c8faa6944b94037382912f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_095_delay-0.02s.png using Guid(73bc3007c8faa6944b94037382912f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32386ff7fac1a54b5c47d1ea0d5bce60') in 0.018188 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_058_delay-0.02s.png
+  artifactKey: Guid(fb8704ad2189a494aab4c045b026f6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_058_delay-0.02s.png using Guid(fb8704ad2189a494aab4c045b026f6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1a6a99dade252850d70ff56ee92ce27') in 0.017607 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_000_delay-0.02s.png
+  artifactKey: Guid(571fe801aa4429145a10ea4306eb55f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_000_delay-0.02s.png using Guid(571fe801aa4429145a10ea4306eb55f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4a8267674c4536741453f01f313bfd2') in 0.018952 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_082_delay-0.02s.png
+  artifactKey: Guid(5e23b12a9f28f054cbf35aa7f7b02a3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_082_delay-0.02s.png using Guid(5e23b12a9f28f054cbf35aa7f7b02a3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2754d594cc8b45e1043c2f0d76941442') in 0.020665 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_128_delay-0.02s.png
+  artifactKey: Guid(b9ccf0f5dc036d1409890421c48ef71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_128_delay-0.02s.png using Guid(b9ccf0f5dc036d1409890421c48ef71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6c26ba5c66f48d38b551ed4b5388a4f') in 0.017891 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000234 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_023_delay-0.02s.png
+  artifactKey: Guid(128bfca84419b1b4ba0c4a3f97a10168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_023_delay-0.02s.png using Guid(128bfca84419b1b4ba0c4a3f97a10168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ced651d43b4939b7dfe9c935692e4f67') in 0.018426 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_024_delay-0.02s.png
+  artifactKey: Guid(528d22c5c43b0f844b8580ad33ba1480) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_024_delay-0.02s.png using Guid(528d22c5c43b0f844b8580ad33ba1480) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7e70909d755ea0d7e7fd4eda2a040b4') in 0.018562 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_118_delay-0.02s.png
+  artifactKey: Guid(f0e7f402149f9a34c9514bb9dd4b0bca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_118_delay-0.02s.png using Guid(f0e7f402149f9a34c9514bb9dd4b0bca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a99b5b9b30eb746e36a72eb242482a1b') in 0.017021 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_034_delay-0.02s.png
+  artifactKey: Guid(a23d1eb8e89a4e14d9bb8af18bb9d08e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_034_delay-0.02s.png using Guid(a23d1eb8e89a4e14d9bb8af18bb9d08e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4848f724ec9fe696c15db884572a9185') in 0.036185 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_133_delay-0.02s.png
+  artifactKey: Guid(35bd485719d026649ad4c1705033004c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_133_delay-0.02s.png using Guid(35bd485719d026649ad4c1705033004c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e228fa2ee61ed256fbe6f9d77dce5b13') in 0.015812 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_006_delay-0.02s.png
+  artifactKey: Guid(5e82e15c217ec8749b8fcb1d567d0123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_006_delay-0.02s.png using Guid(5e82e15c217ec8749b8fcb1d567d0123) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c609253fe36d4f4f1f74d8e790a6fa1') in 0.016186 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000194 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_010_delay-0.02s.png
+  artifactKey: Guid(cd1ad0b1ab73ce14b90dd1c7543c3557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_010_delay-0.02s.png using Guid(cd1ad0b1ab73ce14b90dd1c7543c3557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e00e50cfbf8ec1d6b3d26c99663f3110') in 0.018024 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_067_delay-0.02s.png
+  artifactKey: Guid(52ab468861b0e224cb143ca19dd22aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_067_delay-0.02s.png using Guid(52ab468861b0e224cb143ca19dd22aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '666f19e37936ead2534ace1f8fdf54c1') in 0.016761 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_049_delay-0.02s.png
+  artifactKey: Guid(71ec244fcb1fe8548a85d3c1a01a41e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_049_delay-0.02s.png using Guid(71ec244fcb1fe8548a85d3c1a01a41e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51b8247ed03e0a52ea7197e8658d7350') in 0.016841 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_072_delay-0.02s.png
+  artifactKey: Guid(457ddbf9f7c5b2642b0ff209556ffc2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_072_delay-0.02s.png using Guid(457ddbf9f7c5b2642b0ff209556ffc2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c525e96492585e219542cb41299a425') in 0.016208 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_106_delay-0.02s.png
+  artifactKey: Guid(928b9165ffa8cc049ac8faf5ae64ea6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_106_delay-0.02s.png using Guid(928b9165ffa8cc049ac8faf5ae64ea6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcb2710220205def5dff109518d8cc3a') in 0.016201 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_038_delay-0.02s.png
+  artifactKey: Guid(345f9e7fb0bce89409bd88255e54b059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_038_delay-0.02s.png using Guid(345f9e7fb0bce89409bd88255e54b059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '589b859505e9b0635adaef8daacc323d') in 0.015636 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_052_delay-0.02s.png
+  artifactKey: Guid(ce0892b97543b72468a5e9bad2e06793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_052_delay-0.02s.png using Guid(ce0892b97543b72468a5e9bad2e06793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca81428399f880bc92bc9e0ad1897def') in 0.016717 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000194 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_040_delay-0.02s.png
+  artifactKey: Guid(1c45f08c80077b54ea578cbb60607bbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_040_delay-0.02s.png using Guid(1c45f08c80077b54ea578cbb60607bbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35ef0f1fcf8ae602655cab4ff5e21ac6') in 0.016730 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_078_delay-0.02s.png
+  artifactKey: Guid(45b8175791c994b40959ef6dae660fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_078_delay-0.02s.png using Guid(45b8175791c994b40959ef6dae660fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4833a3edeca2ecd8d16f152719f5ee6f') in 0.016233 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_126_delay-0.02s.png
+  artifactKey: Guid(a782df4de87f0e8458e9319bf3d900c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_126_delay-0.02s.png using Guid(a782df4de87f0e8458e9319bf3d900c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0382407d697690154cc747a41e1ef7f') in 0.016771 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_027_delay-0.02s.png
+  artifactKey: Guid(b5608b668560fb643b7e60ad0c0158c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_027_delay-0.02s.png using Guid(b5608b668560fb643b7e60ad0c0158c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e33c3af3a620fba884352e3fae7ec33') in 0.016785 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_015_delay-0.02s.png
+  artifactKey: Guid(f4b97a291955f784997e6c2e3a69e530) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_015_delay-0.02s.png using Guid(f4b97a291955f784997e6c2e3a69e530) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25165c8d155b4e663cc00cfe4d5db6c0') in 0.016334 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_153_delay-0.02s.png
+  artifactKey: Guid(be0d5184afa441f40b0b6840cad4a589) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_153_delay-0.02s.png using Guid(be0d5184afa441f40b0b6840cad4a589) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '414982a7c5ccd73c6fcb413b02aee1d1') in 0.016020 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000247 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_016_delay-0.02s.png
+  artifactKey: Guid(91d805640ef18ae48b5745f617d72e09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_016_delay-0.02s.png using Guid(91d805640ef18ae48b5745f617d72e09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f22281b52dfb4b0ad7fdd7b1a8de02c2') in 0.016666 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_124_delay-0.02s.png
+  artifactKey: Guid(2d17be219502a314f927e35873f3da77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_124_delay-0.02s.png using Guid(2d17be219502a314f927e35873f3da77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2375e1918da5270b060fea030fe7196e') in 0.016060 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_107_delay-0.02s.png
+  artifactKey: Guid(1dab2f6ca6d71594c8609383cb1edc20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_107_delay-0.02s.png using Guid(1dab2f6ca6d71594c8609383cb1edc20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2927057790867ca949a0f65bf4d7186') in 0.017517 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000253 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_066_delay-0.02s.png
+  artifactKey: Guid(7305cd8025c921342933f3750a4548cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_066_delay-0.02s.png using Guid(7305cd8025c921342933f3750a4548cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f5949cc00f7e644a85905aa9175b633') in 0.019874 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_180_delay-0.02s.png
+  artifactKey: Guid(8414d3d28cb308b4dabdda416df9b791) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_180_delay-0.02s.png using Guid(8414d3d28cb308b4dabdda416df9b791) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6008b4e516ffb845d6271f12b977742d') in 0.018316 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_154_delay-0.02s.png
+  artifactKey: Guid(61af565fca03929489146642dc443a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_154_delay-0.02s.png using Guid(61af565fca03929489146642dc443a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c06a9ba9d0fdb561daf56d7ba8f0d6d6') in 0.016448 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_014_delay-0.02s.png
+  artifactKey: Guid(47ad17a320cc37746b21690afa326469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_014_delay-0.02s.png using Guid(47ad17a320cc37746b21690afa326469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6d20a4d50747f695cbcd0a45e424fdc') in 0.016678 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_055_delay-0.02s.png
+  artifactKey: Guid(6b1f5d6e48967654f8571b195fecfaa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_055_delay-0.02s.png using Guid(6b1f5d6e48967654f8571b195fecfaa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e395c4cb3c9c3832fd2470f86eb85a2') in 0.017595 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_159_delay-0.02s.png
+  artifactKey: Guid(2390817494f190a43ae2c49dcaa9d4ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_159_delay-0.02s.png using Guid(2390817494f190a43ae2c49dcaa9d4ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b0c2d0daf370c95b1e739ebb86a1e7b') in 0.028419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_146_delay-0.02s.png
+  artifactKey: Guid(01a66a9e7cf3e784d95abd3dd3a1ac79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_146_delay-0.02s.png using Guid(01a66a9e7cf3e784d95abd3dd3a1ac79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28e01409ada7f256686e99fa07a6e6b4') in 0.017285 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000289 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_163_delay-0.02s.png
+  artifactKey: Guid(a33c621f228f93e4a91f49ba660aea32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_163_delay-0.02s.png using Guid(a33c621f228f93e4a91f49ba660aea32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '137a08c615d30993c2246d98c51c92f2') in 0.013572 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_150_delay-0.02s.png
+  artifactKey: Guid(ceb79e683dc56de48b60a41374ed1c17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_150_delay-0.02s.png using Guid(ceb79e683dc56de48b60a41374ed1c17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8686ba9ab7242ddd383af0baf4107a72') in 0.016536 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_190_delay-0.02s.png
+  artifactKey: Guid(2dfb6ddd50017434caa84a30a68b1425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_190_delay-0.02s.png using Guid(2dfb6ddd50017434caa84a30a68b1425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6e41f8a706f0078e6897ff020099d02') in 0.017006 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_101_delay-0.02s.png
+  artifactKey: Guid(9c0dfcd12fdad2642adbff457734c7d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_101_delay-0.02s.png using Guid(9c0dfcd12fdad2642adbff457734c7d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64bc04546ad61188db450a6f9e9580b4') in 0.015840 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_217_delay-0.02s.png
+  artifactKey: Guid(d3b49c1fa9f357b46acacd01b7bfdc53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_217_delay-0.02s.png using Guid(d3b49c1fa9f357b46acacd01b7bfdc53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed99072afc9fcbc0cb68c47d7c6369c1') in 0.015811 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_130_delay-0.02s.png
+  artifactKey: Guid(22b65277e5057504388a2d1efbfe1cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_130_delay-0.02s.png using Guid(22b65277e5057504388a2d1efbfe1cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f587e283969af7ce1ffe584a640e2ac') in 0.016458 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_018_delay-0.02s.png
+  artifactKey: Guid(ae8e04913c8df8f4194530bec5d2a113) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_018_delay-0.02s.png using Guid(ae8e04913c8df8f4194530bec5d2a113) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37f3b2556cee3d1b46285620ca2a99ee') in 0.017298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000218 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_008_delay-0.02s.png
+  artifactKey: Guid(2c1471c6b0512f241a9efeca5dfcd4dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_008_delay-0.02s.png using Guid(2c1471c6b0512f241a9efeca5dfcd4dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd36e557b39efbd0c79ef85b81c997c0') in 0.017054 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_157_delay-0.02s.png
+  artifactKey: Guid(0089d93742a14e84480e2531c41ca4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_157_delay-0.02s.png using Guid(0089d93742a14e84480e2531c41ca4e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74b12498aff8c79093971adca4d20e0a') in 0.017669 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_196_delay-0.02s.png
+  artifactKey: Guid(78c9f067ba78e654eaead9a8c6741e19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_196_delay-0.02s.png using Guid(78c9f067ba78e654eaead9a8c6741e19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26f98b4619183a4c450928b183b0a648') in 0.016576 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_087_delay-0.02s.png
+  artifactKey: Guid(c474938adc9f7e1478deadefeb901d4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_087_delay-0.02s.png using Guid(c474938adc9f7e1478deadefeb901d4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fff2656f047041582934d622bb001880') in 0.018923 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000260 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_155_delay-0.02s.png
+  artifactKey: Guid(23abe700e6abf614f9e04ef7abc0619a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_155_delay-0.02s.png using Guid(23abe700e6abf614f9e04ef7abc0619a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44f6489f1d969f201d79ffe57d4f1177') in 0.018413 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_030_delay-0.02s.png
+  artifactKey: Guid(a8ae9a66989852542bb4715f56058232) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_030_delay-0.02s.png using Guid(a8ae9a66989852542bb4715f56058232) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d7a1e7f8276114859ecbad046ac7186') in 0.016745 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_114_delay-0.02s.png
+  artifactKey: Guid(1e4f4b391a7e49f4ca958517fcf1ec22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_114_delay-0.02s.png using Guid(1e4f4b391a7e49f4ca958517fcf1ec22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd17b5774e121598da8da1f49ef83698') in 0.018042 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_090_delay-0.02s.png
+  artifactKey: Guid(210fcd74984086d47bb0d96fb05c27bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_090_delay-0.02s.png using Guid(210fcd74984086d47bb0d96fb05c27bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fe5a89a283ebfc1f49ac3d2d71b8bfd') in 0.017571 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_192_delay-0.02s.png
+  artifactKey: Guid(72ee40d9da6181b4cba79569a7b2a0f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_192_delay-0.02s.png using Guid(72ee40d9da6181b4cba79569a7b2a0f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb4483e9001fa70a1ec45078050c2e12') in 0.016816 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_039_delay-0.02s.png
+  artifactKey: Guid(7011280a704be3e40996a44e294e7f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_039_delay-0.02s.png using Guid(7011280a704be3e40996a44e294e7f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6140d311ee905882804795bf6a16ab9') in 0.017091 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_063_delay-0.02s.png
+  artifactKey: Guid(64c1cae50d3fde843a907db47d3c0308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_063_delay-0.02s.png using Guid(64c1cae50d3fde843a907db47d3c0308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccd2748db1d7f97016218c6dadf7f660') in 0.016423 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_084_delay-0.02s.png
+  artifactKey: Guid(5cc92c3cccd3893469bf748380e61975) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_084_delay-0.02s.png using Guid(5cc92c3cccd3893469bf748380e61975) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e442dc6f9854b10ba12a41972ce33a48') in 0.030294 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_035_delay-0.02s.png
+  artifactKey: Guid(0db540e38f9c3414599322d08a4e7007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_035_delay-0.02s.png using Guid(0db540e38f9c3414599322d08a4e7007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f81b77eb06775e55986693da467083f') in 0.016350 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_092_delay-0.02s.png
+  artifactKey: Guid(2dfdeb2f3b816454a9e3c4d01762c169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_092_delay-0.02s.png using Guid(2dfdeb2f3b816454a9e3c4d01762c169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '978de9cb7ef0632a366e8aa4cf20d0e4') in 0.016201 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_004_delay-0.02s.png
+  artifactKey: Guid(451fbcc2c9d8cf4428994e041054ace8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_004_delay-0.02s.png using Guid(451fbcc2c9d8cf4428994e041054ace8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcfa0f16568ec78338a9a9e4925a3f25') in 0.017409 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_032_delay-0.02s.png
+  artifactKey: Guid(3420dcfb502b4b2498eaae328668c47d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_032_delay-0.02s.png using Guid(3420dcfb502b4b2498eaae328668c47d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11925244022c21963a5b85b5b8642db9') in 0.016771 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_064_delay-0.02s.png
+  artifactKey: Guid(0f6b313390cb86c4cba5bf1787c1ee63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_064_delay-0.02s.png using Guid(0f6b313390cb86c4cba5bf1787c1ee63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb035b5072ea026ddb62f8f6e4856566') in 0.015852 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_108_delay-0.02s.png
+  artifactKey: Guid(11f00b72bdc92484fb0964ee02d54209) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_108_delay-0.02s.png using Guid(11f00b72bdc92484fb0964ee02d54209) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03ef96e0768e66b2e0ce4873d6a81424') in 0.016230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_096_delay-0.02s.png
+  artifactKey: Guid(149625895a617514cabfc0499a08fdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_096_delay-0.02s.png using Guid(149625895a617514cabfc0499a08fdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01787fa18fad0348b45353a9e9e963a9') in 0.016559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_026_delay-0.02s.png
+  artifactKey: Guid(f92731bc599a437478a8a186955d86c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_026_delay-0.02s.png using Guid(f92731bc599a437478a8a186955d86c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '899451db74e67414692d379749f1e03c') in 0.016139 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_053_delay-0.02s.png
+  artifactKey: Guid(2859b76b6fbf2564ea75f0811e280dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_053_delay-0.02s.png using Guid(2859b76b6fbf2564ea75f0811e280dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fdf5f791335637f10294fded590eb8e') in 0.015914 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_081_delay-0.02s.png
+  artifactKey: Guid(125f24e803a6aec4ba5ed13fc13e14d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_081_delay-0.02s.png using Guid(125f24e803a6aec4ba5ed13fc13e14d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d61998ea26e82afe2f73214c84277c7') in 0.017773 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_003_delay-0.02s.png
+  artifactKey: Guid(feaf7b04dcb33f049931bb762318244b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_003_delay-0.02s.png using Guid(feaf7b04dcb33f049931bb762318244b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f3f4f06743512037843d69fd277ed35') in 0.016502 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_002_delay-0.02s.png
+  artifactKey: Guid(730011570a979944a8cdfb92940e2d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_002_delay-0.02s.png using Guid(730011570a979944a8cdfb92940e2d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b56257ffa7c02452bda3b8dcf4dbcc3b') in 0.016249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_098_delay-0.02s.png
+  artifactKey: Guid(e29921961368e2747959af3a87806f42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_098_delay-0.02s.png using Guid(e29921961368e2747959af3a87806f42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '927ebeba8546120e045b236cc8ab47d2') in 0.016650 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_091_delay-0.02s.png
+  artifactKey: Guid(2813f7e84a3b65b4994de8a5a1629196) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_091_delay-0.02s.png using Guid(2813f7e84a3b65b4994de8a5a1629196) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e151cd4a05626a232ae418ec77e40f7') in 0.017796 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_093_delay-0.02s.png
+  artifactKey: Guid(4f801cfc7bb44344a822d0340fbdf63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_093_delay-0.02s.png using Guid(4f801cfc7bb44344a822d0340fbdf63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df885dfa63726bbacc563b56ceef019e') in 0.016519 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_046_delay-0.02s.png
+  artifactKey: Guid(43004528c39212347915dfd2c7cc76a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_046_delay-0.02s.png using Guid(43004528c39212347915dfd2c7cc76a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '194b6984f04f8f2464d17b1f142c8054') in 0.016981 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000138 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_017_delay-0.02s.png
+  artifactKey: Guid(1841b79b4ee17a64c858fe55d773cdec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_017_delay-0.02s.png using Guid(1841b79b4ee17a64c858fe55d773cdec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f0d08b31c2aac71b05650707c677430') in 0.017646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_103_delay-0.02s.png
+  artifactKey: Guid(358d523706e828f4992f8df2d5f5bea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_103_delay-0.02s.png using Guid(358d523706e828f4992f8df2d5f5bea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9a0eee2e174728754a56e313c145dcb') in 0.017476 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_013_delay-0.02s.png
+  artifactKey: Guid(940ebd8af8262334d8d8abde264ecbe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_013_delay-0.02s.png using Guid(940ebd8af8262334d8d8abde264ecbe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7aefa8b7f670bbfc68c943d5efe8d0bd') in 0.016542 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_099_delay-0.02s.png
+  artifactKey: Guid(8052fc4b3031b9f49b784452d42430fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_099_delay-0.02s.png using Guid(8052fc4b3031b9f49b784452d42430fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0de1809c6b1a984bd6bb0c7ace874c01') in 0.017413 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_056_delay-0.02s.png
+  artifactKey: Guid(b6eda18d05f0b284cb00b83c89683d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_056_delay-0.02s.png using Guid(b6eda18d05f0b284cb00b83c89683d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c41771901e9f30d213e2625d47b36fc') in 0.016370 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_047_delay-0.02s.png
+  artifactKey: Guid(52b72e58e5a172a4aa94335ab433951b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_047_delay-0.02s.png using Guid(52b72e58e5a172a4aa94335ab433951b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2316744098c7b804f49621f488ffebd7') in 0.016770 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_097_delay-0.02s.png
+  artifactKey: Guid(db5e6b4fee17b794c96cd1448193dfd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_097_delay-0.02s.png using Guid(db5e6b4fee17b794c96cd1448193dfd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86a1dd5d1c822c317ca7be7bbe44e91a') in 0.017885 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_131_delay-0.02s.png
+  artifactKey: Guid(18bd77b90d014934da25373cff0256f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_131_delay-0.02s.png using Guid(18bd77b90d014934da25373cff0256f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5625a558b5c8a1b99db2d621e9fab24e') in 0.015673 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_028_delay-0.02s.png
+  artifactKey: Guid(ba034df3399f17c42a804937fe736518) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_028_delay-0.02s.png using Guid(ba034df3399f17c42a804937fe736518) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45611f03f123f5ab71628a7c4b5617df') in 0.017291 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_069_delay-0.02s.png
+  artifactKey: Guid(371459c0c7adcd842874f9df31053fd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_069_delay-0.02s.png using Guid(371459c0c7adcd842874f9df31053fd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2ca7835fcbbf369e4a861c4aecf2035') in 0.016663 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_083_delay-0.02s.png
+  artifactKey: Guid(f14faf8fb3ada964bbe7e0e7b4b67112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_083_delay-0.02s.png using Guid(f14faf8fb3ada964bbe7e0e7b4b67112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c02785b93a8654e299b573fc27039739') in 0.016932 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_138_delay-0.02s.png
+  artifactKey: Guid(e235620fe5767c240be75628ae4bd032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_138_delay-0.02s.png using Guid(e235620fe5767c240be75628ae4bd032) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5806267e630d491a959c95d5c46cc085') in 0.016835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_065_delay-0.02s.png
+  artifactKey: Guid(b6cd49d01c545f84a8722bdb746d0a4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_065_delay-0.02s.png using Guid(b6cd49d01c545f84a8722bdb746d0a4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba408561519fbba40716ea4e2012edac') in 0.017899 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_142_delay-0.02s.png
+  artifactKey: Guid(e2731219919f69649aa049164625ee4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_142_delay-0.02s.png using Guid(e2731219919f69649aa049164625ee4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5c60842b3e5457f6f98c5657f070fad') in 0.016414 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_029_delay-0.02s.png
+  artifactKey: Guid(e8c1a3500b532384ca6f940a276e24be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_029_delay-0.02s.png using Guid(e8c1a3500b532384ca6f940a276e24be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d05aa42414487040ea4e79727a95ff1') in 0.015577 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_036_delay-0.02s.png
+  artifactKey: Guid(2c18c58952a02a44990411bd8646e512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_036_delay-0.02s.png using Guid(2c18c58952a02a44990411bd8646e512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '464f13dca06daa5debbe78dc16449d8a') in 0.016312 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000130 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_001_delay-0.02s.png
+  artifactKey: Guid(78f555c2426988f489f92399b787a468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_001_delay-0.02s.png using Guid(78f555c2426988f489f92399b787a468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e32e25162e1ee055e2b8c5655bd5787') in 0.016474 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_020_delay-0.02s.png
+  artifactKey: Guid(5571d861c3152f743963cc566a840a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_020_delay-0.02s.png using Guid(5571d861c3152f743963cc566a840a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a25a0ec8262c5a291ce6a8ff8074b68e') in 0.015977 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_165_delay-0.02s.png
+  artifactKey: Guid(4e9ebc77f47e7fb4699bc884ee0f0bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_165_delay-0.02s.png using Guid(4e9ebc77f47e7fb4699bc884ee0f0bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fab0530f7bda63f4ae3f4f9f96e45078') in 0.016595 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_019_delay-0.02s.png
+  artifactKey: Guid(7bb681893a0b98a48b2479e916c0ffcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_019_delay-0.02s.png using Guid(7bb681893a0b98a48b2479e916c0ffcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21f37f4c6f03274e80ad6434f7c9a500') in 0.016431 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_011_delay-0.02s.png
+  artifactKey: Guid(712cfb3b0ee54a3469fa1ffcdd9a3ff6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_011_delay-0.02s.png using Guid(712cfb3b0ee54a3469fa1ffcdd9a3ff6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83d66b1a53c712cb9a73f18b9146d34a') in 0.016459 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_134_delay-0.02s.png
+  artifactKey: Guid(dbd0a0c614ec40b4094fda8fabc1dfc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_134_delay-0.02s.png using Guid(dbd0a0c614ec40b4094fda8fabc1dfc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '539f368011ee94c2dfa34b75c37de58f') in 0.018790 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_147_delay-0.02s.png
+  artifactKey: Guid(82ed2ff2491560141b269cd9d9dcbcd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_147_delay-0.02s.png using Guid(82ed2ff2491560141b269cd9d9dcbcd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a154c88320e24d777f1c391d13095d19') in 0.016251 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_088_delay-0.02s.png
+  artifactKey: Guid(420b7b3423e0f6c428488ba9f7e380c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_088_delay-0.02s.png using Guid(420b7b3423e0f6c428488ba9f7e380c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '679acef098150836b573e473e8eb8a8a') in 0.017083 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000173 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_184_delay-0.02s.png
+  artifactKey: Guid(48c610b84d62b624080cafc1612ef7f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_184_delay-0.02s.png using Guid(48c610b84d62b624080cafc1612ef7f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d8f15eba48cd7ec1ca9fe524c095fe3') in 0.017363 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_125_delay-0.02s.png
+  artifactKey: Guid(f6c6f617cd4213149aef78410cee9cf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_125_delay-0.02s.png using Guid(f6c6f617cd4213149aef78410cee9cf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d7df084c8a95d72811bcf1358ce6b6e') in 0.017646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_025_delay-0.02s.png
+  artifactKey: Guid(6002e3028a8dd1e49beef4a4c64119e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_025_delay-0.02s.png using Guid(6002e3028a8dd1e49beef4a4c64119e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b3dfff98d5c034efe29c05e77b06e21') in 0.017810 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_116_delay-0.02s.png
+  artifactKey: Guid(278b4925f358c994e920544069a9f156) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_116_delay-0.02s.png using Guid(278b4925f358c994e920544069a9f156) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5fdf28e5253a903bc8e435ccde7716e') in 0.017408 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_185_delay-0.02s.png
+  artifactKey: Guid(d6955327531a4f64ba2e14bf40b91759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_185_delay-0.02s.png using Guid(d6955327531a4f64ba2e14bf40b91759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6f307a7b58234cdfa1007888f6e93a5') in 0.017128 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_112_delay-0.02s.png
+  artifactKey: Guid(cae6cf641692f7c4da47fac414879d13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_112_delay-0.02s.png using Guid(cae6cf641692f7c4da47fac414879d13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d8d051b1f21610abc259724137e0e7f') in 0.016548 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_079_delay-0.02s.png
+  artifactKey: Guid(1326c881a6d2b6a44b4ed291d51ad511) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_079_delay-0.02s.png using Guid(1326c881a6d2b6a44b4ed291d51ad511) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fdff3c3203834ffa30763eba07fbed0') in 0.016973 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_074_delay-0.02s.png
+  artifactKey: Guid(848114dfcd216ca48bce168899db571b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_074_delay-0.02s.png using Guid(848114dfcd216ca48bce168899db571b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc92c1676c407f27bdcb6f50533fc3ba') in 0.016203 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000136 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_215_delay-0.02s.png
+  artifactKey: Guid(f71229ecadb360f4d9571a2ff4f59835) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_215_delay-0.02s.png using Guid(f71229ecadb360f4d9571a2ff4f59835) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f32ab3f623799a22313721d0588c628e') in 0.016856 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_062_delay-0.02s.png
+  artifactKey: Guid(318afd0b3fa4df543a745405a05620b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_062_delay-0.02s.png using Guid(318afd0b3fa4df543a745405a05620b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6fd19c2702b308f60981cba17073b65') in 0.018254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_044_delay-0.02s.png
+  artifactKey: Guid(de0d63d5f61375d4aad152a393a3a00a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_044_delay-0.02s.png using Guid(de0d63d5f61375d4aad152a393a3a00a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e3d12ae61742eed493d8d6164236e25') in 0.015285 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_197_delay-0.02s.png
+  artifactKey: Guid(ccd96775126e7f6499f936657bac39f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_197_delay-0.02s.png using Guid(ccd96775126e7f6499f936657bac39f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4dbbe42e2e033379032d8d1e7600e46') in 0.017140 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_222_delay-0.02s.png
+  artifactKey: Guid(206278c9998605c4f9107eac5dd3eebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_222_delay-0.02s.png using Guid(206278c9998605c4f9107eac5dd3eebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '201bc1e40b5373a5cd86ec33a5f9878c') in 0.017399 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_012_delay-0.02s.png
+  artifactKey: Guid(fec44d2c1a6d9f248a29f76c5d9dfae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_012_delay-0.02s.png using Guid(fec44d2c1a6d9f248a29f76c5d9dfae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17218478afcfab24fb623c747a0d9f93') in 0.016373 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_179_delay-0.02s.png
+  artifactKey: Guid(ad33ef96d653eee4391cd11875ae37f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_179_delay-0.02s.png using Guid(ad33ef96d653eee4391cd11875ae37f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ce5f577da80cb46cddad073bc6ddd25') in 0.015203 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_021_delay-0.02s.png
+  artifactKey: Guid(e9b813223334db348b3d5b32638a9fff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_021_delay-0.02s.png using Guid(e9b813223334db348b3d5b32638a9fff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24d666dc218eac2cdbc655990a0c7de8') in 0.015599 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_080_delay-0.02s.png
+  artifactKey: Guid(9b9962f3cded1a945b19bd2b77a3c085) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_080_delay-0.02s.png using Guid(9b9962f3cded1a945b19bd2b77a3c085) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94ed29dc37cc2187000a0b4f3972b8b7') in 0.015346 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_109_delay-0.02s.png
+  artifactKey: Guid(9f26c5f6cdcad8d41a04f1b751b9efe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_109_delay-0.02s.png using Guid(9f26c5f6cdcad8d41a04f1b751b9efe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6929abd7e29c36568d5be909e5cc84a') in 0.015894 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_220_delay-0.02s.png
+  artifactKey: Guid(20f82cab83f475043b2f6303dcda091c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_220_delay-0.02s.png using Guid(20f82cab83f475043b2f6303dcda091c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06530d673e80e47cc797851ac8a606d9') in 0.016158 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_172_delay-0.02s.png
+  artifactKey: Guid(3c9fa62e80010b344b0fbd350cbb64ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_172_delay-0.02s.png using Guid(3c9fa62e80010b344b0fbd350cbb64ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd39f01e41f4887ab1440560a1c5e1d38') in 0.016648 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000211 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_005_delay-0.02s.png
+  artifactKey: Guid(ecd2b2de0d9397445a7d21e091f186f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_005_delay-0.02s.png using Guid(ecd2b2de0d9397445a7d21e091f186f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e86410115610f5f74201dd9d8aebf40') in 0.016610 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_183_delay-0.02s.png
+  artifactKey: Guid(c767820e33a645f409de1923519e01d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_183_delay-0.02s.png using Guid(c767820e33a645f409de1923519e01d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35bfccc82cb9f236f0cf413071db9cb8') in 0.016347 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_100_delay-0.02s.png
+  artifactKey: Guid(7d6ba9101255a0045aa57a794559bdec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_100_delay-0.02s.png using Guid(7d6ba9101255a0045aa57a794559bdec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85a079f0689120421aa403f5db2c3e26') in 0.015876 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_089_delay-0.02s.png
+  artifactKey: Guid(be66cfae425f19a4aa5f93ce1072c186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_089_delay-0.02s.png using Guid(be66cfae425f19a4aa5f93ce1072c186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c1c7427c6d1518bdf80e4c322280e45') in 0.017118 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_182_delay-0.02s.png
+  artifactKey: Guid(cd0deecdfa3bf8144ab7315adb0011cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_182_delay-0.02s.png using Guid(cd0deecdfa3bf8144ab7315adb0011cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8981a468c082595f1e768dec0f3b238') in 0.016532 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_162_delay-0.02s.png
+  artifactKey: Guid(b84a5538d8d7c4542844896ed864210d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_162_delay-0.02s.png using Guid(b84a5538d8d7c4542844896ed864210d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6f7d13fef1b399f9c1d69115b7323b8') in 0.017977 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_194_delay-0.02s.png
+  artifactKey: Guid(3fe257167c44ba446a60756704437cec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_194_delay-0.02s.png using Guid(3fe257167c44ba446a60756704437cec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9aea1e24f67ee5fd5c1e4eeaa867b09') in 0.016067 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_219_delay-0.02s.png
+  artifactKey: Guid(b7a442e6ae143124bb8088186a486967) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_219_delay-0.02s.png using Guid(b7a442e6ae143124bb8088186a486967) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74a8016f7f21c371842d7162ecaddb57') in 0.016835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_135_delay-0.02s.png
+  artifactKey: Guid(20a2786480129584484f0688dcb8a4cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_135_delay-0.02s.png using Guid(20a2786480129584484f0688dcb8a4cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51c29a54f5612bc5b272c0a81c638937') in 0.015552 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/Images/UI/Animated Cube/frame_085_delay-0.02s.png
+  artifactKey: Guid(20c5e103eb1910c4f9cad83e747c6caf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/UI/Animated Cube/frame_085_delay-0.02s.png using Guid(20c5e103eb1910c4f9cad83e747c6caf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd50c6f8c06d3c635716d44553378d128') in 0.016564 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005050 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.935 seconds
+Domain Reload Profiling:
+	ReloadAssembly (935ms)
+		BeginReloadAssembly (122ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (749ms)
+			LoadAssemblies (111ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (269ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (34ms)
+			SetupLoadedEditorAssemblies (266ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (84ms)
+				ProcessInitializeOnLoadAttributes (156ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (13ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3197 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 147.7 MB.
+System memory in use after: 147.9 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 3815.
+Total: 2.999900 ms (FindLiveObjects: 0.245400 ms CreateObjectMapping: 0.097900 ms MarkObjects: 2.637400 ms  DeleteObjects: 0.018600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.75 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.6 MB.
+System memory in use after: 84.8 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 3815.
+Total: 3.344800 ms (FindLiveObjects: 0.288600 ms CreateObjectMapping: 0.089200 ms MarkObjects: 2.943900 ms  DeleteObjects: 0.022400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

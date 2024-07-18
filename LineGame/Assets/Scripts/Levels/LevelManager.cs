@@ -167,7 +167,7 @@ public class LevelManager : Singleton<LevelManager>
 	/// /// </summary>
 	public IEnumerator LevelComplete()
 	{
-#if PLATFORM_ANDROID && !UNITY_EDITOR
+#if !UNITY_EDITOR
 		if (GameSave.CurrentLevel == LevelManager.Instance.LevelCount)
 		{
 			Debug.Log($"Finished All Levels on level {GameSave.CurrentLevel}. Going back to level 1");
@@ -177,7 +177,7 @@ public class LevelManager : Singleton<LevelManager>
 		{
 			GameSave.CurrentLevel++;
 		}
-#elif PLATFORM_ANDROID && UNITY_EDITOR
+#elif UNITY_EDITOR
 		if (GameManager.Instance.progressLevels)
 		{
 			if (GameSave.CurrentLevel == LevelManager.Instance.LevelCount)

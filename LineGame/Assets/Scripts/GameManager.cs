@@ -36,6 +36,8 @@ public class GameManager : Singleton<GameManager>
 		GameSave.ConfigureUnlocks();
 		UIManager.Instance.ApplyPlayerSelectionUnlockableStates();
 
+		Instance.playerPathFollower.SetPlayerControl(false);
+		//Debug.Log($"Controllable: {false}");
 		Vibration.enabled = PlayerPrefs.GetInt("vibrationState", 0) == 1 ? true : false;
 		UIManager.Instance.settings.vibrateBackgroundImage.color = Vibration.enabled ? UIManager.Instance.settings.onColour : UIManager.Instance.settings.offColour;
 		UIManager.Instance.settings.timerBackgroundImage.color = GameSave.LevelTimerEnabled ? UIManager.Instance.settings.onColour : UIManager.Instance.settings.offColour;
