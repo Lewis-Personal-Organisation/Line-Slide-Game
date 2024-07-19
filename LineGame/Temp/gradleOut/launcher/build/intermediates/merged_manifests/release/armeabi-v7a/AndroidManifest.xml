@@ -71,7 +71,7 @@
             android:value="False" />
         <meta-data
             android:name="unity.build-id"
-            android:value="b411cbce-6caf-4cca-8062-b5bdce0945a3" />
+            android:value="ed2340e4-683b-4208-9fe7-0fa6b1c3caa3" />
     </application>
 
 </manifest>

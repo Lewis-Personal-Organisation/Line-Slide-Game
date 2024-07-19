@@ -851,7 +851,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 884d676e6612a06c5e056b583151d000
+      Hash: 061e1ea5ad70d278413c1d5a316a8a71
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -1789,4 +1789,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Loading.unity
   - Assets/Scenes/Gameplay.unity
-  playerPath: R:/Unity Projects/LineGameNew/LineGame/Builds
+  playerPath: R:/Unity Projects/LineGameNew/LineGame/Builds/Android

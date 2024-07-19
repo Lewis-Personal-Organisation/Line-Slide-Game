@@ -413,12 +413,14 @@ public class UIManager : Singleton<UIManager>
 				if (previousViewState == ViewStates.PlayerSelection)
 				{
 					LevelManager.Instance.ToggleLevel(true);
+					Color temp = playerSelectHighlightMat.color;
 					FadeSelectionCubes(Fade.ToTransparent, 5F);
 					FadeOverlays(Fade.ToTransparent, 5F);
 					yield return new WaitForSeconds(.05F);
 					yield return FadeCanvasGroup(Fade.ToTransparent, playerSelectCanvasGroup, 2F);
 					yield return new WaitForSeconds(.05F);
 					yield return ScaleMask(Scale.Up, Color.black, 3.5F);
+					playerSelectHighlightMat.color = temp;
 					StopCoroutine(playerSelectScrollCoroutine);
 					SetPlayerSelectionObjectVisibility(false);
 					//GameManager.Instance.playerPathFollower.enabled = true;
@@ -499,13 +501,13 @@ public class UIManager : Singleton<UIManager>
 			case ViewStates.PlayerSelection:
 				playerSelectScrollCoroutine = StartCoroutine(ScrollUIImage());
 				GameManager.Instance.playerPathFollower.SetPlayerControl(false);
-				//GameManager.Instance.playerPathFollower.enabled = false;
 				tapToPlay.gameObject.SetActive(false);
 				tapToPlayHitBox.gameObject.SetActive(false);
 				tapToRestart.gameObject.SetActive(false);
 				tapToRestartHitBox.gameObject.SetActive(false);
 				settings.Button.transform.parent.gameObject.SetActive(false);
 				playerSelectionHitBox.gameObject.SetActive(false);
+				skinIndex = 0;
 				ApplyPlayerSelectionUnlockableStates();
 				SetPlayerSelectionObjectVisibility(true);
 				previewCubeRotator.enabled = true;
@@ -755,19 +757,24 @@ public class UIManager : Singleton<UIManager>
 			// Swap the current Materials
 			SwapPlayerColoursOnSelection();
 
+			Debug.Log("Skin unlocked and Applied");
+
 			return true;
 		}
+		else
+		{
+			// If we have not unlocked the skin, highlight the unlockable
+			playerUnlockables[skinIndex].overlay.material = playerSelectHighlightMat;
+			Debug.Log("Skin locked. Using player select highlight mat");
 
-		// If we have not unlocked the skin, highlight the unlockable
-		playerUnlockables[skinIndex].overlay.material = playerSelectHighlightMat;
-		
-		// If the purchase button is not visible, make it visible
-		if (!playerSelectionPurchaseButton.activeInHierarchy)
-			playerSelectionPurchaseButton.SetActive(true);
+			// If the purchase button is not visible, make it visible
+			if (!playerSelectionPurchaseButton.activeInHierarchy)
+				playerSelectionPurchaseButton.SetActive(true);
 
-		// Set the cost of the unlockable and activate the dimmed overlay if we can't afford it
-		playerSelectionPurchaseText.text = playerUnlockables[skinIndex].cost.ToString();
-		playerSelectionPurchaseButtonOverlay.SetActive(GameSave.CoinCount < playerUnlockables[skinIndex].cost);
+			// Set the cost of the unlockable and activate the dimmed overlay if we can't afford it
+			playerSelectionPurchaseText.text = playerUnlockables[skinIndex].cost.ToString();
+			playerSelectionPurchaseButtonOverlay.SetActive(GameSave.CoinCount < playerUnlockables[skinIndex].cost);
+		}
 
 		return true;
 	}

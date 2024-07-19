@@ -2,18 +2,12 @@
     "m_SelectedDeviceId": "R3CT313EZ5Z",
     "m_SelectedPackage": {
         "deviceId": "R3CT313EZ5Z",
-        "name": "com.samsung.ecomm.global.gbr",
-        "processId": 11123,
+        "name": "com.LDGames.LineSlide",
+        "processId": 2587,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "R3CT313EZ5Z",
-            "name": "com.LDCom.LineGame",
-            "processId": 15596,
-            "exited": true
-        },
         {
             "deviceId": "R3CT313EZ5Z",
             "name": "com.LDCom.LineGame",
@@ -42,6 +36,12 @@
             "deviceId": "R3CT313EZ5Z",
             "name": "com.samsung.ecomm.global.gbr",
             "processId": 11123,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CT313EZ5Z",
+            "name": "com.LDGames.LineSlide",
+            "processId": 2587,
             "exited": false
         }
     ],
@@ -95,7 +95,7 @@
         "MemoryGroup": 2,
         "Behavior": 0
     },
-    "m_Filter": "samsung",
+    "m_Filter": "Skin",
     "m_FilterIsRegularExpression": true,
     "m_SymbolPaths": []
 }

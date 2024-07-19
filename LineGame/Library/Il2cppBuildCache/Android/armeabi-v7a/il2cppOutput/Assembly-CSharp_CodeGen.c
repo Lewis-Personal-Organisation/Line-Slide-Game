@@ -799,160 +799,160 @@ extern void UIManager_IUpdateUICoins_mC8970CF37271B1BB265748C1F13959D7364B8512 (
 extern void UIManager_ScrollUIImage_m56C29FB6CD63A715CB08E1018563A4698250A20B (void);
 // 0x0000018C System.Void UIManager::.ctor()
 extern void UIManager__ctor_mDADE1D724D40AF63AE78D51FC1CF1FE4784B4D4B (void);
-// 0x0000018D System.Void UIManager::<LinkUIIDActions>b__77_0()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_0_m46A1086555B6C83C0FE040E88AC6825F0BF9A653 (void);
-// 0x0000018E System.Void UIManager::<LinkUIIDActions>b__77_1()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_1_m7316275C1BFD9B69EC50FD19E4FA746D5F6A2FB8 (void);
-// 0x0000018F System.Void UIManager::<LinkUIIDActions>b__77_2()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_2_mEF1DF479CE12B6B19CEDEB08D6FE9E2B43444E30 (void);
-// 0x00000190 System.Void UIManager::<LinkUIIDActions>b__77_3()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_3_m3622FF8FE466537FD240F40B5D71A118E9EE0D0C (void);
-// 0x00000191 System.Void UIManager::<LinkUIIDActions>b__77_4()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_4_m145B0408E0F9744A7BEDDA9884BFC3ADC5E90DDC (void);
-// 0x00000192 System.Void UIManager::<LinkUIIDActions>b__77_5()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_5_m1BEFEF224DAC2517B985B20960953D1BB86EABE8 (void);
-// 0x00000193 System.Void UIManager::<LinkUIIDActions>b__77_6()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_6_m5F087CA315454ED9B6411ADC95D0AF7D67B20505 (void);
-// 0x00000194 System.Void UIManager::<LinkUIIDActions>b__77_7()
-extern void UIManager_U3CLinkUIIDActionsU3Eb__77_7_m431BF76BE0C89070E3A6A4A6334338298F1333D1 (void);
+// 0x0000018D System.Void UIManager::<LinkUIIDActions>b__78_0()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_0_m66EFC5B32B51E0E4DF8DACEE27716957CCA10327 (void);
+// 0x0000018E System.Void UIManager::<LinkUIIDActions>b__78_1()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_1_m7D7311C66E7D269C5149C008BF5A215559C8AFD8 (void);
+// 0x0000018F System.Void UIManager::<LinkUIIDActions>b__78_2()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_2_m85E915E4C26DC0DE41AC3A4C08CCCF7A24EF0210 (void);
+// 0x00000190 System.Void UIManager::<LinkUIIDActions>b__78_3()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_3_m0A71BC45DEF7EE5C497A40C25438843354F4CAEE (void);
+// 0x00000191 System.Void UIManager::<LinkUIIDActions>b__78_4()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_4_m91C02EAF6065EF395017B5FF6A805301497C9B5A (void);
+// 0x00000192 System.Void UIManager::<LinkUIIDActions>b__78_5()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_5_m5816DD4F78C3F7E27C2F543C65E7E4DB84395801 (void);
+// 0x00000193 System.Void UIManager::<LinkUIIDActions>b__78_6()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_6_mA94CB4E5FEE7F0ABE197451A5AF511EFBD9D4E4A (void);
+// 0x00000194 System.Void UIManager::<LinkUIIDActions>b__78_7()
+extern void UIManager_U3CLinkUIIDActionsU3Eb__78_7_m50A3B0DBADF3FDCD889656C538E09D0EE279654A (void);
 // 0x00000195 System.Void UIManager/Settings::Toggle(System.Boolean)
 extern void Settings_Toggle_m6AFF096D9A0F635CD0F0122A97B5E3F598BA442E (void);
-// 0x00000196 System.Void UIManager/<>c__DisplayClass77_0::.ctor()
-extern void U3CU3Ec__DisplayClass77_0__ctor_m20E96F3FD4B850D60779BCFC34550E1B646C9B4C (void);
-// 0x00000197 System.Void UIManager/<>c__DisplayClass77_0::<LinkUIIDActions>b__8()
-extern void U3CU3Ec__DisplayClass77_0_U3CLinkUIIDActionsU3Eb__8_m45C2A18E2D4F77C7956E2976DFEDB7F54DD49B9C (void);
-// 0x00000198 System.Void UIManager/<>c__DisplayClass77_1::.ctor()
-extern void U3CU3Ec__DisplayClass77_1__ctor_m28119FF75909D87566C51A6ABBB9591C033C5986 (void);
-// 0x00000199 System.Void UIManager/<>c__DisplayClass77_1::<LinkUIIDActions>b__9()
-extern void U3CU3Ec__DisplayClass77_1_U3CLinkUIIDActionsU3Eb__9_m8179324D14E34CF979D31BFB935604712A2DD05E (void);
-// 0x0000019A System.Void UIManager/<IChangeView>d__79::.ctor(System.Int32)
-extern void U3CIChangeViewU3Ed__79__ctor_m6DFB4223FC1228B9745B46813CF032D6CB4E8CC4 (void);
-// 0x0000019B System.Void UIManager/<IChangeView>d__79::System.IDisposable.Dispose()
-extern void U3CIChangeViewU3Ed__79_System_IDisposable_Dispose_m8A7DD2E8EFECDBA2BA1C57100E7F8FC4AD6C717D (void);
-// 0x0000019C System.Boolean UIManager/<IChangeView>d__79::MoveNext()
-extern void U3CIChangeViewU3Ed__79_MoveNext_mA8921B5080CCF7E1A75C351D78B3BDB5744519C7 (void);
-// 0x0000019D System.Object UIManager/<IChangeView>d__79::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIChangeViewU3Ed__79_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m048EFC9131911692B4D540F3C142F5A7AB211F57 (void);
-// 0x0000019E System.Void UIManager/<IChangeView>d__79::System.Collections.IEnumerator.Reset()
-extern void U3CIChangeViewU3Ed__79_System_Collections_IEnumerator_Reset_mEBFE8B4187B5CD96E62E889EF0A04615B8CD9BD2 (void);
-// 0x0000019F System.Object UIManager/<IChangeView>d__79::System.Collections.IEnumerator.get_Current()
-extern void U3CIChangeViewU3Ed__79_System_Collections_IEnumerator_get_Current_m2BA10BD136F2134253D4EE002A830EB641AF6E94 (void);
-// 0x000001A0 System.Void UIManager/<AnimateSettings>d__84::.ctor(System.Int32)
-extern void U3CAnimateSettingsU3Ed__84__ctor_m7CE62FD4FE0A36277919D358CCE338AA70C9EDC1 (void);
-// 0x000001A1 System.Void UIManager/<AnimateSettings>d__84::System.IDisposable.Dispose()
-extern void U3CAnimateSettingsU3Ed__84_System_IDisposable_Dispose_mE9D5412B6B50385350C51607150B678CC74CF5C5 (void);
-// 0x000001A2 System.Boolean UIManager/<AnimateSettings>d__84::MoveNext()
-extern void U3CAnimateSettingsU3Ed__84_MoveNext_m14AE3C65FBFEE6B5CFAC2DABE0BC95FFD02002F8 (void);
-// 0x000001A3 System.Object UIManager/<AnimateSettings>d__84::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CAnimateSettingsU3Ed__84_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m2D20289AB518E976DCA32621D32DBD4E13E2558C (void);
-// 0x000001A4 System.Void UIManager/<AnimateSettings>d__84::System.Collections.IEnumerator.Reset()
-extern void U3CAnimateSettingsU3Ed__84_System_Collections_IEnumerator_Reset_mC8278F694D0720ACE9FDD326194179EAD4801C92 (void);
-// 0x000001A5 System.Object UIManager/<AnimateSettings>d__84::System.Collections.IEnumerator.get_Current()
-extern void U3CAnimateSettingsU3Ed__84_System_Collections_IEnumerator_get_Current_mA00BD339124343A7F8400CEDC28719C6FF9B47D1 (void);
-// 0x000001A6 System.Void UIManager/<IScaleMask>d__86::.ctor(System.Int32)
-extern void U3CIScaleMaskU3Ed__86__ctor_mF0321397279203984D1D14DD22C1A2DFDAA88312 (void);
-// 0x000001A7 System.Void UIManager/<IScaleMask>d__86::System.IDisposable.Dispose()
-extern void U3CIScaleMaskU3Ed__86_System_IDisposable_Dispose_m025063FFC2F2B1D3B67B4656474639E4E4B8C58B (void);
-// 0x000001A8 System.Boolean UIManager/<IScaleMask>d__86::MoveNext()
-extern void U3CIScaleMaskU3Ed__86_MoveNext_mD4789AB53C133EE52F0ACAD59CF777E85E90CDF2 (void);
-// 0x000001A9 System.Object UIManager/<IScaleMask>d__86::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIScaleMaskU3Ed__86_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mA80256D91C811E027A279CB595F9BCEBF52A1492 (void);
-// 0x000001AA System.Void UIManager/<IScaleMask>d__86::System.Collections.IEnumerator.Reset()
-extern void U3CIScaleMaskU3Ed__86_System_Collections_IEnumerator_Reset_mA7594D4822BC08B311E922D8D601AF1DEF9A9D31 (void);
-// 0x000001AB System.Object UIManager/<IScaleMask>d__86::System.Collections.IEnumerator.get_Current()
-extern void U3CIScaleMaskU3Ed__86_System_Collections_IEnumerator_get_Current_m06766802B3CB6C971117327ECA3B57AE71DC9B67 (void);
-// 0x000001AC System.Void UIManager/<IFadeBackgroundColour>d__88::.ctor(System.Int32)
-extern void U3CIFadeBackgroundColourU3Ed__88__ctor_mA5D2870DD2D5E5B7D776373AA2DEEB5A0E8B07A3 (void);
-// 0x000001AD System.Void UIManager/<IFadeBackgroundColour>d__88::System.IDisposable.Dispose()
-extern void U3CIFadeBackgroundColourU3Ed__88_System_IDisposable_Dispose_m882C57AB8A34741BDBA7D491BB01ED156924F6DA (void);
-// 0x000001AE System.Boolean UIManager/<IFadeBackgroundColour>d__88::MoveNext()
-extern void U3CIFadeBackgroundColourU3Ed__88_MoveNext_m12A65F9E288E03FA073CF9A1F227EF8F2E01D379 (void);
-// 0x000001AF System.Object UIManager/<IFadeBackgroundColour>d__88::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIFadeBackgroundColourU3Ed__88_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mA7A6B55667B14C49926CEB9717C1B5359AB7D382 (void);
-// 0x000001B0 System.Void UIManager/<IFadeBackgroundColour>d__88::System.Collections.IEnumerator.Reset()
-extern void U3CIFadeBackgroundColourU3Ed__88_System_Collections_IEnumerator_Reset_mA16E0188DC38DF318B81CA379349E73483AA4593 (void);
-// 0x000001B1 System.Object UIManager/<IFadeBackgroundColour>d__88::System.Collections.IEnumerator.get_Current()
-extern void U3CIFadeBackgroundColourU3Ed__88_System_Collections_IEnumerator_get_Current_mDED50ABC114AF447678175C16FE5DD08CD6BBA4D (void);
-// 0x000001B2 System.Void UIManager/<IFadeCanvasGroup>d__90::.ctor(System.Int32)
-extern void U3CIFadeCanvasGroupU3Ed__90__ctor_mEAEF2E191BFA93E24DCA6C3ABDB0FB6CCD36BB3D (void);
-// 0x000001B3 System.Void UIManager/<IFadeCanvasGroup>d__90::System.IDisposable.Dispose()
-extern void U3CIFadeCanvasGroupU3Ed__90_System_IDisposable_Dispose_mD1ED7E3C0A70AB775B831E6E560C470D5FAE01A4 (void);
-// 0x000001B4 System.Boolean UIManager/<IFadeCanvasGroup>d__90::MoveNext()
-extern void U3CIFadeCanvasGroupU3Ed__90_MoveNext_m31ED0E7E053F5654B28A4C7D8A9206F2799DF391 (void);
-// 0x000001B5 System.Object UIManager/<IFadeCanvasGroup>d__90::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIFadeCanvasGroupU3Ed__90_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m0EAC83E579DCBDA2BDECDF08B7574D4DB8827438 (void);
-// 0x000001B6 System.Void UIManager/<IFadeCanvasGroup>d__90::System.Collections.IEnumerator.Reset()
-extern void U3CIFadeCanvasGroupU3Ed__90_System_Collections_IEnumerator_Reset_mEB4FC3D49853B00FAC986E2DC14A5CFD6FFC3B4A (void);
-// 0x000001B7 System.Object UIManager/<IFadeCanvasGroup>d__90::System.Collections.IEnumerator.get_Current()
-extern void U3CIFadeCanvasGroupU3Ed__90_System_Collections_IEnumerator_get_Current_m7B4C2549ACFA17D912E69FAD505EF597DC9C18D9 (void);
-// 0x000001B8 System.Void UIManager/<>c__DisplayClass94_0::.ctor()
-extern void U3CU3Ec__DisplayClass94_0__ctor_m071DEC68A80F5205E398FD2E67E0CA9E61A92AA6 (void);
-// 0x000001B9 System.Void UIManager/<>c__DisplayClass94_0::<HighlightOnUnlockableSelected>b__1()
-extern void U3CU3Ec__DisplayClass94_0_U3CHighlightOnUnlockableSelectedU3Eb__1_m86A40672C6C3DE3CFA4F7D0C8E83C3F799CDFCC7 (void);
-// 0x000001BA System.Void UIManager/<>c__DisplayClass94_1::.ctor()
-extern void U3CU3Ec__DisplayClass94_1__ctor_m6FF1E3E2CE1C9C92B692E8B703CB81F6F77C72B8 (void);
-// 0x000001BB System.Void UIManager/<>c__DisplayClass94_1::<HighlightOnUnlockableSelected>b__0()
-extern void U3CU3Ec__DisplayClass94_1_U3CHighlightOnUnlockableSelectedU3Eb__0_mEAA1CCF45FD6DD3946FD45E6A5520C00CC7A9FB7 (void);
-// 0x000001BC System.Void UIManager/<IFadeSelectionCubes>d__101::.ctor(System.Int32)
-extern void U3CIFadeSelectionCubesU3Ed__101__ctor_mBF83073445F7EB0DFFB6B57106E476CA31F5A776 (void);
-// 0x000001BD System.Void UIManager/<IFadeSelectionCubes>d__101::System.IDisposable.Dispose()
-extern void U3CIFadeSelectionCubesU3Ed__101_System_IDisposable_Dispose_mBFB6449434F704A559DD2A9E60B0213037B0D1C5 (void);
-// 0x000001BE System.Boolean UIManager/<IFadeSelectionCubes>d__101::MoveNext()
-extern void U3CIFadeSelectionCubesU3Ed__101_MoveNext_mD63F2ED09CFCE8A63B13957E14C2F3EE951F10CF (void);
-// 0x000001BF System.Object UIManager/<IFadeSelectionCubes>d__101::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIFadeSelectionCubesU3Ed__101_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE7C00978CF6B639F7BD82C556B5D554AC05DB360 (void);
-// 0x000001C0 System.Void UIManager/<IFadeSelectionCubes>d__101::System.Collections.IEnumerator.Reset()
-extern void U3CIFadeSelectionCubesU3Ed__101_System_Collections_IEnumerator_Reset_m286674E8C19A05DFBF4E4A9CEB819EBE270682FD (void);
-// 0x000001C1 System.Object UIManager/<IFadeSelectionCubes>d__101::System.Collections.IEnumerator.get_Current()
-extern void U3CIFadeSelectionCubesU3Ed__101_System_Collections_IEnumerator_get_Current_m1A9E29170C885E1FBF10FB799255D11F0523B70F (void);
-// 0x000001C2 System.Void UIManager/<IFadeOverlays>d__102::.ctor(System.Int32)
-extern void U3CIFadeOverlaysU3Ed__102__ctor_m4A4FC4DB3EBF8059E11355082D33FC0EDA86AF73 (void);
-// 0x000001C3 System.Void UIManager/<IFadeOverlays>d__102::System.IDisposable.Dispose()
-extern void U3CIFadeOverlaysU3Ed__102_System_IDisposable_Dispose_m4CB847DC8002D7AE617BA25B500D8F8FCDA12898 (void);
-// 0x000001C4 System.Boolean UIManager/<IFadeOverlays>d__102::MoveNext()
-extern void U3CIFadeOverlaysU3Ed__102_MoveNext_m383D70CE1EF93B246BA66DFAA5E924B456658E5A (void);
-// 0x000001C5 System.Object UIManager/<IFadeOverlays>d__102::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIFadeOverlaysU3Ed__102_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4C1D72B99AFF63620E78789864D36BB131E2351D (void);
-// 0x000001C6 System.Void UIManager/<IFadeOverlays>d__102::System.Collections.IEnumerator.Reset()
-extern void U3CIFadeOverlaysU3Ed__102_System_Collections_IEnumerator_Reset_m154E86EE1AFD7FCBC3EA9F9341D5FD80C5DA9CC3 (void);
-// 0x000001C7 System.Object UIManager/<IFadeOverlays>d__102::System.Collections.IEnumerator.get_Current()
-extern void U3CIFadeOverlaysU3Ed__102_System_Collections_IEnumerator_get_Current_m688E471CB61DCD9648B6FDD5FB4865717F5936E1 (void);
-// 0x000001C8 System.Void UIManager/<IFadeSlots>d__103::.ctor(System.Int32)
-extern void U3CIFadeSlotsU3Ed__103__ctor_m765A09E2F1AB25156D93649BCFCF16609B12ABF4 (void);
-// 0x000001C9 System.Void UIManager/<IFadeSlots>d__103::System.IDisposable.Dispose()
-extern void U3CIFadeSlotsU3Ed__103_System_IDisposable_Dispose_m74911B3998C2FC4FD450D7CAB1EA5DF5E3A3BB31 (void);
-// 0x000001CA System.Boolean UIManager/<IFadeSlots>d__103::MoveNext()
-extern void U3CIFadeSlotsU3Ed__103_MoveNext_mEFC6724CFECB3B4BDA554AB751C4294D06EC0EC6 (void);
-// 0x000001CB System.Object UIManager/<IFadeSlots>d__103::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIFadeSlotsU3Ed__103_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m6111853381635814C81594CF9CC0E0C454A9D82F (void);
-// 0x000001CC System.Void UIManager/<IFadeSlots>d__103::System.Collections.IEnumerator.Reset()
-extern void U3CIFadeSlotsU3Ed__103_System_Collections_IEnumerator_Reset_m57FADFF18BFB02CD075C74D87A9FEA11F7990756 (void);
-// 0x000001CD System.Object UIManager/<IFadeSlots>d__103::System.Collections.IEnumerator.get_Current()
-extern void U3CIFadeSlotsU3Ed__103_System_Collections_IEnumerator_get_Current_m39D57BE34579B43BBFD9002C865F00DE4C892A58 (void);
-// 0x000001CE System.Void UIManager/<IUpdateUICoins>d__107::.ctor(System.Int32)
-extern void U3CIUpdateUICoinsU3Ed__107__ctor_mB825504F22291FFC12117B32258111382B7D5933 (void);
-// 0x000001CF System.Void UIManager/<IUpdateUICoins>d__107::System.IDisposable.Dispose()
-extern void U3CIUpdateUICoinsU3Ed__107_System_IDisposable_Dispose_mF6CC1B2691552139D3EFAE174791B072604D92DD (void);
-// 0x000001D0 System.Boolean UIManager/<IUpdateUICoins>d__107::MoveNext()
-extern void U3CIUpdateUICoinsU3Ed__107_MoveNext_m7EFE6707496D83101EB2CA022FA8D8E1C4CF10F9 (void);
-// 0x000001D1 System.Object UIManager/<IUpdateUICoins>d__107::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CIUpdateUICoinsU3Ed__107_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m9C341D9D90DB737ADC8B6C0B6BF9746AF1426552 (void);
-// 0x000001D2 System.Void UIManager/<IUpdateUICoins>d__107::System.Collections.IEnumerator.Reset()
-extern void U3CIUpdateUICoinsU3Ed__107_System_Collections_IEnumerator_Reset_mEB984BE378688B88C9BDF0992B52C30E77D64F54 (void);
-// 0x000001D3 System.Object UIManager/<IUpdateUICoins>d__107::System.Collections.IEnumerator.get_Current()
-extern void U3CIUpdateUICoinsU3Ed__107_System_Collections_IEnumerator_get_Current_mC7D93DCBFF12CE554FDA9F09D142FA7DD48A12EA (void);
-// 0x000001D4 System.Void UIManager/<ScrollUIImage>d__108::.ctor(System.Int32)
-extern void U3CScrollUIImageU3Ed__108__ctor_m6A730D505526F486B02332D14A325D0C2AB77E7E (void);
-// 0x000001D5 System.Void UIManager/<ScrollUIImage>d__108::System.IDisposable.Dispose()
-extern void U3CScrollUIImageU3Ed__108_System_IDisposable_Dispose_m8958938FC6E7B18D48FA0101297B385DA2B7A575 (void);
-// 0x000001D6 System.Boolean UIManager/<ScrollUIImage>d__108::MoveNext()
-extern void U3CScrollUIImageU3Ed__108_MoveNext_m3A080739FE7105A5BEC9BA79D63899B15A2F1A93 (void);
-// 0x000001D7 System.Object UIManager/<ScrollUIImage>d__108::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CScrollUIImageU3Ed__108_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mFC6DDC9408A06083D638274A4A6E4C3EB08AC6AB (void);
-// 0x000001D8 System.Void UIManager/<ScrollUIImage>d__108::System.Collections.IEnumerator.Reset()
-extern void U3CScrollUIImageU3Ed__108_System_Collections_IEnumerator_Reset_mE973895DF20298AF46DC187B51485C3D1A959ECD (void);
-// 0x000001D9 System.Object UIManager/<ScrollUIImage>d__108::System.Collections.IEnumerator.get_Current()
-extern void U3CScrollUIImageU3Ed__108_System_Collections_IEnumerator_get_Current_m60A21FE913B293C5FE19653D7C88B422BA33035E (void);
+// 0x00000196 System.Void UIManager/<>c__DisplayClass78_0::.ctor()
+extern void U3CU3Ec__DisplayClass78_0__ctor_mA74599F1DEB35C52EAA9665603FEDD23FD843FCB (void);
+// 0x00000197 System.Void UIManager/<>c__DisplayClass78_0::<LinkUIIDActions>b__8()
+extern void U3CU3Ec__DisplayClass78_0_U3CLinkUIIDActionsU3Eb__8_m5E476CC7D06C253F5CD3D76B118A7714146B1FEB (void);
+// 0x00000198 System.Void UIManager/<>c__DisplayClass78_1::.ctor()
+extern void U3CU3Ec__DisplayClass78_1__ctor_m218D635F82FF66CAF77D628E9F1841B26D55F858 (void);
+// 0x00000199 System.Void UIManager/<>c__DisplayClass78_1::<LinkUIIDActions>b__9()
+extern void U3CU3Ec__DisplayClass78_1_U3CLinkUIIDActionsU3Eb__9_m8BA967502B2EE506765745810491C790648526DC (void);
+// 0x0000019A System.Void UIManager/<IChangeView>d__80::.ctor(System.Int32)
+extern void U3CIChangeViewU3Ed__80__ctor_m426EB6AA75365AF3319FA60CB26DA3327D76BC04 (void);
+// 0x0000019B System.Void UIManager/<IChangeView>d__80::System.IDisposable.Dispose()
+extern void U3CIChangeViewU3Ed__80_System_IDisposable_Dispose_m302B9B47BBB8D2D52D611491FCE7E984EA2AEEC4 (void);
+// 0x0000019C System.Boolean UIManager/<IChangeView>d__80::MoveNext()
+extern void U3CIChangeViewU3Ed__80_MoveNext_mFE015EEE62ECCA6C2503DB355F46A0E059F4D66B (void);
+// 0x0000019D System.Object UIManager/<IChangeView>d__80::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIChangeViewU3Ed__80_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m7999FB67A8E70DDD4CAEB2907B3710E7CC729DE6 (void);
+// 0x0000019E System.Void UIManager/<IChangeView>d__80::System.Collections.IEnumerator.Reset()
+extern void U3CIChangeViewU3Ed__80_System_Collections_IEnumerator_Reset_m1197E5F9A0608F10004AFB7CA9DFFCC98963A5CC (void);
+// 0x0000019F System.Object UIManager/<IChangeView>d__80::System.Collections.IEnumerator.get_Current()
+extern void U3CIChangeViewU3Ed__80_System_Collections_IEnumerator_get_Current_m38FB111BFCE298574BF6635925CEBE0EB493918D (void);
+// 0x000001A0 System.Void UIManager/<AnimateSettings>d__85::.ctor(System.Int32)
+extern void U3CAnimateSettingsU3Ed__85__ctor_m0C6846D791F4D52815308D7FE6AAFFE609A0E5BF (void);
+// 0x000001A1 System.Void UIManager/<AnimateSettings>d__85::System.IDisposable.Dispose()
+extern void U3CAnimateSettingsU3Ed__85_System_IDisposable_Dispose_m82E2F8A884ECE6251E6E61085AB309BBFB7EDA72 (void);
+// 0x000001A2 System.Boolean UIManager/<AnimateSettings>d__85::MoveNext()
+extern void U3CAnimateSettingsU3Ed__85_MoveNext_m3FD2EDFFAA398A9CBCF1A9FF1A332E94681FDE95 (void);
+// 0x000001A3 System.Object UIManager/<AnimateSettings>d__85::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CAnimateSettingsU3Ed__85_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m72B62032E7F2140471415843F22C806F45BF29AC (void);
+// 0x000001A4 System.Void UIManager/<AnimateSettings>d__85::System.Collections.IEnumerator.Reset()
+extern void U3CAnimateSettingsU3Ed__85_System_Collections_IEnumerator_Reset_m69D7A563C986A96E92F17ABFF3FA1E19E941F3D9 (void);
+// 0x000001A5 System.Object UIManager/<AnimateSettings>d__85::System.Collections.IEnumerator.get_Current()
+extern void U3CAnimateSettingsU3Ed__85_System_Collections_IEnumerator_get_Current_mC509FC75FB2668572E097C504285EA3BA0331B65 (void);
+// 0x000001A6 System.Void UIManager/<IScaleMask>d__87::.ctor(System.Int32)
+extern void U3CIScaleMaskU3Ed__87__ctor_mC8171F44293E7BF86CE2137E7AE8DA6E55BAC1F8 (void);
+// 0x000001A7 System.Void UIManager/<IScaleMask>d__87::System.IDisposable.Dispose()
+extern void U3CIScaleMaskU3Ed__87_System_IDisposable_Dispose_m59A2D0F40801BEA7BE420A7628A2C4B6DBFBF885 (void);
+// 0x000001A8 System.Boolean UIManager/<IScaleMask>d__87::MoveNext()
+extern void U3CIScaleMaskU3Ed__87_MoveNext_mB64B2AF9F61F8BF2E5859DBC26E1A9B67F0B6CFE (void);
+// 0x000001A9 System.Object UIManager/<IScaleMask>d__87::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIScaleMaskU3Ed__87_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m306E7080F9D0B74930EBC3C3E6FFDD9001EFE0F1 (void);
+// 0x000001AA System.Void UIManager/<IScaleMask>d__87::System.Collections.IEnumerator.Reset()
+extern void U3CIScaleMaskU3Ed__87_System_Collections_IEnumerator_Reset_m95D1AE9ACE4C1ADF59CDC71B69DF3B072E1B1B01 (void);
+// 0x000001AB System.Object UIManager/<IScaleMask>d__87::System.Collections.IEnumerator.get_Current()
+extern void U3CIScaleMaskU3Ed__87_System_Collections_IEnumerator_get_Current_m3307AF901D8282456AE0D12AF1ADCA9896681526 (void);
+// 0x000001AC System.Void UIManager/<IFadeBackgroundColour>d__89::.ctor(System.Int32)
+extern void U3CIFadeBackgroundColourU3Ed__89__ctor_m25E04AB6E168770067ECC8547FB41F57E401D975 (void);
+// 0x000001AD System.Void UIManager/<IFadeBackgroundColour>d__89::System.IDisposable.Dispose()
+extern void U3CIFadeBackgroundColourU3Ed__89_System_IDisposable_Dispose_mB3671591077F89D3850BD69AAC5B576643136EB9 (void);
+// 0x000001AE System.Boolean UIManager/<IFadeBackgroundColour>d__89::MoveNext()
+extern void U3CIFadeBackgroundColourU3Ed__89_MoveNext_mBB10FA555905877D011427F1D2AC30A8D1538C6A (void);
+// 0x000001AF System.Object UIManager/<IFadeBackgroundColour>d__89::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIFadeBackgroundColourU3Ed__89_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m519B3535E8AC0F27036D69B09E59CB4B6A277D4E (void);
+// 0x000001B0 System.Void UIManager/<IFadeBackgroundColour>d__89::System.Collections.IEnumerator.Reset()
+extern void U3CIFadeBackgroundColourU3Ed__89_System_Collections_IEnumerator_Reset_m13091ABEB4D712B4CB43A35650C14A5803EE8D7B (void);
+// 0x000001B1 System.Object UIManager/<IFadeBackgroundColour>d__89::System.Collections.IEnumerator.get_Current()
+extern void U3CIFadeBackgroundColourU3Ed__89_System_Collections_IEnumerator_get_Current_m3F6E27552B8AF128C8EF16243FAAE4994242EF01 (void);
+// 0x000001B2 System.Void UIManager/<IFadeCanvasGroup>d__91::.ctor(System.Int32)
+extern void U3CIFadeCanvasGroupU3Ed__91__ctor_m030022C084665035607B97777B0B3D439C673497 (void);
+// 0x000001B3 System.Void UIManager/<IFadeCanvasGroup>d__91::System.IDisposable.Dispose()
+extern void U3CIFadeCanvasGroupU3Ed__91_System_IDisposable_Dispose_mE419ABAF8338570747AE5495FFC0060186792C1A (void);
+// 0x000001B4 System.Boolean UIManager/<IFadeCanvasGroup>d__91::MoveNext()
+extern void U3CIFadeCanvasGroupU3Ed__91_MoveNext_m4D9DD9A3C582D0E2FC9DFFAE141D3DB9044F28FC (void);
+// 0x000001B5 System.Object UIManager/<IFadeCanvasGroup>d__91::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIFadeCanvasGroupU3Ed__91_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m3FBAE73D7B51D2CFFEFA8A0A5C39137F16A5B5CF (void);
+// 0x000001B6 System.Void UIManager/<IFadeCanvasGroup>d__91::System.Collections.IEnumerator.Reset()
+extern void U3CIFadeCanvasGroupU3Ed__91_System_Collections_IEnumerator_Reset_m5E160E690E6398F298F47A0885FB6FA27BF58555 (void);
+// 0x000001B7 System.Object UIManager/<IFadeCanvasGroup>d__91::System.Collections.IEnumerator.get_Current()
+extern void U3CIFadeCanvasGroupU3Ed__91_System_Collections_IEnumerator_get_Current_m7DBFDA19F591AD1C540E0851AD544B185E71D5B1 (void);
+// 0x000001B8 System.Void UIManager/<>c__DisplayClass95_0::.ctor()
+extern void U3CU3Ec__DisplayClass95_0__ctor_m34E672D3D29CE75B02B04079EB092649935BCD73 (void);
+// 0x000001B9 System.Void UIManager/<>c__DisplayClass95_0::<HighlightOnUnlockableSelected>b__1()
+extern void U3CU3Ec__DisplayClass95_0_U3CHighlightOnUnlockableSelectedU3Eb__1_mB27F73F58EDFA77430B392B0F6C06BA1F8C67765 (void);
+// 0x000001BA System.Void UIManager/<>c__DisplayClass95_1::.ctor()
+extern void U3CU3Ec__DisplayClass95_1__ctor_mCE4C3EF0FAE0D99DD2EA64CFE61C1ABFA5E566B6 (void);
+// 0x000001BB System.Void UIManager/<>c__DisplayClass95_1::<HighlightOnUnlockableSelected>b__0()
+extern void U3CU3Ec__DisplayClass95_1_U3CHighlightOnUnlockableSelectedU3Eb__0_mFC2ED102C5091CE8E15F17F326C35CD7B7DA1FA2 (void);
+// 0x000001BC System.Void UIManager/<IFadeSelectionCubes>d__102::.ctor(System.Int32)
+extern void U3CIFadeSelectionCubesU3Ed__102__ctor_mF3EFE11576AB93EB61849C3312FAA5475804DD16 (void);
+// 0x000001BD System.Void UIManager/<IFadeSelectionCubes>d__102::System.IDisposable.Dispose()
+extern void U3CIFadeSelectionCubesU3Ed__102_System_IDisposable_Dispose_mD66AE22572C4FF51ABFE51C782F25DD33AC385B3 (void);
+// 0x000001BE System.Boolean UIManager/<IFadeSelectionCubes>d__102::MoveNext()
+extern void U3CIFadeSelectionCubesU3Ed__102_MoveNext_mA1BF3E0FF450E465CF56566D7112033E1E4C1219 (void);
+// 0x000001BF System.Object UIManager/<IFadeSelectionCubes>d__102::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIFadeSelectionCubesU3Ed__102_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mCDCCF756F064B5BAF2C0D2EBE65274A463504D12 (void);
+// 0x000001C0 System.Void UIManager/<IFadeSelectionCubes>d__102::System.Collections.IEnumerator.Reset()
+extern void U3CIFadeSelectionCubesU3Ed__102_System_Collections_IEnumerator_Reset_m5BF32AE7043B5E577EB14184D07AFA31D2D737BB (void);
+// 0x000001C1 System.Object UIManager/<IFadeSelectionCubes>d__102::System.Collections.IEnumerator.get_Current()
+extern void U3CIFadeSelectionCubesU3Ed__102_System_Collections_IEnumerator_get_Current_m496CBFA493F1B352943CA522AE1CA9005199253B (void);
+// 0x000001C2 System.Void UIManager/<IFadeOverlays>d__103::.ctor(System.Int32)
+extern void U3CIFadeOverlaysU3Ed__103__ctor_m8E0A95817BF9A3A914B93F2B1EBD54B8F8AC7E98 (void);
+// 0x000001C3 System.Void UIManager/<IFadeOverlays>d__103::System.IDisposable.Dispose()
+extern void U3CIFadeOverlaysU3Ed__103_System_IDisposable_Dispose_m0BEFDEBB1C33DBBE2B70FD921579706EF0B388F2 (void);
+// 0x000001C4 System.Boolean UIManager/<IFadeOverlays>d__103::MoveNext()
+extern void U3CIFadeOverlaysU3Ed__103_MoveNext_m4B196BD7E11607321CE522A7927547B636899F96 (void);
+// 0x000001C5 System.Object UIManager/<IFadeOverlays>d__103::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIFadeOverlaysU3Ed__103_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m19F768C909465E2AD59C64A9F185774D9C4A2160 (void);
+// 0x000001C6 System.Void UIManager/<IFadeOverlays>d__103::System.Collections.IEnumerator.Reset()
+extern void U3CIFadeOverlaysU3Ed__103_System_Collections_IEnumerator_Reset_mF21AEB454C6AC056A1487CB9F99FEC60524144CA (void);
+// 0x000001C7 System.Object UIManager/<IFadeOverlays>d__103::System.Collections.IEnumerator.get_Current()
+extern void U3CIFadeOverlaysU3Ed__103_System_Collections_IEnumerator_get_Current_mD33A11993BA03EEE0C3B5D7FDEDFC224A2DD4E53 (void);
+// 0x000001C8 System.Void UIManager/<IFadeSlots>d__104::.ctor(System.Int32)
+extern void U3CIFadeSlotsU3Ed__104__ctor_m07991CDE7ADF5FF97CA05907A01DA67550E253A5 (void);
+// 0x000001C9 System.Void UIManager/<IFadeSlots>d__104::System.IDisposable.Dispose()
+extern void U3CIFadeSlotsU3Ed__104_System_IDisposable_Dispose_m38C75FFC8507FA81521F6D7272CFF64CA3F425AF (void);
+// 0x000001CA System.Boolean UIManager/<IFadeSlots>d__104::MoveNext()
+extern void U3CIFadeSlotsU3Ed__104_MoveNext_m47F3F998EA8FB9F248397B673C4CAF11A71A98A3 (void);
+// 0x000001CB System.Object UIManager/<IFadeSlots>d__104::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIFadeSlotsU3Ed__104_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE4AF207705A72BC6A3A299D0B99663BEEC4F5F00 (void);
+// 0x000001CC System.Void UIManager/<IFadeSlots>d__104::System.Collections.IEnumerator.Reset()
+extern void U3CIFadeSlotsU3Ed__104_System_Collections_IEnumerator_Reset_m1541513EB723215D89024E4FA0797330E7D57821 (void);
+// 0x000001CD System.Object UIManager/<IFadeSlots>d__104::System.Collections.IEnumerator.get_Current()
+extern void U3CIFadeSlotsU3Ed__104_System_Collections_IEnumerator_get_Current_m21366639EE48864E18A32F4049B8802DF4995548 (void);
+// 0x000001CE System.Void UIManager/<IUpdateUICoins>d__108::.ctor(System.Int32)
+extern void U3CIUpdateUICoinsU3Ed__108__ctor_m7CB443ED57775F6CE9DC4C838B6A50F3AD9E4F21 (void);
+// 0x000001CF System.Void UIManager/<IUpdateUICoins>d__108::System.IDisposable.Dispose()
+extern void U3CIUpdateUICoinsU3Ed__108_System_IDisposable_Dispose_m5B84A9AE83F36D6E043E03963F0BF613EDF9C472 (void);
+// 0x000001D0 System.Boolean UIManager/<IUpdateUICoins>d__108::MoveNext()
+extern void U3CIUpdateUICoinsU3Ed__108_MoveNext_m6DAAC4563D0EB4C98763ECDF006F145AF4155CD6 (void);
+// 0x000001D1 System.Object UIManager/<IUpdateUICoins>d__108::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CIUpdateUICoinsU3Ed__108_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m22C8EE0ECB3585FE22EDA3DF0940B0480B185A92 (void);
+// 0x000001D2 System.Void UIManager/<IUpdateUICoins>d__108::System.Collections.IEnumerator.Reset()
+extern void U3CIUpdateUICoinsU3Ed__108_System_Collections_IEnumerator_Reset_mB2CC826A79204B3E60D4FDC85E81B862B70A1254 (void);
+// 0x000001D3 System.Object UIManager/<IUpdateUICoins>d__108::System.Collections.IEnumerator.get_Current()
+extern void U3CIUpdateUICoinsU3Ed__108_System_Collections_IEnumerator_get_Current_mF106D7826D21D3BBAB7D54BF31D9243743075A51 (void);
+// 0x000001D4 System.Void UIManager/<ScrollUIImage>d__109::.ctor(System.Int32)
+extern void U3CScrollUIImageU3Ed__109__ctor_mC864B9BC92E7A9E3B195F8F53B5D94BB5843C66D (void);
+// 0x000001D5 System.Void UIManager/<ScrollUIImage>d__109::System.IDisposable.Dispose()
+extern void U3CScrollUIImageU3Ed__109_System_IDisposable_Dispose_mCC534C051E26FA5B1C1F80B9C5A9994A3987A4F2 (void);
+// 0x000001D6 System.Boolean UIManager/<ScrollUIImage>d__109::MoveNext()
+extern void U3CScrollUIImageU3Ed__109_MoveNext_mF6EADE03245E894AA661630060BC86F0EA2652F0 (void);
+// 0x000001D7 System.Object UIManager/<ScrollUIImage>d__109::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CScrollUIImageU3Ed__109_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m7682190B108477C2EAFA298E256BBA3B979244B9 (void);
+// 0x000001D8 System.Void UIManager/<ScrollUIImage>d__109::System.Collections.IEnumerator.Reset()
+extern void U3CScrollUIImageU3Ed__109_System_Collections_IEnumerator_Reset_m1C9D2F00FB2420DF14EBDE1B1441A325CA7FDD86 (void);
+// 0x000001D9 System.Object UIManager/<ScrollUIImage>d__109::System.Collections.IEnumerator.get_Current()
+extern void U3CScrollUIImageU3Ed__109_System_Collections_IEnumerator_get_Current_m849B3BA788FA86C3DB231733F5967FD9F5E9E7C2 (void);
 // 0x000001DA System.Void SkewedImage::OnPopulateMesh(UnityEngine.UI.VertexHelper)
 extern void SkewedImage_OnPopulateMesh_m2A04180911CD6015E05911382376DC2C8C15880C (void);
 // 0x000001DB System.Void SkewedImage::.ctor()
@@ -2570,83 +2570,83 @@ static Il2CppMethodPointer s_methodPointers[1084] =
 	UIManager_IUpdateUICoins_mC8970CF37271B1BB265748C1F13959D7364B8512,
 	UIManager_ScrollUIImage_m56C29FB6CD63A715CB08E1018563A4698250A20B,
 	UIManager__ctor_mDADE1D724D40AF63AE78D51FC1CF1FE4784B4D4B,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_0_m46A1086555B6C83C0FE040E88AC6825F0BF9A653,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_1_m7316275C1BFD9B69EC50FD19E4FA746D5F6A2FB8,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_2_mEF1DF479CE12B6B19CEDEB08D6FE9E2B43444E30,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_3_m3622FF8FE466537FD240F40B5D71A118E9EE0D0C,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_4_m145B0408E0F9744A7BEDDA9884BFC3ADC5E90DDC,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_5_m1BEFEF224DAC2517B985B20960953D1BB86EABE8,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_6_m5F087CA315454ED9B6411ADC95D0AF7D67B20505,
-	UIManager_U3CLinkUIIDActionsU3Eb__77_7_m431BF76BE0C89070E3A6A4A6334338298F1333D1,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_0_m66EFC5B32B51E0E4DF8DACEE27716957CCA10327,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_1_m7D7311C66E7D269C5149C008BF5A215559C8AFD8,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_2_m85E915E4C26DC0DE41AC3A4C08CCCF7A24EF0210,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_3_m0A71BC45DEF7EE5C497A40C25438843354F4CAEE,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_4_m91C02EAF6065EF395017B5FF6A805301497C9B5A,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_5_m5816DD4F78C3F7E27C2F543C65E7E4DB84395801,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_6_mA94CB4E5FEE7F0ABE197451A5AF511EFBD9D4E4A,
+	UIManager_U3CLinkUIIDActionsU3Eb__78_7_m50A3B0DBADF3FDCD889656C538E09D0EE279654A,
 	Settings_Toggle_m6AFF096D9A0F635CD0F0122A97B5E3F598BA442E,
-	U3CU3Ec__DisplayClass77_0__ctor_m20E96F3FD4B850D60779BCFC34550E1B646C9B4C,
-	U3CU3Ec__DisplayClass77_0_U3CLinkUIIDActionsU3Eb__8_m45C2A18E2D4F77C7956E2976DFEDB7F54DD49B9C,
-	U3CU3Ec__DisplayClass77_1__ctor_m28119FF75909D87566C51A6ABBB9591C033C5986,
-	U3CU3Ec__DisplayClass77_1_U3CLinkUIIDActionsU3Eb__9_m8179324D14E34CF979D31BFB935604712A2DD05E,
-	U3CIChangeViewU3Ed__79__ctor_m6DFB4223FC1228B9745B46813CF032D6CB4E8CC4,
-	U3CIChangeViewU3Ed__79_System_IDisposable_Dispose_m8A7DD2E8EFECDBA2BA1C57100E7F8FC4AD6C717D,
-	U3CIChangeViewU3Ed__79_MoveNext_mA8921B5080CCF7E1A75C351D78B3BDB5744519C7,
-	U3CIChangeViewU3Ed__79_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m048EFC9131911692B4D540F3C142F5A7AB211F57,
-	U3CIChangeViewU3Ed__79_System_Collections_IEnumerator_Reset_mEBFE8B4187B5CD96E62E889EF0A04615B8CD9BD2,
-	U3CIChangeViewU3Ed__79_System_Collections_IEnumerator_get_Current_m2BA10BD136F2134253D4EE002A830EB641AF6E94,
-	U3CAnimateSettingsU3Ed__84__ctor_m7CE62FD4FE0A36277919D358CCE338AA70C9EDC1,
-	U3CAnimateSettingsU3Ed__84_System_IDisposable_Dispose_mE9D5412B6B50385350C51607150B678CC74CF5C5,
-	U3CAnimateSettingsU3Ed__84_MoveNext_m14AE3C65FBFEE6B5CFAC2DABE0BC95FFD02002F8,
-	U3CAnimateSettingsU3Ed__84_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m2D20289AB518E976DCA32621D32DBD4E13E2558C,
-	U3CAnimateSettingsU3Ed__84_System_Collections_IEnumerator_Reset_mC8278F694D0720ACE9FDD326194179EAD4801C92,
-	U3CAnimateSettingsU3Ed__84_System_Collections_IEnumerator_get_Current_mA00BD339124343A7F8400CEDC28719C6FF9B47D1,
-	U3CIScaleMaskU3Ed__86__ctor_mF0321397279203984D1D14DD22C1A2DFDAA88312,
-	U3CIScaleMaskU3Ed__86_System_IDisposable_Dispose_m025063FFC2F2B1D3B67B4656474639E4E4B8C58B,
-	U3CIScaleMaskU3Ed__86_MoveNext_mD4789AB53C133EE52F0ACAD59CF777E85E90CDF2,
-	U3CIScaleMaskU3Ed__86_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mA80256D91C811E027A279CB595F9BCEBF52A1492,
-	U3CIScaleMaskU3Ed__86_System_Collections_IEnumerator_Reset_mA7594D4822BC08B311E922D8D601AF1DEF9A9D31,
-	U3CIScaleMaskU3Ed__86_System_Collections_IEnumerator_get_Current_m06766802B3CB6C971117327ECA3B57AE71DC9B67,
-	U3CIFadeBackgroundColourU3Ed__88__ctor_mA5D2870DD2D5E5B7D776373AA2DEEB5A0E8B07A3,
-	U3CIFadeBackgroundColourU3Ed__88_System_IDisposable_Dispose_m882C57AB8A34741BDBA7D491BB01ED156924F6DA,
-	U3CIFadeBackgroundColourU3Ed__88_MoveNext_m12A65F9E288E03FA073CF9A1F227EF8F2E01D379,
-	U3CIFadeBackgroundColourU3Ed__88_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mA7A6B55667B14C49926CEB9717C1B5359AB7D382,
-	U3CIFadeBackgroundColourU3Ed__88_System_Collections_IEnumerator_Reset_mA16E0188DC38DF318B81CA379349E73483AA4593,
-	U3CIFadeBackgroundColourU3Ed__88_System_Collections_IEnumerator_get_Current_mDED50ABC114AF447678175C16FE5DD08CD6BBA4D,
-	U3CIFadeCanvasGroupU3Ed__90__ctor_mEAEF2E191BFA93E24DCA6C3ABDB0FB6CCD36BB3D,
-	U3CIFadeCanvasGroupU3Ed__90_System_IDisposable_Dispose_mD1ED7E3C0A70AB775B831E6E560C470D5FAE01A4,
-	U3CIFadeCanvasGroupU3Ed__90_MoveNext_m31ED0E7E053F5654B28A4C7D8A9206F2799DF391,
-	U3CIFadeCanvasGroupU3Ed__90_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m0EAC83E579DCBDA2BDECDF08B7574D4DB8827438,
-	U3CIFadeCanvasGroupU3Ed__90_System_Collections_IEnumerator_Reset_mEB4FC3D49853B00FAC986E2DC14A5CFD6FFC3B4A,
-	U3CIFadeCanvasGroupU3Ed__90_System_Collections_IEnumerator_get_Current_m7B4C2549ACFA17D912E69FAD505EF597DC9C18D9,
-	U3CU3Ec__DisplayClass94_0__ctor_m071DEC68A80F5205E398FD2E67E0CA9E61A92AA6,
-	U3CU3Ec__DisplayClass94_0_U3CHighlightOnUnlockableSelectedU3Eb__1_m86A40672C6C3DE3CFA4F7D0C8E83C3F799CDFCC7,
-	U3CU3Ec__DisplayClass94_1__ctor_m6FF1E3E2CE1C9C92B692E8B703CB81F6F77C72B8,
-	U3CU3Ec__DisplayClass94_1_U3CHighlightOnUnlockableSelectedU3Eb__0_mEAA1CCF45FD6DD3946FD45E6A5520C00CC7A9FB7,
-	U3CIFadeSelectionCubesU3Ed__101__ctor_mBF83073445F7EB0DFFB6B57106E476CA31F5A776,
-	U3CIFadeSelectionCubesU3Ed__101_System_IDisposable_Dispose_mBFB6449434F704A559DD2A9E60B0213037B0D1C5,
-	U3CIFadeSelectionCubesU3Ed__101_MoveNext_mD63F2ED09CFCE8A63B13957E14C2F3EE951F10CF,
-	U3CIFadeSelectionCubesU3Ed__101_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE7C00978CF6B639F7BD82C556B5D554AC05DB360,
-	U3CIFadeSelectionCubesU3Ed__101_System_Collections_IEnumerator_Reset_m286674E8C19A05DFBF4E4A9CEB819EBE270682FD,
-	U3CIFadeSelectionCubesU3Ed__101_System_Collections_IEnumerator_get_Current_m1A9E29170C885E1FBF10FB799255D11F0523B70F,
-	U3CIFadeOverlaysU3Ed__102__ctor_m4A4FC4DB3EBF8059E11355082D33FC0EDA86AF73,
-	U3CIFadeOverlaysU3Ed__102_System_IDisposable_Dispose_m4CB847DC8002D7AE617BA25B500D8F8FCDA12898,
-	U3CIFadeOverlaysU3Ed__102_MoveNext_m383D70CE1EF93B246BA66DFAA5E924B456658E5A,
-	U3CIFadeOverlaysU3Ed__102_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m4C1D72B99AFF63620E78789864D36BB131E2351D,
-	U3CIFadeOverlaysU3Ed__102_System_Collections_IEnumerator_Reset_m154E86EE1AFD7FCBC3EA9F9341D5FD80C5DA9CC3,
-	U3CIFadeOverlaysU3Ed__102_System_Collections_IEnumerator_get_Current_m688E471CB61DCD9648B6FDD5FB4865717F5936E1,
-	U3CIFadeSlotsU3Ed__103__ctor_m765A09E2F1AB25156D93649BCFCF16609B12ABF4,
-	U3CIFadeSlotsU3Ed__103_System_IDisposable_Dispose_m74911B3998C2FC4FD450D7CAB1EA5DF5E3A3BB31,
-	U3CIFadeSlotsU3Ed__103_MoveNext_mEFC6724CFECB3B4BDA554AB751C4294D06EC0EC6,
-	U3CIFadeSlotsU3Ed__103_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m6111853381635814C81594CF9CC0E0C454A9D82F,
-	U3CIFadeSlotsU3Ed__103_System_Collections_IEnumerator_Reset_m57FADFF18BFB02CD075C74D87A9FEA11F7990756,
-	U3CIFadeSlotsU3Ed__103_System_Collections_IEnumerator_get_Current_m39D57BE34579B43BBFD9002C865F00DE4C892A58,
-	U3CIUpdateUICoinsU3Ed__107__ctor_mB825504F22291FFC12117B32258111382B7D5933,
-	U3CIUpdateUICoinsU3Ed__107_System_IDisposable_Dispose_mF6CC1B2691552139D3EFAE174791B072604D92DD,
-	U3CIUpdateUICoinsU3Ed__107_MoveNext_m7EFE6707496D83101EB2CA022FA8D8E1C4CF10F9,
-	U3CIUpdateUICoinsU3Ed__107_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m9C341D9D90DB737ADC8B6C0B6BF9746AF1426552,
-	U3CIUpdateUICoinsU3Ed__107_System_Collections_IEnumerator_Reset_mEB984BE378688B88C9BDF0992B52C30E77D64F54,
-	U3CIUpdateUICoinsU3Ed__107_System_Collections_IEnumerator_get_Current_mC7D93DCBFF12CE554FDA9F09D142FA7DD48A12EA,
-	U3CScrollUIImageU3Ed__108__ctor_m6A730D505526F486B02332D14A325D0C2AB77E7E,
-	U3CScrollUIImageU3Ed__108_System_IDisposable_Dispose_m8958938FC6E7B18D48FA0101297B385DA2B7A575,
-	U3CScrollUIImageU3Ed__108_MoveNext_m3A080739FE7105A5BEC9BA79D63899B15A2F1A93,
-	U3CScrollUIImageU3Ed__108_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mFC6DDC9408A06083D638274A4A6E4C3EB08AC6AB,
-	U3CScrollUIImageU3Ed__108_System_Collections_IEnumerator_Reset_mE973895DF20298AF46DC187B51485C3D1A959ECD,
-	U3CScrollUIImageU3Ed__108_System_Collections_IEnumerator_get_Current_m60A21FE913B293C5FE19653D7C88B422BA33035E,
+	U3CU3Ec__DisplayClass78_0__ctor_mA74599F1DEB35C52EAA9665603FEDD23FD843FCB,
+	U3CU3Ec__DisplayClass78_0_U3CLinkUIIDActionsU3Eb__8_m5E476CC7D06C253F5CD3D76B118A7714146B1FEB,
+	U3CU3Ec__DisplayClass78_1__ctor_m218D635F82FF66CAF77D628E9F1841B26D55F858,
+	U3CU3Ec__DisplayClass78_1_U3CLinkUIIDActionsU3Eb__9_m8BA967502B2EE506765745810491C790648526DC,
+	U3CIChangeViewU3Ed__80__ctor_m426EB6AA75365AF3319FA60CB26DA3327D76BC04,
+	U3CIChangeViewU3Ed__80_System_IDisposable_Dispose_m302B9B47BBB8D2D52D611491FCE7E984EA2AEEC4,
+	U3CIChangeViewU3Ed__80_MoveNext_mFE015EEE62ECCA6C2503DB355F46A0E059F4D66B,
+	U3CIChangeViewU3Ed__80_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m7999FB67A8E70DDD4CAEB2907B3710E7CC729DE6,
+	U3CIChangeViewU3Ed__80_System_Collections_IEnumerator_Reset_m1197E5F9A0608F10004AFB7CA9DFFCC98963A5CC,
+	U3CIChangeViewU3Ed__80_System_Collections_IEnumerator_get_Current_m38FB111BFCE298574BF6635925CEBE0EB493918D,
+	U3CAnimateSettingsU3Ed__85__ctor_m0C6846D791F4D52815308D7FE6AAFFE609A0E5BF,
+	U3CAnimateSettingsU3Ed__85_System_IDisposable_Dispose_m82E2F8A884ECE6251E6E61085AB309BBFB7EDA72,
+	U3CAnimateSettingsU3Ed__85_MoveNext_m3FD2EDFFAA398A9CBCF1A9FF1A332E94681FDE95,
+	U3CAnimateSettingsU3Ed__85_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m72B62032E7F2140471415843F22C806F45BF29AC,
+	U3CAnimateSettingsU3Ed__85_System_Collections_IEnumerator_Reset_m69D7A563C986A96E92F17ABFF3FA1E19E941F3D9,
+	U3CAnimateSettingsU3Ed__85_System_Collections_IEnumerator_get_Current_mC509FC75FB2668572E097C504285EA3BA0331B65,
+	U3CIScaleMaskU3Ed__87__ctor_mC8171F44293E7BF86CE2137E7AE8DA6E55BAC1F8,
+	U3CIScaleMaskU3Ed__87_System_IDisposable_Dispose_m59A2D0F40801BEA7BE420A7628A2C4B6DBFBF885,
+	U3CIScaleMaskU3Ed__87_MoveNext_mB64B2AF9F61F8BF2E5859DBC26E1A9B67F0B6CFE,
+	U3CIScaleMaskU3Ed__87_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m306E7080F9D0B74930EBC3C3E6FFDD9001EFE0F1,
+	U3CIScaleMaskU3Ed__87_System_Collections_IEnumerator_Reset_m95D1AE9ACE4C1ADF59CDC71B69DF3B072E1B1B01,
+	U3CIScaleMaskU3Ed__87_System_Collections_IEnumerator_get_Current_m3307AF901D8282456AE0D12AF1ADCA9896681526,
+	U3CIFadeBackgroundColourU3Ed__89__ctor_m25E04AB6E168770067ECC8547FB41F57E401D975,
+	U3CIFadeBackgroundColourU3Ed__89_System_IDisposable_Dispose_mB3671591077F89D3850BD69AAC5B576643136EB9,
+	U3CIFadeBackgroundColourU3Ed__89_MoveNext_mBB10FA555905877D011427F1D2AC30A8D1538C6A,
+	U3CIFadeBackgroundColourU3Ed__89_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m519B3535E8AC0F27036D69B09E59CB4B6A277D4E,
+	U3CIFadeBackgroundColourU3Ed__89_System_Collections_IEnumerator_Reset_m13091ABEB4D712B4CB43A35650C14A5803EE8D7B,
+	U3CIFadeBackgroundColourU3Ed__89_System_Collections_IEnumerator_get_Current_m3F6E27552B8AF128C8EF16243FAAE4994242EF01,
+	U3CIFadeCanvasGroupU3Ed__91__ctor_m030022C084665035607B97777B0B3D439C673497,
+	U3CIFadeCanvasGroupU3Ed__91_System_IDisposable_Dispose_mE419ABAF8338570747AE5495FFC0060186792C1A,
+	U3CIFadeCanvasGroupU3Ed__91_MoveNext_m4D9DD9A3C582D0E2FC9DFFAE141D3DB9044F28FC,
+	U3CIFadeCanvasGroupU3Ed__91_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m3FBAE73D7B51D2CFFEFA8A0A5C39137F16A5B5CF,
+	U3CIFadeCanvasGroupU3Ed__91_System_Collections_IEnumerator_Reset_m5E160E690E6398F298F47A0885FB6FA27BF58555,
+	U3CIFadeCanvasGroupU3Ed__91_System_Collections_IEnumerator_get_Current_m7DBFDA19F591AD1C540E0851AD544B185E71D5B1,
+	U3CU3Ec__DisplayClass95_0__ctor_m34E672D3D29CE75B02B04079EB092649935BCD73,
+	U3CU3Ec__DisplayClass95_0_U3CHighlightOnUnlockableSelectedU3Eb__1_mB27F73F58EDFA77430B392B0F6C06BA1F8C67765,
+	U3CU3Ec__DisplayClass95_1__ctor_mCE4C3EF0FAE0D99DD2EA64CFE61C1ABFA5E566B6,
+	U3CU3Ec__DisplayClass95_1_U3CHighlightOnUnlockableSelectedU3Eb__0_mFC2ED102C5091CE8E15F17F326C35CD7B7DA1FA2,
+	U3CIFadeSelectionCubesU3Ed__102__ctor_mF3EFE11576AB93EB61849C3312FAA5475804DD16,
+	U3CIFadeSelectionCubesU3Ed__102_System_IDisposable_Dispose_mD66AE22572C4FF51ABFE51C782F25DD33AC385B3,
+	U3CIFadeSelectionCubesU3Ed__102_MoveNext_mA1BF3E0FF450E465CF56566D7112033E1E4C1219,
+	U3CIFadeSelectionCubesU3Ed__102_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mCDCCF756F064B5BAF2C0D2EBE65274A463504D12,
+	U3CIFadeSelectionCubesU3Ed__102_System_Collections_IEnumerator_Reset_m5BF32AE7043B5E577EB14184D07AFA31D2D737BB,
+	U3CIFadeSelectionCubesU3Ed__102_System_Collections_IEnumerator_get_Current_m496CBFA493F1B352943CA522AE1CA9005199253B,
+	U3CIFadeOverlaysU3Ed__103__ctor_m8E0A95817BF9A3A914B93F2B1EBD54B8F8AC7E98,
+	U3CIFadeOverlaysU3Ed__103_System_IDisposable_Dispose_m0BEFDEBB1C33DBBE2B70FD921579706EF0B388F2,
+	U3CIFadeOverlaysU3Ed__103_MoveNext_m4B196BD7E11607321CE522A7927547B636899F96,
+	U3CIFadeOverlaysU3Ed__103_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m19F768C909465E2AD59C64A9F185774D9C4A2160,
+	U3CIFadeOverlaysU3Ed__103_System_Collections_IEnumerator_Reset_mF21AEB454C6AC056A1487CB9F99FEC60524144CA,
+	U3CIFadeOverlaysU3Ed__103_System_Collections_IEnumerator_get_Current_mD33A11993BA03EEE0C3B5D7FDEDFC224A2DD4E53,
+	U3CIFadeSlotsU3Ed__104__ctor_m07991CDE7ADF5FF97CA05907A01DA67550E253A5,
+	U3CIFadeSlotsU3Ed__104_System_IDisposable_Dispose_m38C75FFC8507FA81521F6D7272CFF64CA3F425AF,
+	U3CIFadeSlotsU3Ed__104_MoveNext_m47F3F998EA8FB9F248397B673C4CAF11A71A98A3,
+	U3CIFadeSlotsU3Ed__104_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mE4AF207705A72BC6A3A299D0B99663BEEC4F5F00,
+	U3CIFadeSlotsU3Ed__104_System_Collections_IEnumerator_Reset_m1541513EB723215D89024E4FA0797330E7D57821,
+	U3CIFadeSlotsU3Ed__104_System_Collections_IEnumerator_get_Current_m21366639EE48864E18A32F4049B8802DF4995548,
+	U3CIUpdateUICoinsU3Ed__108__ctor_m7CB443ED57775F6CE9DC4C838B6A50F3AD9E4F21,
+	U3CIUpdateUICoinsU3Ed__108_System_IDisposable_Dispose_m5B84A9AE83F36D6E043E03963F0BF613EDF9C472,
+	U3CIUpdateUICoinsU3Ed__108_MoveNext_m6DAAC4563D0EB4C98763ECDF006F145AF4155CD6,
+	U3CIUpdateUICoinsU3Ed__108_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m22C8EE0ECB3585FE22EDA3DF0940B0480B185A92,
+	U3CIUpdateUICoinsU3Ed__108_System_Collections_IEnumerator_Reset_mB2CC826A79204B3E60D4FDC85E81B862B70A1254,
+	U3CIUpdateUICoinsU3Ed__108_System_Collections_IEnumerator_get_Current_mF106D7826D21D3BBAB7D54BF31D9243743075A51,
+	U3CScrollUIImageU3Ed__109__ctor_mC864B9BC92E7A9E3B195F8F53B5D94BB5843C66D,
+	U3CScrollUIImageU3Ed__109_System_IDisposable_Dispose_mCC534C051E26FA5B1C1F80B9C5A9994A3987A4F2,
+	U3CScrollUIImageU3Ed__109_MoveNext_mF6EADE03245E894AA661630060BC86F0EA2652F0,
+	U3CScrollUIImageU3Ed__109_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m7682190B108477C2EAFA298E256BBA3B979244B9,
+	U3CScrollUIImageU3Ed__109_System_Collections_IEnumerator_Reset_m1C9D2F00FB2420DF14EBDE1B1441A325CA7FDD86,
+	U3CScrollUIImageU3Ed__109_System_Collections_IEnumerator_get_Current_m849B3BA788FA86C3DB231733F5967FD9F5E9E7C2,
 	SkewedImage_OnPopulateMesh_m2A04180911CD6015E05911382376DC2C8C15880C,
 	SkewedImage__ctor_mA122B75F738FAA5A8AF14EC3CEDF5C4D26FC1F7E,
 	SlicedFilledImage_get_sprite_mD3C6CF679B16B8CB2E95A06B28B5D7FD4DD5B7E5,

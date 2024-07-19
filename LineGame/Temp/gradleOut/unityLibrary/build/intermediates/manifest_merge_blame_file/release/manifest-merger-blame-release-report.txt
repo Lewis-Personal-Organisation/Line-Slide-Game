@@ -109,7 +109,7 @@
 61-->R:\Unity Projects\LineGameNew\LineGame\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:5-101
 62            android:name="unity.build-id"
 62-->R:\Unity Projects\LineGameNew\LineGame\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:16-45
-63            android:value="b411cbce-6caf-4cca-8062-b5bdce0945a3" />
+63            android:value="ed2340e4-683b-4208-9fe7-0fa6b1c3caa3" />
 63-->R:\Unity Projects\LineGameNew\LineGame\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:15:46-98
 64    </application>
 65
