@@ -17202,30 +17202,28 @@ public:
 	Image_t4021FF27176E44BFEDDCBE43C7FE6B713EC70D3C * ___playerSelectbackgroundImage_52;
 	// UnityEngine.Material UIManager::playerSelectHighlightMat
 	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___playerSelectHighlightMat_53;
-	// UnityEngine.Color UIManager::playerSelectHighlightColour
-	Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  ___playerSelectHighlightColour_54;
 	// UnityEngine.Material UIManager::playerSelectLockedMat
-	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___playerSelectLockedMat_55;
+	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___playerSelectLockedMat_54;
 	// UnityEngine.Color UIManager::playerSelectLockedColourCached
-	Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  ___playerSelectLockedColourCached_56;
+	Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  ___playerSelectLockedColourCached_55;
 	// UnityEngine.MeshRenderer UIManager::previewCubeMeshRenderer
-	MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B * ___previewCubeMeshRenderer_57;
+	MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B * ___previewCubeMeshRenderer_56;
 	// UnityEngine.Material UIManager::previewCubeMaterial
-	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___previewCubeMaterial_58;
+	Material_t8927C00353A72755313F046D0CE85178AE8218EE * ___previewCubeMaterial_57;
 	// Rotate UIManager::previewCubeRotator
-	Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 * ___previewCubeRotator_59;
+	Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 * ___previewCubeRotator_58;
 	// UnityEngine.GameObject UIManager::playerSelectionPurchaseButton
-	GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * ___playerSelectionPurchaseButton_60;
+	GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * ___playerSelectionPurchaseButton_59;
 	// TMPro.TextMeshProUGUI UIManager::playerSelectionPurchaseText
-	TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * ___playerSelectionPurchaseText_61;
+	TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * ___playerSelectionPurchaseText_60;
 	// UnityEngine.GameObject UIManager::playerSelectionPurchaseButtonOverlay
-	GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * ___playerSelectionPurchaseButtonOverlay_62;
+	GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * ___playerSelectionPurchaseButtonOverlay_61;
 	// System.Collections.Generic.List`1<PlayerUnlockable> UIManager::playerUnlockables
-	List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * ___playerUnlockables_63;
+	List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * ___playerUnlockables_62;
 	// System.Int32 UIManager::skinIndex
-	int32_t ___skinIndex_64;
+	int32_t ___skinIndex_63;
 	// UnityEngine.Coroutine UIManager::playerSelectScrollCoroutine
-	Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 * ___playerSelectScrollCoroutine_65;
+	Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 * ___playerSelectScrollCoroutine_64;
 
 public:
 	inline static int32_t get_offset_of_touchingOverFrames_5() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___touchingOverFrames_5)); }
@@ -17659,109 +17657,101 @@ public:
 		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectHighlightMat_53), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_playerSelectHighlightColour_54() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectHighlightColour_54)); }
-	inline Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  get_playerSelectHighlightColour_54() const { return ___playerSelectHighlightColour_54; }
-	inline Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659 * get_address_of_playerSelectHighlightColour_54() { return &___playerSelectHighlightColour_54; }
-	inline void set_playerSelectHighlightColour_54(Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  value)
+	inline static int32_t get_offset_of_playerSelectLockedMat_54() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectLockedMat_54)); }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_playerSelectLockedMat_54() const { return ___playerSelectLockedMat_54; }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_playerSelectLockedMat_54() { return &___playerSelectLockedMat_54; }
+	inline void set_playerSelectLockedMat_54(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
 	{
-		___playerSelectHighlightColour_54 = value;
+		___playerSelectLockedMat_54 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectLockedMat_54), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_playerSelectLockedMat_55() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectLockedMat_55)); }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_playerSelectLockedMat_55() const { return ___playerSelectLockedMat_55; }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_playerSelectLockedMat_55() { return &___playerSelectLockedMat_55; }
-	inline void set_playerSelectLockedMat_55(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
+	inline static int32_t get_offset_of_playerSelectLockedColourCached_55() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectLockedColourCached_55)); }
+	inline Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  get_playerSelectLockedColourCached_55() const { return ___playerSelectLockedColourCached_55; }
+	inline Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659 * get_address_of_playerSelectLockedColourCached_55() { return &___playerSelectLockedColourCached_55; }
+	inline void set_playerSelectLockedColourCached_55(Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  value)
 	{
-		___playerSelectLockedMat_55 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectLockedMat_55), (void*)value);
+		___playerSelectLockedColourCached_55 = value;
 	}
 
-	inline static int32_t get_offset_of_playerSelectLockedColourCached_56() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectLockedColourCached_56)); }
-	inline Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  get_playerSelectLockedColourCached_56() const { return ___playerSelectLockedColourCached_56; }
-	inline Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659 * get_address_of_playerSelectLockedColourCached_56() { return &___playerSelectLockedColourCached_56; }
-	inline void set_playerSelectLockedColourCached_56(Color_tF40DAF76C04FFECF3FE6024F85A294741C9CC659  value)
+	inline static int32_t get_offset_of_previewCubeMeshRenderer_56() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___previewCubeMeshRenderer_56)); }
+	inline MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B * get_previewCubeMeshRenderer_56() const { return ___previewCubeMeshRenderer_56; }
+	inline MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B ** get_address_of_previewCubeMeshRenderer_56() { return &___previewCubeMeshRenderer_56; }
+	inline void set_previewCubeMeshRenderer_56(MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B * value)
 	{
-		___playerSelectLockedColourCached_56 = value;
+		___previewCubeMeshRenderer_56 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___previewCubeMeshRenderer_56), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_previewCubeMeshRenderer_57() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___previewCubeMeshRenderer_57)); }
-	inline MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B * get_previewCubeMeshRenderer_57() const { return ___previewCubeMeshRenderer_57; }
-	inline MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B ** get_address_of_previewCubeMeshRenderer_57() { return &___previewCubeMeshRenderer_57; }
-	inline void set_previewCubeMeshRenderer_57(MeshRenderer_tCD983A2F635E12BCB0BAA2E635D96A318757908B * value)
+	inline static int32_t get_offset_of_previewCubeMaterial_57() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___previewCubeMaterial_57)); }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_previewCubeMaterial_57() const { return ___previewCubeMaterial_57; }
+	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_previewCubeMaterial_57() { return &___previewCubeMaterial_57; }
+	inline void set_previewCubeMaterial_57(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
 	{
-		___previewCubeMeshRenderer_57 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___previewCubeMeshRenderer_57), (void*)value);
+		___previewCubeMaterial_57 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___previewCubeMaterial_57), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_previewCubeMaterial_58() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___previewCubeMaterial_58)); }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE * get_previewCubeMaterial_58() const { return ___previewCubeMaterial_58; }
-	inline Material_t8927C00353A72755313F046D0CE85178AE8218EE ** get_address_of_previewCubeMaterial_58() { return &___previewCubeMaterial_58; }
-	inline void set_previewCubeMaterial_58(Material_t8927C00353A72755313F046D0CE85178AE8218EE * value)
+	inline static int32_t get_offset_of_previewCubeRotator_58() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___previewCubeRotator_58)); }
+	inline Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 * get_previewCubeRotator_58() const { return ___previewCubeRotator_58; }
+	inline Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 ** get_address_of_previewCubeRotator_58() { return &___previewCubeRotator_58; }
+	inline void set_previewCubeRotator_58(Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 * value)
 	{
-		___previewCubeMaterial_58 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___previewCubeMaterial_58), (void*)value);
+		___previewCubeRotator_58 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___previewCubeRotator_58), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_previewCubeRotator_59() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___previewCubeRotator_59)); }
-	inline Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 * get_previewCubeRotator_59() const { return ___previewCubeRotator_59; }
-	inline Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 ** get_address_of_previewCubeRotator_59() { return &___previewCubeRotator_59; }
-	inline void set_previewCubeRotator_59(Rotate_tC69B3ABBABA1DB1DFD96A92633DF3743CBB57789 * value)
+	inline static int32_t get_offset_of_playerSelectionPurchaseButton_59() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectionPurchaseButton_59)); }
+	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * get_playerSelectionPurchaseButton_59() const { return ___playerSelectionPurchaseButton_59; }
+	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 ** get_address_of_playerSelectionPurchaseButton_59() { return &___playerSelectionPurchaseButton_59; }
+	inline void set_playerSelectionPurchaseButton_59(GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * value)
 	{
-		___previewCubeRotator_59 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___previewCubeRotator_59), (void*)value);
+		___playerSelectionPurchaseButton_59 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectionPurchaseButton_59), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_playerSelectionPurchaseButton_60() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectionPurchaseButton_60)); }
-	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * get_playerSelectionPurchaseButton_60() const { return ___playerSelectionPurchaseButton_60; }
-	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 ** get_address_of_playerSelectionPurchaseButton_60() { return &___playerSelectionPurchaseButton_60; }
-	inline void set_playerSelectionPurchaseButton_60(GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * value)
+	inline static int32_t get_offset_of_playerSelectionPurchaseText_60() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectionPurchaseText_60)); }
+	inline TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * get_playerSelectionPurchaseText_60() const { return ___playerSelectionPurchaseText_60; }
+	inline TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 ** get_address_of_playerSelectionPurchaseText_60() { return &___playerSelectionPurchaseText_60; }
+	inline void set_playerSelectionPurchaseText_60(TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * value)
 	{
-		___playerSelectionPurchaseButton_60 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectionPurchaseButton_60), (void*)value);
+		___playerSelectionPurchaseText_60 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectionPurchaseText_60), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_playerSelectionPurchaseText_61() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectionPurchaseText_61)); }
-	inline TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * get_playerSelectionPurchaseText_61() const { return ___playerSelectionPurchaseText_61; }
-	inline TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 ** get_address_of_playerSelectionPurchaseText_61() { return &___playerSelectionPurchaseText_61; }
-	inline void set_playerSelectionPurchaseText_61(TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * value)
+	inline static int32_t get_offset_of_playerSelectionPurchaseButtonOverlay_61() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectionPurchaseButtonOverlay_61)); }
+	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * get_playerSelectionPurchaseButtonOverlay_61() const { return ___playerSelectionPurchaseButtonOverlay_61; }
+	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 ** get_address_of_playerSelectionPurchaseButtonOverlay_61() { return &___playerSelectionPurchaseButtonOverlay_61; }
+	inline void set_playerSelectionPurchaseButtonOverlay_61(GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * value)
 	{
-		___playerSelectionPurchaseText_61 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectionPurchaseText_61), (void*)value);
+		___playerSelectionPurchaseButtonOverlay_61 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectionPurchaseButtonOverlay_61), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_playerSelectionPurchaseButtonOverlay_62() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectionPurchaseButtonOverlay_62)); }
-	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * get_playerSelectionPurchaseButtonOverlay_62() const { return ___playerSelectionPurchaseButtonOverlay_62; }
-	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 ** get_address_of_playerSelectionPurchaseButtonOverlay_62() { return &___playerSelectionPurchaseButtonOverlay_62; }
-	inline void set_playerSelectionPurchaseButtonOverlay_62(GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * value)
+	inline static int32_t get_offset_of_playerUnlockables_62() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerUnlockables_62)); }
+	inline List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * get_playerUnlockables_62() const { return ___playerUnlockables_62; }
+	inline List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D ** get_address_of_playerUnlockables_62() { return &___playerUnlockables_62; }
+	inline void set_playerUnlockables_62(List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * value)
 	{
-		___playerSelectionPurchaseButtonOverlay_62 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectionPurchaseButtonOverlay_62), (void*)value);
+		___playerUnlockables_62 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___playerUnlockables_62), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_playerUnlockables_63() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerUnlockables_63)); }
-	inline List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * get_playerUnlockables_63() const { return ___playerUnlockables_63; }
-	inline List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D ** get_address_of_playerUnlockables_63() { return &___playerUnlockables_63; }
-	inline void set_playerUnlockables_63(List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * value)
+	inline static int32_t get_offset_of_skinIndex_63() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___skinIndex_63)); }
+	inline int32_t get_skinIndex_63() const { return ___skinIndex_63; }
+	inline int32_t* get_address_of_skinIndex_63() { return &___skinIndex_63; }
+	inline void set_skinIndex_63(int32_t value)
 	{
-		___playerUnlockables_63 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___playerUnlockables_63), (void*)value);
+		___skinIndex_63 = value;
 	}
 
-	inline static int32_t get_offset_of_skinIndex_64() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___skinIndex_64)); }
-	inline int32_t get_skinIndex_64() const { return ___skinIndex_64; }
-	inline int32_t* get_address_of_skinIndex_64() { return &___skinIndex_64; }
-	inline void set_skinIndex_64(int32_t value)
+	inline static int32_t get_offset_of_playerSelectScrollCoroutine_64() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectScrollCoroutine_64)); }
+	inline Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 * get_playerSelectScrollCoroutine_64() const { return ___playerSelectScrollCoroutine_64; }
+	inline Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 ** get_address_of_playerSelectScrollCoroutine_64() { return &___playerSelectScrollCoroutine_64; }
+	inline void set_playerSelectScrollCoroutine_64(Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 * value)
 	{
-		___skinIndex_64 = value;
-	}
-
-	inline static int32_t get_offset_of_playerSelectScrollCoroutine_65() { return static_cast<int32_t>(offsetof(UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858, ___playerSelectScrollCoroutine_65)); }
-	inline Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 * get_playerSelectScrollCoroutine_65() const { return ___playerSelectScrollCoroutine_65; }
-	inline Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 ** get_address_of_playerSelectScrollCoroutine_65() { return &___playerSelectScrollCoroutine_65; }
-	inline void set_playerSelectScrollCoroutine_65(Coroutine_t899D5232EF542CB8BA70AF9ECEECA494FAA9CCB7 * value)
-	{
-		___playerSelectScrollCoroutine_65 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectScrollCoroutine_65), (void*)value);
+		___playerSelectScrollCoroutine_64 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___playerSelectScrollCoroutine_64), (void*)value);
 	}
 };
 

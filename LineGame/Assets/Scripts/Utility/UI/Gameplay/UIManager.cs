@@ -392,11 +392,11 @@ public class UIManager : Singleton<UIManager>
 		switch (viewState)
 		{
 			case ViewStates.LevelLoaded:
-
 				// Stop the Timer value updating (until we move)
 				if (GameSave.LevelTimerEnabled)
-					UIManager.Instance.EnableLevelTimer(false);
-				
+				{
+					Instance.EnableLevelTimer(false);
+				}
 				//Debug.Log($"Timer Enabled: {GameSave.LevelTimerEnabled}. Level {GameSave.CurrentLevel} Time: {GameSave.GetLevelTimeMS(GameSave.CurrentLevel)}");
 
 				if (previousViewState == ViewStates.LevelLoaded || previousViewState == ViewStates.LevelComplete)
@@ -430,6 +430,9 @@ public class UIManager : Singleton<UIManager>
 					tapToRestartHitBox.gameObject.SetActive(true);
 					settings.Button.transform.parent.gameObject.SetActive(true);
 					playerSelectionHitBox.gameObject.SetActive(true);
+
+					if (GameSave.LevelTimerEnabled)
+						Instance.SetLevelTimerUIVisibility(true);
 				}
 				else if (previousViewState == ViewStates.LevelRestart)
 				{
@@ -500,6 +503,7 @@ public class UIManager : Singleton<UIManager>
 
 			case ViewStates.PlayerSelection:
 				playerSelectScrollCoroutine = StartCoroutine(ScrollUIImage());
+				SetLevelTimerUIVisibility(false);
 				GameManager.Instance.playerPathFollower.SetPlayerControl(false);
 				tapToPlay.gameObject.SetActive(false);
 				tapToPlayHitBox.gameObject.SetActive(false);
