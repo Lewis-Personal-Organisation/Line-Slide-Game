@@ -1,4 +1,72 @@
+# Starting compiling UnityEngine.TestRunner.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-5e163e7e9a5409544a6d968cb4503dab
+# Starting compiling UnityEngine.UI.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-fea55ef374e1ca243843894ffd21047d
+# Starting IL post processing on UnityEngine.TestRunner.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-80a815f7f27e99d47a5ea2df4567b1d5"
+# Starting IL post processing on UnityEngine.UI.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-07a383384f5990847b6d205237094d7b"
+# Starting compiling Unity.RenderPipelines.Universal.Shaders.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-ec6bc713feb431643be2c1b63ce03cc1
+# Starting compiling Unity.VectorGraphics.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-08921e8a12f479644b58cac0f293180c
+# Starting compiling Unity.Timeline.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-f1bb00a15e9f1684f97cc8c2453c1863
+# Starting compiling Unity.TextMeshPro.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-fd7ae045859971d45bd81b78339c98c4
+# Starting compiling Unity.RenderPipelines.Core.Runtime.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-4cd1f9622dd351242b75b51da5dce0b8
+# Starting compiling Unity.RenderPipelines.Core.ShaderLibrary.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-e97df6953c5b6ec45996f85ca2a9d277
+# Starting compiling Unity.Mathematics.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-5fb0889bfb71b7f40a4bf8c4c41a45b0
+# Starting compiling Unity.Burst.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-084cfea897d09454c93757116c13cad9
+# Starting compiling Unity.Postprocessing.Runtime.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-bc5f602112822344ba830f9c44cd6f5b
+# Starting compiling CandyCoded.HapticFeedback.Android.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-0ab8fcb264f338c4495c0b097c7eaf35
+# Starting IL post processing on Unity.RenderPipelines.Core.ShaderLibrary.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-9722d7bee2d439d4ca0ca63c7554f71a"
+# Starting IL post processing on CandyCoded.HapticFeedback.Android.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-3833ad47e71e4714db43284da7b8c198"
+# Starting compiling CandyCoded.HapticFeedback.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-d5d4a374dc2f5a24ba034f80519e4843
+# Starting IL post processing on Unity.RenderPipelines.Universal.Shaders.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-8c2e2ced476754948b9186a6025280ef"
+# Starting compiling Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-e121d0d0524a6b0478882dc0b8992ad7
+# Starting compiling Unity.RenderPipeline.Universal.ShaderLibrary.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-50dfb13eb977d29408d85810e633d90c
+# Starting compiling Unity.InternalAPIEngineBridge.003.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-475084aa82eeb324995d0c724dd13655
+# Starting IL post processing on Unity.RenderPipelines.Core.Runtime.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-d465e035304dcf54d9459bf91d0e66ac"
+# Starting IL post processing on Unity.VectorGraphics.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-dc42bd9b071d0bc4f9857e0d21e73e8a"
+# Starting IL post processing on Unity.Timeline.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-d6713a882f325574188c3a871d557c8e"
+# Starting IL post processing on Unity.Postprocessing.Runtime.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-bf070e9a9e3c3ad4cbd011cc51e083c2"
+# Starting IL post processing on Unity.TextMeshPro.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-0420dae6a8e87d549a34e5b79b7eeff3"
+# Starting IL post processing on Unity.Burst.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-d25abfb91fdcee347a3aa3b00760625b"
+# Starting IL post processing on Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-91cf98749d3ebb04dadda1a11a7016c4"
+# Starting IL post processing on CandyCoded.HapticFeedback.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-48cd3927f5697274596a5216265f4364"
+# Starting compiling Unity.RenderPipelines.Universal.Runtime.dll
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-cb7540bf6c0131b4fb0a5eb4bad74949
 # Starting compiling Assembly-CSharp.dll
-E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-c5aa3dade66333049b09a09bdadf0d4c
+E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-7dcd60a609b50ef48b32d6a7ea35b003
+# Starting IL post processing on Unity.RenderPipeline.Universal.ShaderLibrary.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-a2c1ee7cd05baf145bb3915ebceebb8e"
+# Starting IL post processing on Unity.InternalAPIEngineBridge.003.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-61c79a4c383444f43af4ea1c20e48df8"
+# Starting IL post processing on Unity.Mathematics.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-5081f4254ca69744ead7e3c1bc484391"
+# Starting IL post processing on Unity.RenderPipelines.Universal.Runtime.dll
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-ec9695ad1fd658144b015b9c5ed67352"
 # Starting IL post processing on Assembly-CSharp.dll
-"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-3a1f2f19966f6e8499c582e4db949588"
+"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-df03959166f40e74da3fbc82da0356e6"

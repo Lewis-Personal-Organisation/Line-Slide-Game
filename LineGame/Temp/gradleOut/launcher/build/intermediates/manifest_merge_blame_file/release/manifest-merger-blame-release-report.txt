@@ -4,7 +4,7 @@
 4    package="com.LDGames.LineSlide"
 5    android:installLocation="auto"
 6    android:versionCode="100001"
-7    android:versionName="1.00" >
+7    android:versionName="1.01" >
 8
 9    <uses-sdk
 10        android:minSdkVersion="24"
@@ -130,7 +130,7 @@
 72-->[:unityLibrary] R:\Unity Projects\LineGameNew\LineGame\Temp\gradleOut\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:61:9-63:68
 73            android:name="unity.build-id"
 73-->[:unityLibrary] R:\Unity Projects\LineGameNew\LineGame\Temp\gradleOut\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:62:13-42
-74            android:value="564d3070-d5f2-437a-a1e8-66e27599bc2a" />
+74            android:value="b2fa52c1-51d2-4f92-8a5c-3bf81e1397f5" />
 74-->[:unityLibrary] R:\Unity Projects\LineGameNew\LineGame\Temp\gradleOut\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:63:13-65
 75    </application>
 76

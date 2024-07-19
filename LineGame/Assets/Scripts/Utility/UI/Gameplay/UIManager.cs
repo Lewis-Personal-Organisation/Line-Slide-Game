@@ -341,14 +341,17 @@ public class UIManager : Singleton<UIManager>
 			SwitchView(ViewStates.PlayerSelection);
 			isTouchingUIElement = true;
 		});
-		InstanceIDtoAction.Add(playerSelectionPurchaseButton.transform.GetInstanceID(), () => {
+		InstanceIDtoAction.Add(playerSelectionPurchaseButton.transform.GetInstanceID(), () => 
+		{
 			if (GameSave.CoinCount < playerUnlockables[skinIndex].cost)
 				return;
+
 			GameSave.SetPlayerSkinUnlocked(skinIndex, true);
 			playerSelectionPurchaseButton.SetActive(false);
 			playerUnlockables[skinIndex].overlay.gameObject.SetActive(false);
 			float oldCoinCount = GameSave.CoinCount;
 			GameSave.CoinCount -= playerUnlockables[skinIndex].cost;
+			Debug.Log($"Purchase, index {skinIndex}: Coins {oldCoinCount} -> {GameSave.CoinCount}");
 			GameSave.Save();
 			UpdateUICoins(oldCoinCount, 240);
 			SwapPlayerColoursOnSelection();
@@ -511,7 +514,7 @@ public class UIManager : Singleton<UIManager>
 				tapToRestartHitBox.gameObject.SetActive(false);
 				settings.Button.transform.parent.gameObject.SetActive(false);
 				playerSelectionHitBox.gameObject.SetActive(false);
-				skinIndex = 0;
+				skinIndex = -1;
 				ApplyPlayerSelectionUnlockableStates();
 				SetPlayerSelectionObjectVisibility(true);
 				previewCubeRotator.enabled = true;
@@ -744,7 +747,11 @@ public class UIManager : Singleton<UIManager>
 		}
 
 		// If we pick the same Item, return
-		if (index == skinIndex) return true;
+		if (index == skinIndex)
+		{
+			Debug.Log($"Picked same index {index}");
+			return true;
+		}
 
 		// If we have previous selected an unlockable and its not unlocked, set it to the locked colour
 		if (skinIndex != -1 && !GameSave.IsPlayerSkinUnlocked(skinIndex))
@@ -817,7 +824,6 @@ public class UIManager : Singleton<UIManager>
 		GameManager.Instance.playerPathFollower.playerMeshRenderer.sharedMaterial.color = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
 		GameManager.Instance.playerPathFollower.PlayerTrailColour = playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color;
 		GameManager.Instance.playerParticleMaterial.color = LevelManager.Instance.GetOffsetColour(playerUnlockables[skinIndex].cubeMeshRenderer.sharedMaterial.color, -100F);
-		Debug.Log($"LAI Apply: {skinIndex}");
 	}
 
 	/// <summary>

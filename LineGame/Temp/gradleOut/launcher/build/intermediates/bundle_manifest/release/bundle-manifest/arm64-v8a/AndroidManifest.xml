@@ -4,7 +4,7 @@
     package="com.LDGames.LineSlide"
     android:installLocation="auto"
     android:versionCode="200001"
-    android:versionName="1.00" >
+    android:versionName="1.01" >
 
     <uses-sdk
         android:minSdkVersion="24"
@@ -71,7 +71,7 @@
             android:value="False" />
         <meta-data
             android:name="unity.build-id"
-            android:value="564d3070-d5f2-437a-a1e8-66e27599bc2a" />
+            android:value="b2fa52c1-51d2-4f92-8a5c-3bf81e1397f5" />
     </application>
 
 </manifest>

@@ -87,7 +87,11 @@ public static class GameSave
 
 	public static float GetLevelTime(int levelNumber)
 	{
-		return PlayerPrefs.GetInt($"{levelTimerStringS}{levelNumber}", -1) + PlayerPrefs.GetFloat($"{levelTimerStringMS}{levelNumber}", -1F);
+		float secs = PlayerPrefs.GetInt($"{levelTimerStringS}{levelNumber}", -1);
+		if (secs < 0)
+			return -1;
+		else
+			return Mathf.Clamp(secs + PlayerPrefs.GetFloat($"{levelTimerStringMS}{levelNumber}", -1F), -1F, float.MaxValue);
 	}
 
 	public static void ResetLevelTimes()

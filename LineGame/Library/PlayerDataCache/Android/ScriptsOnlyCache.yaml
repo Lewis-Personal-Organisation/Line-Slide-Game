@@ -192,6 +192,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6714}
     - Class: 114
+      Script: {instanceID: 6738}
+    - Class: 114
       Script: {instanceID: 6880}
     - Class: 114
       Script: {instanceID: 7008}
@@ -1097,7 +1099,7 @@ ScriptsOnlyBuild:
     className: CurveScriptableObject
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: c1fa65d85f76bc65f82786f4c810e883
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DebugControls

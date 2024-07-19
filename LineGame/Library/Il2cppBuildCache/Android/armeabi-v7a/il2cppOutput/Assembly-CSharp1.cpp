@@ -735,6 +735,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral0E5ACD8F8AECEE8F67E336B26C4EAF8C98F34BD0
 IL2CPP_EXTERN_C String_t* _stringLiteral12DB54AB54CFE50823EF0DAA1358EBA286A50413;
 IL2CPP_EXTERN_C String_t* _stringLiteral15196F05B117690F3E12E56AA0C43803EA0D2A46;
 IL2CPP_EXTERN_C String_t* _stringLiteral1A0AEC3F9A45C3C171248AEB4AE0F2EC3FE3D426;
+IL2CPP_EXTERN_C String_t* _stringLiteral1AD4F96B888C3A344F8E7A269B39575D8CD47F1A;
 IL2CPP_EXTERN_C String_t* _stringLiteral1BF20F795791AC67CCC9E2B5B855E3A9D68CDDD6;
 IL2CPP_EXTERN_C String_t* _stringLiteral2386E77CF610F786B06A91AF2C1B3FD2282D2745;
 IL2CPP_EXTERN_C String_t* _stringLiteral269F8BFBE6C7517C00380B92291D0799AAB2F285;
@@ -761,6 +762,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral69CE07E5C7ADCC833DA3E659BC9009F6C3C1346A
 IL2CPP_EXTERN_C String_t* _stringLiteral6C3B90D0C27E620F9CB6F4530546C591AB0C5E12;
 IL2CPP_EXTERN_C String_t* _stringLiteral71B680ABF9213B3E8FB888056C235C79CFE83314;
 IL2CPP_EXTERN_C String_t* _stringLiteral71BD498E5FC7E3B8709294B88AB8FAB2CFF77CAE;
+IL2CPP_EXTERN_C String_t* _stringLiteral73756FD01123940E27CFFF4F4EAA24DE52AF85EF;
 IL2CPP_EXTERN_C String_t* _stringLiteral76181D35FACE9018DE2B2C24647A55BE246EF5B4;
 IL2CPP_EXTERN_C String_t* _stringLiteral7F85A2723BB62FEF95DD6F8C5F0FF606EA62246A;
 IL2CPP_EXTERN_C String_t* _stringLiteral8052A7F2FC602ED06E9464BF6753FFACABC26B21;
@@ -797,7 +799,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteralDECFB8F380101725B06EAE2D3F983211A277171C
 IL2CPP_EXTERN_C String_t* _stringLiteralE2138FA8D137D1C6C81747FE1638815DDE9177B0;
 IL2CPP_EXTERN_C String_t* _stringLiteralE9529C175DDE3F0633787E9DD52F837F5214301F;
 IL2CPP_EXTERN_C String_t* _stringLiteralEE3657997C5E6EC82CDE374326A95906F03A3315;
-IL2CPP_EXTERN_C String_t* _stringLiteralEE53B593FF97E6926E699359D107DF83590F9BCC;
 IL2CPP_EXTERN_C String_t* _stringLiteralEF8AE9E6CBCFDABA932FBEB4C85964F450F724F5;
 IL2CPP_EXTERN_C String_t* _stringLiteralEFDE98637BFA67FF2DCE9179A24A24251E968133;
 IL2CPP_EXTERN_C String_t* _stringLiteralF1B6AAF37DDF842141E903D071B58A3BDF13A5C6;
@@ -24305,6 +24306,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_SwitchView_m88CF3D3F2FF7F97B55
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameSave_SetPlayerSkinUnlocked_m943024AC34B5A3E251BFDA3B61FC67E832397754 (int32_t ___index0, bool ___applySkin1, const RuntimeMethod* method);
 // System.Void GameSave::set_CoinCount(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameSave_set_CoinCount_m140E941626DBEE0C49DD55CA5A0DE77D998BD86F (int32_t ___value0, const RuntimeMethod* method);
+// System.String System.String::Format(System.String,System.Object,System.Object,System.Object)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Format_m039737CCD992C5BFC8D16DFD681F5E8786E87FA6 (String_t* ___format0, RuntimeObject * ___arg01, RuntimeObject * ___arg12, RuntimeObject * ___arg23, const RuntimeMethod* method);
 // System.Void UIManager::UpdateUICoins(System.Single,System.Single)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_UpdateUICoins_mB462B842DC60E2E63CE489A91D24586516399A4A (UIManager_t77C2B965B55C450F7226A05FE391FF12B5CE7858 * __this, float ___oldCoinCount0, float ___speed1, const RuntimeMethod* method);
 // System.Void UIManager/<>c__DisplayClass77_0::.ctor()
@@ -37034,14 +37037,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_LinkUIIDActions_mCF0606547916D
 		Action__ctor_m07BE5EE8A629FBBA52AE6356D57A0D371BE2574B(L_29, __this, (intptr_t)((intptr_t)UIManager_U3CLinkUIIDActionsU3Eb__77_5_m1BEFEF224DAC2517B985B20960953D1BB86EABE8_RuntimeMethod_var), /*hidden argument*/NULL);
 		NullCheck(L_26);
 		Dictionary_2_Add_m308B697ED74860DD33096EBAE572827F251A96CE(L_26, L_28, L_29, /*hidden argument*/Dictionary_2_Add_m308B697ED74860DD33096EBAE572827F251A96CE_RuntimeMethod_var);
-		// InstanceIDtoAction.Add(playerSelectionPurchaseButton.transform.GetInstanceID(), () => {
+		// InstanceIDtoAction.Add(playerSelectionPurchaseButton.transform.GetInstanceID(), () =>
+		// {
 		//     if (GameSave.CoinCount < playerUnlockables[skinIndex].cost)
 		//         return;
+		// 
 		//     GameSave.SetPlayerSkinUnlocked(skinIndex, true);
 		//     playerSelectionPurchaseButton.SetActive(false);
 		//     playerUnlockables[skinIndex].overlay.gameObject.SetActive(false);
 		//     float oldCoinCount = GameSave.CoinCount;
 		//     GameSave.CoinCount -= playerUnlockables[skinIndex].cost;
+		//     Debug.Log($"Purchase, index {skinIndex}: Coins {oldCoinCount} -> {GameSave.CoinCount}");
 		//     GameSave.Save();
 		//     UpdateUICoins(oldCoinCount, 240);
 		//     SwapPlayerColoursOnSelection();
@@ -37750,12 +37756,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UIManager_HighlightOnUnlockableSelected_
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&CanvasUtils_t59AA87565BAEF8232D4F6E5E103821DAB8EE59D6_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameSave_tDFE392F94641E36C68B44E72A0802F9B18BE82BE_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Int32_tFDE5F8CD43D10453F6A2E0C77FE48C6CC7009046_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass94_0_tBCA08B1A45909D9805BD62B610E833EB0E612BE5_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass94_1_U3CHighlightOnUnlockableSelectedU3Eb__0_mEAA1CCF45FD6DD3946FD45E6A5520C00CC7A9FB7_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass94_1_t3F2B1B92749AE18F6B9444F4B95AD226EE906396_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&UnityAction_t22E545F8BE0A62EE051C6A83E209587A0DB1C099_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral1A0AEC3F9A45C3C171248AEB4AE0F2EC3FE3D426);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral73756FD01123940E27CFFF4F4EAA24DE52AF85EF);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB7346C0D99390486E1CC07D3BBBB0D4A458E29C2);
 		s_Il2CppMethodInitialized = true;
 	}
@@ -37872,90 +37880,100 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UIManager_HighlightOnUnlockableSelected_
 
 IL_00e5:
 	{
-		// if (index == skinIndex) return true;
+		// if (index == skinIndex)
 		U3CU3Ec__DisplayClass94_0_tBCA08B1A45909D9805BD62B610E833EB0E612BE5 * L_43 = V_0;
 		NullCheck(L_43);
 		int32_t L_44 = L_43->get_index_1();
 		int32_t L_45 = __this->get_skinIndex_63();
 		if ((!(((uint32_t)L_44) == ((uint32_t)L_45))))
 		{
-			goto IL_00f5;
+			goto IL_010f;
 		}
 	}
 	{
-		// if (index == skinIndex) return true;
+		// Debug.Log($"Picked same index {index}");
+		U3CU3Ec__DisplayClass94_0_tBCA08B1A45909D9805BD62B610E833EB0E612BE5 * L_46 = V_0;
+		NullCheck(L_46);
+		int32_t L_47 = L_46->get_index_1();
+		int32_t L_48 = L_47;
+		RuntimeObject * L_49 = Box(Int32_tFDE5F8CD43D10453F6A2E0C77FE48C6CC7009046_il2cpp_TypeInfo_var, &L_48);
+		String_t* L_50;
+		L_50 = String_Format_mB3D38E5238C3164DB4D7D29339D9E225A4496D17(_stringLiteral73756FD01123940E27CFFF4F4EAA24DE52AF85EF, L_49, /*hidden argument*/NULL);
+		IL2CPP_RUNTIME_CLASS_INIT(Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
+		Debug_Log_mC26E5AD0D8D156C7FFD173AA15827F69225E9DB8(L_50, /*hidden argument*/NULL);
+		// return true;
 		return (bool)1;
 	}
 
-IL_00f5:
+IL_010f:
 	{
 		// if (skinIndex != -1 && !GameSave.IsPlayerSkinUnlocked(skinIndex))
-		int32_t L_46 = __this->get_skinIndex_63();
-		if ((((int32_t)L_46) == ((int32_t)(-1))))
+		int32_t L_51 = __this->get_skinIndex_63();
+		if ((((int32_t)L_51) == ((int32_t)(-1))))
 		{
-			goto IL_012c;
+			goto IL_0146;
 		}
 	}
 	{
-		int32_t L_47 = __this->get_skinIndex_63();
+		int32_t L_52 = __this->get_skinIndex_63();
 		IL2CPP_RUNTIME_CLASS_INIT(GameSave_tDFE392F94641E36C68B44E72A0802F9B18BE82BE_il2cpp_TypeInfo_var);
-		bool L_48;
-		L_48 = GameSave_IsPlayerSkinUnlocked_m18FA9C0E9EB6B6A77D44A10E58F30B18DFF04692(L_47, /*hidden argument*/NULL);
-		if (L_48)
+		bool L_53;
+		L_53 = GameSave_IsPlayerSkinUnlocked_m18FA9C0E9EB6B6A77D44A10E58F30B18DFF04692(L_52, /*hidden argument*/NULL);
+		if (L_53)
 		{
-			goto IL_012c;
+			goto IL_0146;
 		}
 	}
 	{
 		// playerUnlockables[skinIndex].overlay.material = playerSelectLockedMat;
-		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_49 = __this->get_playerUnlockables_62();
-		int32_t L_50 = __this->get_skinIndex_63();
-		NullCheck(L_49);
-		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_51;
-		L_51 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_49, L_50, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
-		NullCheck(L_51);
-		Image_t4021FF27176E44BFEDDCBE43C7FE6B713EC70D3C * L_52 = L_51->get_overlay_3();
-		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_53 = __this->get_playerSelectLockedMat_54();
-		NullCheck(L_52);
-		VirtActionInvoker1< Material_t8927C00353A72755313F046D0CE85178AE8218EE * >::Invoke(33 /* System.Void UnityEngine.UI.Graphic::set_material(UnityEngine.Material) */, L_52, L_53);
+		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_54 = __this->get_playerUnlockables_62();
+		int32_t L_55 = __this->get_skinIndex_63();
+		NullCheck(L_54);
+		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_56;
+		L_56 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_54, L_55, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
+		NullCheck(L_56);
+		Image_t4021FF27176E44BFEDDCBE43C7FE6B713EC70D3C * L_57 = L_56->get_overlay_3();
+		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_58 = __this->get_playerSelectLockedMat_54();
+		NullCheck(L_57);
+		VirtActionInvoker1< Material_t8927C00353A72755313F046D0CE85178AE8218EE * >::Invoke(33 /* System.Void UnityEngine.UI.Graphic::set_material(UnityEngine.Material) */, L_57, L_58);
 	}
 
-IL_012c:
+IL_0146:
 	{
 		// skinIndex = index;
-		U3CU3Ec__DisplayClass94_0_tBCA08B1A45909D9805BD62B610E833EB0E612BE5 * L_54 = V_0;
-		NullCheck(L_54);
-		int32_t L_55 = L_54->get_index_1();
-		__this->set_skinIndex_63(L_55);
+		U3CU3Ec__DisplayClass94_0_tBCA08B1A45909D9805BD62B610E833EB0E612BE5 * L_59 = V_0;
+		NullCheck(L_59);
+		int32_t L_60 = L_59->get_index_1();
+		__this->set_skinIndex_63(L_60);
 		// if (GameSave.IsPlayerSkinUnlocked(skinIndex))
-		int32_t L_56 = __this->get_skinIndex_63();
+		int32_t L_61 = __this->get_skinIndex_63();
 		IL2CPP_RUNTIME_CLASS_INIT(GameSave_tDFE392F94641E36C68B44E72A0802F9B18BE82BE_il2cpp_TypeInfo_var);
-		bool L_57;
-		L_57 = GameSave_IsPlayerSkinUnlocked_m18FA9C0E9EB6B6A77D44A10E58F30B18DFF04692(L_56, /*hidden argument*/NULL);
-		if (!L_57)
+		bool L_62;
+		L_62 = GameSave_IsPlayerSkinUnlocked_m18FA9C0E9EB6B6A77D44A10E58F30B18DFF04692(L_61, /*hidden argument*/NULL);
+		if (!L_62)
 		{
-			goto IL_0170;
+			goto IL_018a;
 		}
 	}
 	{
 		// if (playerSelectionPurchaseButton.activeInHierarchy)
-		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_58 = __this->get_playerSelectionPurchaseButton_59();
-		NullCheck(L_58);
-		bool L_59;
-		L_59 = GameObject_get_activeInHierarchy_mA3990AC5F61BB35283188E925C2BE7F7BF67734B(L_58, /*hidden argument*/NULL);
-		if (!L_59)
+		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_63 = __this->get_playerSelectionPurchaseButton_59();
+		NullCheck(L_63);
+		bool L_64;
+		L_64 = GameObject_get_activeInHierarchy_mA3990AC5F61BB35283188E925C2BE7F7BF67734B(L_63, /*hidden argument*/NULL);
+		if (!L_64)
 		{
-			goto IL_015e;
+			goto IL_0178;
 		}
 	}
 	{
 		// playerSelectionPurchaseButton.SetActive(false);
-		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_60 = __this->get_playerSelectionPurchaseButton_59();
-		NullCheck(L_60);
-		GameObject_SetActive_mCF1EEF2A314F3AE85DA581FF52EB06ACEF2FFF86(L_60, (bool)0, /*hidden argument*/NULL);
+		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_65 = __this->get_playerSelectionPurchaseButton_59();
+		NullCheck(L_65);
+		GameObject_SetActive_mCF1EEF2A314F3AE85DA581FF52EB06ACEF2FFF86(L_65, (bool)0, /*hidden argument*/NULL);
 	}
 
-IL_015e:
+IL_0178:
 	{
 		// SwapPlayerColoursOnSelection();
 		UIManager_SwapPlayerColoursOnSelection_mC9ADE1C0B29F4B46155B6B3B69829A7F907FDA37(__this, /*hidden argument*/NULL);
@@ -37966,68 +37984,68 @@ IL_015e:
 		return (bool)1;
 	}
 
-IL_0170:
+IL_018a:
 	{
 		// playerUnlockables[skinIndex].overlay.material = playerSelectHighlightMat;
-		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_61 = __this->get_playerUnlockables_62();
-		int32_t L_62 = __this->get_skinIndex_63();
-		NullCheck(L_61);
-		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_63;
-		L_63 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_61, L_62, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
-		NullCheck(L_63);
-		Image_t4021FF27176E44BFEDDCBE43C7FE6B713EC70D3C * L_64 = L_63->get_overlay_3();
-		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_65 = __this->get_playerSelectHighlightMat_53();
-		NullCheck(L_64);
-		VirtActionInvoker1< Material_t8927C00353A72755313F046D0CE85178AE8218EE * >::Invoke(33 /* System.Void UnityEngine.UI.Graphic::set_material(UnityEngine.Material) */, L_64, L_65);
+		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_66 = __this->get_playerUnlockables_62();
+		int32_t L_67 = __this->get_skinIndex_63();
+		NullCheck(L_66);
+		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_68;
+		L_68 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_66, L_67, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
+		NullCheck(L_68);
+		Image_t4021FF27176E44BFEDDCBE43C7FE6B713EC70D3C * L_69 = L_68->get_overlay_3();
+		Material_t8927C00353A72755313F046D0CE85178AE8218EE * L_70 = __this->get_playerSelectHighlightMat_53();
+		NullCheck(L_69);
+		VirtActionInvoker1< Material_t8927C00353A72755313F046D0CE85178AE8218EE * >::Invoke(33 /* System.Void UnityEngine.UI.Graphic::set_material(UnityEngine.Material) */, L_69, L_70);
 		// Debug.Log("Skin locked. Using player select highlight mat");
 		IL2CPP_RUNTIME_CLASS_INIT(Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
 		Debug_Log_mC26E5AD0D8D156C7FFD173AA15827F69225E9DB8(_stringLiteral1A0AEC3F9A45C3C171248AEB4AE0F2EC3FE3D426, /*hidden argument*/NULL);
 		// if (!playerSelectionPurchaseButton.activeInHierarchy)
-		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_66 = __this->get_playerSelectionPurchaseButton_59();
-		NullCheck(L_66);
-		bool L_67;
-		L_67 = GameObject_get_activeInHierarchy_mA3990AC5F61BB35283188E925C2BE7F7BF67734B(L_66, /*hidden argument*/NULL);
-		if (L_67)
+		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_71 = __this->get_playerSelectionPurchaseButton_59();
+		NullCheck(L_71);
+		bool L_72;
+		L_72 = GameObject_get_activeInHierarchy_mA3990AC5F61BB35283188E925C2BE7F7BF67734B(L_71, /*hidden argument*/NULL);
+		if (L_72)
 		{
-			goto IL_01b4;
+			goto IL_01ce;
 		}
 	}
 	{
 		// playerSelectionPurchaseButton.SetActive(true);
-		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_68 = __this->get_playerSelectionPurchaseButton_59();
-		NullCheck(L_68);
-		GameObject_SetActive_mCF1EEF2A314F3AE85DA581FF52EB06ACEF2FFF86(L_68, (bool)1, /*hidden argument*/NULL);
+		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_73 = __this->get_playerSelectionPurchaseButton_59();
+		NullCheck(L_73);
+		GameObject_SetActive_mCF1EEF2A314F3AE85DA581FF52EB06ACEF2FFF86(L_73, (bool)1, /*hidden argument*/NULL);
 	}
 
-IL_01b4:
+IL_01ce:
 	{
 		// playerSelectionPurchaseText.text = playerUnlockables[skinIndex].cost.ToString();
-		TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * L_69 = __this->get_playerSelectionPurchaseText_60();
-		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_70 = __this->get_playerUnlockables_62();
-		int32_t L_71 = __this->get_skinIndex_63();
-		NullCheck(L_70);
-		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_72;
-		L_72 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_70, L_71, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
-		NullCheck(L_72);
-		int32_t* L_73 = L_72->get_address_of_cost_1();
-		String_t* L_74;
-		L_74 = Int32_ToString_m340C0A14D16799421EFDF8A81C8A16FA76D48411((int32_t*)L_73, /*hidden argument*/NULL);
-		NullCheck(L_69);
-		VirtActionInvoker1< String_t* >::Invoke(66 /* System.Void TMPro.TMP_Text::set_text(System.String) */, L_69, L_74);
-		// playerSelectionPurchaseButtonOverlay.SetActive(GameSave.CoinCount < playerUnlockables[skinIndex].cost);
-		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_75 = __this->get_playerSelectionPurchaseButtonOverlay_61();
-		IL2CPP_RUNTIME_CLASS_INIT(GameSave_tDFE392F94641E36C68B44E72A0802F9B18BE82BE_il2cpp_TypeInfo_var);
-		int32_t L_76;
-		L_76 = GameSave_get_CoinCount_m7D6C515C6D2251A68DDF29C10778601A70DA754E(/*hidden argument*/NULL);
-		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_77 = __this->get_playerUnlockables_62();
-		int32_t L_78 = __this->get_skinIndex_63();
-		NullCheck(L_77);
-		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_79;
-		L_79 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_77, L_78, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
-		NullCheck(L_79);
-		int32_t L_80 = L_79->get_cost_1();
+		TextMeshProUGUI_tCC5BE8A76E6E9AF92521A462E8D81ACFBA7C85F1 * L_74 = __this->get_playerSelectionPurchaseText_60();
+		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_75 = __this->get_playerUnlockables_62();
+		int32_t L_76 = __this->get_skinIndex_63();
 		NullCheck(L_75);
-		GameObject_SetActive_mCF1EEF2A314F3AE85DA581FF52EB06ACEF2FFF86(L_75, (bool)((((int32_t)L_76) < ((int32_t)L_80))? 1 : 0), /*hidden argument*/NULL);
+		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_77;
+		L_77 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_75, L_76, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
+		NullCheck(L_77);
+		int32_t* L_78 = L_77->get_address_of_cost_1();
+		String_t* L_79;
+		L_79 = Int32_ToString_m340C0A14D16799421EFDF8A81C8A16FA76D48411((int32_t*)L_78, /*hidden argument*/NULL);
+		NullCheck(L_74);
+		VirtActionInvoker1< String_t* >::Invoke(66 /* System.Void TMPro.TMP_Text::set_text(System.String) */, L_74, L_79);
+		// playerSelectionPurchaseButtonOverlay.SetActive(GameSave.CoinCount < playerUnlockables[skinIndex].cost);
+		GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_80 = __this->get_playerSelectionPurchaseButtonOverlay_61();
+		IL2CPP_RUNTIME_CLASS_INIT(GameSave_tDFE392F94641E36C68B44E72A0802F9B18BE82BE_il2cpp_TypeInfo_var);
+		int32_t L_81;
+		L_81 = GameSave_get_CoinCount_m7D6C515C6D2251A68DDF29C10778601A70DA754E(/*hidden argument*/NULL);
+		List_1_t2A115A9A3867CF75C4ED8F07ACD901E5042C995D * L_82 = __this->get_playerUnlockables_62();
+		int32_t L_83 = __this->get_skinIndex_63();
+		NullCheck(L_82);
+		PlayerUnlockable_t4AFE573B25351683598769462A0EDD2A4B397783 * L_84;
+		L_84 = List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_inline(L_82, L_83, /*hidden argument*/List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
+		NullCheck(L_84);
+		int32_t L_85 = L_84->get_cost_1();
+		NullCheck(L_80);
+		GameObject_SetActive_mCF1EEF2A314F3AE85DA581FF52EB06ACEF2FFF86(L_80, (bool)((((int32_t)L_81) < ((int32_t)L_85))? 1 : 0), /*hidden argument*/NULL);
 		// return true;
 		return (bool)1;
 	}
@@ -38255,12 +38273,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_ApplyLastUnlockedSkin_m2379AAA
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Int32_tFDE5F8CD43D10453F6A2E0C77FE48C6CC7009046_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Singleton_1_get_Instance_m8789C7AF87029C91F751DA50FB5CD00448E0B28D_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Singleton_1_get_Instance_m8CC8F6969D72057F29E4240CE774F85B6862BE5B_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralEE53B593FF97E6926E699359D107DF83590F9BCC);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
@@ -38354,14 +38369,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_ApplyLastUnlockedSkin_m2379AAA
 		L_35 = LevelManager_GetOffsetColour_mA8E31998AB7FE2C34975A57E31EDA4C2DC9E1313(L_28, L_34, (-100.0f), /*hidden argument*/NULL);
 		NullCheck(L_27);
 		Material_set_color_mC3C88E2389B7132EBF3EB0D1F040545176B795C0(L_27, L_35, /*hidden argument*/NULL);
-		// Debug.Log($"LAI Apply: {skinIndex}");
-		int32_t L_36 = ___skinIndex0;
-		int32_t L_37 = L_36;
-		RuntimeObject * L_38 = Box(Int32_tFDE5F8CD43D10453F6A2E0C77FE48C6CC7009046_il2cpp_TypeInfo_var, &L_37);
-		String_t* L_39;
-		L_39 = String_Format_mB3D38E5238C3164DB4D7D29339D9E225A4496D17(_stringLiteralEE53B593FF97E6926E699359D107DF83590F9BCC, L_38, /*hidden argument*/NULL);
-		IL2CPP_RUNTIME_CLASS_INIT(Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
-		Debug_Log_mC26E5AD0D8D156C7FFD173AA15827F69225E9DB8(L_39, /*hidden argument*/NULL);
 		// }
 		return;
 	}
@@ -39110,8 +39117,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_U3CLinkUIIDActionsU3Eb__77_6_m
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameSave_tDFE392F94641E36C68B44E72A0802F9B18BE82BE_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Int32_tFDE5F8CD43D10453F6A2E0C77FE48C6CC7009046_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_get_Item_m41B536B361CFE751CDDA4CC78807F429A0809539_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Single_tE07797BA3C98D4CA9B5A19413C19A76688AB899E_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral1AD4F96B888C3A344F8E7A269B39575D8CD47F1A);
 		s_Il2CppMethodInitialized = true;
 	}
 	float V_0 = 0.0f;
@@ -39175,11 +39186,26 @@ IL_001e:
 		NullCheck(L_16);
 		int32_t L_17 = L_16->get_cost_1();
 		GameSave_set_CoinCount_m140E941626DBEE0C49DD55CA5A0DE77D998BD86F(((int32_t)il2cpp_codegen_subtract((int32_t)L_13, (int32_t)L_17)), /*hidden argument*/NULL);
+		// Debug.Log($"Purchase, index {skinIndex}: Coins {oldCoinCount} -> {GameSave.CoinCount}");
+		int32_t L_18 = __this->get_skinIndex_63();
+		int32_t L_19 = L_18;
+		RuntimeObject * L_20 = Box(Int32_tFDE5F8CD43D10453F6A2E0C77FE48C6CC7009046_il2cpp_TypeInfo_var, &L_19);
+		float L_21 = V_0;
+		float L_22 = L_21;
+		RuntimeObject * L_23 = Box(Single_tE07797BA3C98D4CA9B5A19413C19A76688AB899E_il2cpp_TypeInfo_var, &L_22);
+		int32_t L_24;
+		L_24 = GameSave_get_CoinCount_m7D6C515C6D2251A68DDF29C10778601A70DA754E(/*hidden argument*/NULL);
+		int32_t L_25 = L_24;
+		RuntimeObject * L_26 = Box(Int32_tFDE5F8CD43D10453F6A2E0C77FE48C6CC7009046_il2cpp_TypeInfo_var, &L_25);
+		String_t* L_27;
+		L_27 = String_Format_m039737CCD992C5BFC8D16DFD681F5E8786E87FA6(_stringLiteral1AD4F96B888C3A344F8E7A269B39575D8CD47F1A, L_20, L_23, L_26, /*hidden argument*/NULL);
+		IL2CPP_RUNTIME_CLASS_INIT(Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
+		Debug_Log_mC26E5AD0D8D156C7FFD173AA15827F69225E9DB8(L_27, /*hidden argument*/NULL);
 		// GameSave.Save();
 		GameSave_Save_mB1A0E3EDFB3185C161B02FE200349EA4F688866B(/*hidden argument*/NULL);
 		// UpdateUICoins(oldCoinCount, 240);
-		float L_18 = V_0;
-		UIManager_UpdateUICoins_mB462B842DC60E2E63CE489A91D24586516399A4A(__this, L_18, (240.0f), /*hidden argument*/NULL);
+		float L_28 = V_0;
+		UIManager_UpdateUICoins_mB462B842DC60E2E63CE489A91D24586516399A4A(__this, L_28, (240.0f), /*hidden argument*/NULL);
 		// SwapPlayerColoursOnSelection();
 		UIManager_SwapPlayerColoursOnSelection_mC9ADE1C0B29F4B46155B6B3B69829A7F907FDA37(__this, /*hidden argument*/NULL);
 		// isTouchingUIElement = true;

@@ -16,7 +16,7 @@
           }
         ],
         "versionCode": 200001,
-        "versionName": "1.00",
+        "versionName": "1.01",
         "filterName": "arm64-v8a",
         "outputFile": "launcher-arm64-v8a-release.apk",
         "fullName": "arm64-v8aRelease",
@@ -43,7 +43,7 @@
           }
         ],
         "versionCode": 100001,
-        "versionName": "1.00",
+        "versionName": "1.01",
         "filterName": "armeabi-v7a",
         "outputFile": "launcher-armeabi-v7a-release.apk",
         "fullName": "armeabi-v7aRelease",

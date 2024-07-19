@@ -112,7 +112,7 @@ public class LevelManager : Singleton<LevelManager>
 				}
 				else
 				{
-					Debug.Log($"Time not beaten. This run: {UIManager.Instance.LevelTimerMilisecondsValue()} => Best: {GameSave.GetLevelTimeMS(GameSave.CurrentLevel)}");
+					Debug.Log($"Time not beaten. This run: {UIManager.Instance.LevelTimerValue()} => Best: {GameSave.GetLevelTime(GameSave.CurrentLevel)}");
 				}
 			}
             
