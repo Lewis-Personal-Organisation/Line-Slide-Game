@@ -349,7 +349,7 @@ public class UIManager : Singleton<UIManager>
 			GameSave.SetPlayerSkinUnlocked(skinIndex, true);
 			playerSelectionPurchaseButton.SetActive(false);
 			playerUnlockables[skinIndex].overlay.gameObject.SetActive(false);
-			float oldCoinCount = GameSave.CoinCount;
+			int oldCoinCount = GameSave.CoinCount;
 			GameSave.CoinCount -= playerUnlockables[skinIndex].cost;
 			Debug.Log($"Purchase, index {skinIndex}: Coins {oldCoinCount} -> {GameSave.CoinCount}");
 			GameSave.Save();
@@ -939,7 +939,7 @@ public class UIManager : Singleton<UIManager>
 	/// Update the UI Coins over time using the IUpdateUICoins Method
 	/// </summary>
 	/// <param name="oldCoinCount"></param>
-	public void UpdateUICoins(float oldCoinCount, float speed = 0)
+	public void UpdateUICoins(int oldCoinCount, float speed = 0)
 	{
 		StartCoroutine(IUpdateUICoins(oldCoinCount, speed));
 	}
@@ -947,15 +947,21 @@ public class UIManager : Singleton<UIManager>
 	/// <summary>
 	/// Update UI Coins over time
 	/// </summary>
-	private IEnumerator IUpdateUICoins(float oldCoinCount, float speed = 0F)
+	private IEnumerator IUpdateUICoins(int oldCoinCount, float speed = 0F)
 	{
-		float sign = oldCoinCount < GameSave.CoinCount ? 1 : -1;
+		int sign = oldCoinCount < GameSave.CoinCount ? 1 : -1;
+		float t = 0;
 
 		// While the old coin coint is not equal to the new one, update our display value
-		while ((int)oldCoinCount != GameSave.CoinCount)
+		while (oldCoinCount != GameSave.CoinCount)
 		{
-			oldCoinCount += Time.deltaTime * (speed == 0F ? Instance.coinCounterUpdateSpeed : speed) * sign;
-			Instance.coinCounterText.text = ((int)oldCoinCount).ToString();
+			t += Time.deltaTime * (speed == 0F ? Instance.coinCounterUpdateSpeed : speed);
+			if (t > 1)
+			{
+				t -= 1F;
+				oldCoinCount += 1 * sign;
+				Instance.coinCounterText.text = oldCoinCount.ToString();
+			}	
 			yield return null;
 		}
 	}

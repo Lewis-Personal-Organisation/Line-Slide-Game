@@ -350,7 +350,7 @@ public class LevelManager : Singleton<LevelManager>
 
 		// Count up the UI element from the previous Coin count to new coin count over time
 		// Cache the now-old coin count
-		float oldCointCount = GameSave.CoinCount;   
+		int oldCointCount = GameSave.CoinCount;   
 		ApplyLevelReward();
 
 		// Update the Coin Count Display
