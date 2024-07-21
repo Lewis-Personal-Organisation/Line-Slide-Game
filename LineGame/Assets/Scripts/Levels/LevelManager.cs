@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using System.Collections;
 using static Level;
-using UnityEditor;
 using RDG;
-using TMPro;
 
 public class LevelManager : Singleton<LevelManager>
 {
 	private GameObject levelObject;
 	public Level currentLevel;
-
 
 	[Header("Game Levels")]
 	public List<Level> levels = new List<Level>();
@@ -45,7 +42,11 @@ public class LevelManager : Singleton<LevelManager>
 	public float sideSpeed = 0;
 
 	[Header("Coin Velocity")]
-	private bool clampCoinVelocity = false;
+	private bool manageCoins = false;
+
+	[Header("Water Sprite Colours")]
+	public Color waterSpriteStartColour;
+	public Color waterSpriteEndColour;
 
 
 	private bool PlayerHasPassedFirstParticleSystem => currentLevel.pathCreator.path.GetClosestDistanceAlongPath(GameManager.Instance.playerPathFollower.transform.position) >= currentLevel.roadPathCreator.path.GetClosestDistanceAlongPath(currentLevel.finishingParticleSystems[0].transform.position);
@@ -67,14 +68,30 @@ public class LevelManager : Singleton<LevelManager>
 
 	private void FixedUpdate()
 	{
-		if (!clampCoinVelocity)
+		if (!manageCoins)
 			return;
 
-		foreach (var coin in currentLevel.TreasureChestCoins)
+		for (int i = 0; i < currentLevel.TreasureChestCoins.Length; i++)
 		{
-			coin.velocity = Vector3.ClampMagnitude(coin.velocity, 10F);
+			currentLevel.TreasureChestCoins[i].velocity = Vector3.ClampMagnitude(currentLevel.TreasureChestCoins[i].velocity, 10F);
+
+			if (!currentLevel.waterSplashSpriteAnimators[i].started && currentLevel.TreasureChestCoins[i].transform.position.y <= currentLevel.WaterMesh.transform.position.y)
+			{
+				StartCoroutine(WaitToDeactivate(currentLevel.TreasureChestCoins[i].gameObject));
+				currentLevel.waterSplashSpriteAnimators[i].transform.position = currentLevel.TreasureChestCoins[i].position.Replace(Utils.Axis.Y, currentLevel.WaterMesh.transform.position.y + .35F); 
+				currentLevel.waterSplashSpriteAnimators[i].Animate();
+			}
 		}
 	}
+
+	// Deactivate coin after 0.5s, so we cant see it disappearing
+	IEnumerator WaitToDeactivate(GameObject coin)
+	{
+		// Play water splash
+		yield return new WaitForSeconds(0.5F);
+		coin.SetActive(false);
+	}
+
 
 	/// <summary>
 	/// Loads a level given a level number. Sets the level objects position to 0,0,0 and Assign level variables for player
@@ -95,7 +112,7 @@ public class LevelManager : Singleton<LevelManager>
 		UIManager.Instance.progressText.text = levelNum == -1 ? "Test Level" : $"Level {levelNum}";
 		WaterShaderAnimator.Instance.SetMeshRenderer(currentLevel.WaterMesh);
 		GameManager.Instance.playerPathFollower.Setup();
-		clampCoinVelocity = false;
+		manageCoins = false;
 
 		OnLevelComplete = delegate ()
 		{
@@ -276,14 +293,17 @@ public class LevelManager : Singleton<LevelManager>
 		}
 	}
 
+	/// <summary>
+	/// Fire the chest coins into the air in a random direction
+	/// </summary>
 	private void FireTreasureChestCoins()
 	{
-		clampCoinVelocity = true;
+		manageCoins = true;
 
 		foreach (var coinRB in currentLevel.TreasureChestCoins)
 		{
 			coinRB.AddTorque(new Vector3(Random.Range(2, 50), Random.Range(2, 50), Random.Range(2, 50)));
-			coinRB.AddForce(Vector3.up * 450F, ForceMode.Force);
+			coinRB.AddForce(Vector3.one + new Vector3(250 * Random.Range(-1F, 1F), 700F, 250F * Random.Range(-1F, 1F)), ForceMode.Force);
 		}
 	}
 

@@ -1,0 +1,13 @@
+com.LDGames.LineSlide.BuildConfig
+com.candycoded.hapticfeedbacklibrary.BuildConfig
+com.LDGames.LineSlide.R$id
+com.candycoded.hapticfeedbacklibrary.R
+com.LDGames.LineSlide.R$style
+com.LDGames.LineSlide.R$mipmap
+com.LDGames.LineSlide.R$string
+com.LDGames.LineSlide.R
+com.candycoded.hapticfeedbacklibrary.AndroidPlugin
+com.google.androidgamesdk.ChoreographerCallback$a:
+    final synthetic com.google.androidgamesdk.ChoreographerCallback b
+com.google.androidgamesdk.SwappyDisplayManager$a:
+    final synthetic com.google.androidgamesdk.SwappyDisplayManager b

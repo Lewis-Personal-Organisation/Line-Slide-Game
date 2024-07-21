@@ -37,11 +37,11 @@ public static class Utils
 	/// Returns the original Vector3 with a specific axis value replaced
 	/// </summary>
 	/// <param name="original"></param>
-	/// <param name="selected"></param>
+	/// <param name="selectedAxis"></param>
 	/// <returns></returns>
-	public static Vector3 Replace(this Vector3 original, Axis selected, float newValue)
+	public static Vector3 Replace(this Vector3 original, Axis selectedAxis, float newValue)
 	{
-		switch (selected)
+		switch (selectedAxis)
 		{
 			case Axis.X:
 				original.x = newValue;
