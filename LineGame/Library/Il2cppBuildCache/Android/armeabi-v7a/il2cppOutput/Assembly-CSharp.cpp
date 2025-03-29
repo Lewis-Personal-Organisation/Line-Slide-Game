@@ -305,8 +305,6 @@ struct Canvas_t2B7E56B7BDC287962E092755372E214ACB6393EA;
 struct CanvasGroup_t6912220105AB4A288A2FD882D163D7218EAA577F;
 // UnityEngine.CanvasRenderer
 struct CanvasRenderer_tCF8ABE659F7C3A6ED0D99A988D0BDFB651310F0E;
-// CoinCollisionManager
-struct CoinCollisionManager_tB76C182F1DF41228667F2EE6E82A5155C2737051;
 // UnityEngine.Collider
 struct Collider_t5E81E43C2ECA0209A7C4528E84A632712D192B02;
 // ColliderGenerator
@@ -12160,15 +12158,6 @@ public:
 };
 
 
-// CoinCollisionManager
-struct CoinCollisionManager_tB76C182F1DF41228667F2EE6E82A5155C2737051  : public MonoBehaviour_t37A501200D970A8257124B0EAE00A0FF3DDC354A
-{
-public:
-
-public:
-};
-
-
 // ColliderGenerator
 struct ColliderGenerator_t572F69C71B1DDE2620BCEAE0CD920972894C3700  : public MonoBehaviour_t37A501200D970A8257124B0EAE00A0FF3DDC354A
 {
@@ -21335,8 +21324,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CanvasUtils_IExtend_m874C6187B
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CIExtendU3Ed__27__ctor_mC0ED074DCADBBA07131DE4F641D1231F2D7561E2 (U3CIExtendU3Ed__27_t890ADF79F8FE6786BA23C4E7E2D772FB53656AD7 * __this, int32_t ___U3CU3E1__state0, const RuntimeMethod* method);
 // UnityEngine.Vector3 UnityEngine.Vector3::get_down()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  Vector3_get_down_mFA85B870E184121D30F66395BB183ECAB9DD8629 (const RuntimeMethod* method);
-// System.Void UnityEngine.MonoBehaviour::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour__ctor_mC0995D847F6A95B1A553652636C38A2AA8B13BED (MonoBehaviour_t37A501200D970A8257124B0EAE00A0FF3DDC354A * __this, const RuntimeMethod* method);
 // PathCreator ColliderGenerator::get_pathCreator()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR PathCreator_tD42C7FF37EE2D32A5D6AF33B2D4753F0A80D7AEB * ColliderGenerator_get_pathCreator_m5E9DCF055A9A476B40BE9A5449F1A1845EAFE703 (ColliderGenerator_t572F69C71B1DDE2620BCEAE0CD920972894C3700 * __this, const RuntimeMethod* method);
 // VertexPath PathCreator::get_path()
@@ -21378,6 +21365,8 @@ inline void List_1__ctor_m9A7B9AB049A3D2CCACE909B4A7C32E58E4AF99D2 (List_1_t6F09
 {
 	((  void (*) (List_1_t6F090F5CE50F966ED496D379A0F470B5411823FE *, const RuntimeMethod*))List_1__ctor_m0F0E00088CF56FEACC9E32D8B7D91B93D91DAA3B_gshared)(__this, method);
 }
+// System.Void UnityEngine.MonoBehaviour::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour__ctor_mC0995D847F6A95B1A553652636C38A2AA8B13BED (MonoBehaviour_t37A501200D970A8257124B0EAE00A0FF3DDC354A * __this, const RuntimeMethod* method);
 // System.Single UnityEngine.Time::get_time()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Time_get_time_m1A186074B1FCD448AB13A4B9D715AB9ED0B40844 (const RuntimeMethod* method);
 // System.Void UnityEngine.MonoBehaviour::StopCoroutine(System.Collections.IEnumerator)
@@ -25727,22 +25716,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90
 		Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  L_2;
 		L_2 = Vector3_op_Addition_mEE4F672B923CCB184C39AABCA33443DB218E50E0_inline(L_0, L_1, /*hidden argument*/NULL);
 		return L_2;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.Void CoinCollisionManager::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CoinCollisionManager__ctor_m3B14418BF9E375B75A1A0B8C263FB95DFE2B24AE (CoinCollisionManager_tB76C182F1DF41228667F2EE6E82A5155C2737051 * __this, const RuntimeMethod* method)
-{
-	{
-		MonoBehaviour__ctor_mC0995D847F6A95B1A553652636C38A2AA8B13BED(__this, /*hidden argument*/NULL);
-		return;
 	}
 }
 #ifdef __clang__

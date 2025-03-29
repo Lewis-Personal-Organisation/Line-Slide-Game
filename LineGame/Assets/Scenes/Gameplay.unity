@@ -1577,7 +1577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -125, y: -120.5}
+  m_AnchoredPosition: {x: -131.3, y: -120.5}
   m_SizeDelta: {x: 250, y: 102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &240382779
@@ -6292,7 +6292,7 @@ MonoBehaviour:
   progressLevels: 1
   AlwaysUseFirstLevel: 0
   AlwaysResetCoins: 0
-  forcedLevel: -1
+  forcedLevel: 1
 --- !u!1 &1193182297
 GameObject:
   m_ObjectHideFlags: 0
@@ -6940,8 +6940,8 @@ RectTransform:
   m_Father: {fileID: 229375432}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.047460936}
+  m_AnchorMax: {x: 1, y: 0.9525391}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8016,7 +8016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 125, y: -120.5}
+  m_AnchoredPosition: {x: 118.7, y: -120.5}
   m_SizeDelta: {x: 250, y: 102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1634907276
@@ -8039,7 +8039,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: .0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9492eb921ad6af34b9c50ef42214287a, type: 2}
   m_sharedMaterial: {fileID: -4814962925067421638, guid: 9492eb921ad6af34b9c50ef42214287a,

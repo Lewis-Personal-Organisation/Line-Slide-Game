@@ -1,4 +1,0 @@
-#Sun Jul 21 14:43:54 BST 2024
-base.0=R\:\\Unity Projects\\LineGameNew\\LineGame\\Temp\\gradleOut\\launcher\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

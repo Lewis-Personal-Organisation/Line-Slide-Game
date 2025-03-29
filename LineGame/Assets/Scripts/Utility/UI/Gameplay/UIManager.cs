@@ -6,14 +6,11 @@
 // we can continue to touch the screen for movement
 // Limitations: Currently only work with 1 Canvas. Filters are fixed - can't be added at runtime
 
-// RENAME TO UI MANAGER
-
 using RDG;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -170,6 +167,8 @@ public class UIManager : Singleton<UIManager>
 	{
 		base.Awake();
 
+		//Debug.Log(0.ToString(".##"));
+
 		LinkUIIDActions();
 
 		FPSDispay.Instance.enabled = false;
@@ -245,7 +244,8 @@ public class UIManager : Singleton<UIManager>
 
 		if (GameSave.LevelTimerEnabled && updateTimerValue)
 		{
-			timerMilisecondsValue += (Time.deltaTime);
+			timerMilisecondsValue += Time.deltaTime;
+
 			if (timerMilisecondsValue > 1)
 			{
 				timerMilisecondsValue -= 1F;
@@ -451,8 +451,8 @@ public class UIManager : Singleton<UIManager>
 
 				if (GameSave.LevelTimerEnabled)
 				{
-					UIManager.Instance.SetLevelTimerValue(GameSave.GetLevelTimeS(GameSave.CurrentLevel), GameSave.GetLevelTimeMS(GameSave.CurrentLevel));
-					UIManager.Instance.UpdateLevelTimerUI();
+					Instance.SetLevelTimerValue(GameSave.GetLevelTimeS(GameSave.CurrentLevel), GameSave.GetLevelTimeMS(GameSave.CurrentLevel));
+					Instance.UpdateLevelTimerUI();
 				}
 
 				if (settings.open)
@@ -534,7 +534,11 @@ public class UIManager : Singleton<UIManager>
 	public void UpdateLevelTimerUI()
 	{
 		timerSecondsText.text = timerSecondsValue.ToString();
-		timerMilisecondsText.text = timerMilisecondsValue.ToString(".##");
+
+		if (timerMilisecondsValue == 0)
+			timerMilisecondsText.text = ".0";
+		else 
+			timerMilisecondsValue.ToString(".##");
 	}
 
 	public void SetLevelTimerUIVisibility(bool visible)

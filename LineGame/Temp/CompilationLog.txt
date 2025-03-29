@@ -1,8 +1,0 @@
-# Starting compiling Assembly-CSharp.dll
-E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-c8dd0e1562c7cd2459f1db3d70b897c9
-# Starting IL post processing on Assembly-CSharp.dll
-"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-40e9489c44beafc4599c4ad950be9d44"
-# Starting compiling Assembly-CSharp-Editor.dll
-E:\Unity Editors\2020.3.30f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-147bd5c84f080254fa131dda8dfe72bf
-# Starting IL post processing on Assembly-CSharp-Editor.dll
-"E:/Unity Editors/2020.3.30f1/Editor/Data/MonoBleedingEdge/bin/mono.exe" "E:/Unity Editors/2020.3.30f1/Editor/Data/Tools/ILPostProcessorRunner/ILPostProcessorRunner.exe" @"R:/Unity Projects/LineGameNew/LineGame/Temp/UnityTempFile-b4d20d126aac9af4f86be59bd0735731"
